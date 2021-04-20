@@ -12,6 +12,7 @@ import java.util.Arrays;
  *
  * @author Usuario
  */
+//Hola 
 class AuxBook {
     private  int actualPage  ;
     private  boolean status  ;
