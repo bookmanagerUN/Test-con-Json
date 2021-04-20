@@ -1,0 +1,48 @@
+[
+  {
+    "actualPage": 0,
+    "status": true,
+    "bookInformation": [
+      1,
+      "Caperucita",
+      "anonimo",
+      "fabula",
+      "222200"
+    ],
+    "notes": [
+      {
+        "date": "",
+        "page": 69,
+        "paragraph": 3,
+        "note": "",
+        "notes": {
+          "count": 0
+        }
+      }
+    ]
+  },
+  {
+    "actualPage": 32,
+    "status": true,
+    "bookInformation": [
+      2,
+      "Principito",
+      "anonimo",
+      "Historia",
+      "22110"
+    ],
+    "notes": []
+  },
+  {
+    "actualPage": 40,
+    "status": false,
+    "bookInformation": [
+      3,
+      "La biblia",
+      "Diosito",
+      "Religion",
+      "3335"
+    ],
+    "notes": []
+  }
+]
