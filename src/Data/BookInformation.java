@@ -4,6 +4,7 @@ import util.LinkedList;
 
 public class BookInformation {
     
+    //el ID debería sacarse de bookInformation y ponerse en Book
     int id = 0;
     String name = null;
     String author = null;

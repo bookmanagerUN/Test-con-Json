@@ -3,10 +3,13 @@ package Data;
 import util.LinkedList;
 
 public class BookNotes extends Notes {
-
+    
+    //TODO eliminar la variable id (la creé por si usabamos txt para juntar notas con libros, pero como usamos json ya no hace falta)
     private int bookId = 0;
     
     private LinkedList<Notes> bookNotes;
+    //TODO generar metodo para ordenar notas por página
+    //(idea:¿es posible almacenar las notas en árboles binarios en vez de listas para agilizar la búsqueda?)
     
     //setters
     public void setId(int newId){

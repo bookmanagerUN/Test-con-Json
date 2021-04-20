@@ -9,6 +9,8 @@ public class Book {
     private BookInformation bookInformation;
     private BookNotes notes ;
     //TODO opinion
+    //TODO colocar el ID en esta clase y sacarla de BookInformation
+    //metodo para calcular el ID teniendo en cuenta la posición en la que este de la lista
     
     //setters
     public void  setActualPage(int newPage){
