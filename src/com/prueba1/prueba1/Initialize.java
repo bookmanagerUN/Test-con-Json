@@ -1,13 +1,13 @@
 package com.prueba1.prueba1;
 
+import Interface.MainFrame;
+
 public class Initialize {
     
     public static void main(String[]args){     
-        //test Json files implementation
-        //Notes nota = new ()
         
         
-       
+        MainFrame mainFrame= new MainFrame();
+        mainFrame.setVisible(true);
     }
-    
 }

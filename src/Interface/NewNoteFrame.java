@@ -213,6 +213,7 @@ public class NewNoteFrame extends javax.swing.JFrame {
     
     
     private void jBAddNoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAddNoteActionPerformed
+        // TODO generar check frame
         //  leer los campos de escritura
         System.out.println("Interface.NewBookFrame.jBAddBookActionPerformed()");
         String text = this.jTANote.getText();

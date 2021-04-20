@@ -18,14 +18,13 @@ import javax.swing.JLabel;
  *
  * @author Usuario
  */
-public class MainFrame extends javax.swing.JFrame {
-    //TODO escribir los libros el Json(si los hay) en la tabla
-    // ordenar al presionar el header de la tabla
+public class ReportFrame extends javax.swing.JFrame {
+    //TODO todo
     
     private MyBooks myBooks = new MyBooks();
     
     // ¿se puede pisar?
-    public MainFrame(MyBooks myBooks) {
+    public ReportFrame(MyBooks myBooks) {
         this.myBooks = myBooks;
         initComponents();
         
@@ -38,7 +37,7 @@ public class MainFrame extends javax.swing.JFrame {
         
     }
 
-    public MainFrame() {
+    public ReportFrame() {
         //TODO leer Json; crear la clase MyBook; cada vez que se inicie el programa verificar Json
         //TODO si no hay Json crear desde 0 (libro de prueba)
         
@@ -284,20 +283,21 @@ public class MainFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ReportFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ReportFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ReportFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ReportFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainFrame().setVisible(true);
+                new ReportFrame().setVisible(true);
             }
         });
     }

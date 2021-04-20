@@ -250,7 +250,8 @@ public class NewBookFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jBCancelActionPerformed
 
     private void jBAddBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAddBookActionPerformed
-        //  leer los campos de escritura
+    //  crear una ventaan flotante (jOptionpane)        
+    //  leer los campos de escritura
         System.out.println("Interface.NewBookFrame.jBAddBookActionPerformed()");
         String author = this.jTFAuthor.getText();
         String name = this.jTFName.getText();

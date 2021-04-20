@@ -8,6 +8,7 @@ public class Book {
     private boolean status  = false;
     private BookInformation bookInformation;
     private BookNotes notes ;
+    //TODO opinion
     
     //setters
     public void  setActualPage(int newPage){
