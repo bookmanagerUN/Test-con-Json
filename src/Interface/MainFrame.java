@@ -13,6 +13,7 @@ import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.table.DefaultTableModel;
 import util.ReadJson;
 
 /**
@@ -36,6 +37,8 @@ public class MainFrame extends javax.swing.JFrame {
         
         //poner logo en JLabel
         UtilInterface.printImage(JLProyectIcon, "src/main/java/Interface/MediaFiles/LogoOriginal.png",this);
+        // rellenar tabla
+        fillTable();
         
     }
 
@@ -63,19 +66,26 @@ public class MainFrame extends javax.swing.JFrame {
     }
     
     private void fillTable(){
-        
+        UtilInterface.cleanJTable(jTMyBooks);
         for (int i = 0; i <(int) this.myBooks.getMyBooks().count; i++) {
-            int id = this.myBooks.getMyBooks().elementPosition(i).getBookInformation().getId();
+            int intid = this.myBooks.getMyBooks().elementPosition(i).getBookInformation().getId();
+            String id = String.valueOf(intid);
             String name = this.myBooks.getMyBooks().elementPosition(i).getBookInformation().getName();
             String author = this.myBooks.getMyBooks().elementPosition(i).getBookInformation().getAuthor();
             Boolean state = this.myBooks.getMyBooks().elementPosition(i).getStatus();
+            String strState = "";
             if(state){
-                String str = "Finalizado";
+                strState = "Finalizado";
             }
             else{
-                String str = "Sin finalizar";
+                strState = "Sin finalizar";
             }
             String category = this.myBooks.getMyBooks().elementPosition(i).getBookInformation().getCategory();
+            
+            
+            String tbData[] = {id,name,author,strState,category};
+            DefaultTableModel tblModel = (DefaultTableModel)jTMyBooks.getModel();
+            tblModel.addRow(tbData);
             
             
         }

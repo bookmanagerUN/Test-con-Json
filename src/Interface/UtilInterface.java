@@ -12,6 +12,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -40,6 +42,9 @@ public class UtilInterface {
                 modelo.removeRow(0);
             }
         
+    }
+    static void cleanTextBox(JTextField textField){
+        textField.setText("");
     }
     
 }

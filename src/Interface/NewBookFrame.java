@@ -4,8 +4,11 @@ package Interface;
 import Data.BookInformation;
 import Data.Book;
 import Data.MyBooks;
+import java.io.IOException;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import util.WriteJson;
 
 /**
  *
@@ -22,11 +25,13 @@ public class NewBookFrame extends javax.swing.JFrame {
         //this.myBooks = myBooks;
         initComponents();
         UtilInterface.printImage(JLProyectIcon, "src/main/java/Interface/MediaFiles/LogoOriginal.png",this);
+        cleanTextBox();
     }
     public NewBookFrame(MyBooks myBooks) {
         this.myBooks = myBooks;
         initComponents();
         UtilInterface.printImage(JLProyectIcon, "src/main/java/Interface/MediaFiles/LogoOriginal.png",this);
+        cleanTextBox();
     }
 
     /**
@@ -45,8 +50,6 @@ public class NewBookFrame extends javax.swing.JFrame {
         jLMyBooks = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jTFName = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jTFIsbn = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jTFCategory = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -60,7 +63,7 @@ public class NewBookFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "BoockManager", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 24))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "BookManager", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 24))); // NOI18N
 
         JLProyectIcon.setBackground(new java.awt.Color(255, 51, 51));
         JLProyectIcon.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -84,11 +87,6 @@ public class NewBookFrame extends javax.swing.JFrame {
         jLabel1.setText("Nombre *");
 
         jTFName.setText("100 Años de Soledad");
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel2.setText("ISBN");
-
-        jTFIsbn.setText("8497592204");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Categoría *");
@@ -120,53 +118,46 @@ public class NewBookFrame extends javax.swing.JFrame {
                 .addGroup(JPNewBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(JPNewBookLayout.createSequentialGroup()
                         .addComponent(jLMyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 158, Short.MAX_VALUE)
                         .addComponent(jBCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jBAddBook, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(JPNewBookLayout.createSequentialGroup()
-                        .addGroup(JPNewBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(JPNewBookLayout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jTFIsbn, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(JPNewBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(JPNewBookLayout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTFName, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
-                        .addGroup(JPNewBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JPNewBookLayout.createSequentialGroup()
+                                .addComponent(jTFName, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(JPNewBookLayout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addGap(18, 18, 18)
                                 .addComponent(jTFAuthor, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLMyBooks1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JPNewBookLayout.createSequentialGroup()
+                            .addGroup(JPNewBookLayout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTFCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(jTFCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLMyBooks1))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         JPNewBookLayout.setVerticalGroup(
             JPNewBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JPNewBookLayout.createSequentialGroup()
                 .addGap(44, 44, 44)
-                .addGroup(JPNewBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(JPNewBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTFName, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(JPNewBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTFAuthor, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(JPNewBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTFName, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(JPNewBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTFAuthor, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLMyBooks1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(JPNewBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTFCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTFIsbn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(JPNewBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBAddBook, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -213,7 +204,7 @@ public class NewBookFrame extends javax.swing.JFrame {
                         .addComponent(jBNewInform, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jBFilter, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 65, Short.MAX_VALUE)))
+                        .addGap(0, 47, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -250,19 +241,42 @@ public class NewBookFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jBCancelActionPerformed
 
     private void jBAddBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAddBookActionPerformed
-    //  crear una ventaan flotante (jOptionpane)        
+    //  TODO CHECK crear una ventaan flotante (jOptionpane)  
+    
     //  leer los campos de escritura
         System.out.println("Interface.NewBookFrame.jBAddBookActionPerformed()");
         String author = this.jTFAuthor.getText();
         String name = this.jTFName.getText();
-        String isbn = this.jTFIsbn.getText();
+        String isbn = "12341243";
         String category = this.jTFCategory.getText();
         
-        int id = this.ComputeId();//ejemplo
         
-        BookInformation newBookInformation = new BookInformation(id, name, author, category, isbn);
-        Book newBook = new Book(newBookInformation,this.myBooks);
-        this.myBooks.printAllBooks();
+        int option = JOptionPane.showConfirmDialog(null, "¿confirma?" );
+        //System.out.println(option);
+        if(option == 0){
+            int id = this.ComputeId();//ejemplo
+        
+            BookInformation newBookInformation = new BookInformation(id, name, author, category, isbn);
+            Book newBook = new Book(newBookInformation,this.myBooks);
+            this.myBooks.printAllBooks();
+        
+            // Update Json
+            WriteJson writeJson = new WriteJson();
+            try{
+                writeJson.createAuxBook(this.myBooks.getMyBooks());
+            
+            }catch (IOException e){
+                System.err.println("no se pudo guardar");
+            }
+            cleanTextBox();
+        }
+        else if(option == 1) {
+            
+        }
+        else{
+            cleanTextBox();
+        }
+        
         
         
     }//GEN-LAST:event_jBAddBookActionPerformed
@@ -279,6 +293,11 @@ public class NewBookFrame extends javax.swing.JFrame {
         return  50;//acceder a lista de libros y revisar cuantos tiene
     }
     
+    private void cleanTextBox(){
+        UtilInterface.cleanTextBox(this.jTFAuthor);
+        UtilInterface.cleanTextBox(this.jTFCategory);
+        UtilInterface.cleanTextBox(this.jTFName);
+    }
     /**
      * @param args the command line arguments
      */
@@ -325,13 +344,11 @@ public class NewBookFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLMyBooks;
     private javax.swing.JLabel jLMyBooks1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTFAuthor;
     private javax.swing.JTextField jTFCategory;
-    private javax.swing.JTextField jTFIsbn;
     private javax.swing.JTextField jTFName;
     // End of variables declaration//GEN-END:variables
 }
