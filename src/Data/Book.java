@@ -3,7 +3,7 @@ package Data;
 import util.LinkedList;
 
 public class Book {
-
+    
     private int actualPage  = 0;
     private boolean status  = false;
     private BookInformation bookInformation;

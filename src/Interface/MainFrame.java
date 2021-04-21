@@ -13,6 +13,7 @@ import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import util.ReadJson;
 
 /**
  *
@@ -24,7 +25,7 @@ public class MainFrame extends javax.swing.JFrame {
     
     private MyBooks myBooks = new MyBooks();
     
-    // ¿se puede pisar?
+    
     public MainFrame(MyBooks myBooks) {
         this.myBooks = myBooks;
         initComponents();
@@ -39,21 +40,47 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     public MainFrame() {
-        //TODO leer Json; crear la clase MyBook; cada vez que se inicie el programa verificar Json
+        //TODO CHECK leer Json; crear la clase MyBook; cada vez que se inicie el programa verificar Json
         //TODO si no hay Json crear desde 0 (libro de prueba)
+        try {
+            ReadJson readJson = new ReadJson();
+            this.myBooks =  readJson.arrAuxToMyBooks(readJson.readJson());
+            
+        } catch (Exception e) {
+            
+        }
         
         initComponents();
         
         // cambiar headers de la tabla
         this.jTMyBooks.getTableHeader().setFont(new Font("Tahoma", 1, 18));
         this.jTMyBooks.getTableHeader().setForeground(Color.BLUE);
+        fillTable();
         
         //poner logo en JLabel
         UtilInterface.printImage(JLProyectIcon, "src/main/java/Interface/MediaFiles/LogoOriginal.png",this);
         
     }
     
-    
+    private void fillTable(){
+        
+        for (int i = 0; i <(int) this.myBooks.getMyBooks().count; i++) {
+            int id = this.myBooks.getMyBooks().elementPosition(i).getBookInformation().getId();
+            String name = this.myBooks.getMyBooks().elementPosition(i).getBookInformation().getName();
+            String author = this.myBooks.getMyBooks().elementPosition(i).getBookInformation().getAuthor();
+            Boolean state = this.myBooks.getMyBooks().elementPosition(i).getStatus();
+            if(state){
+                String str = "Finalizado";
+            }
+            else{
+                String str = "Sin finalizar";
+            }
+            String category = this.myBooks.getMyBooks().elementPosition(i).getBookInformation().getCategory();
+            
+            
+        }
+        
+    }
     
     //muestra la imagen en una [location] sobre un [label]
     
@@ -91,6 +118,7 @@ public class MainFrame extends javax.swing.JFrame {
         JPMyBooks.setBackground(new java.awt.Color(255, 255, 255));
         JPMyBooks.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "Mis libros", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 24))); // NOI18N
 
+        jTMyBooks.setAutoCreateRowSorter(true);
         jTMyBooks.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jTMyBooks.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jTMyBooks.setModel(new javax.swing.table.DefaultTableModel(
