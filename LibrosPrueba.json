@@ -19,7 +19,8 @@
           "count": 0
         }
       }
-    ]
+    ],
+    "opinion": "opinion 1"
   },
   {
     "actualPage": 32,
@@ -31,7 +32,8 @@
       "Historia",
       "22110"
     ],
-    "notes": []
+    "notes": [],
+    "opinion": "opinion 2"
   },
   {
     "actualPage": 40,
@@ -43,6 +45,7 @@
       "Religion",
       "3335"
     ],
-    "notes": []
+    "notes": [],
+    "opinion": "opinion 3"
   }
 ]

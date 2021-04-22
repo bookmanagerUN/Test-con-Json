@@ -52,12 +52,14 @@ public class ReadJson {
         //save the variable information of a book
         int actualPage = auxBook.getActualPage();
         boolean status = auxBook.getStatus();
+        String opinion = auxBook.getOpinion();
         // Save the BookInformation object
         BookInformation bookInformation = auxToBookInformation(auxBook);
         // Save the BookNotes object
         BookNotes bookNotes = auxToBookNotes(auxBook);
         //create a new Book object by all information of this method
-        Book book = new Book(bookInformation, bookNotes, actualPage, status);
+        Book book = new Book(bookInformation, bookNotes, actualPage, status,opinion);
+        
         return book;
         
     }

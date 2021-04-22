@@ -33,6 +33,7 @@ public class WriteJson {
         boolean status  ;
         Object[] bookInformation;
         Notes[] notes ;
+        String opinion = "";
         int size;
         size= myBook.count;
         Node<Book> aux =myBook.head;
@@ -44,8 +45,10 @@ public class WriteJson {
             status = aux.data.getStatus();
             bookInformation = informationToArr(aux.data.getBookInformation().bookInformation()) ;
             notes = notesToArr(aux.data.getNotes().getBookNotes());
+            opinion = aux.data.getOpinion();
+            
 
-            AuxBook auxBook = new AuxBook(actualPage,status,bookInformation,notes);
+            AuxBook auxBook = new AuxBook(actualPage,status,bookInformation,notes,opinion);
             arrBook[i] = auxBook;
             aux = aux.next;
         }

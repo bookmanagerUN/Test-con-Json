@@ -16,7 +16,7 @@ public class Test {
         BookInformation informacion1 = new BookInformation(1,"Caperucita",
                 "anonimo","fabula","222200");
         BookNotes nota1 = new BookNotes(1);
-        Book libro1 = new Book(informacion1, nota1, 0, true);
+        Book libro1 = new Book(informacion1, nota1, 0, true,"opinion 1");
         libro1.getNotes().addNote(new Notes("", 69, 3,""));
 
         LinkedList<Book> listaLibros = new LinkedList<>();
@@ -24,12 +24,12 @@ public class Test {
         BookInformation informacion2 = new BookInformation(2,"Principito",
                 "anonimo","Historia","22110");
         BookNotes nota2 = new BookNotes(2);
-        Book libro2 = new Book(informacion2, nota2, 32, true);
+        Book libro2 = new Book(informacion2, nota2, 32, true,"opinion 2");
 
         BookInformation informacion3 = new BookInformation(3,"La biblia",
                 "Diosito","Religion","3335");
         BookNotes nota3 = new BookNotes(3);
-        Book libro3 = new Book(informacion3, nota3, 40, false);
+        Book libro3 = new Book(informacion3, nota3, 40, false,"opinion 3");
 
 
         //Insertar libros en linkedlist

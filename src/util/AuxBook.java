@@ -18,15 +18,23 @@ class AuxBook {
     private  boolean status  ;
     private  Object[] bookInformation;
     private  Notes[] notes ;
+    private String opinion;
 
-    public AuxBook(int actualPage, boolean status, Object[] bookInformation, Notes[] notes) {
+    public AuxBook(int actualPage, boolean status, Object[] bookInformation, Notes[] notes, String opinion) {
         System.out.println("util.AuxBook.<init>()");
         this.actualPage = actualPage;
         this.status = status;
         this.bookInformation = bookInformation;
         this.notes = notes;
+        this.opinion = opinion;
     }
-
+    
+    public String getOpinion(){
+        return  this.opinion;
+    }
+    public void setOpinion(String opinion){
+        this.opinion = opinion;
+    }
     public int getActualPage() {
         return actualPage;
     }
@@ -60,10 +68,11 @@ class AuxBook {
     @Override
     public String toString() {
         return "AuxBook{" +
-                "actualPage=" + actualPage +
-                ", status=" + status +
-                ", bookInformation=" + Arrays.toString(bookInformation) +
-                ", notes=" + Arrays.toString(notes) +
+                "actualPage= " + actualPage +
+                ", status= " + status +
+                ", bookInformation= " + Arrays.toString(bookInformation) +
+                ", notes= " + Arrays.toString(notes) +
+                ", opinion= " + this.opinion +
                 '}';
     }
 }

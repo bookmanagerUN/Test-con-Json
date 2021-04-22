@@ -8,6 +8,7 @@ public class Book {
     private boolean status  = false;
     private BookInformation bookInformation;
     private BookNotes notes ;
+    private String opinion = "";
     //TODO opinion
     //TODO colocar el ID en esta clase y sacarla de BookInformation
     //metodo para calcular el ID teniendo en cuenta la posición en la que este de la lista
@@ -30,6 +31,9 @@ public class Book {
         this.notes=newNotes;
         //update txt
     }
+    public void setOpinion(String opinion){
+        this.opinion = opinion;
+    }
     //Getters
     public int getActualPage(){
         return this.actualPage;
@@ -42,6 +46,9 @@ public class Book {
     }
     public BookNotes getNotes(){
         return this.notes;
+    }
+    public String getOpinion (){
+        return this.opinion;
     }
     
 
@@ -65,12 +72,23 @@ public class Book {
         //update txt  
     }
     //created by Json
+    public Book(BookInformation bookInformation, BookNotes bookNotes, int actualPage, boolean status,String opinion) {
+        System.out.println("Data.Book.<init>()");
+        this.bookInformation = bookInformation;
+        this.actualPage = actualPage;
+        this.notes = bookNotes;
+        this.status = status;
+        this.opinion = opinion;
+          
+    }
+    // if the book do not have opinion
     public Book(BookInformation bookInformation, BookNotes bookNotes, int actualPage, boolean status) {
         System.out.println("Data.Book.<init>()");
         this.bookInformation = bookInformation;
         this.actualPage = actualPage;
         this.notes = bookNotes;
         this.status = status;
+        
           
     }
     
@@ -97,7 +115,7 @@ public class Book {
     public void printBook (){
         System.out.println("Information.Book.printBook()");
         
-        String cadena = "[" + this.actualPage + "], "+"[" + this.status + "], "+ this.bookInformation.printBookInformation()+","+ this.notes.paintBookNotes();
+        String cadena = "[" + this.actualPage + "], "+"[" + this.status + "], "+ this.bookInformation.printBookInformation()+","+ this.notes.paintBookNotes()+ ", "+"[" + this.opinion + "]"; 
         System.out.println(cadena);
     }
     public void /*nameClass*/ toJson(){
