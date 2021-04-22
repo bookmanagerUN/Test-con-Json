@@ -1,6 +1,6 @@
 [
   {
-    "actualPage": 0,
+    "actualPage": 12,
     "status": true,
     "bookInformation": [
       1,
@@ -42,18 +42,6 @@
       "Diosito",
       "Religion",
       "3335"
-    ],
-    "notes": []
-  },
-  {
-    "actualPage": 0,
-    "status": false,
-    "bookInformation": [
-      50,
-      "dsfg",
-      "wert",
-      "dfs",
-      "12341243"
     ],
     "notes": []
   }

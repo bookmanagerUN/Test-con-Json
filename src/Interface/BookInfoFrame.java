@@ -7,8 +7,10 @@ package Interface;
 
 import Data.Book;
 import Data.MyBooks;
+import java.io.IOException;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import util.WriteJson;
 
 /**
  *
@@ -19,7 +21,7 @@ public class BookInfoFrame extends javax.swing.JFrame {
     // revisar si hay una opinion para modificar el estado de los botones
     // rellenar tabla con las notas
     // 
-    
+
     private MyBooks myBooks;
     private Book actualBook;
     private String bookName;
@@ -29,7 +31,7 @@ public class BookInfoFrame extends javax.swing.JFrame {
     private Integer lastPage;
     private String category;
     private int bookId;
-    
+
     /**
      * Creates new form NewBookFrame
      */
@@ -45,34 +47,34 @@ public class BookInfoFrame extends javax.swing.JFrame {
         this.bookId = this.actualBook.getBookInformation().getId();
         initComponents();
         //print logo
-        UtilInterface.printImage(JLProyectIcon, "src/main/java/Interface/MediaFiles/LogoOriginal.png",this);
+        UtilInterface.printImage(JLProyectIcon, "src/main/java/Interface/MediaFiles/LogoOriginal.png", this);
         //escribe el nombre del libro en el JPanel
         UtilInterface.setPanelText(bookName, this.jPNewBook);
         //escribe el resto de la información del libro en los jtextfield
         this.completeLabels();
         System.out.println("Interface.BookInfoFrame.<init>()");
         this.myBooks.printAllBooks();
-        
+
     }
+
     public BookInfoFrame() {
         //this.actualBook = book;
         initComponents();
         //print logo
-        UtilInterface.printImage(JLProyectIcon, "src/main/java/Interface/MediaFiles/LogoOriginal.png",this);
+        UtilInterface.printImage(JLProyectIcon, "src/main/java/Interface/MediaFiles/LogoOriginal.png", this);
         //escribe el nombre del libro en el JPanel
         UtilInterface.setPanelText(bookName, this.jPNewBook);
         //escribe el resto de la información del libro en los jtextfield
         this.completeLabels();
-        
+
     }
-    
-    private void completeLabels(){
-        this.jLAuthor.setText("Por: "+ this.author);
-        this.jLCategory.setText("Categoría: "+ this.category);
-        this.jLEstate.setText("Estado: "+ this.estate);
-        this.jLIsbn.setText("ISBN: "+this.isbn);
-        this.jLLastPage.setText("Ultima página: "+ this.lastPage);
-    
+
+    private void completeLabels() {
+        this.jLAuthor.setText("Por: " + this.author);
+        this.jLCategory.setText("Categoría: " + this.category);
+        this.jLEstate.setText("Estado: "); 
+        this.jLLastPage.setText("Ultima página: " + this.lastPage);
+
     }
 
     /**
@@ -87,19 +89,20 @@ public class BookInfoFrame extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         JLProyectIcon = new javax.swing.JLabel();
         jPNewBook = new javax.swing.JPanel();
-        jBCancel = new javax.swing.JButton();
+        jBactualPage = new javax.swing.JButton();
         jLCategory = new javax.swing.JLabel();
         jBAddBook = new javax.swing.JButton();
         jLAuthor = new javax.swing.JLabel();
-        jLIsbn = new javax.swing.JLabel();
         JPNewBook1 = new javax.swing.JPanel();
         jSPMyBooks = new javax.swing.JScrollPane();
         jTMyBooks = new javax.swing.JTable();
         jLEstate = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jTactualPage = new javax.swing.JTextField();
         jLLastPage = new javax.swing.JLabel();
         jBAddBook1 = new javax.swing.JButton();
         jBAddBook2 = new javax.swing.JButton();
+        jCheckStatus = new javax.swing.JCheckBox();
+        modifyInfo = new javax.swing.JButton();
         JBMyBooks = new javax.swing.JButton();
         jBFilter = new javax.swing.JButton();
         jBNewInform = new javax.swing.JButton();
@@ -116,11 +119,11 @@ public class BookInfoFrame extends javax.swing.JFrame {
         jPNewBook.setBackground(new java.awt.Color(255, 255, 255));
         jPNewBook.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "(título del libro)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 24))); // NOI18N
 
-        jBCancel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jBCancel.setText("Actualizar página");
-        jBCancel.addActionListener(new java.awt.event.ActionListener() {
+        jBactualPage.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jBactualPage.setText("Actualizar página");
+        jBactualPage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBCancelActionPerformed(evt);
+                jBactualPageActionPerformed(evt);
             }
         });
 
@@ -137,9 +140,6 @@ public class BookInfoFrame extends javax.swing.JFrame {
 
         jLAuthor.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLAuthor.setText("por: (Nombre del autor)");
-
-        jLIsbn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLIsbn.setText("ISBN: (ISBN)");
 
         JPNewBook1.setBackground(new java.awt.Color(255, 255, 255));
         JPNewBook1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Notas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 24))); // NOI18N
@@ -183,18 +183,23 @@ public class BookInfoFrame extends javax.swing.JFrame {
         );
         JPNewBook1Layout.setVerticalGroup(
             JPNewBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 215, Short.MAX_VALUE)
+            .addGap(0, 193, Short.MAX_VALUE)
             .addGroup(JPNewBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JPNewBook1Layout.createSequentialGroup()
-                    .addContainerGap(23, Short.MAX_VALUE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jSPMyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap()))
         );
 
         jLEstate.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLEstate.setText("Estado: (estado)");
+        jLEstate.setText("Estado:");
 
-        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jTactualPage.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jTactualPage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTactualPageActionPerformed(evt);
+            }
+        });
 
         jLLastPage.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLLastPage.setText("Ultima página: (pagina)");
@@ -215,6 +220,19 @@ public class BookInfoFrame extends javax.swing.JFrame {
             }
         });
 
+        jCheckStatus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckStatusActionPerformed(evt);
+            }
+        });
+
+        modifyInfo.setText("Modificar Información libro");
+        modifyInfo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modifyInfoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPNewBookLayout = new javax.swing.GroupLayout(jPNewBook);
         jPNewBook.setLayout(jPNewBookLayout);
         jPNewBookLayout.setHorizontalGroup(
@@ -224,25 +242,32 @@ public class BookInfoFrame extends javax.swing.JFrame {
                 .addGroup(jPNewBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(JPNewBook1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPNewBookLayout.createSequentialGroup()
-                        .addComponent(jBAddBook, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jBAddBook1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jBAddBook2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
-                        .addComponent(jBCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPNewBookLayout.createSequentialGroup()
-                        .addComponent(jLAuthor)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLCategory)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLIsbn))
-                    .addGroup(jPNewBookLayout.createSequentialGroup()
-                        .addComponent(jLEstate)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLLastPage)))
+                        .addGroup(jPNewBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPNewBookLayout.createSequentialGroup()
+                                .addComponent(jBAddBook, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jBAddBook1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jBAddBook2))
+                            .addGroup(jPNewBookLayout.createSequentialGroup()
+                                .addComponent(jLAuthor)
+                                .addGap(160, 160, 160)
+                                .addComponent(jLCategory))
+                            .addGroup(jPNewBookLayout.createSequentialGroup()
+                                .addGroup(jPNewBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLLastPage)
+                                    .addGroup(jPNewBookLayout.createSequentialGroup()
+                                        .addComponent(jTactualPage, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jBactualPage)))
+                                .addGap(109, 109, 109)
+                                .addGroup(jPNewBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPNewBookLayout.createSequentialGroup()
+                                        .addComponent(jLEstate)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jCheckStatus))
+                                    .addComponent(modifyInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(0, 271, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPNewBookLayout.setVerticalGroup(
@@ -250,24 +275,27 @@ public class BookInfoFrame extends javax.swing.JFrame {
             .addGroup(jPNewBookLayout.createSequentialGroup()
                 .addGroup(jPNewBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLAuthor, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLIsbn, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLCategory))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(JPNewBook1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPNewBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLLastPage, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLEstate, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLLastPage, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPNewBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPNewBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jBCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPNewBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jBAddBook, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jBAddBook1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jBAddBook2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                    .addGroup(jPNewBookLayout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(jCheckStatus)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPNewBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTactualPage, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBactualPage)
+                    .addComponent(modifyInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(JPNewBook1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPNewBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBAddBook, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBAddBook1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBAddBook2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(6, 6, 6))
         );
 
         JBMyBooks.setText("Página principal");
@@ -299,18 +327,15 @@ public class BookInfoFrame extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPNewBook, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(JLProyectIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(JBMyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jBNewInform, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jBFilter, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                .addComponent(JLProyectIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(JBMyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jBNewInform, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jBFilter, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(196, Short.MAX_VALUE))
+            .addComponent(jPNewBook, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -327,27 +352,32 @@ public class BookInfoFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jBCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelActionPerformed
-        // input (aún no se ha hecho): la justificación(string), tipo de solicitud(string)
-        /*int com_numero = Integer.parseInt( this.jTFmyBooks.getText());
-        String comentarios = this.selectComentarios(com_numero);
-        System.out.println(comentarios);
-        String tipo = this.selectTipo(com_numero);
+    private void jBactualPageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBactualPageActionPerformed
 
-        ComentarioSolicitud est_com = new ComentarioSolicitud(); //nueva ventana de Comentario de solicitudes
-        est_com.setVisible(true);
-        if(comentarios != "Usted no ha hecho ninguna solicitud con ese número"){
-            est_com.set_tipo(tipo);
+        int actualPage = Integer.parseInt(jTactualPage.getText());
+
+        this.actualBook.setActualPage(actualPage);
+
+        this.lastPage = actualPage;
+
+        this.completeLabels();
+
+        // Update Json
+        WriteJson writeJson = new WriteJson();
+        try {
+            writeJson.createAuxBook(this.myBooks.getMyBooks());
+
+        } catch (IOException e) {
+            System.err.println("no se pudo guardar");
         }
 
-        est_com.set_textArea(comentarios);
-        */
-        //this.dispose();
-    }//GEN-LAST:event_jBCancelActionPerformed
+        jTactualPage.setText("");
+
+    }//GEN-LAST:event_jBactualPageActionPerformed
 
     private void jBAddBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAddBookActionPerformed
         // TODO add your handling code here:
-        NewNoteFrame newNoteFrame= new NewNoteFrame(this.myBooks, this.actualBook);
+        NewNoteFrame newNoteFrame = new NewNoteFrame(this.myBooks, this.actualBook);
         newNoteFrame.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jBAddBookActionPerformed
@@ -362,10 +392,55 @@ public class BookInfoFrame extends javax.swing.JFrame {
 
     private void JBMyBooksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBMyBooksActionPerformed
         // TODO add your handling code here:
-        MainFrame mainFrame= new MainFrame(this.myBooks);
+        MainFrame mainFrame = new MainFrame(this.myBooks);
         mainFrame.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_JBMyBooksActionPerformed
+
+    private void jTactualPageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTactualPageActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_jTactualPageActionPerformed
+
+    private void jCheckStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckStatusActionPerformed
+        // TODO add your handling code here:
+        
+        if(jCheckStatus.isSelected()){
+            
+            this.estate = true;
+            this.actualBook.setStatus(true);
+            
+        }
+        else{
+            this.estate = false;
+            this.actualBook.setStatus(false);
+        }
+        
+        this.completeLabels();
+
+        // Update Json
+        WriteJson writeJson = new WriteJson();
+        try {
+            writeJson.createAuxBook(this.myBooks.getMyBooks());
+
+        } catch (IOException e) {
+            System.err.println("no se pudo guardar");
+        }
+        
+        
+        
+    }//GEN-LAST:event_jCheckStatusActionPerformed
+
+    private void modifyInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyInfoActionPerformed
+        // TODO add your handling code here:
+        
+        ModifyBookFrame modify = new ModifyBookFrame(this.actualBook);
+        
+        modify.setVisible(true);
+        
+        this.setVisible(false);
+        
+    }//GEN-LAST:event_modifyInfoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -410,18 +485,19 @@ public class BookInfoFrame extends javax.swing.JFrame {
     private javax.swing.JButton jBAddBook;
     private javax.swing.JButton jBAddBook1;
     private javax.swing.JButton jBAddBook2;
-    private javax.swing.JButton jBCancel;
     private javax.swing.JButton jBFilter;
     private javax.swing.JButton jBNewInform;
+    private javax.swing.JButton jBactualPage;
+    private javax.swing.JCheckBox jCheckStatus;
     private javax.swing.JLabel jLAuthor;
     private javax.swing.JLabel jLCategory;
     private javax.swing.JLabel jLEstate;
-    private javax.swing.JLabel jLIsbn;
     private javax.swing.JLabel jLLastPage;
     private javax.swing.JPanel jPNewBook;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jSPMyBooks;
     private javax.swing.JTable jTMyBooks;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTactualPage;
+    private javax.swing.JButton modifyInfo;
     // End of variables declaration//GEN-END:variables
 }

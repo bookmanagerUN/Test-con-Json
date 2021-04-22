@@ -14,24 +14,37 @@ import util.WriteJson;
  *
  * @author Usuario
  */
-public class NewBookFrame extends javax.swing.JFrame {
+public class ModifyBookFrame extends javax.swing.JFrame {
     private MyBooks myBooks = new MyBooks() ;
-    
+    private Book actualBook;
+    private String bookName;
+    private String author;
+    private String category;
+    private int bookId;
     
     /**
      * Creates new form NewBookFrame
      */
-    public NewBookFrame() {
-        //this.myBooks = myBooks;
+    public ModifyBookFrame() {
+
         initComponents();
         UtilInterface.printImage(JLProyectIcon, "src/main/java/Interface/MediaFiles/LogoOriginal.png",this);
         cleanTextBox();
     }
-    public NewBookFrame(MyBooks myBooks) {
-        this.myBooks = myBooks;
+    public ModifyBookFrame(Book booky) {
+        this.actualBook = booky;
+        
+        this.bookName = this.actualBook.getBookInformation().getName();
+        this.author = this.actualBook.getBookInformation().getAuthor();
+        this.category = this.actualBook.getBookInformation().getCategory();
+        this.bookId = this.actualBook.getBookInformation().getId();
+        System.out.println(bookName);
+        jTFName.setText(bookName);
+        jTFAuthor.setText(author);
+        jTFCategory.setText(category);
+
         initComponents();
         UtilInterface.printImage(JLProyectIcon, "src/main/java/Interface/MediaFiles/LogoOriginal.png",this);
-        cleanTextBox();
     }
 
     /**
@@ -55,7 +68,6 @@ public class NewBookFrame extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jTFAuthor = new javax.swing.JTextField();
         jBAddBook = new javax.swing.JButton();
-        jLMyBooks1 = new javax.swing.JLabel();
         JBMyBooks = new javax.swing.JButton();
         jBFilter = new javax.swing.JButton();
         jBNewInform = new javax.swing.JButton();
@@ -84,30 +96,32 @@ public class NewBookFrame extends javax.swing.JFrame {
         jLMyBooks.setText("* es obligatorio");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setText("Nombre *");
+        jLabel1.setText("Nombre ");
 
         jTFName.setText("100 Años de Soledad");
+        jTFName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTFNameActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel3.setText("Categoría *");
+        jLabel3.setText("Categoría ");
 
         jTFCategory.setText("Realismo mágico");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel4.setText("Autor *");
+        jLabel4.setText("Autor ");
 
         jTFAuthor.setText("Gabriel García Márquez");
 
         jBAddBook.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jBAddBook.setText("Añadir");
+        jBAddBook.setText("Modificar");
         jBAddBook.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBAddBookActionPerformed(evt);
             }
         });
-
-        jLMyBooks1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLMyBooks1.setText("Al dejarlo vacio se toma como \"desconocido\"");
 
         javax.swing.GroupLayout JPNewBookLayout = new javax.swing.GroupLayout(JPNewBook);
         JPNewBook.setLayout(JPNewBookLayout);
@@ -125,18 +139,17 @@ public class NewBookFrame extends javax.swing.JFrame {
                     .addGroup(JPNewBookLayout.createSequentialGroup()
                         .addGroup(JPNewBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(JPNewBookLayout.createSequentialGroup()
-                                .addComponent(jLabel1)
+                                .addGroup(JPNewBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel4))
                                 .addGap(18, 18, 18)
-                                .addComponent(jTFName, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(JPNewBookLayout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTFAuthor, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(JPNewBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTFName, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
+                                    .addComponent(jTFAuthor)))
                             .addGroup(JPNewBookLayout.createSequentialGroup()
                                 .addComponent(jLabel3)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTFCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLMyBooks1))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTFCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -151,8 +164,6 @@ public class NewBookFrame extends javax.swing.JFrame {
                 .addGroup(JPNewBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTFAuthor, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLMyBooks1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(JPNewBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTFCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -245,11 +256,10 @@ public class NewBookFrame extends javax.swing.JFrame {
         int option = JOptionPane.showConfirmDialog(null, "¿confirma?" );
         //System.out.println(option);
         if(option == 0){
-            int id = this.ComputeId();//ejemplo
-        
-            BookInformation newBookInformation = new BookInformation(id, name, author, category, isbn);
-            Book newBook = new Book(newBookInformation,this.myBooks);
-            this.myBooks.printAllBooks();
+            
+            this.actualBook.getBookInformation().setName(name);
+            this.actualBook.getBookInformation().setAuthor(author);
+            this.actualBook.getBookInformation().setCategory(category);
         
             // Update Json
             WriteJson writeJson = new WriteJson();
@@ -259,7 +269,13 @@ public class NewBookFrame extends javax.swing.JFrame {
             }catch (IOException e){
                 System.err.println("no se pudo guardar");
             }
-            cleanTextBox();
+            
+            BookInfoFrame bi = new BookInfoFrame();
+            
+            bi.setVisible(true);
+            
+            this.dispose();
+            
         }
         else if(option == 1) {
             
@@ -278,6 +294,11 @@ public class NewBookFrame extends javax.swing.JFrame {
         mainFrame.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_JBMyBooksActionPerformed
+
+    private void jTFNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFNameActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jTFNameActionPerformed
     //this metod should be in util or something like that 
     private int ComputeId(){
         System.out.println("Interface.NewBookFrame.ComputeId()");
@@ -306,20 +327,21 @@ public class NewBookFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(NewBookFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModifyBookFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(NewBookFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModifyBookFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(NewBookFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModifyBookFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(NewBookFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModifyBookFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new NewBookFrame().setVisible(true);
+                new ModifyBookFrame().setVisible(true);
             }
         });
     }
@@ -333,7 +355,6 @@ public class NewBookFrame extends javax.swing.JFrame {
     private javax.swing.JButton jBFilter;
     private javax.swing.JButton jBNewInform;
     private javax.swing.JLabel jLMyBooks;
-    private javax.swing.JLabel jLMyBooks1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
