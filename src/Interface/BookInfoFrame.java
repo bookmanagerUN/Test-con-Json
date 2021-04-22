@@ -434,11 +434,7 @@ public class BookInfoFrame extends javax.swing.JFrame {
     private void modifyInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyInfoActionPerformed
         // TODO add your handling code here:
         
-        ModifyBookFrame modify = new ModifyBookFrame(this.actualBook);
-        
-        modify.setVisible(true);
-        
-        this.setVisible(false);
+
         
     }//GEN-LAST:event_modifyInfoActionPerformed
 
