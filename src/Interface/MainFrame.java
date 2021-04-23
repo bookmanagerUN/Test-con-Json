@@ -10,11 +10,14 @@ import Data.MyBooks;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
+import java.io.IOException;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import util.ReadJson;
+import util.WriteJson;
 
 /**
  *
@@ -112,6 +115,7 @@ public class MainFrame extends javax.swing.JFrame {
         jBMyBooks = new javax.swing.JButton();
         jLMyBooks = new javax.swing.JLabel();
         jTFmyBooks = new javax.swing.JTextField();
+        jBDeleteBook = new javax.swing.JButton();
         jBNewBook = new javax.swing.JButton();
         jBNewInform = new javax.swing.JButton();
         jBFilter = new javax.swing.JButton();
@@ -173,6 +177,13 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        jBDeleteBook.setText("borrar libro");
+        jBDeleteBook.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBDeleteBookActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout JPMyBooksLayout = new javax.swing.GroupLayout(JPMyBooks);
         JPMyBooks.setLayout(JPMyBooksLayout);
         JPMyBooksLayout.setHorizontalGroup(
@@ -188,7 +199,9 @@ public class MainFrame extends javax.swing.JFrame {
                                 .addGap(23, 23, 23)
                                 .addComponent(jTFmyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jBMyBooks))
+                                .addComponent(jBMyBooks)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jBDeleteBook, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(JPMyBooksLayout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(jLMyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 656, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -199,15 +212,16 @@ public class MainFrame extends javax.swing.JFrame {
             JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JPMyBooksLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jSPMyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addComponent(jSPMyBooks, javax.swing.GroupLayout.DEFAULT_SIZE, 358, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLMyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jBMyBooks)
+                    .addComponent(jBMyBooks, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(JPMyBooksLayout.createSequentialGroup()
                         .addComponent(jTFmyBooks)
-                        .addGap(3, 3, 3)))
+                        .addGap(3, 3, 3))
+                    .addComponent(jBDeleteBook, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -305,6 +319,32 @@ public class MainFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jBFilterActionPerformed
 
+    private void jBDeleteBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDeleteBookActionPerformed
+        // TODO add your handling code here:
+        int option = JOptionPane.showConfirmDialog(null, "¿confirma?" );
+        if(option == 0){
+            System.out.println("se presionó el boton");
+            int bookPosition = Integer.parseInt(this.jTFmyBooks.getText())  ;
+            this.myBooks.deleteBook(bookPosition - 1);
+            WriteJson writeJson = new WriteJson();
+            try {
+                writeJson.createAuxBook(this.myBooks.getMyBooks());
+
+            } catch (IOException e) {
+                System.err.println("no se pudo guardar");
+            }
+            fillTable();
+            
+        }
+        else if(option == 1){
+            
+        }
+        else{
+            
+        }
+    
+    }//GEN-LAST:event_jBDeleteBookActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -343,6 +383,7 @@ public class MainFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel JLProyectIcon;
     private javax.swing.JPanel JPMyBooks;
+    private javax.swing.JButton jBDeleteBook;
     private javax.swing.JButton jBFilter;
     private javax.swing.JButton jBMyBooks;
     private javax.swing.JButton jBNewBook;

@@ -134,6 +134,8 @@
                                       <Component id="jTFmyBooks" min="-2" pref="61" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jBMyBooks" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jBDeleteBook" min="-2" pref="150" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
@@ -151,16 +153,17 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jSPMyBooks" pref="0" max="32767" attributes="0"/>
+                      <Component id="jSPMyBooks" pref="358" max="32767" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jLMyBooks" min="-2" pref="24" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jBMyBooks" min="-2" max="-2" attributes="0"/>
+                          <Component id="jBMyBooks" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Component id="jTFmyBooks" max="32767" attributes="0"/>
                               <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="jBDeleteBook" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -252,6 +255,14 @@
             <Component class="javax.swing.JTextField" name="jTFmyBooks">
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTFmyBooksActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="jBDeleteBook">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="borrar libro"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBDeleteBookActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
