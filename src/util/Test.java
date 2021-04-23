@@ -18,6 +18,7 @@ public class Test {
         BookNotes nota1 = new BookNotes(1);
         Book libro1 = new Book(informacion1, nota1, 0, true,"");
         libro1.getNotes().addNote(new Notes("", 69, 3,""));
+        libro1.getNotes().addNote(new Notes("", 23, 3,"SADFGHJGFDSA"));
 
         LinkedList<Book> listaLibros = new LinkedList<>();
 
