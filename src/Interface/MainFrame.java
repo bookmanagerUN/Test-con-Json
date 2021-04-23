@@ -36,7 +36,7 @@ public class MainFrame extends javax.swing.JFrame {
         this.jTMyBooks.getTableHeader().setForeground(Color.BLUE);
         
         //poner logo en JLabel
-        UtilInterface.printImage(JLProyectIcon, "src/main/java/Interface/MediaFiles/LogoOriginal.png",this);
+        UtilInterface.printImage(JLProyectIcon, "src/Interface/MediaFiles/LogoOriginal.png",this);
         // rellenar tabla
         fillTable();
         
@@ -61,7 +61,7 @@ public class MainFrame extends javax.swing.JFrame {
         fillTable();
         
         //poner logo en JLabel
-        UtilInterface.printImage(JLProyectIcon, "src/main/java/Interface/MediaFiles/LogoOriginal.png",this);
+        UtilInterface.printImage(JLProyectIcon, "src/Interface/MediaFiles/LogoOriginal.png",this);
         
     }
     

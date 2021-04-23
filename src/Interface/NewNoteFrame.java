@@ -36,7 +36,7 @@ public class NewNoteFrame extends javax.swing.JFrame {
         System.out.println(this.bookId);
 
         initComponents();
-        UtilInterface.printImage(JLProyectIcon, "src/main/java/Interface/MediaFiles/LogoOriginal.png", this);
+        UtilInterface.printImage(JLProyectIcon, "src/Interface/MediaFiles/LogoOriginal.png", this);
     }
 
     public NewNoteFrame(MyBooks myBooks, Book book) {
@@ -45,7 +45,7 @@ public class NewNoteFrame extends javax.swing.JFrame {
         findBookId();
         System.out.println(this.bookId);
         initComponents();
-        UtilInterface.printImage(JLProyectIcon, "src/main/java/Interface/MediaFiles/LogoOriginal.png", this);
+        UtilInterface.printImage(JLProyectIcon, "src/Interface/MediaFiles/LogoOriginal.png", this);
     }
 
     /**

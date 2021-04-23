@@ -24,13 +24,13 @@ public class NewBookFrame extends javax.swing.JFrame {
     public NewBookFrame() {
         //this.myBooks = myBooks;
         initComponents();
-        UtilInterface.printImage(JLProyectIcon, "src/main/java/Interface/MediaFiles/LogoOriginal.png",this);
+        UtilInterface.printImage(JLProyectIcon, "src/Interface/MediaFiles/LogoOriginal.png",this);
         cleanTextBox();
     }
     public NewBookFrame(MyBooks myBooks) {
         this.myBooks = myBooks;
         initComponents();
-        UtilInterface.printImage(JLProyectIcon, "src/main/java/Interface/MediaFiles/LogoOriginal.png",this);
+        UtilInterface.printImage(JLProyectIcon, "src/Interface/MediaFiles/LogoOriginal.png",this);
         cleanTextBox();
     }
 
