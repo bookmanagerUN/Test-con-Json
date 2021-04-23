@@ -64,7 +64,7 @@ public class Book {
         
         //default values:
         this.actualPage = 0;
-        this.notes = new BookNotes(this.bookInformation.getId());
+        this.notes = new BookNotes();
         this.status = false;
         //update list of books:
         myBooks.insertBook(this);
@@ -115,7 +115,7 @@ public class Book {
     public void printBook (){
         System.out.println("Information.Book.printBook()");
         
-        String cadena = "[" + this.actualPage + "], "+"[" + this.status + "], "+ this.bookInformation.printBookInformation()+","+ this.notes.paintBookNotes()+ ", "+"[" + this.opinion + "]"; 
+        String cadena = "actual page:[ " + this.actualPage + " ], "+"status: [" + this.status + "], Book information: "+ this.bookInformation.printBookInformation()+", Book Notes: "+ this.notes.paintBookNotes()+ ", "+"Opinion: [" + this.opinion + "]"; 
         System.out.println(cadena);
     }
     public void /*nameClass*/ toJson(){

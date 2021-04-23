@@ -83,11 +83,11 @@ public class BookInfoFrame extends javax.swing.JFrame {
 
     private void fillTableNotes() {
         UtilInterface.cleanJTable(jTMyNotes);
-        for (int i = 0; i < (int) this.notes.getNotes().count; i++) {
-            String date = this.notes.getDate();
-            String page = String.valueOf(this.notes.getPage());
-            String paragraph = String.valueOf(this.notes.getParagraph());
-            String note = this.notes.getNote();
+        for (int i = 0; i < (int) this.actualBook.getNotes().getBookNotes().count; i++) {
+            String date = this.actualBook.getNotes().getBookNotes().elementPosition(i).getDate();
+            String page = String.valueOf(this.actualBook.getNotes().getBookNotes().elementPosition(i).getPage());
+            String paragraph = String.valueOf(this.actualBook.getNotes().getBookNotes().elementPosition(i).getParagraph());
+            String note = this.actualBook.getNotes().getBookNotes().elementPosition(i).getNote();
            
             String tbData[] = {page, paragraph, date, note};
             DefaultTableModel tblModel = (DefaultTableModel) jTMyNotes.getModel();

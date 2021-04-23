@@ -75,7 +75,7 @@ public class Notes {
         
     }
     public String paintNote(){
-        return"{ *"+ this.date + "* , *" + this.page + "* , *" + this.paragraph + "* , *" + this.note + "* }"  ;
+        return"{ Date: *"+ this.date + "* ,Page: *" + this.page + "* ,Paragraph: *" + this.paragraph + "* ,Note: *" + this.note + "* }"  ;
     }
 
 }

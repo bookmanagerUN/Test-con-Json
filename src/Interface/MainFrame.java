@@ -278,7 +278,7 @@ public class MainFrame extends javax.swing.JFrame {
     private void jBMyBooksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBMyBooksActionPerformed
         int id = Integer.parseInt(this.jTFmyBooks.getText());
         //checkear inputs invalidos - o que MyBooks esté vacío (se puede usar clase Util)
-        Book book = this.myBooks.getMyBooks().elementPosition(id-1);
+        Book book = this.myBooks.getMyBooks().elementPosition(id);
         System.out.println(id);
         book.printBook();
         BookInfoFrame bookInfo = new BookInfoFrame(book,this.myBooks);

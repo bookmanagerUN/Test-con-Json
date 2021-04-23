@@ -28,19 +28,27 @@ public class MyBooks {
     //new sesion
     public MyBooks() {
         this.myBooks = new LinkedList<Book>();
+        
     }
     // read txt
     public MyBooks(LinkedList<Book> myBooks){
         System.out.println("Data.MyBooks.<init>()");
         this.myBooks = myBooks;
+        updateAllId();
     }
     
     //methods
     public void insertBook(Book book){
         
         getMyBooks().insertEnd(book);
+        updateAllId();
         //update txt
      
+    }
+    
+    public void updateAllId(){
+        for (int i = 0; i< this.myBooks.count;i++)
+            this.myBooks.elementPosition(i).getBookInformation().setId(i);
     }
     public void printAllBooks(){
         System.out.println("Data.MyBooks.printAllBooks()");

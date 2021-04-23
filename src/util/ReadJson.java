@@ -99,7 +99,7 @@ public class ReadJson {
             linkedNotes.insertEnd(auxBook.getNotes()[i]);
         }
         //new BookNotes object by the last linked list
-        BookNotes newBookNotes = new BookNotes(0, linkedNotes);
+        BookNotes newBookNotes = new BookNotes( linkedNotes);
         return newBookNotes;
     }
 

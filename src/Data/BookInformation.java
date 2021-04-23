@@ -62,11 +62,11 @@ public class BookInformation {
     public String printBookInformation(){
         //System.out.println("Information.BookInformation.printBookInformation()");
         
-        String cadena = "[*" +
-            this.name     + "*  *" +
-            this.id       + "*  *" +
-            this.author   + "*  *" +
-            this.category + "*  *" +
+        String cadena = "[ Name: *" +
+            this.name     + "* Id: *" +
+            this.id       + "* Author: *" +
+            this.author   + "* Category: *" +
+            this.category + "* ISBN *" +
             this.isbn     + "*]";
         
         return cadena;
