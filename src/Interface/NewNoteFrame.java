@@ -4,20 +4,25 @@
  * and open the template in the editor.
  */
 package Interface;
+
 import Data.Book;
 import Data.BookInformation;
 import Data.BookNotes;
 import Data.MyBooks;
 import Data.Notes;
+import java.io.IOException;
 import java.nio.file.FileSystemNotFoundException;
+import javax.swing.JOptionPane;
+import util.WriteJson;
 
 /**
  *
  * @author Usuario
  */
 public class NewNoteFrame extends javax.swing.JFrame {
+
     private MyBooks myBooks = new MyBooks();
-    private Book actualBook = new Book(new BookInformation(1, "100 años de soledad", "GABO", "realismo", "isbn"),this.myBooks);
+    private Book actualBook = new Book(new BookInformation(1, "100 años de soledad", "GABO", "realismo", "isbn"), this.myBooks);
     private int bookId;
 
     /**
@@ -26,20 +31,21 @@ public class NewNoteFrame extends javax.swing.JFrame {
     public NewNoteFrame(/*Book book*/) {
         //this.actualBook = book
         this.myBooks = new MyBooks();
-        this.actualBook= new Book(new BookInformation(1, "100 años de soledad", "GABO", "realismo", "isbn"),this.myBooks);
+        this.actualBook = new Book(new BookInformation(1, "100 años de soledad", "GABO", "realismo", "isbn"), this.myBooks);
         findBookId();
         System.out.println(this.bookId);
-        
+
         initComponents();
-        UtilInterface.printImage(JLProyectIcon, "src/main/java/Interface/MediaFiles/LogoOriginal.png",this);
+        UtilInterface.printImage(JLProyectIcon, "src/main/java/Interface/MediaFiles/LogoOriginal.png", this);
     }
-    public NewNoteFrame(MyBooks myBooks,Book book) {
+
+    public NewNoteFrame(MyBooks myBooks, Book book) {
         this.myBooks = myBooks;
         this.actualBook = book;
         findBookId();
         System.out.println(this.bookId);
         initComponents();
-        UtilInterface.printImage(JLProyectIcon, "src/main/java/Interface/MediaFiles/LogoOriginal.png",this);
+        UtilInterface.printImage(JLProyectIcon, "src/main/java/Interface/MediaFiles/LogoOriginal.png", this);
     }
 
     /**
@@ -210,8 +216,7 @@ public class NewNoteFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    
+
     private void jBAddNoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAddNoteActionPerformed
         // TODO generar check frame
         //  leer los campos de escritura
@@ -220,13 +225,31 @@ public class NewNoteFrame extends javax.swing.JFrame {
         int page = Integer.parseInt(this.jTFPage.getText());
         int paragraph = Integer.parseInt(this.jTFParagraph.getText());
         String date = this.jTFDate.getText();
-        Notes note = new Notes(date, page, paragraph, text);
-        this.actualBook.getNotes().addNote(note);
-        //this.actualBook.getNotes().
-        this.actualBook.printBook();
-        this.myBooks.printAllBooks();
-        
-        
+
+        int option = JOptionPane.showConfirmDialog(null, "¿confirma?");
+        //System.out.println(option);
+        if (option == 0) {
+            Notes note = new Notes(date, page, paragraph, text);
+            this.actualBook.getNotes().addNote(note);
+            //this.actualBook.getNotes().
+            this.actualBook.printBook();
+            this.myBooks.printAllBooks();
+
+            // Update Json
+            WriteJson writeJson = new WriteJson();
+            try {
+                writeJson.createAuxBook(this.myBooks.getMyBooks());
+
+            } catch (IOException e) {
+                System.err.println("no se pudo guardar");
+            }
+            
+            cleanTextBox();
+        } else if (option == 1) {
+
+        } else {
+            cleanTextBox();
+        }
         /*String author = this.jTFDate.getText();
         String name = this.jTFPage.getText();
         String isbn = this.jTFParagraph.getText();
@@ -237,7 +260,7 @@ public class NewNoteFrame extends javax.swing.JFrame {
         BookInformation newBookInformation = new BookInformation(id, name, author, category, isbn);
         Book newBook = new Book(newBookInformation);
         newBook.printBook();
-        */
+         */
     }//GEN-LAST:event_jBAddNoteActionPerformed
 
     private void JBMyBooksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBMyBooksActionPerformed
@@ -245,20 +268,24 @@ public class NewNoteFrame extends javax.swing.JFrame {
         mainFrame.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_JBMyBooksActionPerformed
-    
+private void cleanTextBox(){
+        UtilInterface.cleanTextBox(this.jTFDate);
+        UtilInterface.cleanTextBox(this.jTFPage);
+        UtilInterface.cleanTextBox(this.jTFParagraph);
+        UtilInterface.cleanTextArea(this.jTANote);
+    }
     //this metod should be in a util class or something like that
-    private int  findBookId(/*here should enter a boock class*/){
+    private int findBookId(/*here should enter a boock class*/) {
         //TODO get te book id by an book object
-        
+
         return 1;//example
     }
-    
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        
-        
+
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -288,7 +315,7 @@ public class NewNoteFrame extends javax.swing.JFrame {
                 new NewNoteFrame().setVisible(true);
             }
         });
-        
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

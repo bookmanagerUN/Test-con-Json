@@ -169,7 +169,7 @@
                                   <Group type="102" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="jBnewOpinion" pref="135" max="32767" attributes="0"/>
+                                          <Component id="jBnewOpinion" max="32767" attributes="0"/>
                                           <Component id="jBsaveOpinion" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -314,7 +314,7 @@
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="193" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="203" max="32767" attributes="0"/>
                       <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="32767" attributes="0"/>
@@ -333,7 +333,7 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTable" name="jTMyBooks">
+                    <Component class="javax.swing.JTable" name="jTMyNotes">
                       <Properties>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
@@ -343,29 +343,8 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="12" style="0"/>
                         </Property>
-                        <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                          <Table columnCount="4" rowCount="3">
-                            <Column editable="false" title="ID" type="java.lang.Object">
-                              <Data value="0"/>
-                              <Data value="1"/>
-                              <Data value="2"/>
-                            </Column>
-                            <Column editable="false" title="P&#xe1;gina" type="java.lang.Object">
-                              <Data value="14"/>
-                              <Data value="50"/>
-                              <Data value="79"/>
-                            </Column>
-                            <Column editable="false" title="Fecha" type="java.lang.Object">
-                              <Data value="17/08/2021"/>
-                              <Data value="19/08/2021"/>
-                              <Data value="01/09/2021"/>
-                            </Column>
-                            <Column editable="false" title="Nota" type="java.lang.Object">
-                              <Data value="asdfasdfasdfasdfklasdfa asdf asdlf asdf  asdfa sldfas df"/>
-                              <Data value="asdfasdf   dsf sadf as asf asd "/>
-                              <Data value="ad fasdf asdf  wea awe fwef awew  awefaewf"/>
-                            </Column>
-                          </Table>
+                        <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                          <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {&#xa;    },&#xa;    new String [] {&#xa;        &quot;P&#xe1;gina&quot;, &quot;Parrafo&quot;, &quot;Fecha&quot;, &quot;Nota&quot;&#xa;    }&#xa;) {&#xa;    boolean[] canEdit = new boolean [] {&#xa;        false, false, false, false&#xa;    };&#xa;&#xa;    public boolean isCellEditable(int rowIndex, int columnIndex) {&#xa;        return canEdit [columnIndex];&#xa;    }&#xa;}" type="code"/>
                         </Property>
                         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                           <Color id="Default Cursor"/>

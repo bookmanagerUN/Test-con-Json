@@ -13,6 +13,46 @@ public class Notes {
         
     }
 
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public int getPage() {
+        return page;
+    }
+
+    public void setPage(int page) {
+        this.page = page;
+    }
+
+    public int getParagraph() {
+        return paragraph;
+    }
+
+    public void setParagraph(int paragraph) {
+        this.paragraph = paragraph;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
+
+    public LinkedList<Object> getNotes() {
+        return notes;
+    }
+
+    public void setNotes(LinkedList<Object> notes) {
+        this.notes = notes;
+    }
+
     public Notes(String date, int page, int paragraph, String note) {
         
         this.date = date;

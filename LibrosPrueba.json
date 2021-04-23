@@ -7,21 +7,6 @@
       "Caperucita",
       "anonimo",
       "fabula",
-      "222200",
-      1,
-      "Caperucita",
-      "anonimo",
-      "fabula",
-      "222200",
-      1,
-      "Caperucita",
-      "anonimo",
-      "fabula",
-      "222200",
-      1,
-      "Caperucita",
-      "anonimo",
-      "fabula",
       "222200"
     ],
     "notes": [
@@ -33,29 +18,23 @@
         "notes": {
           "count": 0
         }
+      },
+      {
+        "date": "",
+        "page": 23,
+        "paragraph": 3,
+        "note": "SADFGHJGFDSA",
+        "notes": {
+          "count": 0
+        }
       }
     ],
-    "opinion": "sdfgfsdggsadfdsf"
+    "opinion": ""
   },
   {
     "actualPage": 32,
     "status": true,
     "bookInformation": [
-      2,
-      "Principito",
-      "anonimo",
-      "Historia",
-      "22110",
-      2,
-      "Principito",
-      "anonimo",
-      "Historia",
-      "22110",
-      2,
-      "Principito",
-      "anonimo",
-      "Historia",
-      "22110",
       2,
       "Principito",
       "anonimo",
@@ -69,21 +48,6 @@
     "actualPage": 40,
     "status": false,
     "bookInformation": [
-      3,
-      "La biblia",
-      "Diosito",
-      "Religion",
-      "3335",
-      3,
-      "La biblia",
-      "Diosito",
-      "Religion",
-      "3335",
-      3,
-      "La biblia",
-      "Diosito",
-      "Religion",
-      "3335",
       3,
       "La biblia",
       "Diosito",

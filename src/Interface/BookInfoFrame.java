@@ -7,11 +7,14 @@ package Interface;
 
 import Data.Book;
 import Data.BookInformation;
+import Data.BookNotes;
 import Data.MyBooks;
+import Data.Notes;
 import java.io.IOException;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import util.WriteJson;
 
 /**
@@ -19,10 +22,13 @@ import util.WriteJson;
  * @author Usuario
  */
 public class BookInfoFrame extends javax.swing.JFrame {
+
     // TODO  eliminar nota
     // revisar si hay una opinion para modificar el estado de los botones
     // rellenar tabla con las notas
     // 
+    Notes notes = new Notes();
+    
 
     private MyBooks myBooks;
     private Book actualBook;
@@ -49,6 +55,7 @@ public class BookInfoFrame extends javax.swing.JFrame {
         this.category = this.actualBook.getBookInformation().getCategory();
         this.bookId = this.actualBook.getBookInformation().getId();
         this.opinion = this.actualBook.getOpinion();
+        this.notes.getNotes();
         initComponents();
         //print logo
         UtilInterface.printImage(JLProyectIcon, "src/main/java/Interface/MediaFiles/LogoOriginal.png", this);
@@ -58,6 +65,7 @@ public class BookInfoFrame extends javax.swing.JFrame {
         this.completeLabels();
         System.out.println("Interface.BookInfoFrame.<init>()");
         this.myBooks.printAllBooks();
+        fillTableNotes();
 
     }
 
@@ -70,6 +78,22 @@ public class BookInfoFrame extends javax.swing.JFrame {
         UtilInterface.setPanelText(bookName, this.jPNewBook);
         //escribe el resto de la información del libro en los jtextfield
         this.completeLabels();
+
+    }
+
+    private void fillTableNotes() {
+        UtilInterface.cleanJTable(jTMyNotes);
+        for (int i = 0; i < (int) this.notes.getNotes().count; i++) {
+            String date = this.notes.getDate();
+            String page = String.valueOf(this.notes.getPage());
+            String paragraph = String.valueOf(this.notes.getParagraph());
+            String note = this.notes.getNote();
+           
+            String tbData[] = {page, paragraph, date, note};
+            DefaultTableModel tblModel = (DefaultTableModel) jTMyNotes.getModel();
+            tblModel.addRow(tbData);
+            
+        }
 
     }
 
@@ -125,7 +149,7 @@ public class BookInfoFrame extends javax.swing.JFrame {
         jLbookName = new javax.swing.JLabel();
         JPNewBook1 = new javax.swing.JPanel();
         jSPMyBooks = new javax.swing.JScrollPane();
-        jTMyBooks = new javax.swing.JTable();
+        jTMyNotes = new javax.swing.JTable();
         jLEstate = new javax.swing.JLabel();
         jTactualPage = new javax.swing.JTextField();
         jLLastPage = new javax.swing.JLabel();
@@ -184,16 +208,13 @@ public class BookInfoFrame extends javax.swing.JFrame {
         JPNewBook1.setBackground(new java.awt.Color(255, 255, 255));
         JPNewBook1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Notas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 24))); // NOI18N
 
-        jTMyBooks.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jTMyBooks.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jTMyBooks.setModel(new javax.swing.table.DefaultTableModel(
+        jTMyNotes.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jTMyNotes.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jTMyNotes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"0", "14", "17/08/2021", "asdfasdfasdfasdfklasdfa asdf asdlf asdf  asdfa sldfas df"},
-                {"1", "50", "19/08/2021", "asdfasdf   dsf sadf as asf asd "},
-                {"2", "79", "01/09/2021", "ad fasdf asdf  wea awe fwef awew  awefaewf"}
             },
             new String [] {
-                "ID", "Página", "Fecha", "Nota"
+                "Página", "Parrafo", "Fecha", "Nota"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -204,11 +225,11 @@ public class BookInfoFrame extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTMyBooks.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jTMyBooks.setGridColor(new java.awt.Color(255, 255, 255));
-        jTMyBooks.setInheritsPopupMenu(true);
-        jTMyBooks.getTableHeader().setReorderingAllowed(false);
-        jSPMyBooks.setViewportView(jTMyBooks);
+        jTMyNotes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jTMyNotes.setGridColor(new java.awt.Color(255, 255, 255));
+        jTMyNotes.setInheritsPopupMenu(true);
+        jTMyNotes.getTableHeader().setReorderingAllowed(false);
+        jSPMyBooks.setViewportView(jTMyNotes);
 
         javax.swing.GroupLayout JPNewBook1Layout = new javax.swing.GroupLayout(JPNewBook1);
         JPNewBook1.setLayout(JPNewBook1Layout);
@@ -223,7 +244,7 @@ public class BookInfoFrame extends javax.swing.JFrame {
         );
         JPNewBook1Layout.setVerticalGroup(
             JPNewBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 193, Short.MAX_VALUE)
+            .addGap(0, 203, Short.MAX_VALUE)
             .addGroup(JPNewBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JPNewBook1Layout.createSequentialGroup()
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -364,7 +385,7 @@ public class BookInfoFrame extends javax.swing.JFrame {
                             .addGroup(jPNewBookLayout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(jPNewBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jBnewOpinion, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
+                                    .addComponent(jBnewOpinion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jBsaveOpinion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 730, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -508,13 +529,13 @@ public class BookInfoFrame extends javax.swing.JFrame {
 
     private void jBnewOpinionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBnewOpinionActionPerformed
         // TODO add your handling code here:
-        
+
         jTAopinion.setText("");
-        
+
         jTAopinion.setVisible(true);
 
         jBnewOpinion.setVisible(false);
-        
+
         jBsaveOpinion.setVisible(true);
 
     }//GEN-LAST:event_jBnewOpinionActionPerformed
@@ -527,9 +548,9 @@ public class BookInfoFrame extends javax.swing.JFrame {
         this.actualBook.setOpinion(newOpinion);
 
         this.opinion = newOpinion;
-        
+
         JOptionPane popUp = new JOptionPane();
-        
+
         popUp.showMessageDialog(null, "SE MODIFICO CORRECTAMENTE");
 
         this.completeLabels();
@@ -741,7 +762,7 @@ public class BookInfoFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jSPMyBooks;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTAopinion;
-    private javax.swing.JTable jTMyBooks;
+    private javax.swing.JTable jTMyNotes;
     private javax.swing.JTextField jTactualPage;
     private javax.swing.JTextField jTauthor;
     private javax.swing.JTextField jTbookName;
