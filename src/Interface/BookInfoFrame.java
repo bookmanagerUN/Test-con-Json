@@ -860,27 +860,30 @@ public class BookInfoFrame extends javax.swing.JFrame {
 
     private void jBSaveNoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSaveNoteActionPerformed
         // TODO add your handling code here:
-        String note = this.jTANote.getText();
-        String date = this.jTFNoteDate.getText();
-        int page = Integer.parseInt(this.jTFNotePage.getText());
-        int paragraph = Integer.parseInt(this.jTFNoteParagraph.getText());
-        this.actualBook.getNotes().getBookNotes().elementPosition(this.idNota-1).setDate(date);
-        this.actualBook.getNotes().getBookNotes().elementPosition(this.idNota-1).setNote(note);
-        this.actualBook.getNotes().getBookNotes().elementPosition(this.idNota-1).setPage(page);
-        this.actualBook.getNotes().getBookNotes().elementPosition(this.idNota-1).setParagraph(paragraph);
-        WriteJson writeJson = new WriteJson();
-        try {
-            writeJson.createAuxBook(this.myBooks.getMyBooks());
-
-        } catch (IOException e) {
-            System.err.println("no se pudo guardar");
+        int option = JOptionPane.showConfirmDialog(null, "¿confirma?" );
+        if(option == 0){
+            String note = this.jTANote.getText();
+            String date = this.jTFNoteDate.getText();
+            int page = Integer.parseInt(this.jTFNotePage.getText());
+            int paragraph = Integer.parseInt(this.jTFNoteParagraph.getText());
+            this.actualBook.getNotes().getBookNotes().elementPosition(this.idNota-1).setDate(date);
+            this.actualBook.getNotes().getBookNotes().elementPosition(this.idNota-1).setNote(note);
+            this.actualBook.getNotes().getBookNotes().elementPosition(this.idNota-1).setPage(page);
+            this.actualBook.getNotes().getBookNotes().elementPosition(this.idNota-1).setParagraph(paragraph);
+            WriteJson writeJson = new WriteJson();
+            try {
+                writeJson.createAuxBook(this.myBooks.getMyBooks());
+                
+            } catch (IOException e) {
+                System.err.println("no se pudo guardar");
+            }
+            this.jPNote.setVisible(false);
+            this.jTFEditNote.setEditable(true);
+            this.jTFEditNote.setText("");
+            this.JPNewBook1.setVisible(true);
+            this.jBEditNote.setVisible(true);
+            fillTableNotes();
         }
-        this.jPNote.setVisible(false);
-        this.jTFEditNote.setEditable(true);
-        this.jTFEditNote.setText("");
-        this.JPNewBook1.setVisible(true);
-        this.jBEditNote.setVisible(true);
-        fillTableNotes();
     }//GEN-LAST:event_jBSaveNoteActionPerformed
 
     private void jBcancelNoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBcancelNoteActionPerformed
@@ -895,24 +898,38 @@ public class BookInfoFrame extends javax.swing.JFrame {
 
     private void jBdeleteNoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBdeleteNoteActionPerformed
         // TODO add your handling code here:
-        System.out.println(this.actualBook.getNotes().paintBookNotes());
-        this.actualBook.getNotes().deleteNote(this.idNota - 1);
-        System.out.println(this.actualBook.getNotes().paintBookNotes());
         
-        WriteJson writeJson = new WriteJson();
-        try {
-            writeJson.createAuxBook(this.myBooks.getMyBooks());
+        int option = JOptionPane.showConfirmDialog(null, "¿confirma?" );
+        if(option == 0){
+           
+            System.out.println(this.actualBook.getNotes().paintBookNotes());
+            this.actualBook.getNotes().deleteNote(this.idNota - 1);
+            System.out.println(this.actualBook.getNotes().paintBookNotes());
+            
+            WriteJson writeJson = new WriteJson();
+            try {
+                writeJson.createAuxBook(this.myBooks.getMyBooks());
 
-        } catch (IOException e) {
-            System.err.println("no se pudo guardar");
+            } catch (IOException e) {
+                System.err.println("no se pudo guardar");
+            }
+            
+            this.jPNote.setVisible(false);
+            this.jTFEditNote.setEditable(true);
+            this.jTFEditNote.setText("");
+            this.JPNewBook1.setVisible(true);
+            this.jBEditNote.setVisible(true);
+            fillTableNotes();
         }
-        
-        this.jPNote.setVisible(false);
-        this.jTFEditNote.setEditable(true);
-        this.jTFEditNote.setText("");
-        this.JPNewBook1.setVisible(true);
-        this.jBEditNote.setVisible(true);
-        fillTableNotes();
+        else if (option == 1) {
+            
+        }
+        else{
+            
+        }
+{
+            
+        }
     }//GEN-LAST:event_jBdeleteNoteActionPerformed
 
     /**

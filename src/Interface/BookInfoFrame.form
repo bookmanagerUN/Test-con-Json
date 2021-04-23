@@ -261,10 +261,8 @@
                               <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                   <Component id="jBEditNote" pref="45" max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="jTFEditNote" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jBAddBook" alignment="0" pref="45" max="32767" attributes="0"/>
-                                  </Group>
+                                  <Component id="jTFEditNote" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jBAddBook" alignment="0" pref="45" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace min="0" pref="52" max="32767" attributes="0"/>
                           </Group>

@@ -7,23 +7,19 @@
       "Caperucita",
       "anonimo",
       "fabula",
+      "222200",
+      0,
+      "Caperucita",
+      "anonimo",
+      "fabula",
       "222200"
     ],
     "notes": [
       {
         "date": "21/06/2021",
-        "page": 90,
-        "paragraph": 4,
-        "note": "pienso luego existo",
-        "notes": {
-          "count": 0
-        }
-      },
-      {
-        "date": "24/07/2021",
-        "page": 139,
-        "paragraph": 5,
-        "note": "asdfasdfasdfasdfasdfasdfasdfasdadfadsfaskldf{gldghñld{ptohdrm,ko{afdfja´wefijasdvnj pajeáeijf awef+ao+aipjdfoa oh9q45 q  ´j aíej aíakefe{klkan  ",
+        "page": 9050,
+        "paragraph": 3,
+        "note": "la idea de la verdad es una idea abstracta",
         "notes": {
           "count": 0
         }
@@ -35,6 +31,11 @@
     "actualPage": 32,
     "status": true,
     "bookInformation": [
+      1,
+      "Principito",
+      "anonimo",
+      "Historia",
+      "22110",
       1,
       "Principito",
       "anonimo",
@@ -58,6 +59,11 @@
     "actualPage": 40,
     "status": false,
     "bookInformation": [
+      2,
+      "La biblia",
+      "Diosito",
+      "Religion",
+      "3335",
       2,
       "La biblia",
       "Diosito",
