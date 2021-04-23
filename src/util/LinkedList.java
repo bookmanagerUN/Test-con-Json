@@ -137,7 +137,7 @@ public class LinkedList<TypeOfData> {
         }
     }
 
-    void deletePosition(int k){ //Elimina el elemento que se encuentra en la posicion
+    public void deletePosition(int k){ //Elimina el elemento que se encuentra en la posicion
         if (count == 0){
             System.out.println("La lista esta vacia");
         }

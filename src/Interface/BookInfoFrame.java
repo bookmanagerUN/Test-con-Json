@@ -184,6 +184,7 @@ public class BookInfoFrame extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jBcancelNote = new javax.swing.JButton();
+        jBdeleteNote = new javax.swing.JButton();
         JBMyBooks = new javax.swing.JButton();
         jBFilter = new javax.swing.JButton();
         jBNewInform = new javax.swing.JButton();
@@ -394,6 +395,13 @@ public class BookInfoFrame extends javax.swing.JFrame {
             }
         });
 
+        jBdeleteNote.setText("eliminar nota");
+        jBdeleteNote.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBdeleteNoteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPNoteLayout = new javax.swing.GroupLayout(jPNote);
         jPNote.setLayout(jPNoteLayout);
         jPNoteLayout.setHorizontalGroup(
@@ -405,8 +413,10 @@ public class BookInfoFrame extends javax.swing.JFrame {
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPNoteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jBSaveNote)
-                            .addComponent(jBcancelNote)))
+                            .addComponent(jBdeleteNote)
+                            .addComponent(jBcancelNote)
+                            .addComponent(jBSaveNote))
+                        .addGap(77, 77, 77))
                     .addGroup(jPNoteLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(jLabel1)
@@ -420,7 +430,7 @@ public class BookInfoFrame extends javax.swing.JFrame {
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTFNoteParagraph, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPNoteLayout.setVerticalGroup(
             jPNoteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -436,11 +446,11 @@ public class BookInfoFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPNoteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPNoteLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jBcancelNote)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jBSaveNote)
-                        .addGap(19, 19, 19))
+                        .addGap(12, 12, 12)
+                        .addComponent(jBdeleteNote))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -493,7 +503,7 @@ public class BookInfoFrame extends javax.swing.JFrame {
                                         .addComponent(jBEditNote, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(jPNote, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                                .addGap(0, 24, Short.MAX_VALUE))))
                     .addGroup(jPNewBookLayout.createSequentialGroup()
                         .addGroup(jPNewBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPNewBookLayout.createSequentialGroup()
@@ -563,7 +573,7 @@ public class BookInfoFrame extends javax.swing.JFrame {
                             .addGroup(jPNewBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(jTFEditNote, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jBAddBook, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)))
-                        .addGap(0, 34, Short.MAX_VALUE)))
+                        .addGap(0, 52, Short.MAX_VALUE)))
                 .addGap(6, 6, 6))
         );
 
@@ -605,7 +615,7 @@ public class BookInfoFrame extends javax.swing.JFrame {
                         .addComponent(jBNewInform, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jBFilter, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 341, Short.MAX_VALUE))
+                        .addGap(0, 360, Short.MAX_VALUE))
                     .addComponent(jPNewBook, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -883,6 +893,28 @@ public class BookInfoFrame extends javax.swing.JFrame {
         fillTableNotes();
     }//GEN-LAST:event_jBcancelNoteActionPerformed
 
+    private void jBdeleteNoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBdeleteNoteActionPerformed
+        // TODO add your handling code here:
+        System.out.println(this.actualBook.getNotes().paintBookNotes());
+        this.actualBook.getNotes().deleteNote(this.idNota - 1);
+        System.out.println(this.actualBook.getNotes().paintBookNotes());
+        
+        WriteJson writeJson = new WriteJson();
+        try {
+            writeJson.createAuxBook(this.myBooks.getMyBooks());
+
+        } catch (IOException e) {
+            System.err.println("no se pudo guardar");
+        }
+        
+        this.jPNote.setVisible(false);
+        this.jTFEditNote.setEditable(true);
+        this.jTFEditNote.setText("");
+        this.JPNewBook1.setVisible(true);
+        this.jBEditNote.setVisible(true);
+        fillTableNotes();
+    }//GEN-LAST:event_jBdeleteNoteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -930,6 +962,7 @@ public class BookInfoFrame extends javax.swing.JFrame {
     private javax.swing.JButton jBSaveNote;
     private javax.swing.JButton jBactualPage;
     private javax.swing.JButton jBcancelNote;
+    private javax.swing.JButton jBdeleteNote;
     private javax.swing.JButton jBdeleteOpinion;
     private javax.swing.JButton jBmodifyOpinion;
     private javax.swing.JButton jBnewOpinion;

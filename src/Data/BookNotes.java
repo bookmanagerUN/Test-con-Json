@@ -36,6 +36,10 @@ public class BookNotes extends Notes {
         
     }
     
+    public void deleteNote(int noteToClean){
+        this.bookNotes.deletePosition(noteToClean);
+    }
+    
     public void addNote(Notes newNote){
         this.bookNotes.insertEnd(newNote);
     }

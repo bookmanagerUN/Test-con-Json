@@ -7,11 +7,6 @@
       "Caperucita",
       "anonimo",
       "fabula",
-      "222200",
-      0,
-      "Caperucita",
-      "anonimo",
-      "fabula",
       "222200"
     ],
     "notes": [
@@ -20,15 +15,6 @@
         "page": 90,
         "paragraph": 4,
         "note": "pienso luego existo",
-        "notes": {
-          "count": 0
-        }
-      },
-      {
-        "date": "5/65/2020",
-        "page": 6,
-        "paragraph": 1,
-        "note": "sdfa",
         "notes": {
           "count": 0
         }
@@ -53,11 +39,6 @@
       "Principito",
       "anonimo",
       "Historia",
-      "22110",
-      1,
-      "Principito",
-      "anonimo",
-      "Historia",
       "22110"
     ],
     "notes": [
@@ -77,11 +58,6 @@
     "actualPage": 40,
     "status": false,
     "bookInformation": [
-      2,
-      "La biblia",
-      "Diosito",
-      "Religion",
-      "3335",
       2,
       "La biblia",
       "Diosito",
