@@ -10,53 +10,52 @@ import Data.MyBooks;
 import Data.Notes;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
-import java.util.Arrays;
 
 /**
- *
  * @author Usuario
  */
 public class WriteJson {
     private AuxBook[] arrBook;
 
-    private  MyBooks MyBook;
+    private MyBooks MyBook;
 
 
     public static Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
     public void createAuxBook(LinkedList<Book> myBook) throws IOException {
         System.out.println("util.WriteJson.createAuxBook()");
-        int actualPage  ;
-        boolean status  ;
+        int actualPage;
+        boolean status;
         Object[] bookInformation;
-        Notes[] notes ;
+        Notes[] notes;
         String opinion = "";
         int size;
-        size= myBook.count;
-        Node<Book> aux =myBook.head;
+        size = myBook.count;
+        Node<Book> aux = myBook.head;
         arrBook = new AuxBook[size];
 
-        for(int i=0; i<size;i++){
+        for (int i = 0; i < size; i++) {
 
             actualPage = aux.data.getActualPage();
             status = aux.data.getStatus();
-            bookInformation = informationToArr(aux.data.getBookInformation().bookInformation()) ;
+            bookInformation = informationToArr(aux.data.getBookInformation().bookInformation());
             notes = notesToArr(aux.data.getNotes().getBookNotes());
             opinion = aux.data.getOpinion();
-            
 
-            AuxBook auxBook = new AuxBook(actualPage,status,bookInformation,notes,opinion);
+
+            AuxBook auxBook = new AuxBook(actualPage, status, bookInformation, notes, opinion);
             arrBook[i] = auxBook;
             aux = aux.next;
         }
         createJson(arrBook);
 
 
-
     }
+
     public void createJson(AuxBook[] auxBooks) throws IOException {
         //CREAR JSON
 
@@ -65,38 +64,39 @@ public class WriteJson {
         writer.close();
     }
 
-    public void crearjson(LinkedList<Book> myBook){
+    public void crearjson(LinkedList<Book> myBook) {
 
     }
-    
+
     //dificil mantenimiento, es posible sacarse del array.
-    public Object[] informationToArr(LinkedList<Object> bookInformation){
+    public Object[] informationToArr(LinkedList<Object> bookInformation) {
         Node<Object> aux = bookInformation.head;
         int size2 = bookInformation.count;
         Object[] arr = new Object[size2];
-        int i=0;
-        while (aux != null){
+        int i = 0;
+        while (aux != null) {
             arr[i] = aux.data;
-            i +=1;
+            i += 1;
             aux = aux.next;
         }
         return arr;
 
 
     }
-    public Notes[] notesToArr(LinkedList<Notes> bookNotes){
+
+    public Notes[] notesToArr(LinkedList<Notes> bookNotes) {
         Node<Notes> aux = bookNotes.head;
         int size2 = bookNotes.count;
         Notes[] arr = new Notes[size2];
-        int i=0;
-        while (aux != null){
+        int i = 0;
+        while (aux != null) {
             arr[i] = aux.data;
-            i +=1;
+            i += 1;
             aux = aux.next;
         }
         return arr;
     }
-    
+
 }
 /*
 class AuxBook {

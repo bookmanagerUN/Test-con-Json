@@ -6,18 +6,18 @@
 package util;
 
 import Data.Notes;
+
 import java.util.Arrays;
 
 /**
- *
  * @author Usuario
  */
 //Hola 
 class AuxBook {
-    private  int actualPage  ;
-    private  boolean status  ;
-    private  Object[] bookInformation;
-    private  Notes[] notes ;
+    private int actualPage;
+    private boolean status;
+    private Object[] bookInformation;
+    private Notes[] notes;
     private String opinion;
 
     public AuxBook(int actualPage, boolean status, Object[] bookInformation, Notes[] notes, String opinion) {
@@ -28,13 +28,15 @@ class AuxBook {
         this.notes = notes;
         this.opinion = opinion;
     }
-    
-    public String getOpinion(){
-        return  this.opinion;
+
+    public String getOpinion() {
+        return this.opinion;
     }
-    public void setOpinion(String opinion){
+
+    public void setOpinion(String opinion) {
         this.opinion = opinion;
     }
+
     public int getActualPage() {
         return actualPage;
     }
@@ -54,9 +56,11 @@ class AuxBook {
     public Object[] getBookInformation() {
         return bookInformation;
     }
+
     public void setBookInformation(Object[] bookInformation) {
         this.bookInformation = bookInformation;
     }
+
     public Notes[] getNotes() {
         return notes;
     }
