@@ -289,19 +289,23 @@ public class MainFrame extends javax.swing.JFrame {
 
     //BOTONES:
     //TODO agregar links a todos los botones
-    private void jBMyBooksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBMyBooksActionPerformed
-        int id = Integer.parseInt(this.jTFmyBooks.getText());
-        //checkear inputs invalidos - o que MyBooks esté vacío (se puede usar clase Util)
-        Book book = this.myBooks.getMyBooks().elementPosition(id - 1);
-        System.out.println(id);
-        book.printBook();
-        BookInfoFrame bookInfo = new BookInfoFrame(book,this.myBooks);
-        bookInfo.setVisible(true);
-        this.dispose();
-        
-        
-        this.dispose();
-    }//GEN-LAST:event_jBMyBooksActionPerformed
+    private void jBMyBooksActionPerformed(java.awt.event.ActionEvent evt) {
+
+        if(this.jTFmyBooks.getText().length()>0){
+            int id = Integer.parseInt(this.jTFmyBooks.getText());
+            //checkear inputs invalidos - o que MyBooks esté vacío (se puede usar clase Util)
+            Book book = this.myBooks.getMyBooks().elementPosition(id - 1);
+            //System.out.println(id);
+            book.printBook();
+            BookInfoFrame bookInfo = new BookInfoFrame(book,this.myBooks);
+            bookInfo.setVisible(true);
+            this.dispose();
+
+
+            this.dispose();
+        }
+
+    }
 
     private void jTFmyBooksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFmyBooksActionPerformed
         // TODO add your handling code here:
@@ -321,27 +325,30 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void jBDeleteBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDeleteBookActionPerformed
         // TODO add your handling code here:
+        if(this.jTFmyBooks.getText().length()>0){
         int option = JOptionPane.showConfirmDialog(null, "¿confirma?" );
-        if(option == 0){
-            System.out.println("se presionó el boton");
-            int bookPosition = Integer.parseInt(this.jTFmyBooks.getText())  ;
-            this.myBooks.deleteBook(bookPosition - 1);
-            WriteJson writeJson = new WriteJson();
-            try {
-                writeJson.createAuxBook(this.myBooks.getMyBooks());
+            if(option == 0){
+                //System.out.println("se presionó el boton");
+                int bookPosition = Integer.parseInt(this.jTFmyBooks.getText())  ;
+                this.myBooks.deleteBook(bookPosition - 1);
+                WriteJson writeJson = new WriteJson();
+                try {
+                    writeJson.createAuxBook(this.myBooks.getMyBooks());
 
-            } catch (IOException e) {
-                System.err.println("no se pudo guardar");
+                } catch (IOException e) {
+                    System.err.println("no se pudo guardar");
+                }
+                fillTable();
+
             }
-            fillTable();
-            
+            else if(option == 1){
+
+            }
+            else{
+
+            }
         }
-        else if(option == 1){
-            
-        }
-        else{
-            
-        }
+
     
     }//GEN-LAST:event_jBDeleteBookActionPerformed
 

@@ -33,10 +33,10 @@ public class ReadJson {
         return result;
     }*/
     public MyBooks arrAuxToMyBooks(AuxBook[] auxBooks){
-        System.out.println("util.ReadJson.arrAuxToMyBooks()");
+        //System.out.println("util.ReadJson.arrAuxToMyBooks()");
         //save how many book they are
         int numberOfBooks = auxBooks.length;
-        System.out.println(numberOfBooks);
+        //System.out.println(numberOfBooks);
         //create a new linkedList object from books
         LinkedList<Book> listBooks = new LinkedList<>();
         for (int i = 0; i < numberOfBooks; i++) {
@@ -68,9 +68,9 @@ public class ReadJson {
     public BookInformation auxToBookInformation(AuxBook auxBook){
         //save all the book information 
         double doble =(double) auxBook.getBookInformation()[0];
-        System.out.println();
+        //System.out.println();
         int id = (int)Math.round((double)auxBook.getBookInformation()[0]) ;
-        System.out.println(id);
+        //em.out.println(id);
         String name = (String) auxBook.getBookInformation()[1];
         String author = (String) auxBook.getBookInformation()[2];
         String category = (String) auxBook.getBookInformation()[3];
