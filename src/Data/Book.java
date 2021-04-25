@@ -73,7 +73,7 @@ public class Book {
     }
     //created by Json
     public Book(BookInformation bookInformation, BookNotes bookNotes, int actualPage, boolean status,String opinion) {
-        System.out.println("Data.Book.<init>()");
+        //System.out.println("Data.Book.<init>()");
         this.bookInformation = bookInformation;
         this.actualPage = actualPage;
         this.notes = bookNotes;
