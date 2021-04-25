@@ -47,6 +47,7 @@ public class MyBooks {
     }
     public void deleteBook (int bookPosition){
         this.myBooks.deletePosition(bookPosition);
+        updateAllId();
     }
     public void updateAllId(){
         for (int i = 0; i< this.myBooks.count;i++)
