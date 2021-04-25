@@ -63,7 +63,7 @@ public class BookInfoFrame extends javax.swing.JFrame {
         //escribe el resto de la información del libro en los jtextfield
         this.completeLabels();
         System.out.println("Interface.BookInfoFrame.<init>()");
-        this.myBooks.printAllBooks();
+        //this.myBooks.printAllBooks();
         fillTableNotes();
         //this.JPNewBook1.setVisible(false);
         this.jPNote.setVisible(false);
