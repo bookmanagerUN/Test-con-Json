@@ -50,7 +50,7 @@ public class BookInformation {
     }
     //created by interface
     public BookInformation(int id, String name, String author, String category, String isbn) {
-        System.out.println("Information.BookInformation.<init>()");
+        //System.out.println("Information.BookInformation.<init>()");
         this.id = id;
         this.name = name;
         this.author = author;
