@@ -134,7 +134,9 @@ public class LinkedList<TypeOfData> {
             System.out.println("La lista esta vacia");
         } else if (k > (count - 1)) {
             System.out.println("El indice " + k + " no se encuentra en la lista");
-        } else if (count - 1 == k) {
+        } else if(k == 0){
+            deleteBegin();
+        }else if (count - 1 == k) {
             Node<TypeOfData> aux = read(k);
             aux.prev.next = null;
             count--;
