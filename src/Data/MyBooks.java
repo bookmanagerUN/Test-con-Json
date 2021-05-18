@@ -34,25 +34,27 @@ public class MyBooks {
     public MyBooks(LinkedList<Book> myBooks){
         System.out.println("Data.MyBooks.<init>()");
         this.myBooks = myBooks;
-        updateAllId();
+        //updateAllId();
     }
     
     //methods
     public void insertBook(Book book){
         
         getMyBooks().insertEnd(book);
-        updateAllId();
+        //updateAllId();
         //update txt
      
     }
     public void deleteBook (int bookPosition){
         this.myBooks.deletePosition(bookPosition);
-        updateAllId();
+        //updateAllId();
     }
+    /*
     public void updateAllId(){
         for (int i = 0; i< this.myBooks.count;i++)
             this.myBooks.elementPosition(i).getBookInformation().setId(i);
     }
+    */
     public void printAllBooks(){
         System.out.println("Data.MyBooks.printAllBooks()");
         for(int i= 0; i< this.myBooks.count;i++){

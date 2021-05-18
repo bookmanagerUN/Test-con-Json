@@ -65,14 +65,14 @@ public class ReadJson {
         //save all the book information 
         double doble = (double) auxBook.getBookInformation()[0];
         //System.out.println();
-        int id = (int) Math.round((double) auxBook.getBookInformation()[0]);
+        //int id = (int) Math.round((double) auxBook.getBookInformation()[0]);
         //em.out.println(id);
         String name = (String) auxBook.getBookInformation()[1];
         String author = (String) auxBook.getBookInformation()[2];
         String category = (String) auxBook.getBookInformation()[3];
         String isbn = (String) auxBook.getBookInformation()[4];
         //create a new BookInformation object by the last information
-        BookInformation bookInformation = new BookInformation(id, name, author, category, isbn);
+        BookInformation bookInformation = new BookInformation(/*id,*/ name, author, category, isbn);
 
 
         return bookInformation;

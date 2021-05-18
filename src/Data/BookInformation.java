@@ -5,7 +5,7 @@ import util.LinkedList;
 public class BookInformation {
     
     //el ID debería sacarse de bookInformation y ponerse en Book
-    int id = 0;
+    //int id = 0;
     String name = null;
     String author = null;
     String category = null;
@@ -24,9 +24,11 @@ public class BookInformation {
     public void setIsbn(String NewIsbn){
         this.isbn=NewIsbn;
     }
+    /*
     public void setId(int newId){
         this.id = newId;
     }
+    */
     
     // Getters
     public String getName(){
@@ -38,9 +40,11 @@ public class BookInformation {
     public String getCategory(){
         return this.category;
     }
+    /*
     public int getId (){
         return this.id;
     }
+    */
     public String getIsbn(){
         return this.isbn;
     }
@@ -49,9 +53,9 @@ public class BookInformation {
         
     }
     //created by interface
-    public BookInformation(int id, String name, String author, String category, String isbn) {
+    public BookInformation(/*int id,*/ String name, String author, String category, String isbn) {
         //System.out.println("Information.BookInformation.<init>()");
-        this.id = id;
+        //this.id = id;
         this.name = name;
         this.author = author;
         this.category = category;
@@ -64,7 +68,7 @@ public class BookInformation {
         
         String cadena = "[ Name: *" +
             this.name     + "* Id: *" +
-            this.id       + "* Author: *" +
+            //this.id       + "* Author: *" +
             this.author   + "* Category: *" +
             this.category + "* ISBN *" +
             this.isbn     + "*]";
@@ -78,7 +82,7 @@ public class BookInformation {
 
     public LinkedList<Object> bookInformation() {
 
-        bookInformation.insertEnd(id);
+        //bookInformation.insertEnd(id);
         bookInformation.insertEnd(name);
         bookInformation.insertEnd(author);
         bookInformation.insertEnd(category);

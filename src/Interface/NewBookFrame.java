@@ -243,9 +243,9 @@ public class NewBookFrame extends javax.swing.JFrame {
         int option = JOptionPane.showConfirmDialog(null, "¿confirma?");
         //System.out.println(option);
         if (option == 0) {
-            int id = this.ComputeId();//ejemplo
+            //int id = this.ComputeId();//ejemplo
 
-            BookInformation newBookInformation = new BookInformation(id, name, author, category, isbn);
+            BookInformation newBookInformation = new BookInformation(/*id,*/ name, author, category, isbn);
             Book newBook = new Book(newBookInformation, this.myBooks);
             this.myBooks.printAllBooks();
 
@@ -275,11 +275,12 @@ public class NewBookFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_JBMyBooksActionPerformed
 
     //this metod should be in util or something like that
+    /*
     private int ComputeId() {
         //System.out.println("Interface.NewBookFrame.ComputeId()");
         return 50;//acceder a lista de libros y revisar cuantos tiene
     }
-
+    */
     private void cleanTextBox() {
         UtilInterface.cleanTextBox(this.jTFAuthor);
         UtilInterface.cleanTextBox(this.jTFCategory);

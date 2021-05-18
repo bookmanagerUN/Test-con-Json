@@ -20,7 +20,7 @@ import java.io.IOException;
 public class NewNoteFrame extends javax.swing.JFrame {
 
     private MyBooks myBooks = new MyBooks();
-    private Book actualBook = new Book(new BookInformation(1, "100 años de soledad", "GABO", "realismo", "isbn"), this.myBooks);
+    private Book actualBook = new Book(new BookInformation(/*1,*/ "100 años de soledad", "GABO", "realismo", "isbn"), this.myBooks);
     private int bookId;
 
     /**
@@ -29,7 +29,7 @@ public class NewNoteFrame extends javax.swing.JFrame {
     public NewNoteFrame(/*Book book*/) {
         //this.actualBook = book
         this.myBooks = new MyBooks();
-        this.actualBook = new Book(new BookInformation(1, "100 años de soledad", "GABO", "realismo", "isbn"), this.myBooks);
+        this.actualBook = new Book(new BookInformation(/*1,*/ "100 años de soledad", "GABO", "realismo", "isbn"), this.myBooks);
         findBookId();
         //System.out.println(this.bookId);
 

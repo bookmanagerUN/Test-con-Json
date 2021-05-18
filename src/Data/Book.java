@@ -121,7 +121,7 @@ public class Book {
     public void /*nameClass*/ toJson(){
         actualPage = this.actualPage;
         status =this.status;
-        int id = this.bookInformation.getId();
+        //int id = this.bookInformation.getId();
         //.....
         
         

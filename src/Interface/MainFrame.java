@@ -66,7 +66,7 @@ public class MainFrame extends javax.swing.JFrame {
     private void fillTable() {
         UtilInterface.cleanJTable(jTMyBooks);
         for (int i = 0; i < this.myBooks.getMyBooks().count; i++) {
-            int intid = this.myBooks.getMyBooks().elementPosition(i).getBookInformation().getId();
+            int intid = i;
             String id = String.valueOf(intid + 1);
             String name = this.myBooks.getMyBooks().elementPosition(i).getBookInformation().getName();
             String author = this.myBooks.getMyBooks().elementPosition(i).getBookInformation().getAuthor();
