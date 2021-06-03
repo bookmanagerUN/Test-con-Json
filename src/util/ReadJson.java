@@ -11,6 +11,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.Reader;
 import java.lang.reflect.Array;
+import java.util.Arrays;
 
 /**
  * @author Usuario
@@ -50,6 +51,7 @@ public class ReadJson {
         boolean status = auxBook.getStatus();
         String opinion = auxBook.getOpinion();
         // Save the BookInformation object
+        System.out.println(Arrays.toString(auxBook.getBookInformation()));
         BookInformation bookInformation = auxToBookInformation(auxBook);
         // Save the BookNotes object
         BookNotes bookNotes = auxToBookNotes(auxBook);
@@ -63,14 +65,15 @@ public class ReadJson {
     // dificil mantenimiento, modificar clase auxBook
     public BookInformation auxToBookInformation(AuxBook auxBook) {
         //save all the book information 
-        double doble = (double) auxBook.getBookInformation()[0];
+        //double doble = (double) auxBook.getBookInformation()[0];
         //System.out.println();
         //int id = (int) Math.round((double) auxBook.getBookInformation()[0]);
         //em.out.println(id);
-        String name = (String) auxBook.getBookInformation()[1];
-        String author = (String) auxBook.getBookInformation()[2];
-        String category = (String) auxBook.getBookInformation()[3];
-        String isbn = (String) auxBook.getBookInformation()[4];
+        System.out.println(Arrays.toString(auxBook.getBookInformation()));
+        String name = (String) auxBook.getBookInformation()[0];
+        String author = (String) auxBook.getBookInformation()[1];
+        String category = (String) auxBook.getBookInformation()[2];
+        String isbn = (String) auxBook.getBookInformation()[3];
         //create a new BookInformation object by the last information
         BookInformation bookInformation = new BookInformation(/*id,*/ name, author, category, isbn);
 
@@ -102,11 +105,17 @@ public class ReadJson {
     //Trae un arr
     public AuxBook[] readJson() throws FileNotFoundException {
         // LEER JSON
+        System.out.println("util.ReadJson.readJson() inicio");
+        
         Reader reader = new FileReader("LibrosPrueba.json");
 
         /* Type type = new TypeToken<Collection<AuxBook>>() {
         }.getType();*/
+        
+        
+        AuxBook[] auxBooks = WriteJson.gson.fromJson(reader, AuxBook[].class);
+        System.out.println("util.ReadJson.readJson() fin");
 
-        return WriteJson.gson.fromJson(reader, AuxBook[].class);
+        return auxBooks;
     }
 }

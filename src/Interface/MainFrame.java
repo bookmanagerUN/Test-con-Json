@@ -9,6 +9,7 @@ import Data.Book;
 import Data.MyBooks;
 import java.awt.Color;
 import java.awt.Font;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -27,7 +28,9 @@ public class MainFrame extends javax.swing.JFrame {
      */
     
     public MainFrame(MyBooks myBooks) {
+        
         this.myBooks = myBooks;
+        this.myBooks.printAllBooks();
         initComponents();
 
         // cambiar headers de la tabla
@@ -35,7 +38,7 @@ public class MainFrame extends javax.swing.JFrame {
         this.jTMyBooks.getTableHeader().setForeground(Color.BLUE);
 
         //poner logo en JLabel
-        UtilInterface.printImage(JLProyectIcon, "src/Interface/MediaFiles/LogoOriginal.png", this);
+        UtilInterface.printImage(this.JLProyectIcon, "src/Interface/MediaFiles/LogoOriginal.png", this);
         // rellenar tabla
         fillTable();
 
@@ -47,8 +50,10 @@ public class MainFrame extends javax.swing.JFrame {
             ReadJson readJson = new ReadJson();
             this.myBooks = readJson.arrAuxToMyBooks(readJson.readJson());
 
-        } catch (Exception ignored) {
-
+        } catch (FileNotFoundException ignored) {
+            System.out.println(ignored.getLocalizedMessage());
+            System.out.println(ignored.getMessage());
+            System.out.println("Interface.MainFrame.<init>() error al hacer lectura de Json");
         }
 
         initComponents();
