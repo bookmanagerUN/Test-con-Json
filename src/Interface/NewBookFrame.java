@@ -2,18 +2,20 @@ package Interface;
 
 import Data.Book;
 import Data.BookInformation;
+import Data.FrameAux;
 import Data.MyBooks;
 import util.WriteJson;
 
 import javax.swing.*;
 import java.io.IOException;
+import util.FrameStack;
 
 /**
  * @author Usuario
  */
 public class NewBookFrame extends javax.swing.JFrame {
     private MyBooks myBooks = new MyBooks();
-
+    private FrameStack frameStack ;
 
     /**
      * Creates new form NewBookFrame
@@ -25,8 +27,11 @@ public class NewBookFrame extends javax.swing.JFrame {
         cleanTextBox();
     }
 
-    public NewBookFrame(MyBooks myBooks) {
+    public NewBookFrame(MyBooks myBooks, FrameStack frameStack) {
         this.myBooks = myBooks;
+        this.frameStack = frameStack;
+        FrameAux frameAux = new FrameAux(3, this.myBooks);
+        this.frameStack.getStackFrame().push(frameAux);
         initComponents();
         UtilInterface.printImage(JLProyectIcon, "src/Interface/MediaFiles/LogoOriginal.png", this);
         cleanTextBox();
@@ -269,7 +274,7 @@ public class NewBookFrame extends javax.swing.JFrame {
 
     private void JBMyBooksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBMyBooksActionPerformed
         // TODO add your handling code here:
-        MainFrame mainFrame = new MainFrame(this.myBooks);
+        MainFrame mainFrame = new MainFrame(this.myBooks, this.frameStack);
         mainFrame.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_JBMyBooksActionPerformed

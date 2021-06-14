@@ -6,21 +6,28 @@
 package Interface;
 
 import Data.Book;
+import Data.FrameAux;
 import Data.MyBooks;
 
 import java.awt.*;
+import util.FrameStack;
 
 /**
  * @author Usuario
  */
 public class ReportFrame extends javax.swing.JFrame {
+    
+    private FrameStack frameStack;
     //TODO todo
 
     private MyBooks myBooks = new MyBooks();
 
     // ¿se puede pisar?
-    public ReportFrame(MyBooks myBooks) {
+    public ReportFrame(MyBooks myBooks, FrameStack frameStack) {
         this.myBooks = myBooks;
+        this.frameStack = frameStack;
+        FrameAux frameAux = new FrameAux(6, this.myBooks);
+        this.frameStack.getStackFrame().push(frameAux);
         initComponents();
 
         // cambiar headers de la tabla
@@ -236,7 +243,7 @@ public class ReportFrame extends javax.swing.JFrame {
         Book book = this.myBooks.getMyBooks().elementPosition(id);
         //System.out.println(id);
         book.printBook();
-        BookInfoFrame bookInfo = new BookInfoFrame(book, this.myBooks);
+        BookInfoFrame bookInfo = new BookInfoFrame(book, this.myBooks, this.frameStack);
         bookInfo.setVisible(true);
         this.dispose();
 
@@ -249,7 +256,7 @@ public class ReportFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jTFmyBooksActionPerformed
 
     private void jBNewBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNewBookActionPerformed
-        NewBookFrame newBookFrame = new NewBookFrame(this.myBooks);
+        NewBookFrame newBookFrame = new NewBookFrame(this.myBooks,this.frameStack);
         newBookFrame.setVisible(true);
         this.dispose();
 

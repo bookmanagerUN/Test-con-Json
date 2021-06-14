@@ -31,7 +31,7 @@ public class FrameAux {
     private MyBooks myBooks;
     private Book book;
 
-    public FrameAux(int i, MyBooks mybooks) {
+    public FrameAux(int typeOfFrame, MyBooks mybooks) {
         this.book = null;
         this.myBooks = myBooks;
         this.typeOfFrame = typeOfFrame;
@@ -63,6 +63,7 @@ public class FrameAux {
     typeOfFrame = 5 : FilterBooksFrame
     typeOfFrame = 6 : ReportFrame
     */
+    /*
     public JFrame generateFrame (){
         if(typeOfFrame == 1){
             return new MainFrame(this.myBooks);
@@ -89,7 +90,7 @@ public class FrameAux {
         }
         return null;
         
-    }
+    }*/
     
     
 }

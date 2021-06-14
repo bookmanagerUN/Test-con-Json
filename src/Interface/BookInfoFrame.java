@@ -7,10 +7,11 @@ package Interface;
 
 import Data.Book;
 import Data.BookInformation;
+import Data.FrameAux;
 import Data.MyBooks;
 import Data.Notes;
 import util.WriteJson;
-
+import util.FrameStack;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
@@ -33,11 +34,12 @@ public class BookInfoFrame extends javax.swing.JFrame {
     private String opinion;
     //private int bookId;
     private int idNota = 0;
+    private FrameStack frameStack;
 
     /**
      * Creates new form CopyFrame
      */
-    public BookInfoFrame(Book book, MyBooks myBooks) {
+    public BookInfoFrame(Book book, MyBooks myBooks, FrameStack frameStack) {
         this.myBooks = myBooks;
         this.actualBook = book;
         this.bookName = this.actualBook.getBookInformation().getName();
@@ -50,6 +52,15 @@ public class BookInfoFrame extends javax.swing.JFrame {
         this.opinion = this.actualBook.getOpinion();
         System.out.println("new line:");
         this.myBooks.printAllBooks();
+        this.frameStack = frameStack;
+        
+        FrameAux frameAux = new FrameAux(2, this.myBooks, this.actualBook);
+        this.frameStack.getStackFrame().push(frameAux);
+        
+        System.out.println("esta es la pila de book info frame: ");
+        FrameAux s =(FrameAux) frameStack.getStackFrame().peek();
+        System.out.println(s.getTypeOfFrame());
+        
         //this.notes.getNotes();
         initComponents();
         //print logo
@@ -77,6 +88,8 @@ public class BookInfoFrame extends javax.swing.JFrame {
         this.completeLabels();
 
     }
+
+    
     
     private void fillTableNotes() {
         UtilInterface.cleanJTable(jTMyNotes);
@@ -650,7 +663,7 @@ public class BookInfoFrame extends javax.swing.JFrame {
 
     private void jBAddBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAddBookActionPerformed
         // TODO add your handling code here:
-        NewNoteFrame newNoteFrame = new NewNoteFrame(this.myBooks, this.actualBook);
+        NewNoteFrame newNoteFrame = new NewNoteFrame(this.myBooks, this.actualBook,this.frameStack);
         newNoteFrame.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jBAddBookActionPerformed
@@ -908,7 +921,7 @@ public class BookInfoFrame extends javax.swing.JFrame {
 
     private void JBMyBooksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBMyBooksActionPerformed
         // TODO add your handling code here:
-        MainFrame mainFrame = new MainFrame(this.myBooks);
+        MainFrame mainFrame = new MainFrame(this.myBooks,this.frameStack);
         mainFrame.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_JBMyBooksActionPerformed

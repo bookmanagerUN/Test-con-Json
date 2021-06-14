@@ -7,12 +7,14 @@ package Interface;
 
 import Data.Book;
 import Data.BookInformation;
+import Data.FrameAux;
 import Data.MyBooks;
 import Data.Notes;
 import util.WriteJson;
 
 import javax.swing.*;
 import java.io.IOException;
+import util.FrameStack;
 
 /**
  * @author Usuario
@@ -22,6 +24,7 @@ public class NewNoteFrame extends javax.swing.JFrame {
     private MyBooks myBooks = new MyBooks();
     private Book actualBook = new Book(new BookInformation(/*1,*/ "100 años de soledad", "GABO", "realismo", "isbn"), this.myBooks);
     private int bookId;
+    private FrameStack frameStack;
 
     /**
      * Creates new form NewNoteFrame
@@ -37,9 +40,13 @@ public class NewNoteFrame extends javax.swing.JFrame {
         UtilInterface.printImage(JLProyectIcon, "src/Interface/MediaFiles/LogoOriginal.png", this);
     }
 
-    public NewNoteFrame(MyBooks myBooks, Book book) {
+    public NewNoteFrame(MyBooks myBooks, Book book, FrameStack frameStack) {
         this.myBooks = myBooks;
         this.actualBook = book;
+        this.frameStack = frameStack;
+        
+        FrameAux frameAux = new FrameAux(4, this.myBooks, this.actualBook);
+        this.frameStack.getStackFrame().push(frameAux);
         findBookId();
         //System.out.println(this.bookId);
         initComponents();
@@ -262,7 +269,7 @@ public class NewNoteFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jBAddNoteActionPerformed
 
     private void JBMyBooksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBMyBooksActionPerformed
-        MainFrame mainFrame = new MainFrame(this.myBooks);
+        MainFrame mainFrame = new MainFrame(this.myBooks,this.frameStack);
         mainFrame.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_JBMyBooksActionPerformed

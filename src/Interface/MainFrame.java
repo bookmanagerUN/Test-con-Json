@@ -7,6 +7,7 @@ package Interface;
 
 import Data.Book;
 import Data.MyBooks;
+import Data.FrameAux;
 import java.awt.Color;
 import java.awt.Font;
 import java.io.FileNotFoundException;
@@ -24,15 +25,17 @@ import util.Stacks;
  */
 public class MainFrame extends javax.swing.JFrame {
     private MyBooks myBooks = new MyBooks();
+    private FrameStack frameStack; 
 
     /**
      * Creates new form NewJFrame1
      */
     
-    public MainFrame(MyBooks myBooks) {
+    public MainFrame(MyBooks myBooks, FrameStack frameStack) {
         
         this.myBooks = myBooks;
         this.myBooks.printAllBooks();
+        this.frameStack = frameStack;
         initComponents();
 
         // cambiar headers de la tabla
@@ -69,8 +72,14 @@ public class MainFrame extends javax.swing.JFrame {
         //poner logo en JLabel
         UtilInterface.printImage(JLProyectIcon, "src/Interface/MediaFiles/LogoOriginal.png", this);
         
-        FrameStack frameStack = new FrameStack(myBooks);
-            frameStack.getStackFrame().peek();
+        this.frameStack = new FrameStack(myBooks);
+        //System.out.println("esta es la pila: ");
+        //FrameAux s =(FrameAux) frameStack.getStackFrame().peek();
+        //System.out.println(s.getTypeOfFrame());
+        
+        this.jButton1.setVisible(false);
+        this.jButton2.setVisible(false);
+        
     }
         
     private void fillTable() {
@@ -117,6 +126,8 @@ public class MainFrame extends javax.swing.JFrame {
         jLMyBooks = new javax.swing.JLabel();
         jTFmyBooks = new javax.swing.JTextField();
         jBDeleteBook = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jBNewBook = new javax.swing.JButton();
         jBNewInform = new javax.swing.JButton();
         jBFilter = new javax.swing.JButton();
@@ -185,29 +196,43 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("adelante");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("atras");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout JPMyBooksLayout = new javax.swing.GroupLayout(JPMyBooks);
         JPMyBooks.setLayout(JPMyBooksLayout);
         JPMyBooksLayout.setHorizontalGroup(
             JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JPMyBooksLayout.createSequentialGroup()
-                .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(JPMyBooksLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jSPMyBooks))
-                    .addGroup(JPMyBooksLayout.createSequentialGroup()
-                        .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(JPMyBooksLayout.createSequentialGroup()
-                                .addGap(23, 23, 23)
-                                .addComponent(jTFmyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jBMyBooks)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jBDeleteBook, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(JPMyBooksLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLMyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 656, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap()
+                .addComponent(jSPMyBooks)
                 .addContainerGap())
+            .addGroup(JPMyBooksLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLMyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 656, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 6, Short.MAX_VALUE))
+            .addGroup(JPMyBooksLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jTFmyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jBMyBooks)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jBDeleteBook, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1))
         );
         JPMyBooksLayout.setVerticalGroup(
             JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -217,13 +242,18 @@ public class MainFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLMyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jBMyBooks, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(JPMyBooksLayout.createSequentialGroup()
-                        .addComponent(jTFmyBooks)
-                        .addGap(3, 3, 3))
-                    .addComponent(jBDeleteBook, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                        .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jBMyBooks, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(JPMyBooksLayout.createSequentialGroup()
+                                .addComponent(jTFmyBooks)
+                                .addGap(3, 3, 3))
+                            .addComponent(jBDeleteBook, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton1)
+                        .addComponent(jButton2))))
         );
 
         jBNewBook.setText("Agregar libro");
@@ -296,7 +326,7 @@ public class MainFrame extends javax.swing.JFrame {
             Book book = this.myBooks.getMyBooks().elementPosition(id - 1);
             //System.out.println(id);
             book.printBook();
-            BookInfoFrame bookInfo = new BookInfoFrame(book, this.myBooks);
+            BookInfoFrame bookInfo = new BookInfoFrame(book, this.myBooks,this.frameStack);
             bookInfo.setVisible(true);
             this.dispose();
 
@@ -331,7 +361,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jBDeleteBookActionPerformed
 
     private void jBNewBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNewBookActionPerformed
-        NewBookFrame newBookFrame = new NewBookFrame(this.myBooks);
+        NewBookFrame newBookFrame = new NewBookFrame(this.myBooks, this.frameStack);
         newBookFrame.setVisible(true);
         this.dispose();
 
@@ -341,6 +371,17 @@ public class MainFrame extends javax.swing.JFrame {
     private void jBFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBFilterActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jBFilterActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+         
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -386,6 +427,8 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton jBMyBooks;
     private javax.swing.JButton jBNewBook;
     private javax.swing.JButton jBNewInform;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLMyBooks;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jSPMyBooks;
