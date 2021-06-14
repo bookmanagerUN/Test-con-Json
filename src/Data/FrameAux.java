@@ -31,16 +31,30 @@ public class FrameAux {
     private MyBooks myBooks;
     private Book book;
 
-    public void FrameAux (int typeOfFrame,MyBooks myBooks, Book book){
-        this.book = book;
-        this.myBooks = myBooks;
-        this.typeOfFrame = typeOfFrame;
-    }
-    public void FrameAux (int typeOfFrame,MyBooks myBooks){
+    public FrameAux(int i, MyBooks mybooks) {
         this.book = null;
         this.myBooks = myBooks;
         this.typeOfFrame = typeOfFrame;
     }
+
+    public FrameAux (int typeOfFrame,MyBooks myBooks, Book book){
+        this.book = book;
+        this.myBooks = myBooks;
+        this.typeOfFrame = typeOfFrame;
+    }
+
+    public int getTypeOfFrame() {
+        return typeOfFrame;
+    }
+
+    public MyBooks getMyBooks() {
+        return myBooks;
+    }
+
+    public Book getBook() {
+        return book;
+    }
+    
     /*
     typeOfFrame = 1 : MainFrame
     typeOfFrame = 2 : BookInfoFrame

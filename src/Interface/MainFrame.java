@@ -15,6 +15,8 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import util.ReadJson;
 import util.WriteJson;
+import util.FrameStack;
+import util.Stacks;
 
 /**
  *
@@ -44,6 +46,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     }
         public MainFrame() {
+            
         //TODO CHECK leer Json; crear la clase MyBook; cada vez que se inicie el programa verificar Json
         //TODO si no hay Json crear desde 0 (libro de prueba)
         try {
@@ -65,7 +68,9 @@ public class MainFrame extends javax.swing.JFrame {
 
         //poner logo en JLabel
         UtilInterface.printImage(JLProyectIcon, "src/Interface/MediaFiles/LogoOriginal.png", this);
-
+        
+        FrameStack frameStack = new FrameStack(myBooks);
+            frameStack.getStackFrame().peek();
     }
         
     private void fillTable() {

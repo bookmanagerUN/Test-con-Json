@@ -3,7 +3,6 @@
     "actualPage": 0,
     "status": true,
     "bookInformation": [
-      0,
       "Caperucita r",
       "anonimo",
       "fabula",
@@ -26,7 +25,6 @@
     "actualPage": 32,
     "status": true,
     "bookInformation": [
-      1,
       "Principito",
       "anonimo",
       "Historia",
@@ -58,20 +56,28 @@
     "actualPage": 0,
     "status": false,
     "bookInformation": [
-      2,
       "El naufrago",
       "Gabo",
       "Relato",
       "12341243"
     ],
-    "notes": [],
+    "notes": [
+      {
+        "date": "24/07/2021",
+        "page": 139,
+        "paragraph": 5,
+        "note": "asdfasdfasdfasdfasdfasdfasdfasdadfadsfaskldf{gldghñld{ptohdrm,ko{afdfja´wefijasdvnj pajeáeijf awef+ao+aipjdfoa oh9q45 q  ´j aíej aíakefe{klkan  erety",
+        "notes": {
+          "count": 0
+        }
+      }
+    ],
     "opinion": ""
   },
   {
     "actualPage": 43,
     "status": false,
     "bookInformation": [
-      3,
       "robin",
       "anonimo",
       "fabula",
@@ -103,7 +109,6 @@
     "actualPage": 0,
     "status": false,
     "bookInformation": [
-      4,
       "Los tres mosqueteros",
       "Wild",
       "Avenuras",
