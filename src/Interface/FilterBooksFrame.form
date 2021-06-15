@@ -153,12 +153,6 @@
                               <Component id="jComboBox1" min="-2" pref="260" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                              <Component id="jTFmyBooks" min="-2" pref="61" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jBMyBooks" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jLMyBooks" min="-2" pref="656" max="-2" attributes="0"/>
                           </Group>
@@ -166,6 +160,17 @@
                       <EmptySpace pref="46" max="32767" attributes="0"/>
                       <Component id="jBMyBooks1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                      <Component id="jTFmyBooks" min="-2" pref="61" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jBMyBooks" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="atras" min="-2" pref="73" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="adelante" min="-2" pref="73" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -188,7 +193,11 @@
                       <Component id="jLMyBooks" min="-2" pref="24" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jBMyBooks" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                              <Component id="jBMyBooks" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="atras" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="adelante" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jTFmyBooks" max="32767" attributes="0"/>
                               <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
@@ -350,6 +359,16 @@
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
+            </Component>
+            <Component class="javax.swing.JButton" name="atras">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="atras"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="adelante">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="adelante"/>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>
