@@ -81,9 +81,9 @@ public class BookInfoFrame extends javax.swing.JFrame {
         //this.actualBook = book;
         initComponents();
         //print logo
-        UtilInterface.printImage(JLProyectIcon, "src/Interface/MediaFiles/LogoOriginal.png", this);
+        UtilInterface.printImage(JLProyectIcon2, "src/Interface/MediaFiles/LogoOriginal.png", this);
         //escribe el nombre del libro en el JPanel
-        UtilInterface.setPanelText(bookName, this.jPNewBook);
+        UtilInterface.setPanelText(bookName, this.jPNewBook2);
         //escribe el resto de la información del libro en los jtextfield
         this.completeLabels();
 
@@ -777,7 +777,7 @@ public class BookInfoFrame extends javax.swing.JFrame {
 
         this.actualBook.setBookInformation(newBookInformation);
 
-        UtilInterface.setPanelText(bookName, this.jPNewBook);
+        UtilInterface.setPanelText(bookName, this.jPNewBook2);
         this.completeLabels();
 
         // Update Json
