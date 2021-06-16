@@ -32,13 +32,21 @@ public class NewBookFrame extends javax.swing.JFrame {
         this.myBooks = myBooks;
         this.frameStack = frameStack;
 
+        
+
+        initComponents();
+        
         FrameAux frameAux2 = (FrameAux) this.frameStack.getStackFrame().peek();
         if (frameAux2.getTypeOfFrame() != 3) {
             FrameAux frameAux = new FrameAux(3, this.myBooks);
             this.frameStack.getStackFrame().push(frameAux);
         }
-
-        initComponents();
+        if(this.frameStack.getStackFrame().count == 0){
+            this.jBBack.setVisible(false);
+        }
+        if(this.frameStack.getStackFrameNext().count == 0){
+            this.jBForward.setVisible(false);
+        }
         UtilInterface.printImage(JLProyectIcon, "src/Interface/MediaFiles/LogoOriginal.png", this);
         cleanTextBox();
     }
@@ -65,8 +73,8 @@ public class NewBookFrame extends javax.swing.JFrame {
         jTFAuthor = new javax.swing.JTextField();
         jBAddBook = new javax.swing.JButton();
         jLMyBooks1 = new javax.swing.JLabel();
-        atras = new javax.swing.JButton();
-        adelante = new javax.swing.JButton();
+        jBBack = new javax.swing.JButton();
+        jBForward = new javax.swing.JButton();
         JBMyBooks = new javax.swing.JButton();
         jBFilter = new javax.swing.JButton();
         jBNewInform = new javax.swing.JButton();
@@ -120,17 +128,17 @@ public class NewBookFrame extends javax.swing.JFrame {
         jLMyBooks1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLMyBooks1.setText("Al dejarlo vacio se toma como \"desconocido\"");
 
-        atras.setText("atras");
-        atras.addActionListener(new java.awt.event.ActionListener() {
+        jBBack.setText("atras");
+        jBBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                atrasActionPerformed(evt);
+                jBBackActionPerformed(evt);
             }
         });
 
-        adelante.setText("adelante");
-        adelante.addActionListener(new java.awt.event.ActionListener() {
+        jBForward.setText("adelante");
+        jBForward.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                adelanteActionPerformed(evt);
+                jBForwardActionPerformed(evt);
             }
         });
 
@@ -144,9 +152,9 @@ public class NewBookFrame extends javax.swing.JFrame {
                     .addGroup(JPNewBookLayout.createSequentialGroup()
                         .addComponent(jLMyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(34, 34, 34)
-                        .addComponent(atras, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jBBack, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(adelante, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jBForward, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                         .addComponent(jBCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -191,8 +199,8 @@ public class NewBookFrame extends javax.swing.JFrame {
                     .addComponent(jBAddBook, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLMyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(atras)
-                    .addComponent(adelante))
+                    .addComponent(jBBack)
+                    .addComponent(jBForward))
                 .addContainerGap())
         );
 
@@ -307,7 +315,7 @@ public class NewBookFrame extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_JBMyBooksActionPerformed
 
-    private void atrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasActionPerformed
+    private void jBBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBackActionPerformed
 
         FrameAux frameas = (FrameAux) frameStack.getStackFrame().peek();
 
@@ -323,9 +331,9 @@ public class NewBookFrame extends javax.swing.JFrame {
         frame.setVisible(true);
         this.dispose();
 
-    }//GEN-LAST:event_atrasActionPerformed
+    }//GEN-LAST:event_jBBackActionPerformed
 
-    private void adelanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adelanteActionPerformed
+    private void jBForwardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBForwardActionPerformed
         FrameAux frameas = (FrameAux) frameStack.getStackFrame().peek();
 
         System.out.println(frameas.getMyBooks().toString());
@@ -339,7 +347,7 @@ public class NewBookFrame extends javax.swing.JFrame {
         JFrame frame = this.frameStack.generateFrame();
         frame.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_adelanteActionPerformed
+    }//GEN-LAST:event_jBForwardActionPerformed
 
     //this metod should be in util or something like that
     /*
@@ -393,11 +401,11 @@ public class NewBookFrame extends javax.swing.JFrame {
     private javax.swing.JButton JBMyBooks;
     private javax.swing.JLabel JLProyectIcon;
     private javax.swing.JPanel JPNewBook;
-    private javax.swing.JButton adelante;
-    private javax.swing.JButton atras;
     private javax.swing.JButton jBAddBook;
+    private javax.swing.JButton jBBack;
     private javax.swing.JButton jBCancel;
     private javax.swing.JButton jBFilter;
+    private javax.swing.JButton jBForward;
     private javax.swing.JButton jBNewInform;
     private javax.swing.JLabel jLMyBooks;
     private javax.swing.JLabel jLMyBooks1;

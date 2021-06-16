@@ -108,7 +108,7 @@
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                <TitledBorder title="A&#xf1;adir nota">
+                <TitledBorder title="(Nombre del Libro)">
                   <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                     <LineBorder roundedCorners="true" thickness="2"/>
                   </Border>
@@ -130,9 +130,9 @@
                                   <Group type="102" attributes="0">
                                       <Component id="jBAddNote" min="-2" pref="115" max="-2" attributes="0"/>
                                       <EmptySpace pref="435" max="32767" attributes="0"/>
-                                      <Component id="atras" min="-2" pref="73" max="-2" attributes="0"/>
+                                      <Component id="jBBack" min="-2" pref="73" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="adelante" min="-2" pref="73" max="-2" attributes="0"/>
+                                      <Component id="jBForward" min="-2" pref="73" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" attributes="0">
                                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
@@ -182,8 +182,8 @@
                           <Group type="102" attributes="0">
                               <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="atras" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="adelante" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jBBack" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jBForward" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -259,7 +259,6 @@
                     <Property name="columns" type="int" value="20"/>
                     <Property name="lineWrap" type="boolean" value="true"/>
                     <Property name="rows" type="int" value="5"/>
-                    <Property name="text" type="java.lang.String" value="asdfasdfasdfasdfasdfasdfasdfasdadfadsfaskldf{gldgh&#xf1;ld{ptohdrm,ko{afdfja&#xb4;wefijasdvnj paje&#xe1;eijf awef+ao+aipjdfoa oh9q45 q  &#xb4;j a&#xed;ej a&#xed;akefe{klkan  "/>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
                         <TitledBorder title="Nota">
@@ -271,20 +270,20 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JButton" name="atras">
+            <Component class="javax.swing.JButton" name="jBBack">
               <Properties>
                 <Property name="text" type="java.lang.String" value="atras"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="atrasActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBBackActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="adelante">
+            <Component class="javax.swing.JButton" name="jBForward">
               <Properties>
                 <Property name="text" type="java.lang.String" value="adelante"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="adelanteActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBForwardActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

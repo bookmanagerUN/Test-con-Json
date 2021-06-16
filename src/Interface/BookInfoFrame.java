@@ -55,12 +55,7 @@ public class BookInfoFrame extends javax.swing.JFrame {
         this.frameStack = frameStack;
         
         
-        FrameAux frameAux2 = (FrameAux) this.frameStack.getStackFrame().peek();
         
-        if(frameAux2.getTypeOfFrame()!= 2){
-            FrameAux frameAux = new FrameAux(2, this.myBooks, this.actualBook);
-        this.frameStack.getStackFrame().push(frameAux);
-        }
         
         
 
@@ -70,6 +65,19 @@ public class BookInfoFrame extends javax.swing.JFrame {
 
         //this.notes.getNotes();
         initComponents();
+        
+        FrameAux frameAux2 = (FrameAux) this.frameStack.getStackFrame().peek();
+        
+        if(frameAux2.getTypeOfFrame()!= 2){
+            FrameAux frameAux = new FrameAux(2, this.myBooks, this.actualBook);
+            this.frameStack.getStackFrame().push(frameAux);
+        }
+        if(this.frameStack.getStackFrame().count == 0){
+            this.jBBack.setVisible(false);
+        }
+        if(this.frameStack.getStackFrameNext().count == 0){
+            this.jBForward.setVisible(false);
+        }
         //print logo
         System.out.println(this.JLProyectIcon2.getWidth());
         System.out.println(this.JLProyectIcon2.getHeight());
@@ -195,8 +203,8 @@ public class BookInfoFrame extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jBcancelNote = new javax.swing.JButton();
         jBdeleteNote = new javax.swing.JButton();
-        atras = new javax.swing.JButton();
-        adelante = new javax.swing.JButton();
+        jBBack = new javax.swing.JButton();
+        jBForward = new javax.swing.JButton();
         JBMyBooks = new javax.swing.JButton();
         jBFilter = new javax.swing.JButton();
         jBNewInform = new javax.swing.JButton();
@@ -467,17 +475,17 @@ public class BookInfoFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        atras.setText("atras");
-        atras.addActionListener(new java.awt.event.ActionListener() {
+        jBBack.setText("atras");
+        jBBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                atrasActionPerformed(evt);
+                jBBackActionPerformed(evt);
             }
         });
 
-        adelante.setText("adelante");
-        adelante.addActionListener(new java.awt.event.ActionListener() {
+        jBForward.setText("adelante");
+        jBForward.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                adelanteActionPerformed(evt);
+                jBForwardActionPerformed(evt);
             }
         });
 
@@ -531,9 +539,9 @@ public class BookInfoFrame extends javax.swing.JFrame {
                                                 .addComponent(jBEditNote, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGroup(jPNewBook2Layout.createSequentialGroup()
                                                 .addGap(19, 19, 19)
-                                                .addComponent(atras, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jBBack, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(18, 18, 18)
-                                                .addComponent(adelante, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addComponent(jBForward, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addGap(18, 18, 18)
                                         .addComponent(jPNote, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(0, 0, Short.MAX_VALUE))))
@@ -607,8 +615,8 @@ public class BookInfoFrame extends javax.swing.JFrame {
                             .addComponent(jBAddBook, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(jPNewBook2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(atras)
-                            .addComponent(adelante))
+                            .addComponent(jBBack)
+                            .addComponent(jBForward))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(6, 6, 6))
         );
@@ -966,7 +974,7 @@ public class BookInfoFrame extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_JBMyBooksActionPerformed
 
-    private void atrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasActionPerformed
+    private void jBBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBackActionPerformed
         // TODO add your handling code here:
 
         FrameAux frameas = (FrameAux) frameStack.getStackFrame().peek();
@@ -985,9 +993,9 @@ public class BookInfoFrame extends javax.swing.JFrame {
         JFrame frame = this.frameStack.generateFrame();
         frame.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_atrasActionPerformed
+    }//GEN-LAST:event_jBBackActionPerformed
 
-    private void adelanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adelanteActionPerformed
+    private void jBForwardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBForwardActionPerformed
         FrameAux frameas = (FrameAux) frameStack.getStackFrame().peek();
 
         System.out.println(frameas.getMyBooks().toString());
@@ -1004,7 +1012,7 @@ public class BookInfoFrame extends javax.swing.JFrame {
         JFrame frame = this.frameStack.generateFrame();
         frame.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_adelanteActionPerformed
+    }//GEN-LAST:event_jBForwardActionPerformed
 
     private void jBNewInformActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNewInformActionPerformed
         // TODO add your handling code here:
@@ -1050,11 +1058,11 @@ public class BookInfoFrame extends javax.swing.JFrame {
     private javax.swing.JButton JBMyBooks;
     private javax.swing.JLabel JLProyectIcon2;
     private javax.swing.JPanel JPNewBook1;
-    private javax.swing.JButton adelante;
-    private javax.swing.JButton atras;
     private javax.swing.JButton jBAddBook;
+    private javax.swing.JButton jBBack;
     private javax.swing.JButton jBEditNote;
     private javax.swing.JButton jBFilter;
+    private javax.swing.JButton jBForward;
     private javax.swing.JButton jBNewInform;
     private javax.swing.JButton jBSaveNote;
     private javax.swing.JButton jBactualPage2;

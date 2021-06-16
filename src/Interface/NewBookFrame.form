@@ -127,9 +127,9 @@
                           <Group type="102" attributes="0">
                               <Component id="jLMyBooks" min="-2" pref="93" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                              <Component id="atras" min="-2" pref="73" max="-2" attributes="0"/>
+                              <Component id="jBBack" min="-2" pref="73" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="adelante" min="-2" pref="73" max="-2" attributes="0"/>
+                              <Component id="jBForward" min="-2" pref="73" max="-2" attributes="0"/>
                               <EmptySpace pref="59" max="32767" attributes="0"/>
                               <Component id="jBCancel" min="-2" pref="115" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -186,8 +186,8 @@
                           <Component id="jBAddBook" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
                           <Component id="jBCancel" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
                           <Component id="jLMyBooks" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
-                          <Component id="atras" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="adelante" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jBBack" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jBForward" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -272,20 +272,20 @@
                 <Property name="text" type="java.lang.String" value="Al dejarlo vacio se toma como &quot;desconocido&quot;"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="atras">
+            <Component class="javax.swing.JButton" name="jBBack">
               <Properties>
                 <Property name="text" type="java.lang.String" value="atras"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="atrasActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBBackActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="adelante">
+            <Component class="javax.swing.JButton" name="jBForward">
               <Properties>
                 <Property name="text" type="java.lang.String" value="adelante"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="adelanteActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBForwardActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

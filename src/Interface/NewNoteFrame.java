@@ -45,17 +45,26 @@ public class NewNoteFrame extends javax.swing.JFrame {
         this.actualBook = book;
         this.frameStack = frameStack;
         
+        
+        findBookId();
+        //System.out.println(this.bookId);
+        initComponents();
+        
         FrameAux frameAux2 = (FrameAux) this.frameStack.getStackFrame().peek();
         
         if(frameAux2.getTypeOfFrame()!= 4){
             FrameAux frameAux = new FrameAux(4, this.myBooks, this.actualBook);
             this.frameStack.getStackFrame().push(frameAux);
         }
-        
-        findBookId();
-        //System.out.println(this.bookId);
-        initComponents();
+        if(this.frameStack.getStackFrame().count == 0){
+            this.jBBack.setVisible(false);
+        }
+        if(this.frameStack.getStackFrameNext().count == 0){
+            this.jBForward.setVisible(false);
+        }
         UtilInterface.printImage(JLProyectIcon, "src/Interface/MediaFiles/LogoOriginal.png", this);
+        UtilInterface.setPanelText(this.actualBook.getBookInformation().getName(), this.JPNewNote);
+        //this.JPNewNote.
     }
 
     /**
@@ -79,8 +88,8 @@ public class NewNoteFrame extends javax.swing.JFrame {
         jBAddNote = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTANote = new javax.swing.JTextArea();
-        atras = new javax.swing.JButton();
-        adelante = new javax.swing.JButton();
+        jBBack = new javax.swing.JButton();
+        jBForward = new javax.swing.JButton();
         JBMyBooks = new javax.swing.JButton();
         jBFilter = new javax.swing.JButton();
         jBNewInform = new javax.swing.JButton();
@@ -95,7 +104,7 @@ public class NewNoteFrame extends javax.swing.JFrame {
         JLProyectIcon.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         JPNewNote.setBackground(new java.awt.Color(255, 255, 255));
-        JPNewNote.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "Añadir nota", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 24))); // NOI18N
+        JPNewNote.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "(Nombre del Libro)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 24))); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("página");
@@ -123,21 +132,20 @@ public class NewNoteFrame extends javax.swing.JFrame {
         jTANote.setColumns(20);
         jTANote.setLineWrap(true);
         jTANote.setRows(5);
-        jTANote.setText("asdfasdfasdfasdfasdfasdfasdfasdadfadsfaskldf{gldghñld{ptohdrm,ko{afdfja´wefijasdvnj pajeáeijf awef+ao+aipjdfoa oh9q45 q  ´j aíej aíakefe{klkan  ");
         jTANote.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nota", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18))); // NOI18N
         jScrollPane1.setViewportView(jTANote);
 
-        atras.setText("atras");
-        atras.addActionListener(new java.awt.event.ActionListener() {
+        jBBack.setText("atras");
+        jBBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                atrasActionPerformed(evt);
+                jBBackActionPerformed(evt);
             }
         });
 
-        adelante.setText("adelante");
-        adelante.addActionListener(new java.awt.event.ActionListener() {
+        jBForward.setText("adelante");
+        jBForward.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                adelanteActionPerformed(evt);
+                jBForwardActionPerformed(evt);
             }
         });
 
@@ -154,9 +162,9 @@ public class NewNoteFrame extends javax.swing.JFrame {
                             .addGroup(JPNewNoteLayout.createSequentialGroup()
                                 .addComponent(jBAddNote, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 435, Short.MAX_VALUE)
-                                .addComponent(atras, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jBBack, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(adelante, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jBForward, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(JPNewNoteLayout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -194,8 +202,8 @@ public class NewNoteFrame extends javax.swing.JFrame {
                     .addGroup(JPNewNoteLayout.createSequentialGroup()
                         .addGap(16, 16, 16)
                         .addGroup(JPNewNoteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(atras)
-                            .addComponent(adelante)))
+                            .addComponent(jBBack)
+                            .addComponent(jBForward)))
                     .addGroup(JPNewNoteLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jBAddNote, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -312,7 +320,7 @@ public class NewNoteFrame extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_JBMyBooksActionPerformed
 
-    private void atrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasActionPerformed
+    private void jBBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBackActionPerformed
         FrameAux frameas = (FrameAux) frameStack.getStackFrame().peek();
 
         System.out.println(frameas.getMyBooks().toString());
@@ -326,9 +334,9 @@ public class NewNoteFrame extends javax.swing.JFrame {
         JFrame frame = this.frameStack.generateFrame();
         frame.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_atrasActionPerformed
+    }//GEN-LAST:event_jBBackActionPerformed
 
-    private void adelanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adelanteActionPerformed
+    private void jBForwardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBForwardActionPerformed
         FrameAux frameas = (FrameAux) frameStack.getStackFrame().peek();
 
         System.out.println(frameas.getMyBooks().toString());
@@ -342,7 +350,7 @@ public class NewNoteFrame extends javax.swing.JFrame {
         JFrame frame = this.frameStack.generateFrame();
         frame.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_adelanteActionPerformed
+    }//GEN-LAST:event_jBForwardActionPerformed
 
     private void cleanTextBox() {
         UtilInterface.cleanTextBox(this.jTFDate);
@@ -399,10 +407,10 @@ public class NewNoteFrame extends javax.swing.JFrame {
     private javax.swing.JButton JBMyBooks;
     private javax.swing.JLabel JLProyectIcon;
     private javax.swing.JPanel JPNewNote;
-    private javax.swing.JButton adelante;
-    private javax.swing.JButton atras;
     private javax.swing.JButton jBAddNote;
+    private javax.swing.JButton jBBack;
     private javax.swing.JButton jBFilter;
+    private javax.swing.JButton jBForward;
     private javax.swing.JButton jBNewInform;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

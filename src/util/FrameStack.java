@@ -79,4 +79,9 @@ public class FrameStack {
     public void cleanNextStack(){
         this.stackFrameNext.makeEmpty();
     }
+
+    public Stacks<FrameAux> getStackFrameNext() {
+        return stackFrameNext;
+    }
+    
 }
