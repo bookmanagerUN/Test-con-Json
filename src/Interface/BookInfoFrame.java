@@ -22,7 +22,7 @@ import java.io.IOException;
  * @author Usuario
  */
 public class BookInfoFrame extends javax.swing.JFrame {
-    
+
     private MyBooks myBooks;
     private Book actualBook;
     private String bookName;
@@ -54,13 +54,20 @@ public class BookInfoFrame extends javax.swing.JFrame {
         this.myBooks.printAllBooks();
         this.frameStack = frameStack;
         
-        FrameAux frameAux = new FrameAux(2, this.myBooks, this.actualBook);
+        
+        FrameAux frameAux2 = (FrameAux) this.frameStack.getStackFrame().peek();
+        
+        if(frameAux2.getTypeOfFrame()!= 2){
+            FrameAux frameAux = new FrameAux(2, this.myBooks, this.actualBook);
         this.frameStack.getStackFrame().push(frameAux);
+        }
         
+        
+
         System.out.println("esta es la pila de book info frame: ");
-        FrameAux s =(FrameAux) frameStack.getStackFrame().peek();
+        FrameAux s = (FrameAux) frameStack.getStackFrame().peek();
         System.out.println(s.getTypeOfFrame());
-        
+
         //this.notes.getNotes();
         initComponents();
         //print logo
@@ -77,6 +84,7 @@ public class BookInfoFrame extends javax.swing.JFrame {
         //this.JPNewBook1.setVisible(false);
         this.jPNote.setVisible(false);
     }
+
     public BookInfoFrame() {
         //this.actualBook = book;
         initComponents();
@@ -89,8 +97,6 @@ public class BookInfoFrame extends javax.swing.JFrame {
 
     }
 
-    
-    
     private void fillTableNotes() {
         UtilInterface.cleanJTable(jTMyNotes);
         for (int i = 0; i < this.actualBook.getNotes().getBookNotes().count; i++) {
@@ -108,7 +114,7 @@ public class BookInfoFrame extends javax.swing.JFrame {
         }
 
     }
-    
+
     private void completeLabels() {
         this.jLbookName.setText("Libro: ");
         jTbookName.setText(this.bookName);
@@ -469,6 +475,11 @@ public class BookInfoFrame extends javax.swing.JFrame {
         });
 
         adelante.setText("adelante");
+        adelante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                adelanteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPNewBook2Layout = new javax.swing.GroupLayout(jPNewBook2);
         jPNewBook2.setLayout(jPNewBook2Layout);
@@ -612,6 +623,11 @@ public class BookInfoFrame extends javax.swing.JFrame {
         jBFilter.setText("Filtrar");
 
         jBNewInform.setText("Generar  informe");
+        jBNewInform.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBNewInformActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -685,7 +701,8 @@ public class BookInfoFrame extends javax.swing.JFrame {
 
     private void jBAddBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAddBookActionPerformed
         // TODO add your handling code here:
-        NewNoteFrame newNoteFrame = new NewNoteFrame(this.myBooks, this.actualBook,this.frameStack);
+        this.frameStack.cleanNextStack();
+        NewNoteFrame newNoteFrame = new NewNoteFrame(this.myBooks, this.actualBook, this.frameStack);
         newNoteFrame.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jBAddBookActionPerformed
@@ -767,7 +784,7 @@ public class BookInfoFrame extends javax.swing.JFrame {
 
         String newCategory = jTcategory.getText();
 
-        BookInformation newBookInformation = new BookInformation(/*bookId,¨*/ newBookName, newAuthor, newCategory, isbn);
+        BookInformation newBookInformation = new BookInformation(/*bookId,¨*/newBookName, newAuthor, newCategory, isbn);
 
         this.bookName = newBookName;
 
@@ -943,28 +960,55 @@ public class BookInfoFrame extends javax.swing.JFrame {
 
     private void JBMyBooksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBMyBooksActionPerformed
         // TODO add your handling code here:
-        MainFrame mainFrame = new MainFrame(this.myBooks,this.frameStack);
+        this.frameStack.cleanNextStack();
+        MainFrame mainFrame = new MainFrame(this.myBooks, this.frameStack);
         mainFrame.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_JBMyBooksActionPerformed
 
     private void atrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasActionPerformed
         // TODO add your handling code here:
-        System.out.println("iiiiiiiiiiiiiiiiiiiiiii");
-        FrameAux frameas = (FrameAux)frameStack.getStackFrame().peek();
-        
-        System.out.println("aaaaaaaaaaaaaaaaaaaaaaa");
-        System.out.println( frameas.getMyBooks().toString());
+
+        FrameAux frameas = (FrameAux) frameStack.getStackFrame().peek();
+
+        System.out.println(frameas.getMyBooks().toString());
         System.out.println(frameas.getTypeOfFrame());
-        
-        frameStack.getStackFrame().pop();
+        frameStack.readStack();
+        System.out.println("");
+        frameStack.pop();
+        frameStack.readStack();
+
         frameas = (FrameAux) frameStack.getStackFrame().peek();
-        System.out.println("eeeeeeeeeeeeeeeeeeeee");
-        System.out.println( frameas.getMyBooks().toString());
+        
+        
+        System.out.println(frameas.getTypeOfFrame());
         JFrame frame = this.frameStack.generateFrame();
         frame.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_atrasActionPerformed
+
+    private void adelanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adelanteActionPerformed
+        FrameAux frameas = (FrameAux) frameStack.getStackFrame().peek();
+
+        System.out.println(frameas.getMyBooks().toString());
+        System.out.println(frameas.getTypeOfFrame());
+        frameStack.readStack();
+        System.out.println("");
+        frameStack.nextToNormal();
+        frameStack.readStack();
+
+        frameas = (FrameAux) frameStack.getStackFrame().peek();
+        
+        
+        System.out.println(frameas.getTypeOfFrame());
+        JFrame frame = this.frameStack.generateFrame();
+        frame.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_adelanteActionPerformed
+
+    private void jBNewInformActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNewInformActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBNewInformActionPerformed
 
     /**
      * @param args the command line arguments

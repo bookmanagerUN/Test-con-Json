@@ -275,11 +275,17 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="atras"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="atrasActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="adelante">
               <Properties>
                 <Property name="text" type="java.lang.String" value="adelante"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="adelanteActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

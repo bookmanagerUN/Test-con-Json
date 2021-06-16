@@ -14,8 +14,9 @@ import util.FrameStack;
  * @author Usuario
  */
 public class NewBookFrame extends javax.swing.JFrame {
+
     private MyBooks myBooks = new MyBooks();
-    private FrameStack frameStack ;
+    private FrameStack frameStack;
 
     /**
      * Creates new form NewBookFrame
@@ -30,8 +31,13 @@ public class NewBookFrame extends javax.swing.JFrame {
     public NewBookFrame(MyBooks myBooks, FrameStack frameStack) {
         this.myBooks = myBooks;
         this.frameStack = frameStack;
-        FrameAux frameAux = new FrameAux(3, this.myBooks);
-        this.frameStack.getStackFrame().push(frameAux);
+
+        FrameAux frameAux2 = (FrameAux) this.frameStack.getStackFrame().peek();
+        if (frameAux2.getTypeOfFrame() != 3) {
+            FrameAux frameAux = new FrameAux(3, this.myBooks);
+            this.frameStack.getStackFrame().push(frameAux);
+        }
+
         initComponents();
         UtilInterface.printImage(JLProyectIcon, "src/Interface/MediaFiles/LogoOriginal.png", this);
         cleanTextBox();
@@ -115,8 +121,18 @@ public class NewBookFrame extends javax.swing.JFrame {
         jLMyBooks1.setText("Al dejarlo vacio se toma como \"desconocido\"");
 
         atras.setText("atras");
+        atras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                atrasActionPerformed(evt);
+            }
+        });
 
         adelante.setText("adelante");
+        adelante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                adelanteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout JPNewBookLayout = new javax.swing.GroupLayout(JPNewBook);
         JPNewBook.setLayout(JPNewBookLayout);
@@ -256,13 +272,12 @@ public class NewBookFrame extends javax.swing.JFrame {
         String isbn = "12341243";
         String category = this.jTFCategory.getText();
 
-
         int option = JOptionPane.showConfirmDialog(null, "¿confirma?");
         //System.out.println(option);
         if (option == 0) {
             //int id = this.ComputeId();//ejemplo
 
-            BookInformation newBookInformation = new BookInformation(/*id,*/ name, author, category, isbn);
+            BookInformation newBookInformation = new BookInformation(/*id,*/name, author, category, isbn);
             Book newBook = new Book(newBookInformation, this.myBooks);
             this.myBooks.printAllBooks();
 
@@ -286,10 +301,45 @@ public class NewBookFrame extends javax.swing.JFrame {
 
     private void JBMyBooksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBMyBooksActionPerformed
         // TODO add your handling code here:
+        this.frameStack.cleanNextStack();
         MainFrame mainFrame = new MainFrame(this.myBooks, this.frameStack);
         mainFrame.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_JBMyBooksActionPerformed
+
+    private void atrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasActionPerformed
+
+        FrameAux frameas = (FrameAux) frameStack.getStackFrame().peek();
+
+        System.out.println(frameas.getMyBooks().toString());
+        System.out.println(frameas.getTypeOfFrame());
+
+        frameStack.pop();
+
+        frameas = (FrameAux) frameStack.getStackFrame().peek();
+
+        System.out.println(frameas.getMyBooks().toString());
+        JFrame frame = this.frameStack.generateFrame();
+        frame.setVisible(true);
+        this.dispose();
+
+    }//GEN-LAST:event_atrasActionPerformed
+
+    private void adelanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adelanteActionPerformed
+        FrameAux frameas = (FrameAux) frameStack.getStackFrame().peek();
+
+        System.out.println(frameas.getMyBooks().toString());
+        System.out.println(frameas.getTypeOfFrame());
+
+        frameStack.nextToNormal();
+
+        frameas = (FrameAux) frameStack.getStackFrame().peek();
+
+        System.out.println(frameas.getMyBooks().toString());
+        JFrame frame = this.frameStack.generateFrame();
+        frame.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_adelanteActionPerformed
 
     //this metod should be in util or something like that
     /*
@@ -297,7 +347,7 @@ public class NewBookFrame extends javax.swing.JFrame {
         //System.out.println("Interface.NewBookFrame.ComputeId()");
         return 50;//acceder a lista de libros y revisar cuantos tiene
     }
-    */
+     */
     private void cleanTextBox() {
         UtilInterface.cleanTextBox(this.jTFAuthor);
         UtilInterface.cleanTextBox(this.jTFCategory);

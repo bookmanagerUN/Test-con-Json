@@ -21,24 +21,27 @@ import javax.swing.JFrame;
  */
 public class FrameStack {
     Stacks<FrameAux> stackFrame = new Stacks<>();
+    Stacks<FrameAux> stackFrameNext = new Stacks<>();
     
     public FrameStack(MyBooks mybooks){
-        System.out.println("pppppppppppppppppp");
+        
         System.out.println(mybooks.toString());
         // Ventana principal
         FrameAux frame = new FrameAux(1, mybooks);
-        System.out.println("qqqqqqqqqqqqqqqqqqq");
         System.out.println(frame.getMyBooks().toString());
         
         
         stackFrame.push(frame);
-        System.out.println("ssssssssssssssssssss");
         System.out.println(stackFrame.peek().getMyBooks().toString());
-        
-        
-        
-}   
 
+}   
+    public void readStack(){
+        for(int i=0;i<stackFrame.count;i++){
+            System.out.print(stackFrame.elementPosition(i).getTypeOfFrame()+ " ");
+        }
+    }
+
+    
     public Stacks getStackFrame() {
         return stackFrame;
     }
@@ -65,5 +68,15 @@ public class FrameStack {
         
         return null;
     }
-    
+    public void pop(){
+        FrameAux frame = this.stackFrame.pop();
+        stackFrameNext.push(frame);
+    }
+    public void nextToNormal(){
+        FrameAux frame = this.stackFrameNext.pop();
+        stackFrame.push(frame);
+    }
+    public void cleanNextStack(){
+        this.stackFrameNext.makeEmpty();
+    }
 }

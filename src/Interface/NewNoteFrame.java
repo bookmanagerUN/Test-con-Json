@@ -45,8 +45,13 @@ public class NewNoteFrame extends javax.swing.JFrame {
         this.actualBook = book;
         this.frameStack = frameStack;
         
-        FrameAux frameAux = new FrameAux(4, this.myBooks, this.actualBook);
-        this.frameStack.getStackFrame().push(frameAux);
+        FrameAux frameAux2 = (FrameAux) this.frameStack.getStackFrame().peek();
+        
+        if(frameAux2.getTypeOfFrame()!= 4){
+            FrameAux frameAux = new FrameAux(4, this.myBooks, this.actualBook);
+            this.frameStack.getStackFrame().push(frameAux);
+        }
+        
         findBookId();
         //System.out.println(this.bookId);
         initComponents();
@@ -123,8 +128,18 @@ public class NewNoteFrame extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTANote);
 
         atras.setText("atras");
+        atras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                atrasActionPerformed(evt);
+            }
+        });
 
         adelante.setText("adelante");
+        adelante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                adelanteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout JPNewNoteLayout = new javax.swing.GroupLayout(JPNewNote);
         JPNewNote.setLayout(JPNewNoteLayout);
@@ -296,6 +311,38 @@ public class NewNoteFrame extends javax.swing.JFrame {
         mainFrame.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_JBMyBooksActionPerformed
+
+    private void atrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasActionPerformed
+        FrameAux frameas = (FrameAux) frameStack.getStackFrame().peek();
+
+        System.out.println(frameas.getMyBooks().toString());
+        System.out.println(frameas.getTypeOfFrame());
+
+        frameStack.pop();
+
+        frameas = (FrameAux) frameStack.getStackFrame().peek();
+
+        System.out.println(frameas.getMyBooks().toString());
+        JFrame frame = this.frameStack.generateFrame();
+        frame.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_atrasActionPerformed
+
+    private void adelanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adelanteActionPerformed
+        FrameAux frameas = (FrameAux) frameStack.getStackFrame().peek();
+
+        System.out.println(frameas.getMyBooks().toString());
+        System.out.println(frameas.getTypeOfFrame());
+
+        frameStack.nextToNormal();
+
+        frameas = (FrameAux) frameStack.getStackFrame().peek();
+
+        System.out.println(frameas.getMyBooks().toString());
+        JFrame frame = this.frameStack.generateFrame();
+        frame.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_adelanteActionPerformed
 
     private void cleanTextBox() {
         UtilInterface.cleanTextBox(this.jTFDate);

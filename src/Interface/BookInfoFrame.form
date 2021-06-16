@@ -706,6 +706,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="adelante"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="adelanteActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -726,6 +729,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Generar  informe"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBNewInformActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

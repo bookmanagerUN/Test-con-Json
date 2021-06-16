@@ -12,6 +12,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import util.ReadJson;
@@ -46,6 +47,14 @@ public class MainFrame extends javax.swing.JFrame {
         UtilInterface.printImage(this.JLProyectIcon, "src/Interface/MediaFiles/LogoOriginal.png", this);
         // rellenar tabla
         fillTable();
+        
+        FrameAux frameAux2 = (FrameAux) this.frameStack.getStackFrame().peek();
+        if(frameAux2.getTypeOfFrame()!= 1){
+            FrameAux frame = new FrameAux(1, this.myBooks);
+            this.frameStack.getStackFrame().push(frame);
+        }
+        
+        
 
     }
         public MainFrame() {
@@ -264,6 +273,11 @@ public class MainFrame extends javax.swing.JFrame {
         });
 
         jBNewInform.setText("Filtrar");
+        jBNewInform.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBNewInformActionPerformed(evt);
+            }
+        });
 
         jBFilter.setText("Generar  informe");
         jBFilter.addActionListener(new java.awt.event.ActionListener() {
@@ -320,6 +334,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void jBMyBooksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBMyBooksActionPerformed
         // TODO add your handling code here:
+        this.frameStack.cleanNextStack();
         if (this.jTFmyBooks.getText().length() > 0) {
             int id = Integer.parseInt(this.jTFmyBooks.getText());
             //checkear inputs invalidos - o que MyBooks esté vacío (se puede usar clase Util)
@@ -341,6 +356,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void jBDeleteBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDeleteBookActionPerformed
         // TODO add your handling code here:
+        this.frameStack.cleanNextStack();
         if (this.jTFmyBooks.getText().length() > 0) {
             int option = JOptionPane.showConfirmDialog(null, "¿confirma?");
             if (option == 0) {
@@ -361,6 +377,8 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jBDeleteBookActionPerformed
 
     private void jBNewBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNewBookActionPerformed
+        this.frameStack.cleanNextStack();
+        
         NewBookFrame newBookFrame = new NewBookFrame(this.myBooks, this.frameStack);
         newBookFrame.setVisible(true);
         this.dispose();
@@ -379,9 +397,25 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        FrameAux frameas = (FrameAux) frameStack.getStackFrame().peek();
+
+        System.out.println(frameas.getMyBooks().toString());
+        System.out.println(frameas.getTypeOfFrame());
+
+        frameStack.nextToNormal();
+
+        frameas = (FrameAux) frameStack.getStackFrame().peek();
+
+        System.out.println(frameas.getMyBooks().toString());
+        JFrame frame = this.frameStack.generateFrame();
+        frame.setVisible(true);
+        this.dispose();
          
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jBNewInformActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNewInformActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBNewInformActionPerformed
 
     /**
      * @param args the command line arguments

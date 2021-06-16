@@ -32,11 +32,11 @@ public class FrameAux {
     private Book book;
 
     public FrameAux(int typeOfFrame, MyBooks myBooks) {
-        System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+      
         System.out.println(myBooks.toString());
         this.book = null;
         this.myBooks = myBooks;
-        System.out.println("|||||||||||||||||||||||||||||");
+     
         System.out.println(this.myBooks.toString());
         this.typeOfFrame = typeOfFrame;
     }
