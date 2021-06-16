@@ -23,9 +23,18 @@ public class FrameStack {
     Stacks<FrameAux> stackFrame = new Stacks<>();
     
     public FrameStack(MyBooks mybooks){
+        System.out.println("pppppppppppppppppp");
+        System.out.println(mybooks.toString());
         // Ventana principal
         FrameAux frame = new FrameAux(1, mybooks);
+        System.out.println("qqqqqqqqqqqqqqqqqqq");
+        System.out.println(frame.getMyBooks().toString());
+        
+        
         stackFrame.push(frame);
+        System.out.println("ssssssssssssssssssss");
+        System.out.println(stackFrame.peek().getMyBooks().toString());
+        
         
         
 }   

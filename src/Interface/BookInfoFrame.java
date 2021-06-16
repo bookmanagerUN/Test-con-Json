@@ -950,6 +950,20 @@ public class BookInfoFrame extends javax.swing.JFrame {
 
     private void atrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasActionPerformed
         // TODO add your handling code here:
+        System.out.println("iiiiiiiiiiiiiiiiiiiiiii");
+        FrameAux frameas = (FrameAux)frameStack.getStackFrame().peek();
+        
+        System.out.println("aaaaaaaaaaaaaaaaaaaaaaa");
+        System.out.println( frameas.getMyBooks().toString());
+        System.out.println(frameas.getTypeOfFrame());
+        
+        frameStack.getStackFrame().pop();
+        frameas = (FrameAux) frameStack.getStackFrame().peek();
+        System.out.println("eeeeeeeeeeeeeeeeeeeee");
+        System.out.println( frameas.getMyBooks().toString());
+        JFrame frame = this.frameStack.generateFrame();
+        frame.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_atrasActionPerformed
 
     /**
