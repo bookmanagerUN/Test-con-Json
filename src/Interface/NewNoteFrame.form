@@ -232,9 +232,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTFDate">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="24/07/2021"/>
-              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTFDateActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jBAddNote">
               <Properties>

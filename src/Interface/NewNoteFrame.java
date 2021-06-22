@@ -14,6 +14,8 @@ import util.WriteJson;
 
 import javax.swing.*;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import util.FrameStack;
 
 /**
@@ -50,6 +52,8 @@ public class NewNoteFrame extends javax.swing.JFrame {
         //System.out.println(this.bookId);
         initComponents();
         
+        this.jTFDate.setText(ActualDate());
+        
         FrameAux frameAux2 = (FrameAux) this.frameStack.getStackFrame().peek();
         
         if(frameAux2.getTypeOfFrame()!= 4){
@@ -62,6 +66,7 @@ public class NewNoteFrame extends javax.swing.JFrame {
         if(this.frameStack.getStackFrameNext().count == 0){
             this.jBForward.setVisible(false);
         }
+        
         UtilInterface.printImage(JLProyectIcon, "src/Interface/MediaFiles/LogoOriginal.png", this);
         UtilInterface.setPanelText(this.actualBook.getBookInformation().getName(), this.JPNewNote);
         //this.JPNewNote.
@@ -119,7 +124,11 @@ public class NewNoteFrame extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setText("Fecha *");
 
-        jTFDate.setText("24/07/2021");
+        jTFDate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTFDateActionPerformed(evt);
+            }
+        });
 
         jBAddNote.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jBAddNote.setText("Añadir");
@@ -267,6 +276,11 @@ public class NewNoteFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public static String ActualDate(){
+        Date date = new Date();
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/YYYY");
+        return format.format(date);
+    }
 
     private void jBAddNoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAddNoteActionPerformed
         // TODO generar check frame
@@ -351,6 +365,11 @@ public class NewNoteFrame extends javax.swing.JFrame {
         frame.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jBForwardActionPerformed
+
+    private void jTFDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFDateActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jTFDateActionPerformed
 
     private void cleanTextBox() {
         UtilInterface.cleanTextBox(this.jTFDate);
