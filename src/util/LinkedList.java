@@ -24,12 +24,9 @@ public class LinkedList<TypeOfData> {
     public LinkedList() {
         makeEmpty();
     }
-
-    public LinkedList(TypeOfData[] array) { //se crean los nodos y se enlazan segun un array
-
-        for (int i = array.length - 1; i >= 0; i--) {
-            insertBegin(array[i]);
-        }
+    public LinkedList(TypeOfData[] array) {
+        this.makeEmpty();
+        for (TypeOfData data : array) this.insertBegin(data);
     }
 
     void makeEmpty() { //vacia la Linkedlist

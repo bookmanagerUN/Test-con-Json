@@ -7,6 +7,7 @@ public class MyQueue<T> {
     public MyQueue(){
         makeEmpty();
     }
+    
     public void makeEmpty(){
         back=null;
         front=null;

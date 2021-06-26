@@ -20,8 +20,8 @@ import javax.swing.JFrame;
  * @author admin
  */
 public class FrameStack {
-    Stacks<FrameAux> stackFrame = new Stacks<>();
-    Stacks<FrameAux> stackFrameNext = new Stacks<>();
+    MyStack<FrameAux> stackFrame = new MyStack<>();
+    MyStack<FrameAux> stackFrameNext = new MyStack<>();
     
     public FrameStack(MyBooks mybooks){
         
@@ -42,7 +42,7 @@ public class FrameStack {
     }
 
     
-    public Stacks getStackFrame() {
+    public MyStack getStackFrame() {
         return stackFrame;
     }
     
@@ -80,7 +80,7 @@ public class FrameStack {
         this.stackFrameNext.makeEmpty();
     }
 
-    public Stacks<FrameAux> getStackFrameNext() {
+    public MyStack<FrameAux> getStackFrameNext() {
         return stackFrameNext;
     }
     

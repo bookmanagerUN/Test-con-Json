@@ -16,6 +16,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.io.IOException;
+import util.BookManagerReport;
 
 /**
  *
@@ -1015,7 +1016,13 @@ public class BookInfoFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jBForwardActionPerformed
 
     private void jBNewInformActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNewInformActionPerformed
-        // TODO add your handling code here:
+        try{
+            BookManagerReport report = new BookManagerReport(this.actualBook, actualBook.getBookInformation().getName()+".pdf");
+        }catch(IOException e){
+            e.printStackTrace();
+            System.out.println("Cierre el PDF antes de continuar.");
+        }
+
     }//GEN-LAST:event_jBNewInformActionPerformed
 
     /**
