@@ -9,10 +9,18 @@ package util;
  *
  * @author admin
  */
-public class Stacks<TypeOfData> extends LinkedList<TypeOfData>{
+public class MyStack<TypeOfData> extends LinkedList<TypeOfData>{
     
     public void push(TypeOfData data){
         super.insertEnd(data);
+    }
+    
+    public MyStack(){
+        super();
+    }
+    
+    public MyStack(TypeOfData[] array){
+        super(array);
     }
     
     public TypeOfData pop(){
