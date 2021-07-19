@@ -1018,6 +1018,10 @@ public class BookInfoFrame extends javax.swing.JFrame {
     private void jBNewInformActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNewInformActionPerformed
         try{
             BookManagerReport report = new BookManagerReport(this.actualBook, actualBook.getBookInformation().getName()+".pdf");
+            
+
+        JOptionPane.showMessageDialog(null, "SE HA GENERADO EL INFORME CORRECTAMENTE.");
+
         }catch(IOException e){
             e.printStackTrace();
             System.out.println("Cierre el PDF antes de continuar.");
