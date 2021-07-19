@@ -157,11 +157,13 @@ public class MainFrame extends javax.swing.JFrame {
         JLProyectIcon.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         JPMyBooks.setBackground(new java.awt.Color(255, 255, 255));
-        JPMyBooks.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "Mis libros", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 24))); // NOI18N
+        JPMyBooks.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(31, 78, 121), 2, true), "Mis libros", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 24), new java.awt.Color(31, 78, 121))); // NOI18N
 
         jTMyBooks.setAutoCreateRowSorter(true);
+        jTMyBooks.setBackground(new java.awt.Color(255, 255, 255));
         jTMyBooks.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jTMyBooks.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jTMyBooks.setForeground(new java.awt.Color(0, 0, 0));
         jTMyBooks.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"0", "Libro 1", "Pedro", "Finalizado", "cat. 1"},
@@ -181,14 +183,18 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         jTMyBooks.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jTMyBooks.setGridColor(new java.awt.Color(255, 255, 255));
+        jTMyBooks.setGridColor(new java.awt.Color(31, 78, 121));
         jTMyBooks.setInheritsPopupMenu(true);
         jTMyBooks.setRowHeight(30);
         jTMyBooks.getTableHeader().setReorderingAllowed(false);
         jSPMyBooks.setViewportView(jTMyBooks);
 
+        jBMyBooks.setBackground(new java.awt.Color(255, 255, 255));
         jBMyBooks.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jBMyBooks.setText("Información");
+        jBMyBooks.setForeground(new java.awt.Color(31, 78, 121));
+        jBMyBooks.setText("INFORMACIÓN");
+        jBMyBooks.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(31, 78, 121), 2, true));
+        jBMyBooks.setContentAreaFilled(false);
         jBMyBooks.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBMyBooksActionPerformed(evt);
@@ -196,29 +202,46 @@ public class MainFrame extends javax.swing.JFrame {
         });
 
         jLMyBooks.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLMyBooks.setText("Escriba el ID del libro y luego presione el boton para acceder a su información");
+        jLMyBooks.setText("Escriba el ID del libro y luego presione el boton que desee.");
 
+        jTFmyBooks.setBackground(new java.awt.Color(255, 255, 255));
+        jTFmyBooks.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jTFmyBooks.setForeground(new java.awt.Color(0, 0, 0));
+        jTFmyBooks.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(31, 78, 121), 2, true));
         jTFmyBooks.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTFmyBooksActionPerformed(evt);
             }
         });
 
-        jBDeleteBook.setText("borrar libro");
+        jBDeleteBook.setBackground(new java.awt.Color(255, 255, 255));
+        jBDeleteBook.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jBDeleteBook.setForeground(new java.awt.Color(31, 78, 121));
+        jBDeleteBook.setText("BORRAR LIBRO");
+        jBDeleteBook.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(31, 78, 121), 2, true));
+        jBDeleteBook.setContentAreaFilled(false);
         jBDeleteBook.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBDeleteBookActionPerformed(evt);
             }
         });
 
-        jBForward.setText("adelante");
+        jBForward.setBackground(new java.awt.Color(255, 255, 255));
+        jBForward.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/MediaFiles/adelante.png"))); // NOI18N
+        jBForward.setBorder(null);
+        jBForward.setBorderPainted(false);
+        jBForward.setContentAreaFilled(false);
         jBForward.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBForwardActionPerformed(evt);
             }
         });
 
-        jBBack.setText("atras");
+        jBBack.setBackground(new java.awt.Color(255, 255, 255));
+        jBBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/MediaFiles/atras.png"))); // NOI18N
+        jBBack.setBorder(null);
+        jBBack.setBorderPainted(false);
+        jBBack.setContentAreaFilled(false);
         jBBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBBackActionPerformed(evt);
@@ -231,44 +254,45 @@ public class MainFrame extends javax.swing.JFrame {
             JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JPMyBooksLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jSPMyBooks)
+                .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSPMyBooks)
+                    .addGroup(JPMyBooksLayout.createSequentialGroup()
+                        .addComponent(jBBack)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jBForward))
+                    .addGroup(JPMyBooksLayout.createSequentialGroup()
+                        .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLMyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 656, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(JPMyBooksLayout.createSequentialGroup()
+                                .addComponent(jTFmyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jBMyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jBDeleteBook, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 186, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(JPMyBooksLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLMyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 656, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 6, Short.MAX_VALUE))
-            .addGroup(JPMyBooksLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jTFmyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jBMyBooks)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jBDeleteBook, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jBBack)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jBForward))
         );
         JPMyBooksLayout.setVerticalGroup(
             JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JPMyBooksLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jSPMyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSPMyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLMyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(JPMyBooksLayout.createSequentialGroup()
-                        .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jBMyBooks, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(JPMyBooksLayout.createSequentialGroup()
-                                .addComponent(jTFmyBooks)
-                                .addGap(3, 3, 3))
-                            .addComponent(jBDeleteBook, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jTFmyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                        .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jBBack)
+                            .addComponent(jBForward))
                         .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jBForward)
-                        .addComponent(jBBack))))
+                    .addGroup(JPMyBooksLayout.createSequentialGroup()
+                        .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jBDeleteBook, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                            .addComponent(jBMyBooks, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
 
         jBNewBook.setText("Agregar libro");
@@ -303,7 +327,7 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(JLProyectIcon, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                     .addComponent(jBNewInform, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jBFilter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(JPMyBooks, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
