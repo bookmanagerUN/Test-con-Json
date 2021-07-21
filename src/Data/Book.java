@@ -2,7 +2,7 @@ package Data;
 
 import util.LinkedList;
 
-public class Book {
+public class Book implements Comparable<Book>{
     
     private int actualPage  = 0;
     private boolean status  = false;
@@ -129,6 +129,10 @@ public class Book {
         
     }
     
+    @Override
+    public int compareTo(Book arg0) {
+    return this.actualPage-arg0.actualPage;
+    }
     
     
 }

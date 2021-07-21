@@ -21,22 +21,21 @@ import util.FrameStack;
 import util.Heaps;
 import util.MyStack;
 
-
 /**
  *
  * @author Usuario
  */
-public class MainFrame extends javax.swing.JFrame {
+public class AdviceFrame extends javax.swing.JFrame {
     private MyBooks myBooks = new MyBooks();
-    private FrameStack frameStack;
-    private Heaps<Book> heap;
+    private FrameStack frameStack; 
 
     /**
      * Creates new form NewJFrame1
      */
     
-    public MainFrame(MyBooks myBooks, FrameStack frameStack) {
-        
+    public AdviceFrame(MyBooks mybooks, Heaps heap, FrameStack frameStack) {
+        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+        //System.out.println(heap.findMax());
         this.myBooks = myBooks;
         this.myBooks.printAllBooks();
         this.frameStack = frameStack;
@@ -63,14 +62,9 @@ public class MainFrame extends javax.swing.JFrame {
             this.frameStack.getStackFrame().push(frame);
         }
         
-        heap = new Heaps<>();
-        heap.buildHeap(myBooks);
-        
-        
-        
 
     }
-        public MainFrame() {
+        public AdviceFrame() {
             
         //TODO CHECK leer Json; crear la clase MyBook; cada vez que se inicie el programa verificar Json
         //TODO si no hay Json crear desde 0 (libro de prueba)
@@ -147,12 +141,8 @@ public class MainFrame extends javax.swing.JFrame {
         jBMyBooks = new javax.swing.JButton();
         jLMyBooks = new javax.swing.JLabel();
         jTFmyBooks = new javax.swing.JTextField();
-        jBDeleteBook = new javax.swing.JButton();
         jBForward = new javax.swing.JButton();
         jBBack = new javax.swing.JButton();
-        jBNewBook = new javax.swing.JButton();
-        jBNewInform = new javax.swing.JButton();
-        jBFilter = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -171,16 +161,16 @@ public class MainFrame extends javax.swing.JFrame {
         jTMyBooks.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jTMyBooks.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"0", "Libro 1", "Pedro", "Finalizado", "cat. 1"},
-                {"1", "Libro 2", "Carlos", "En lectura", "cat. 2"},
-                {"2", "Libro 3", "Esteban", "No empezado", "cat.3"}
+                {"0", "Libro 1", "20"},
+                {"1", "Libro 2", "10"},
+                {"2", "Libro 3", "5"}
             },
             new String [] {
-                "ID", "Nombre", "Autor", "Estado", "Categoria"
+                "ID", "Nombre", "Pagina actual"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -217,18 +207,6 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        jBDeleteBook.setBackground(new java.awt.Color(255, 255, 255));
-        jBDeleteBook.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jBDeleteBook.setForeground(new java.awt.Color(31, 78, 121));
-        jBDeleteBook.setText("BORRAR LIBRO");
-        jBDeleteBook.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(31, 78, 121), 2, true));
-        jBDeleteBook.setContentAreaFilled(false);
-        jBDeleteBook.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBDeleteBookActionPerformed(evt);
-            }
-        });
-
         jBForward.setBackground(new java.awt.Color(255, 255, 255));
         jBForward.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/MediaFiles/adelante.png"))); // NOI18N
         jBForward.setBorder(null);
@@ -260,7 +238,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSPMyBooks)
                     .addGroup(JPMyBooksLayout.createSequentialGroup()
-                        .addComponent(jBBack)
+                        .addComponent(jBBack, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jBForward))
                     .addGroup(JPMyBooksLayout.createSequentialGroup()
@@ -269,9 +247,7 @@ public class MainFrame extends javax.swing.JFrame {
                             .addGroup(JPMyBooksLayout.createSequentialGroup()
                                 .addComponent(jTFmyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jBMyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jBDeleteBook, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jBMyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 186, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -292,32 +268,9 @@ public class MainFrame extends javax.swing.JFrame {
                             .addComponent(jBForward))
                         .addContainerGap())
                     .addGroup(JPMyBooksLayout.createSequentialGroup()
-                        .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jBDeleteBook, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
-                            .addComponent(jBMyBooks, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jBMyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
-
-        jBNewBook.setText("Agregar libro");
-        jBNewBook.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBNewBookActionPerformed(evt);
-            }
-        });
-
-        jBNewInform.setText("Recomendaciones");
-        jBNewInform.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBNewInformActionPerformed(evt);
-            }
-        });
-
-        jBFilter.setText("Generar  informe");
-        jBFilter.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBFilterActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -325,11 +278,7 @@ public class MainFrame extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jBNewBook, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(JLProyectIcon, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                    .addComponent(jBNewInform, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jBFilter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(JLProyectIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(JPMyBooks, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -341,12 +290,6 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(JPMyBooks, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(JLProyectIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jBNewBook, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jBFilter, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jBNewInform, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -387,42 +330,6 @@ public class MainFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTFmyBooksActionPerformed
 
-    private void jBDeleteBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDeleteBookActionPerformed
-        // TODO add your handling code here:
-        this.frameStack.cleanNextStack();
-        if (this.jTFmyBooks.getText().length() > 0) {
-            int option = JOptionPane.showConfirmDialog(null, "¿confirma?");
-            if (option == 0) {
-                //System.out.println("se presionó el boton");
-                int bookPosition = Integer.parseInt(this.jTFmyBooks.getText());
-                this.myBooks.deleteBook(bookPosition - 1);
-                WriteJson writeJson = new WriteJson();
-                try {
-                    writeJson.createAuxBook(this.myBooks.getMyBooks());
-
-                } catch (IOException e) {
-                    System.err.println("no se pudo guardar");
-                }
-                fillTable();
-
-            }
-        }
-    }//GEN-LAST:event_jBDeleteBookActionPerformed
-
-    private void jBNewBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNewBookActionPerformed
-        this.frameStack.cleanNextStack();
-        
-        NewBookFrame newBookFrame = new NewBookFrame(this.myBooks, this.frameStack);
-        newBookFrame.setVisible(true);
-        this.dispose();
-
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jBNewBookActionPerformed
-
-    private void jBFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBFilterActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jBFilterActionPerformed
-
     private void jBBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBackActionPerformed
         // TODO add your handling code here:
         
@@ -446,14 +353,6 @@ public class MainFrame extends javax.swing.JFrame {
          
     }//GEN-LAST:event_jBForwardActionPerformed
 
-    private void jBNewInformActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNewInformActionPerformed
-        this.frameStack.cleanNextStack();
-        
-        AdviceFrame AdviceFrame = new AdviceFrame(this.myBooks,this.heap, this.frameStack);
-        AdviceFrame.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jBNewInformActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -471,21 +370,23 @@ public class MainFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdviceFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdviceFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdviceFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdviceFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainFrame().setVisible(true);
+                new AdviceFrame().setVisible(true);
             }
         });
     }
@@ -494,12 +395,8 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel JLProyectIcon;
     private javax.swing.JPanel JPMyBooks;
     private javax.swing.JButton jBBack;
-    private javax.swing.JButton jBDeleteBook;
-    private javax.swing.JButton jBFilter;
     private javax.swing.JButton jBForward;
     private javax.swing.JButton jBMyBooks;
-    private javax.swing.JButton jBNewBook;
-    private javax.swing.JButton jBNewInform;
     private javax.swing.JLabel jLMyBooks;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jSPMyBooks;

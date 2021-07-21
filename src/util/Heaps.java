@@ -5,24 +5,35 @@
  */
 package util;
 
+import Data.MyBooks;
 import java.util.Arrays;
 
-class Heaps1<T extends Comparable<? super T>> {
+
+
+public class Heaps<T extends Comparable<? super T>> {
+    
 
     private static final int defaultCapacity = 10;
     private int currentSize;
     private T[] array;
 
     //Constructor para inicializar un heap con capacidad por defecto
-    public Heaps1() {
+    public Heaps() {
         this.array = (T[]) new Comparable[defaultCapacity];
     }
 
     //Constructor para inicializar un heap con capacidad dada por consola
-    public Heaps1(int capacity) {
+    public Heaps(int capacity) {
         this.array = (T[]) new Comparable[capacity + 1];
     }
-
+    
+    public void buildHeap(MyBooks myBooks){
+        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+         for(int i= 0; i< myBooks.getMyBooks().count;i++){
+             this.insert((T)myBooks.getMyBooks().elementPosition(i));
+    }
+         
+    }
     // Metodo para duplicar el tamaño de un array
     private T[] duplicateLength(T[] arr) {
         arr = Arrays.copyOf(arr, arr.length * 2 + 1);
@@ -97,31 +108,8 @@ class Heaps1<T extends Comparable<? super T>> {
          }
      }
 
-}
 
-public class Heaps {
 
-    public static void main(String[] args) {
-        Heaps1<Integer> asd = new Heaps1<>();
-        asd.insert(2);
-        asd.insert(3);
-        asd.insert(4);
-        asd.insert(6);
-        asd.insert(1);
-        asd.insert(0);
-        asd.insert(5);
-        asd.recorrer();
-        System.out.println("");
-        asd.deleteMax();
-        asd.insert(8);
-        asd.insert(7);
-        System.out.println("");
-        asd.recorrer();
-        asd.deleteMax();
-        System.out.println("");
-        asd.recorrer();
-        System.out.println("");
-        System.out.println(asd.findMax());
     }
 
-}
+
