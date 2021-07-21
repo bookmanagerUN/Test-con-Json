@@ -40,7 +40,7 @@ class Heaps1<T extends Comparable<? super T>> {
     //Metodo para modificar el monticulo cada vez que se quiera insertar un elemento, manteniendo la propiedad de orden y estructura
     private void percolateUp(T[] arr, T x){
         int hole = ++currentSize;
-        for(arr[0]=x; x.compareTo(arr[hole/2])<0;hole/=2){
+        for(arr[0]=x; x.compareTo(arr[hole/2])>0;hole/=2){
             arr[hole]=array[hole/2];
         }
         arr[hole]=x;
@@ -54,7 +54,7 @@ class Heaps1<T extends Comparable<? super T>> {
      }
      
      // Metodo para devolver el valor menor del monticulo
-     public T findMin(){
+     public T findMax(){
          if(this.isEmpty()){
              System.out.println("El monticulo está vacio, no se puede retornar el valor menor");
          }
@@ -62,11 +62,11 @@ class Heaps1<T extends Comparable<? super T>> {
      }
      
      // Metodo para elminar el elemento con menor valor en el monticulo
-     public T deleteMin(){
+     public T deleteMax(){
          if(this.isEmpty()){
              System.out.println("No es posible eliminar porque el monticulo no tiene elementos");
          }
-         T min = findMin();
+         T min = findMax();
          array[1] = array[currentSize--];
          percolateDown(1);
          return min;
@@ -78,10 +78,10 @@ class Heaps1<T extends Comparable<? super T>> {
          T tmp = array[hole];
          for(;hole*2 <= currentSize; hole=child){
              child=hole*2;
-             if(child!=currentSize && array[child+1].compareTo(array[child])<0){
+             if(child!=currentSize && array[child+1].compareTo(array[child])>0){
              child++;
              }
-             if(array[child].compareTo(tmp)<0){
+             if(array[child].compareTo(tmp)>0){
                  array[hole] = array[child];
              }else{
                  break;
@@ -112,16 +112,16 @@ public class Heaps {
         asd.insert(5);
         asd.recorrer();
         System.out.println("");
-        asd.deleteMin();
+        asd.deleteMax();
         asd.insert(8);
         asd.insert(7);
         System.out.println("");
         asd.recorrer();
-        asd.deleteMin();
+        asd.deleteMax();
         System.out.println("");
         asd.recorrer();
         System.out.println("");
-        System.out.println(asd.findMin());
+        System.out.println(asd.findMax());
     }
 
 }
