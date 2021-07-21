@@ -37,7 +37,6 @@ public class AdviceFrame extends javax.swing.JFrame {
     public AdviceFrame(MyBooks mybooks, Heaps heap, FrameStack frameStack) {
         System.out.println(heap.currentSize);
         
-        
         this.myBooks = myBooks;
         this.myBooks.printAllBooks();
         this.frameStack = frameStack;
@@ -106,7 +105,8 @@ public class AdviceFrame extends javax.swing.JFrame {
         for (int i = 1; i <= this.heap.currentSize; i++) {
             int intid = i;
             Book book2 = (Book) heap.recorrer(i);
-            String id = String.valueOf(intid + 1);
+            System.out.println(book2.getActualPage());
+            String id = String.valueOf(intid);
             String name = book2.getBookInformation().getName();
             String pages = String.valueOf(book2.getActualPage());
 

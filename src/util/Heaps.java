@@ -101,10 +101,7 @@ public class Heaps<T extends Comparable<? super T>> {
      
     // Metodo para imprimir los elementos del monticulo
      public T recorrer(int i){
-         for(i=1; i<this.array.length;i++){
-             return array[i];
-         }
-         return null;
+         return array[i];
      }
 
 
