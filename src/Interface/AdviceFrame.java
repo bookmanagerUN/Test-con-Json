@@ -34,8 +34,10 @@ public class AdviceFrame extends javax.swing.JFrame {
      */
     
     public AdviceFrame(MyBooks mybooks, Heaps heap, FrameStack frameStack) {
-        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-        //System.out.println(heap.findMax());
+        Book book = (Book) heap.findMax();
+        Book book1 = (Book) heap.findMax();
+        System.out.println("libro: "+ book1.getActualPage());
+        
         this.myBooks = myBooks;
         this.myBooks.printAllBooks();
         this.frameStack = frameStack;

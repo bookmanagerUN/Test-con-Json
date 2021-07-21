@@ -28,7 +28,6 @@ public class Heaps<T extends Comparable<? super T>> {
     }
     
     public void buildHeap(MyBooks myBooks){
-        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
          for(int i= 0; i< myBooks.getMyBooks().count;i++){
              this.insert((T)myBooks.getMyBooks().elementPosition(i));
     }

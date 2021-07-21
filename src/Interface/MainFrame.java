@@ -63,8 +63,7 @@ public class MainFrame extends javax.swing.JFrame {
             this.frameStack.getStackFrame().push(frame);
         }
         
-        heap = new Heaps<>();
-        heap.buildHeap(myBooks);
+
         
         
         
@@ -101,6 +100,8 @@ public class MainFrame extends javax.swing.JFrame {
         
         this.jBForward.setVisible(false);
         this.jBBack.setVisible(false);
+        heap = new Heaps<>();
+        heap.buildHeap(myBooks);
         
     }
         
