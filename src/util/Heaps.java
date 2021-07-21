@@ -53,7 +53,7 @@ class Heaps1<T extends Comparable<? super T>> {
          return false;
      }
      
-     // Metodo para devolver el valor menor del monticulo
+     // Metodo para devolver el valor mayor del monticulo
      public T findMax(){
          if(this.isEmpty()){
              System.out.println("El monticulo está vacio, no se puede retornar el valor menor");
@@ -61,7 +61,7 @@ class Heaps1<T extends Comparable<? super T>> {
          return array[1];
      }
      
-     // Metodo para elminar el elemento con menor valor en el monticulo
+     // Metodo para elminar el elemento con mayor valor en el monticulo
      public T deleteMax(){
          if(this.isEmpty()){
              System.out.println("No es posible eliminar porque el monticulo no tiene elementos");
