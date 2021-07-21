@@ -28,24 +28,25 @@ import util.MyStack;
 public class AdviceFrame extends javax.swing.JFrame {
     private MyBooks myBooks = new MyBooks();
     private FrameStack frameStack; 
+    private Heaps heap;
 
     /**
      * Creates new form NewJFrame1
      */
     
     public AdviceFrame(MyBooks mybooks, Heaps heap, FrameStack frameStack) {
-        Book book = (Book) heap.findMax();
-        Book book1 = (Book) heap.findMax();
-        System.out.println("libro: "+ book1.getActualPage());
+        System.out.println(heap.currentSize);
+        
         
         this.myBooks = myBooks;
         this.myBooks.printAllBooks();
         this.frameStack = frameStack;
+        this.heap=heap;
         initComponents();
 
         // cambiar headers de la tabla
-        this.jTMyBooks.getTableHeader().setFont(new Font("Tahoma", Font.BOLD, 18));
-        this.jTMyBooks.getTableHeader().setForeground(Color.BLUE);
+        this.jTMyBooksA.getTableHeader().setFont(new Font("Tahoma", Font.BOLD, 18));
+        this.jTMyBooksA.getTableHeader().setForeground(Color.BLUE);
 
         //poner logo en JLabel
         UtilInterface.printImage(this.JLProyectIcon, "src/Interface/MediaFiles/LogoOriginal.png", this);
@@ -83,8 +84,8 @@ public class AdviceFrame extends javax.swing.JFrame {
         initComponents();
 
         // cambiar headers de la tabla
-        this.jTMyBooks.getTableHeader().setFont(new Font("Tahoma", Font.BOLD, 18));
-        this.jTMyBooks.getTableHeader().setForeground(Color.BLUE);
+        this.jTMyBooksA.getTableHeader().setFont(new Font("Tahoma", Font.BOLD, 18));
+        this.jTMyBooksA.getTableHeader().setForeground(Color.BLUE);
         fillTable();
 
         //poner logo en JLabel
@@ -101,24 +102,16 @@ public class AdviceFrame extends javax.swing.JFrame {
     }
         
     private void fillTable() {
-        UtilInterface.cleanJTable(jTMyBooks);
-        for (int i = 0; i < this.myBooks.getMyBooks().count; i++) {
+        UtilInterface.cleanJTable(jTMyBooksA);
+        for (int i = 1; i <= this.heap.currentSize; i++) {
             int intid = i;
+            Book book2 = (Book) heap.recorrer(i);
             String id = String.valueOf(intid + 1);
-            String name = this.myBooks.getMyBooks().elementPosition(i).getBookInformation().getName();
-            String author = this.myBooks.getMyBooks().elementPosition(i).getBookInformation().getAuthor();
-            boolean state = this.myBooks.getMyBooks().elementPosition(i).getStatus();
-            String strState;
-            if (state) {
-                strState = "Finalizado";
-            } else {
-                strState = "Sin finalizar";
-            }
-            String category = this.myBooks.getMyBooks().elementPosition(i).getBookInformation().getCategory();
+            String name = book2.getBookInformation().getName();
+            String pages = String.valueOf(book2.getActualPage());
 
-
-            String[] tbData = {id, name, author, strState, category};
-            DefaultTableModel tblModel = (DefaultTableModel) jTMyBooks.getModel();
+            String[] tbData = {id, name, pages};
+            DefaultTableModel tblModel = (DefaultTableModel) jTMyBooksA.getModel();
             tblModel.addRow(tbData);
 
 
@@ -139,7 +132,7 @@ public class AdviceFrame extends javax.swing.JFrame {
         JLProyectIcon = new javax.swing.JLabel();
         JPMyBooks = new javax.swing.JPanel();
         jSPMyBooks = new javax.swing.JScrollPane();
-        jTMyBooks = new javax.swing.JTable();
+        jTMyBooksA = new javax.swing.JTable();
         jBMyBooks = new javax.swing.JButton();
         jLMyBooks = new javax.swing.JLabel();
         jTFmyBooks = new javax.swing.JTextField();
@@ -158,10 +151,10 @@ public class AdviceFrame extends javax.swing.JFrame {
         JPMyBooks.setBackground(new java.awt.Color(255, 255, 255));
         JPMyBooks.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(31, 78, 121), 2, true), "Mis libros", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 24), new java.awt.Color(31, 78, 121))); // NOI18N
 
-        jTMyBooks.setAutoCreateRowSorter(true);
-        jTMyBooks.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jTMyBooks.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jTMyBooks.setModel(new javax.swing.table.DefaultTableModel(
+        jTMyBooksA.setAutoCreateRowSorter(true);
+        jTMyBooksA.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jTMyBooksA.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jTMyBooksA.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"0", "Libro 1", "20"},
                 {"1", "Libro 2", "10"},
@@ -179,12 +172,12 @@ public class AdviceFrame extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTMyBooks.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jTMyBooks.setGridColor(new java.awt.Color(31, 78, 121));
-        jTMyBooks.setInheritsPopupMenu(true);
-        jTMyBooks.setRowHeight(30);
-        jTMyBooks.getTableHeader().setReorderingAllowed(false);
-        jSPMyBooks.setViewportView(jTMyBooks);
+        jTMyBooksA.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jTMyBooksA.setGridColor(new java.awt.Color(31, 78, 121));
+        jTMyBooksA.setInheritsPopupMenu(true);
+        jTMyBooksA.setRowHeight(30);
+        jTMyBooksA.getTableHeader().setReorderingAllowed(false);
+        jSPMyBooks.setViewportView(jTMyBooksA);
 
         jBMyBooks.setBackground(new java.awt.Color(255, 255, 255));
         jBMyBooks.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -403,6 +396,6 @@ public class AdviceFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jSPMyBooks;
     private javax.swing.JTextField jTFmyBooks;
-    private javax.swing.JTable jTMyBooks;
+    private javax.swing.JTable jTMyBooksA;
     // End of variables declaration//GEN-END:variables
 }

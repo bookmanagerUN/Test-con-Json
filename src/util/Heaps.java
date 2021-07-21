@@ -14,7 +14,7 @@ public class Heaps<T extends Comparable<? super T>> {
     
 
     private static final int defaultCapacity = 10;
-    private int currentSize;
+    public int currentSize;
     private T[] array;
 
     //Constructor para inicializar un heap con capacidad por defecto
@@ -30,8 +30,7 @@ public class Heaps<T extends Comparable<? super T>> {
     public void buildHeap(MyBooks myBooks){
          for(int i= 0; i< myBooks.getMyBooks().count;i++){
              this.insert((T)myBooks.getMyBooks().elementPosition(i));
-    }
-         
+    }    
     }
     // Metodo para duplicar el tamaño de un array
     private T[] duplicateLength(T[] arr) {
@@ -101,10 +100,11 @@ public class Heaps<T extends Comparable<? super T>> {
      }
      
     // Metodo para imprimir los elementos del monticulo
-     void recorrer(){
-         for(int i=1; i<this.array.length;i++){
-             System.out.print(array[i]+ " ");
+     public T recorrer(int i){
+         for(i=1; i<this.array.length;i++){
+             return array[i];
          }
+         return null;
      }
 
 
