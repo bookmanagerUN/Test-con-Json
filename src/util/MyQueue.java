@@ -5,7 +5,7 @@ public class MyQueue<T> {
     private NodoSimpleLinkedList<T> back;
 
     public MyQueue(){
-        makeEmpty();
+        this.makeEmpty();
     }
     
     public void makeEmpty(){
