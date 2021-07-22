@@ -27,7 +27,7 @@ import util.MyStack;
  *
  * @author Usuario
  */
-public class MainFrame extends javax.swing.JFrame {
+public class FilterFrame extends javax.swing.JFrame {
     private MyBooks myBooks = new MyBooks();
     private FrameStack frameStack;
     private Heaps<Book> heap;
@@ -36,7 +36,7 @@ public class MainFrame extends javax.swing.JFrame {
      * Creates new form NewJFrame1
      */
     
-    public MainFrame(MyBooks myBooks, FrameStack frameStack) {
+    public FilterFrame(MyBooks myBooks, FrameStack frameStack) {
         
         this.myBooks = myBooks;
         this.myBooks.printAllBooks();
@@ -71,7 +71,7 @@ public class MainFrame extends javax.swing.JFrame {
         
 
     }
-        public MainFrame() {
+        public FilterFrame() {
             
         //TODO CHECK leer Json; crear la clase MyBook; cada vez que se inicie el programa verificar Json
         //TODO si no hay Json crear desde 0 (libro de prueba)
@@ -147,12 +147,12 @@ public class MainFrame extends javax.swing.JFrame {
         JPMyBooks = new javax.swing.JPanel();
         jSPMyBooks = new javax.swing.JScrollPane();
         jTMyBooks = new javax.swing.JTable();
-        jBMyBooks = new javax.swing.JButton();
+        jBGoToFilter = new javax.swing.JButton();
         jLMyBooks = new javax.swing.JLabel();
-        jTFmyBooks = new javax.swing.JTextField();
-        jBDeleteBook = new javax.swing.JButton();
+        jTFtoFilter = new javax.swing.JTextField();
         jBForward = new javax.swing.JButton();
         jBBack = new javax.swing.JButton();
+        jCBOption = new javax.swing.JComboBox<>();
         jBNewBook = new javax.swing.JButton();
         jBNewInform = new javax.swing.JButton();
         jBFilter = new javax.swing.JButton();
@@ -167,7 +167,7 @@ public class MainFrame extends javax.swing.JFrame {
         JLProyectIcon.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         JPMyBooks.setBackground(new java.awt.Color(255, 255, 255));
-        JPMyBooks.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(31, 78, 121), 2, true), "Mis libros", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 24), new java.awt.Color(31, 78, 121))); // NOI18N
+        JPMyBooks.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(31, 78, 121), 2, true), "Filtro", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 24), new java.awt.Color(31, 78, 121))); // NOI18N
 
         jTMyBooks.setAutoCreateRowSorter(true);
         jTMyBooks.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -197,38 +197,26 @@ public class MainFrame extends javax.swing.JFrame {
         jTMyBooks.getTableHeader().setReorderingAllowed(false);
         jSPMyBooks.setViewportView(jTMyBooks);
 
-        jBMyBooks.setBackground(new java.awt.Color(255, 255, 255));
-        jBMyBooks.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jBMyBooks.setForeground(new java.awt.Color(31, 78, 121));
-        jBMyBooks.setText("INFORMACIÓN");
-        jBMyBooks.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(31, 78, 121), 2, true));
-        jBMyBooks.setContentAreaFilled(false);
-        jBMyBooks.addActionListener(new java.awt.event.ActionListener() {
+        jBGoToFilter.setBackground(new java.awt.Color(255, 255, 255));
+        jBGoToFilter.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jBGoToFilter.setForeground(new java.awt.Color(31, 78, 121));
+        jBGoToFilter.setText("FILTRAR");
+        jBGoToFilter.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(31, 78, 121), 2, true));
+        jBGoToFilter.setContentAreaFilled(false);
+        jBGoToFilter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBMyBooksActionPerformed(evt);
+                jBGoToFilterActionPerformed(evt);
             }
         });
 
         jLMyBooks.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLMyBooks.setText("Escriba el ID del libro y luego presione el boton que desee.");
+        jLMyBooks.setText("Elija la opcion por la que quiere filtrar en la lista, luego coloque la palabra clave, por ultimo presione FILTRAR");
 
-        jTFmyBooks.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jTFmyBooks.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(31, 78, 121), 2, true));
-        jTFmyBooks.addActionListener(new java.awt.event.ActionListener() {
+        jTFtoFilter.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jTFtoFilter.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(31, 78, 121), 2, true));
+        jTFtoFilter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTFmyBooksActionPerformed(evt);
-            }
-        });
-
-        jBDeleteBook.setBackground(new java.awt.Color(255, 255, 255));
-        jBDeleteBook.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jBDeleteBook.setForeground(new java.awt.Color(31, 78, 121));
-        jBDeleteBook.setText("BORRAR LIBRO");
-        jBDeleteBook.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(31, 78, 121), 2, true));
-        jBDeleteBook.setContentAreaFilled(false);
-        jBDeleteBook.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBDeleteBookActionPerformed(evt);
+                jTFtoFilterActionPerformed(evt);
             }
         });
 
@@ -254,6 +242,13 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        jCBOption.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre", "Autor ", "Categoria" }));
+        jCBOption.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCBOptionActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout JPMyBooksLayout = new javax.swing.GroupLayout(JPMyBooks);
         JPMyBooks.setLayout(JPMyBooksLayout);
         JPMyBooksLayout.setHorizontalGroup(
@@ -262,46 +257,41 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(JPMyBooksLayout.createSequentialGroup()
-                        .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSPMyBooks)
-                            .addGroup(JPMyBooksLayout.createSequentialGroup()
-                                .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLMyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 656, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(JPMyBooksLayout.createSequentialGroup()
-                                        .addComponent(jTFmyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jBMyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jBDeleteBook, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 189, Short.MAX_VALUE)))
-                        .addContainerGap())
-                    .addGroup(JPMyBooksLayout.createSequentialGroup()
                         .addComponent(jBBack)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jBForward)
-                        .addGap(31, 31, 31))))
+                        .addGap(31, 31, 31))
+                    .addGroup(JPMyBooksLayout.createSequentialGroup()
+                        .addComponent(jCBOption, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTFtoFilter, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addComponent(jBGoToFilter, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JPMyBooksLayout.createSequentialGroup()
+                        .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLMyBooks, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jSPMyBooks))
+                        .addGap(6, 6, 6))))
         );
         JPMyBooksLayout.setVerticalGroup(
             JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JPMyBooksLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jSPMyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jLMyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(JPMyBooksLayout.createSequentialGroup()
-                        .addComponent(jTFmyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                        .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jBForward)
-                            .addComponent(jBBack))
-                        .addContainerGap())
-                    .addGroup(JPMyBooksLayout.createSequentialGroup()
-                        .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jBDeleteBook, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
-                            .addComponent(jBMyBooks, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jCBOption, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTFtoFilter, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jBGoToFilter))
+                .addGap(65, 65, 65)
+                .addComponent(jSPMyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
+                .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jBForward)
+                    .addComponent(jBBack))
+                .addContainerGap())
         );
 
         jBNewBook.setText("Agregar libro");
@@ -336,7 +326,7 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(JLProyectIcon, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                     .addComponent(jBNewInform, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jBFilter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(JPMyBooks, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -371,49 +361,18 @@ public class MainFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jBMyBooksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBMyBooksActionPerformed
+    private void jBGoToFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGoToFilterActionPerformed
         // TODO add your handling code here:
-        this.frameStack.cleanNextStack();
-        if (this.jTFmyBooks.getText().length() > 0) {
-            int id = Integer.parseInt(this.jTFmyBooks.getText());
-            //checkear inputs invalidos - o que MyBooks esté vacío (se puede usar clase Util)
-            Book book = this.myBooks.getMyBooks().elementPosition(id - 1);
-            //System.out.println(id);
-            book.printBook();
-            BookInfoFrame bookInfo = new BookInfoFrame(book, this.myBooks,this.frameStack);
-            bookInfo.setVisible(true);
-            this.dispose();
-
-
-            this.dispose();
+        int option = jCBOption.getSelectedIndex();
+        System.out.println(option);
+        if (this.jTFtoFilter.getText().length() > 0 && option == 0) {
+            Search search = new Search(this.jTFtoFilter.getText(), this.myBooks);
         }
-    }//GEN-LAST:event_jBMyBooksActionPerformed
+    }//GEN-LAST:event_jBGoToFilterActionPerformed
 
-    private void jTFmyBooksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFmyBooksActionPerformed
+    private void jTFtoFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFtoFilterActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTFmyBooksActionPerformed
-
-    private void jBDeleteBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDeleteBookActionPerformed
-        // TODO add your handling code here:
-        this.frameStack.cleanNextStack();
-        if (this.jTFmyBooks.getText().length() > 0) {
-            int option = JOptionPane.showConfirmDialog(null, "¿confirma?");
-            if (option == 0) {
-                //System.out.println("se presionó el boton");
-                int bookPosition = Integer.parseInt(this.jTFmyBooks.getText());
-                this.myBooks.deleteBook(bookPosition - 1);
-                WriteJson writeJson = new WriteJson();
-                try {
-                    writeJson.createAuxBook(this.myBooks.getMyBooks());
-
-                } catch (IOException e) {
-                    System.err.println("no se pudo guardar");
-                }
-                fillTable();
-
-            }
-        }
-    }//GEN-LAST:event_jBDeleteBookActionPerformed
+    }//GEN-LAST:event_jTFtoFilterActionPerformed
 
     private void jBNewBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNewBookActionPerformed
         this.frameStack.cleanNextStack();
@@ -427,10 +386,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void jBFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBFilterActionPerformed
         // TODO add your handling code here:
-        
-        FilterFrame filter = new FilterFrame(this.myBooks, this.frameStack);
-        filter.setVisible(true);
-        this.dispose();
+        Search search = new Search("caperucita", this.myBooks);
     }//GEN-LAST:event_jBFilterActionPerformed
 
     private void jBBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBackActionPerformed
@@ -464,6 +420,10 @@ public class MainFrame extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jBNewInformActionPerformed
 
+    private void jCBOptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBOptionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCBOptionActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -481,21 +441,23 @@ public class MainFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FilterFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FilterFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FilterFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FilterFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainFrame().setVisible(true);
+                new FilterFrame().setVisible(true);
             }
         });
     }
@@ -504,16 +466,16 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel JLProyectIcon;
     private javax.swing.JPanel JPMyBooks;
     private javax.swing.JButton jBBack;
-    private javax.swing.JButton jBDeleteBook;
     private javax.swing.JButton jBFilter;
     private javax.swing.JButton jBForward;
-    private javax.swing.JButton jBMyBooks;
+    private javax.swing.JButton jBGoToFilter;
     private javax.swing.JButton jBNewBook;
     private javax.swing.JButton jBNewInform;
+    private javax.swing.JComboBox<String> jCBOption;
     private javax.swing.JLabel jLMyBooks;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jSPMyBooks;
-    private javax.swing.JTextField jTFmyBooks;
+    private javax.swing.JTextField jTFtoFilter;
     private javax.swing.JTable jTMyBooks;
     // End of variables declaration//GEN-END:variables
 }
