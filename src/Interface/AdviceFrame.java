@@ -18,6 +18,10 @@ public class AdviceFrame extends javax.swing.JFrame {
     private FrameStack frameStack;
     private Heaps heap;
     private MyBooks myBooks2;
+    private String[ ] arregloPalabras = {"Busca las reseñas de los libros","Establece horarios para la lectura.",
+                                            "Importante: continuidad en la lectura.","Elabora tus propios comentarios y observaciones.",
+                                                "Haz un seguimiento a la lectura.","Adquiere el hábito de leer en Inglés"};
+    private int indice=0;
 
     public AdviceFrame(MyBooks mybooks, Heaps heap, FrameStack frameStack) {
 
@@ -29,13 +33,14 @@ public class AdviceFrame extends javax.swing.JFrame {
         initComponents();
 
         // cambiar headers de la tabla
-        this.jTMyBooksA.getTableHeader().setFont(new Font("Tahoma", Font.BOLD, 18));
-        this.jTMyBooksA.getTableHeader().setForeground(Color.BLUE);
+        //this.jTMyBooksA.getTableHeader().setFont(new Font("Tahoma", Font.BOLD, 18));
+        //this.jTMyBooksA.getTableHeader().setForeground(Color.BLUE);
 
         //poner logo en JLabel
         UtilInterface.printImage(this.JLProyectIcon, "src/Interface/MediaFiles/LogoOriginal.png", this);
         // rellenar tabla
-        fillTable();
+        //fillTable();
+        fillLabels();
         if (this.frameStack.getStackFrame().count == 0) {
             this.jBBack.setVisible(false);
         }
@@ -48,6 +53,7 @@ public class AdviceFrame extends javax.swing.JFrame {
             FrameAux frame = new FrameAux(5, this.myBooks);
             this.frameStack.getStackFrame().push(frame);
         }
+        
 
     }
 
@@ -68,9 +74,9 @@ public class AdviceFrame extends javax.swing.JFrame {
         initComponents();
 
         // cambiar headers de la tabla
-        this.jTMyBooksA.getTableHeader().setFont(new Font("Tahoma", Font.BOLD, 18));
-        this.jTMyBooksA.getTableHeader().setForeground(Color.BLUE);
-        fillTable();
+        //this.jTMyBooksA.getTableHeader().setFont(new Font("Tahoma", Font.BOLD, 18));
+        //this.jTMyBooksA.getTableHeader().setForeground(Color.BLUE);
+        //fillTable();
 
         //poner logo en JLabel
         UtilInterface.printImage(JLProyectIcon, "src/Interface/MediaFiles/LogoOriginal.png", this);
@@ -86,7 +92,7 @@ public class AdviceFrame extends javax.swing.JFrame {
     }
 
     private void fillTable() {
-        UtilInterface.cleanJTable(jTMyBooksA);
+        /*UtilInterface.cleanJTable(jTMyBooksA);
         for (int i = 1; i <= this.heap.currentSize; i++) {
             int intid = i;
             Book book2 = (Book) heap.deleteMax();
@@ -99,8 +105,18 @@ public class AdviceFrame extends javax.swing.JFrame {
             DefaultTableModel tblModel = (DefaultTableModel) jTMyBooksA.getModel();
             tblModel.addRow(tbData);
 
-        }
+        }*/
 
+    }
+    
+    private void fillLabels(){
+        Book book2 = (Book) heap.deleteMax();
+        jLabel9.setText(book2.getBookInformation().getName());
+        jLabel10.setText(String.valueOf(book2.getActualPage()));
+        indice+=1;
+        indice= indice%6;
+        jLabel6.setText(arregloPalabras[indice]);
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -110,13 +126,21 @@ public class AdviceFrame extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         JLProyectIcon = new javax.swing.JLabel();
         JPMyBooks = new javax.swing.JPanel();
-        jSPMyBooks = new javax.swing.JScrollPane();
-        jTMyBooksA = new javax.swing.JTable();
         jBMyBooks = new javax.swing.JButton();
         jLMyBooks = new javax.swing.JLabel();
         jTFmyBooks = new javax.swing.JTextField();
         jBForward = new javax.swing.JButton();
         jBBack = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jBMyBooks1 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -128,35 +152,7 @@ public class AdviceFrame extends javax.swing.JFrame {
         JLProyectIcon.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         JPMyBooks.setBackground(new java.awt.Color(255, 255, 255));
-        JPMyBooks.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(31, 78, 121), 2, true), "Mis libros", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 24), new java.awt.Color(31, 78, 121))); // NOI18N
-
-        jTMyBooksA.setAutoCreateRowSorter(true);
-        jTMyBooksA.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jTMyBooksA.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jTMyBooksA.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {"0", "Libro 1", "20"},
-                {"1", "Libro 2", "10"},
-                {"2", "Libro 3", "5"}
-            },
-            new String [] {
-                "ID", "Nombre", "Pagina actual"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jTMyBooksA.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jTMyBooksA.setGridColor(new java.awt.Color(31, 78, 121));
-        jTMyBooksA.setInheritsPopupMenu(true);
-        jTMyBooksA.setRowHeight(30);
-        jTMyBooksA.getTableHeader().setReorderingAllowed(false);
-        jSPMyBooks.setViewportView(jTMyBooksA);
+        JPMyBooks.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(31, 78, 121), 2, true), "Mis Sugerencias", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 24), new java.awt.Color(31, 78, 121))); // NOI18N
 
         jBMyBooks.setBackground(new java.awt.Color(255, 255, 255));
         jBMyBooks.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -171,7 +167,7 @@ public class AdviceFrame extends javax.swing.JFrame {
         });
 
         jLMyBooks.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLMyBooks.setText("Escriba el ID del libro y luego presione el boton que desee.");
+        jLMyBooks.setText("Escriba el nombre del libro y luego presione el boton que desee.");
 
         jTFmyBooks.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jTFmyBooks.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(31, 78, 121), 2, true));
@@ -203,47 +199,141 @@ public class AdviceFrame extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Para continuar tus lecturas de la mejor manera");
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("Te sugerimos continuar con tus libros mas adelantados");
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(31, 78, 121));
+        jLabel5.setText("Continua con este libro:  ");
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(31, 78, 121));
+        jLabel9.setText("jLabel9");
+        jLabel9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(31, 78, 121)));
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(31, 78, 121));
+        jLabel8.setText("Página en la que lo dejaste la última vez :");
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(31, 78, 121));
+        jLabel10.setText("jLabel10");
+        jLabel10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(31, 78, 121)));
+
+        jLabel1.setBackground(new java.awt.Color(255, 255, 51));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(31, 78, 121));
+        jLabel1.setText("Dale click al boton, y mira la siguiente sugerencia.");
+
+        jBMyBooks1.setBackground(new java.awt.Color(255, 255, 255));
+        jBMyBooks1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jBMyBooks1.setForeground(new java.awt.Color(31, 78, 121));
+        jBMyBooks1.setText("Siguiente.");
+        jBMyBooks1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(31, 78, 121), 2, true));
+        jBMyBooks1.setContentAreaFilled(false);
+        jBMyBooks1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBMyBooks1ActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("Tips: ");
+
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setText("jLabel6");
+
         javax.swing.GroupLayout JPMyBooksLayout = new javax.swing.GroupLayout(JPMyBooks);
         JPMyBooks.setLayout(JPMyBooksLayout);
         JPMyBooksLayout.setHorizontalGroup(
             JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JPMyBooksLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSPMyBooks)
                     .addGroup(JPMyBooksLayout.createSequentialGroup()
-                        .addComponent(jBBack, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jBForward))
+                        .addContainerGap()
+                        .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(JPMyBooksLayout.createSequentialGroup()
+                                .addComponent(jBBack, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(112, 112, 112)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jBForward))
+                            .addGroup(JPMyBooksLayout.createSequentialGroup()
+                                .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLMyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 656, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(JPMyBooksLayout.createSequentialGroup()
+                                        .addComponent(jTFmyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jBMyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 186, Short.MAX_VALUE))))
                     .addGroup(JPMyBooksLayout.createSequentialGroup()
                         .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLMyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 656, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(JPMyBooksLayout.createSequentialGroup()
-                                .addComponent(jTFmyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jBMyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 186, Short.MAX_VALUE)))
+                                .addGap(48, 48, 48)
+                                .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel2)))
+                            .addGroup(JPMyBooksLayout.createSequentialGroup()
+                                .addGap(125, 125, 125)
+                                .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(JPMyBooksLayout.createSequentialGroup()
+                                        .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel8)
+                                            .addComponent(jLabel5))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                                            .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 476, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jBMyBooks1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         JPMyBooksLayout.setVerticalGroup(
             JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JPMyBooksLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jSPMyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3)
+                .addGap(39, 39, 39)
+                .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel9))
+                .addGap(30, 30, 30)
+                .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel10))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jBMyBooks1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43)
                 .addComponent(jLMyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(JPMyBooksLayout.createSequentialGroup()
                         .addComponent(jTFmyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                         .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jBBack)
                             .addComponent(jBForward))
                         .addContainerGap())
                     .addGroup(JPMyBooksLayout.createSequentialGroup()
                         .addComponent(jBMyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel6))
+                        .addGap(22, 22, 22))))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -264,7 +354,7 @@ public class AdviceFrame extends javax.swing.JFrame {
                     .addComponent(JPMyBooks, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(JLProyectIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 367, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -337,6 +427,27 @@ public class AdviceFrame extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jBForwardActionPerformed
 
+    private void jBMyBooks1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBMyBooks1ActionPerformed
+        
+
+        fillLabels();
+
+        // TODO add your handling code here:
+        /*this.frameStack.cleanNextStack();
+        if (this.jTFmyBooks.getText().length() > 0) {
+            int id = Integer.parseInt(this.jTFmyBooks.getText());
+            //checkear inputs invalidos - o que MyBooks esté vacío (se puede usar clase Util)
+            Book book = this.myBooks.getMyBooks().elementPosition(id - 1);
+            //System.out.println(id);
+            book.printBook();
+            BookInfoFrame bookInfo = new BookInfoFrame(book, this.myBooks, this.frameStack);
+            bookInfo.setVisible(true);
+            this.dispose();
+
+            this.dispose();
+        }*/
+    }//GEN-LAST:event_jBMyBooks1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -381,10 +492,18 @@ public class AdviceFrame extends javax.swing.JFrame {
     private javax.swing.JButton jBBack;
     private javax.swing.JButton jBForward;
     private javax.swing.JButton jBMyBooks;
+    private javax.swing.JButton jBMyBooks1;
     private javax.swing.JLabel jLMyBooks;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jSPMyBooks;
     private javax.swing.JTextField jTFmyBooks;
-    private javax.swing.JTable jTMyBooksA;
     // End of variables declaration//GEN-END:variables
 }
