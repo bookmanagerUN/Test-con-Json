@@ -10,14 +10,14 @@ import Data.Book;
  *
  * @author Usuario
  */
-public class BookFilter  implements Comparable<BookFilter>{
-    String name;
-    String author;
-    String category;
-    int page;
-    boolean status;
+public class BookFilterName  implements Comparable<BookFilterName>{
+    public String name;
+    public String author;
+    public String category;
+    public int page;
+    public boolean status;
     
-    public BookFilter(Book book){
+    public BookFilterName(Book book){
         this.author = book.getBookInformation().getAuthor();
         this.category = book.getBookInformation().getCategory();
         this.name = book.getBookInformation().getName();
@@ -27,7 +27,7 @@ public class BookFilter  implements Comparable<BookFilter>{
     
     
     @Override
-    public int compareTo(BookFilter toCompare){
+    public int compareTo(BookFilterName toCompare){
         if (this.name != toCompare.name){
             return this.name.compareTo(toCompare.name);
         }

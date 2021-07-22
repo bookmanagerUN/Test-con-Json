@@ -6,6 +6,7 @@
 package util.treeStructures;
 
 import util.BinaryNode;
+import util.LinkedList;
 import util.MyQueue;
 
 /**
@@ -74,7 +75,36 @@ public class TBTree /*TraversalBinaryTree*/ <DataType extends Comparable<? super
             System.out.print(node.data + " ");
         }
     }
+    
+    /**
+     * Método que inicializa el método recursivo {@link #inorder(BinaryNode)}
+     * @return LinkedList con el arbol recorrido inorder
+     */
+    public LinkedList<DataType>  inorderToLinkedList() {
+        LinkedList<DataType> linkedList = new LinkedList<>();
+        return this.inorderToLinkedLIst(this.root,linkedList);
+        
+    }
 
+    /**
+     * Método recursivo que imprime el nodo izquierdo, luego imprime la subraíz y posteriormente el hijo derecho.
+     * @param node Parámetro que se asigna recursivamente. Indica el nodo actual desde donde se están haciendo las
+     *             comparaciones.
+     */
+    private LinkedList<DataType> inorderToLinkedLIst(BinaryNode<DataType> node,LinkedList<DataType> linkedList) {
+        if(this.root == null) {
+            System.err.print("No es posible ejecutar este método");
+            return linkedList;
+        }
+        if(node != null) {
+            this.inorderToLinkedLIst(node.left,linkedList);
+            linkedList.insertEnd(node.data);
+            //System.out.print(node.data + " ");
+            this.inorderToLinkedLIst(node.right,linkedList);
+        }
+        return linkedList;
+    }
+    
     /**
      * Método que inicializa el método recursivo {@link #inorder(BinaryNode)}
      */

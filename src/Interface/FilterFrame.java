@@ -6,6 +6,7 @@
 package Interface;
 //hola2
 import Data.Book;
+import Data.BookFilterName;
 import Data.MyBooks;
 import Data.FrameAux;
 import Data.Search;
@@ -20,6 +21,7 @@ import util.ReadJson;
 import util.WriteJson;
 import util.FrameStack;
 import util.Heaps;
+import util.LinkedList;
 import util.MyStack;
 
 
@@ -50,7 +52,7 @@ public class FilterFrame extends javax.swing.JFrame {
         //poner logo en JLabel
         UtilInterface.printImage(this.JLProyectIcon, "src/Interface/MediaFiles/LogoOriginal.png", this);
         // rellenar tabla
-        fillTable();
+        UtilInterface.cleanJTable(jTMyBooks);
         if(this.frameStack.getStackFrame().count == 0){
             this.jBBack.setVisible(false);
         }
@@ -90,7 +92,7 @@ public class FilterFrame extends javax.swing.JFrame {
         // cambiar headers de la tabla
         this.jTMyBooks.getTableHeader().setFont(new Font("Tahoma", Font.BOLD, 18));
         this.jTMyBooks.getTableHeader().setForeground(Color.BLUE);
-        fillTable();
+        UtilInterface.cleanJTable(jTMyBooks);
 
         //poner logo en JLabel
         UtilInterface.printImage(JLProyectIcon, "src/Interface/MediaFiles/LogoOriginal.png", this);
@@ -107,24 +109,23 @@ public class FilterFrame extends javax.swing.JFrame {
         
     }
         
-    private void fillTable() {
+    private void fillTable(LinkedList<BookFilterName> listToFill) {
         UtilInterface.cleanJTable(jTMyBooks);
-        for (int i = 0; i < this.myBooks.getMyBooks().count; i++) {
-            int intid = i;
-            String id = String.valueOf(intid + 1);
-            String name = this.myBooks.getMyBooks().elementPosition(i).getBookInformation().getName();
-            String author = this.myBooks.getMyBooks().elementPosition(i).getBookInformation().getAuthor();
-            boolean state = this.myBooks.getMyBooks().elementPosition(i).getStatus();
+        for (int i = 0; i < listToFill.count; i++) {
+            String name = listToFill.elementPosition(i).name;
+            String author = listToFill.elementPosition(i).author;
+            boolean state = listToFill.elementPosition(i).status;
             String strState;
             if (state) {
                 strState = "Finalizado";
             } else {
                 strState = "Sin finalizar";
             }
-            String category = this.myBooks.getMyBooks().elementPosition(i).getBookInformation().getCategory();
+            String category = listToFill.elementPosition(i).category;
+            String page = String.valueOf(listToFill.elementPosition(i).page);
 
 
-            String[] tbData = {id, name, author, strState, category};
+            String[] tbData = { name, author, category, strState, page};
             DefaultTableModel tblModel = (DefaultTableModel) jTMyBooks.getModel();
             tblModel.addRow(tbData);
 
@@ -174,16 +175,16 @@ public class FilterFrame extends javax.swing.JFrame {
         jTMyBooks.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jTMyBooks.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"0", "Libro 1", "Pedro", "Finalizado", "cat. 1"},
-                {"1", "Libro 2", "Carlos", "En lectura", "cat. 2"},
-                {"2", "Libro 3", "Esteban", "No empezado", "cat.3"}
+                {"Libro 1", "Pedro", "cat. 1", "Finalizado", null},
+                {"Libro 2", "Carlos", "cat. 2", "En lectura", null},
+                {"Libro 3", "Esteban", "cat.3", "No empezado", null}
             },
             new String [] {
-                "ID", "Nombre", "Autor", "Estado", "Categoria"
+                "Nombre", "Autor", "Categoria", "Estado", "Páginas leidas"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -365,8 +366,14 @@ public class FilterFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         int option = jCBOption.getSelectedIndex();
         System.out.println(option);
-        if (this.jTFtoFilter.getText().length() > 0 && option == 0) {
-            Search search = new Search(this.jTFtoFilter.getText(), this.myBooks);
+        System.out.println(this.jTFtoFilter.getText().length());
+        if (this.jTFtoFilter.getText().length() > 0) {
+            Search search = new Search(this.jTFtoFilter.getText(), this.myBooks,option);
+            fillTable(search.toLinkedList());
+        }
+        else{
+            int dilog = JOptionPane.showConfirmDialog(null, "rellene el espacio vacío");
+            System.out.println("error");
         }
     }//GEN-LAST:event_jBGoToFilterActionPerformed
 
@@ -386,7 +393,7 @@ public class FilterFrame extends javax.swing.JFrame {
 
     private void jBFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBFilterActionPerformed
         // TODO add your handling code here:
-        Search search = new Search("caperucita", this.myBooks);
+       
     }//GEN-LAST:event_jBFilterActionPerformed
 
     private void jBBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBackActionPerformed

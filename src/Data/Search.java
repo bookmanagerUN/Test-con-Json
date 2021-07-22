@@ -16,23 +16,47 @@ import Data.MyBooks;
 public class Search {
     String text;
     MyBooks myBooks;
-    AVLTree<BookFilter> booksFilter;
-    public Search(String text, MyBooks myBooks){
+    AVLTree<BookFilterName> booksFilter;
+    //param  = 0 filter by name ; = 1 filter by Author; other Filter by category
+    int param;
+    public Search(String text, MyBooks myBooks, int param){
         this.text = text.toLowerCase();
         this.myBooks = myBooks;
         this.booksFilter = new AVLTree<>();
+        this.param = param;
+        System.out.println(this.text +" "+ this.param);
         findCoincidences();
-        booksFilter.inorder();
+        System.out.println(toLinkedList().toString());
+        //booksFilter.inorder();
+    }
+    public LinkedList<BookFilterName> toLinkedList(){
+        return this.booksFilter.inorderToLinkedList();
     }
     public void findCoincidences(){
         for (int i = 0; i < this.myBooks.getMyBooks().count; i++) {
             Book actualBook = this.myBooks.getMyBooks().elementPosition(i);
-            if(match(actualBook)){
-                this.booksFilter.insert(BookToBookFilter(actualBook));
+            
+            if(this.param == 0){
+                if(matchName(actualBook)){
+                    this.booksFilter.insert(BookToBookFilterName(actualBook));
+                }
             }
+            else if(this.param == 1){
+               if(matchAuthor(actualBook)){
+                    this.booksFilter.insert(BookToBookFilterAuthor(actualBook));
+                }
+            }
+            else{
+                if(matchCategory(actualBook)){
+                    this.booksFilter.insert(BookToBookFilterCategory(actualBook));
+                }
+            }
+                
+            
         }
     }
-    boolean match(Book book){
+    
+    boolean matchName(Book book){
         if(book.getBookInformation().getName().toLowerCase().contains(this.text)){
             return true;
         }
@@ -41,9 +65,33 @@ public class Search {
         }
             
     }
+    boolean matchAuthor(Book book){
+        if(book.getBookInformation().getAuthor().toLowerCase().contains(this.text)){
+            return true;
+        }
+        else{
+            return false;
+        }
+            
+    }
+    boolean matchCategory(Book book){
+        if(book.getBookInformation().getCategory().toLowerCase().contains(this.text)){
+            return true;
+        }
+        else{
+            return false;
+        }
+            
+    }
     
-    public BookFilter BookToBookFilter(Book book){
-        return new BookFilter(book);
+    public BookFilterName BookToBookFilterName(Book book){
+        return new BookFilterName(book);
+    }
+    public BookFilterAuthor BookToBookFilterAuthor(Book book){
+        return new BookFilterAuthor(book);
+    }
+    public BookFilterCategory BookToBookFilterCategory(Book book){
+        return  new BookFilterCategory(book);
     }
     
  
