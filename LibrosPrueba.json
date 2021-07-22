@@ -112,6 +112,24 @@
         "notes": {
           "count": 0
         }
+      },
+      {
+        "date": "19/07/2021",
+        "page": 56,
+        "paragraph": 4,
+        "note": "nota5",
+        "notes": {
+          "count": 0
+        }
+      },
+      {
+        "date": "19/07/2021",
+        "page": 67,
+        "paragraph": 90,
+        "note": "nota 45",
+        "notes": {
+          "count": 0
+        }
       }
     ],
     "opinion": ""
@@ -160,6 +178,15 @@
         "notes": {
           "count": 0
         }
+      },
+      {
+        "date": "19/07/2021",
+        "page": 34,
+        "paragraph": 2,
+        "note": "awefasdfavgfhmfghmfghfgmn",
+        "notes": {
+          "count": 0
+        }
       }
     ],
     "opinion": "hfhhfhfh"
@@ -179,6 +206,84 @@
       "Los tres mosqueteros",
       "Wild",
       "Avenuras",
+      "12341243"
+    ],
+    "notes": [],
+    "opinion": ""
+  },
+  {
+    "actualPage": 56,
+    "status": true,
+    "bookInformation": [
+      "El escarabajo de oro",
+      "Carlos Mejia",
+      "fantastico",
+      "12341243",
+      "El escarabajo de oro",
+      "Carlos Mejia",
+      "fantastico",
+      "12341243",
+      "El escarabajo de oro",
+      "Carlos Mejia",
+      "fantastico",
+      "12341243"
+    ],
+    "notes": [
+      {
+        "date": "19/07/2021",
+        "page": 56,
+        "paragraph": 4,
+        "note": "El autor hace referiencia a la cantidad de escarabajos que hay en la sopa",
+        "notes": {
+          "count": 0
+        }
+      }
+    ],
+    "opinion": ""
+  },
+  {
+    "actualPage": 0,
+    "status": false,
+    "bookInformation": [
+      "Caperucita amarilla",
+      "Juan valdez",
+      "adsfas",
+      "12341243",
+      "Caperucita amarilla",
+      "Juan valdez",
+      "adsfas",
+      "12341243",
+      "Caperucita amarilla",
+      "Juan valdez",
+      "adsfas",
+      "12341243"
+    ],
+    "notes": [],
+    "opinion": ""
+  },
+  {
+    "actualPage": 0,
+    "status": false,
+    "bookInformation": [
+      "Caperucita morada",
+      "Carlitos",
+      "qwer",
+      "12341243",
+      "Caperucita morada",
+      "Carlitos",
+      "qwer",
+      "12341243"
+    ],
+    "notes": [],
+    "opinion": ""
+  },
+  {
+    "actualPage": 0,
+    "status": false,
+    "bookInformation": [
+      "la Caperucita roja",
+      "asdasd",
+      "sdfgdsfg",
       "12341243"
     ],
     "notes": [],

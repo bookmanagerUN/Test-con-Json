@@ -8,6 +8,7 @@ package Interface;
 import Data.Book;
 import Data.MyBooks;
 import Data.FrameAux;
+import Data.Search;
 import java.awt.Color;
 import java.awt.Font;
 import java.io.FileNotFoundException;
@@ -273,7 +274,7 @@ public class MainFrame extends javax.swing.JFrame {
                                 .addComponent(jBMyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jBDeleteBook, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 186, Short.MAX_VALUE)))
+                        .addGap(0, 189, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         JPMyBooksLayout.setVerticalGroup(
@@ -313,7 +314,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        jBFilter.setText("Generar  informe");
+        jBFilter.setText("filtro");
         jBFilter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBFilterActionPerformed(evt);
@@ -331,7 +332,7 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(JLProyectIcon, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                     .addComponent(jBNewInform, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jBFilter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addComponent(JPMyBooks, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -422,6 +423,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void jBFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBFilterActionPerformed
         // TODO add your handling code here:
+        Search search = new Search("caperucita", this.myBooks);
     }//GEN-LAST:event_jBFilterActionPerformed
 
     private void jBBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBackActionPerformed

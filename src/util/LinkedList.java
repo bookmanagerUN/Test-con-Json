@@ -145,7 +145,7 @@ public class LinkedList<TypeOfData> {
         }
     }
 
-    LinkedList<Integer> find(TypeOfData element) {
+    public LinkedList<Integer> find(TypeOfData element) {
 
         LinkedList<Integer> ret = new LinkedList<>();
 
@@ -198,7 +198,7 @@ public class LinkedList<TypeOfData> {
             return " ";
         } else {
             while (aux != null) {
-                str.append(aux.data);
+                str.append(aux.data.toString());
                 str.append(", ");
                 aux = aux.next;
             }
