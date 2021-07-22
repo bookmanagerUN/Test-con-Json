@@ -22,20 +22,20 @@ import util.BinaryNode;
  * logren en O(log n).
  *
  * @author Diego Andrés Quintero Rois
- * 
+ * @version 1.1
  * @param <DataType> Tipo de dato abstracto (ADT) que a su vez implementa la interfaz {@link Comparable}.
  */
 public class AVLTree<DataType extends Comparable<? super DataType>> extends BSTree<DataType> {
 
     /**
-     * Construye un Árbol AVL vacío llamando al método Super Constructor.
+     * Construye un Árbol AVL vacío invocando al Super Constructor.
      */
     public AVLTree() {
         super();
     }
 
     /**
-     * Inserta un dato empleando {@code super.insert()} y aplica los métodos de balanceo de {@code this.balance()}.
+     * Inserta un dato empleando {@link BSTree#insert(Comparable)} y aplica los métodos de balanceo de {@link #balance(BinaryNode)}.
      *
      * @param data dato a insertar.
      */
@@ -47,12 +47,13 @@ public class AVLTree<DataType extends Comparable<? super DataType>> extends BSTr
     }
 
     /**
-     * Elimina un dato empleando {@code super.delete()} y aplica los métodos de balanceo de {@code this.balance()}.
+     * Elimina un dato empleando {@link BSTree#delete(Comparable)} y aplica los métodos de balanceo de {@link #balance(BinaryNode)}.
      *
      * @param data dato a eliminar.
      */
     @Override
     public void delete(DataType data) {
+        if(!super.checkNode(data)) return;
         BinaryNode<DataType> dataNode = super.find(super.root, data);
         BinaryNode<DataType> parent = dataNode.right == null ? dataNode.parent : super.next(dataNode).parent;
         super.delete(data);
@@ -62,8 +63,7 @@ public class AVLTree<DataType extends Comparable<? super DataType>> extends BSTr
     /**
      * Hace el balanceo recursivo y de manera ascendente desde el nodo que se insertó, hasta la raíz,
      * basandose en la comparación de las alturas de los nodos insertados que se actualiza en los métodos
-     * {@code this.balanceRight} y {@code this.balanceLeft}.
-     *
+     * {@link #balanceRight(BinaryNode)} y {@link #balanceLeft(BinaryNode)}.
      * @param node nodo que se pretende balancear.
      */
     private void balance(BinaryNode<DataType> node) {
@@ -95,9 +95,9 @@ public class AVLTree<DataType extends Comparable<? super DataType>> extends BSTr
         int leftHeightOfLeft = left.left != null ? left.left.height : 0;
         int rightHeightOfLeft = left.right != null ? left.right.height : 0;
 
-        if(leftHeightOfLeft > rightHeightOfLeft)
-            rotateLeft(left);
-        rotateRight(node);
+        if(rightHeightOfLeft > leftHeightOfLeft)
+            this.rotateLeft(left);
+        this.rotateRight(node);
     }
 
     /**
@@ -114,8 +114,8 @@ public class AVLTree<DataType extends Comparable<? super DataType>> extends BSTr
         int rightHeightOfRight = right.right != null ? right.right.height : 0;
 
         if(leftHeightOfRight > rightHeightOfRight)
-            rotateRight(right);
-        rotateLeft(node);
+            this.rotateRight(right);
+        this.rotateLeft(node);
     }
 
     /**
@@ -127,25 +127,26 @@ public class AVLTree<DataType extends Comparable<? super DataType>> extends BSTr
     private void rotateRight(BinaryNode<DataType> node) {
         BinaryNode<DataType> parent = node.parent;
         BinaryNode<DataType> leftSon = node.left;
+        BinaryNode<DataType> rightSubRootOfLeftSon = leftSon.right;
 
-        if(leftSon.right != null) leftSon.right.parent = node;
-        node.left = leftSon.right;
+        leftSon.parent=parent;
 
-        leftSon.right = node;
-        node.parent = leftSon;
-
-        if(parent != null) {
+        if(parent == null) {
+            super.root = leftSon;
+        } else {
             if(leftSon.data.compareTo(parent.data) < 0)
                 parent.left = leftSon;
-            if(leftSon.data.compareTo(parent.data) > 0)
+            else if(leftSon.data.compareTo(parent.data) > 0)
                 parent.right = leftSon;
-        } else
-            super.root = leftSon;
+        }
 
-        leftSon.parent = parent;
+        node.parent=leftSon;
+        leftSon.right=node;
+        if(rightSubRootOfLeftSon!=null)rightSubRootOfLeftSon.parent=node;
+        node.left=rightSubRootOfLeftSon;
 
         this.adjustHeight(node);
-        this.adjustHeight(node.parent);
+        this.adjustHeight(leftSon);
     }
 
     /**
@@ -157,25 +158,26 @@ public class AVLTree<DataType extends Comparable<? super DataType>> extends BSTr
     private void rotateLeft(BinaryNode<DataType> node) {
         BinaryNode<DataType> parent = node.parent;
         BinaryNode<DataType> rightSon = node.right;
+        BinaryNode<DataType> leftSubRootOfRightSon = rightSon.left;
 
-        if(rightSon.left != null) rightSon.left.parent = node;
-        node.right = rightSon.left;
+        rightSon.parent=parent;
 
-        rightSon.left = node;
-        node.parent = rightSon;
-
-        if(parent != null) {
+        if(parent == null) {
+            super.root = rightSon;
+        } else {
             if(rightSon.data.compareTo(parent.data) < 0)
                 parent.left = rightSon;
-            if(rightSon.data.compareTo(parent.data) > 0)
+            else if(rightSon.data.compareTo(parent.data) > 0)
                 parent.right = rightSon;
-        } else
-            super.root = rightSon;
+        }
 
-        rightSon.parent = parent;
+        node.parent=rightSon;
+        rightSon.left=node;
+        if(leftSubRootOfRightSon!=null)leftSubRootOfRightSon.parent=node;
+        node.right=leftSubRootOfRightSon;
 
         this.adjustHeight(node);
-        this.adjustHeight(node.parent);
+        this.adjustHeight(rightSon);
     }
 
     /**

@@ -5,6 +5,7 @@
  */
 package util.treeStructures;
 
+import java.nio.BufferUnderflowException;
 import util.BinaryNode;
 import util.LinkedList;
 
@@ -23,7 +24,7 @@ import util.LinkedList;
  * </ul></ul>
  *
  * @author Diego Andrés Quintero Rois
- * 
+ *
  * @param <DataType> Tipo de dato abstracto (ADT) que a su vez implementa la interfaz {@link Comparable}.
  */
 public class BSTree /*BinarySearchTree*/ <DataType extends Comparable<? super DataType>> extends TBTree<DataType> {
@@ -76,8 +77,7 @@ public class BSTree /*BinarySearchTree*/ <DataType extends Comparable<? super Da
      * @param data dato a eliminar.
      */
     public void delete(DataType data) {
-        if(super.isEmpty()) return;
-        if(!checkNode(data)) return;
+        if(super.isEmpty() || !this.checkNode(data)) return;
         this.delete(find(this.root, data));
     }
 
@@ -104,6 +104,7 @@ public class BSTree /*BinarySearchTree*/ <DataType extends Comparable<? super Da
      * @param data subraíz del árbol que se desea eliminar.
      */
     public void remove(DataType data) {
+        if(super.isEmpty() || !this.checkNode(data)) return;
         this.remove(find(this.root, data));
     }
 
@@ -128,7 +129,7 @@ public class BSTree /*BinarySearchTree*/ <DataType extends Comparable<? super Da
      * @return dato encontrado.
      */
     public DataType find(DataType data) {
-        if(super.isEmpty()) return null;
+        if(super.isEmpty() || !this.checkNode(data)) throw new BufferUnderflowException();
         return find(super.root, data).data;
     }
 
@@ -184,7 +185,7 @@ public class BSTree /*BinarySearchTree*/ <DataType extends Comparable<? super Da
     public LinkedList<DataType> search(DataType firstData, DataType lastData) {
         LinkedList<DataType> auxList = new LinkedList<>();
         if(this.isEmpty()) return auxList;
-        DataType auxData = this.find(firstData);
+        DataType auxData = this.find(this.root,firstData).data;
         auxData = auxData.compareTo(firstData) >= 0 ? auxData : this.next(auxData);
         while (auxData != null && lastData.compareTo(auxData) >= 0) {
             auxList.insertEnd(auxData);

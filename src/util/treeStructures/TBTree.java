@@ -15,10 +15,10 @@ import util.MyQueue;
  * sin bucles y es no dirigido
  *
  * @author Diego Andrés Quintero Rois
- * 
+ *
  * @param <DataType> Tipo de dato abstracto (ADT) que a su vez implementa la interfaz {@link Comparable}.
  */
-public class TBTree /*TraversalBinaryTree*/ <DataType extends Comparable<? super DataType>>{
+public class TBTree /*TraversalBinaryTree*/ <DataType extends Comparable<? super DataType>> {
     /**
      * Referencia a la raíz del árbol binario
      */
@@ -94,7 +94,7 @@ public class TBTree /*TraversalBinaryTree*/ <DataType extends Comparable<? super
         }
         if(node != null) {
             this.inorder(node.left);
-            System.out.print(node.data.toString() + " ");
+            System.out.print(node.data + " ");
             this.inorder(node.right);
         }
     }
@@ -122,7 +122,7 @@ public class TBTree /*TraversalBinaryTree*/ <DataType extends Comparable<? super
             BinaryNode<DataType> aux = queue.dequeue();
             if(aux.left != null) queue.enqueue(aux.left);
             if(aux.right != null) queue.enqueue(aux.right);
-            System.out.print(aux.data.toString() + " ");
+            System.out.print(aux.data + " ");
         }
     }
 
