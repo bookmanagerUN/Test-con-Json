@@ -1,5 +1,5 @@
-
 package Interface;
+
 import Data.Book;
 import Data.MyBooks;
 import Data.FrameAux;
@@ -12,20 +12,20 @@ import util.ReadJson;
 import util.FrameStack;
 import util.Heaps;
 
-
 public class AdviceFrame extends javax.swing.JFrame {
+
     private MyBooks myBooks = new MyBooks();
-    private FrameStack frameStack; 
+    private FrameStack frameStack;
     private Heaps heap;
     private MyBooks myBooks2;
 
     public AdviceFrame(MyBooks mybooks, Heaps heap, FrameStack frameStack) {
-        
+
         this.myBooks2 = mybooks;
         this.myBooks = myBooks;
         this.myBooks.printAllBooks();
         this.frameStack = frameStack;
-        this.heap=heap;
+        this.heap = heap;
         initComponents();
 
         // cambiar headers de la tabla
@@ -36,24 +36,23 @@ public class AdviceFrame extends javax.swing.JFrame {
         UtilInterface.printImage(this.JLProyectIcon, "src/Interface/MediaFiles/LogoOriginal.png", this);
         // rellenar tabla
         fillTable();
-        if(this.frameStack.getStackFrame().count == 0){
+        if (this.frameStack.getStackFrame().count == 0) {
             this.jBBack.setVisible(false);
         }
-        if(this.frameStack.getStackFrameNext().count == 0){
+        if (this.frameStack.getStackFrameNext().count == 0) {
             this.jBForward.setVisible(false);
         }
-        
+
         FrameAux frameAux2 = (FrameAux) this.frameStack.getStackFrame().peek();
-        if(frameAux2.getTypeOfFrame()!= 1){
-            FrameAux frame = new FrameAux(1, this.myBooks);
+        if (frameAux2.getTypeOfFrame() != 5) {
+            FrameAux frame = new FrameAux(5, this.myBooks);
             this.frameStack.getStackFrame().push(frame);
         }
-        
 
     }
-    
+
     public AdviceFrame() {
-            
+
         //TODO CHECK leer Json; crear la clase MyBook; cada vez que se inicie el programa verificar Json
         //TODO si no hay Json crear desde 0 (libro de prueba)
         try {
@@ -75,17 +74,17 @@ public class AdviceFrame extends javax.swing.JFrame {
 
         //poner logo en JLabel
         UtilInterface.printImage(JLProyectIcon, "src/Interface/MediaFiles/LogoOriginal.png", this);
-        
+
         this.frameStack = new FrameStack(myBooks);
         //System.out.println("esta es la pila: ");
         //FrameAux s =(FrameAux) frameStack.getStackFrame().peek();
         //System.out.println(s.getTypeOfFrame());
-        
+
         this.jBForward.setVisible(false);
         this.jBBack.setVisible(false);
-        
+
     }
-        
+
     private void fillTable() {
         UtilInterface.cleanJTable(jTMyBooksA);
         for (int i = 1; i <= this.heap.currentSize; i++) {
@@ -100,12 +99,10 @@ public class AdviceFrame extends javax.swing.JFrame {
             DefaultTableModel tblModel = (DefaultTableModel) jTMyBooksA.getModel();
             tblModel.addRow(tbData);
 
-
         }
 
     }
 
-   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -294,10 +291,9 @@ public class AdviceFrame extends javax.swing.JFrame {
             Book book = this.myBooks.getMyBooks().elementPosition(id - 1);
             //System.out.println(id);
             book.printBook();
-            BookInfoFrame bookInfo = new BookInfoFrame(book, this.myBooks,this.frameStack);
+            BookInfoFrame bookInfo = new BookInfoFrame(book, this.myBooks, this.frameStack);
             bookInfo.setVisible(true);
             this.dispose();
-
 
             this.dispose();
         }
@@ -308,9 +304,20 @@ public class AdviceFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jTFmyBooksActionPerformed
 
     private void jBBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBackActionPerformed
-        
-        
-        
+        FrameAux frameas = (FrameAux) frameStack.getStackFrame().peek();
+
+        System.out.println(frameas.getMyBooks().toString());
+        System.out.println(frameas.getTypeOfFrame());
+
+        frameStack.pop();
+
+        frameas = (FrameAux) frameStack.getStackFrame().peek();
+
+        System.out.println(frameas.getMyBooks().toString());
+        JFrame frame = this.frameStack.generateFrame();
+        frame.setVisible(true);
+        this.dispose();
+
     }//GEN-LAST:event_jBBackActionPerformed
 
     private void jBForwardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBForwardActionPerformed
@@ -327,7 +334,7 @@ public class AdviceFrame extends javax.swing.JFrame {
         JFrame frame = this.frameStack.generateFrame();
         frame.setVisible(true);
         this.dispose();
-         
+
     }//GEN-LAST:event_jBForwardActionPerformed
 
     /**

@@ -6,6 +6,7 @@
 package util;
 import Data.FrameAux;
 import Data.MyBooks;
+import Interface.AdviceFrame;
 import javax.swing.JFrame;
 import Interface.BookInfoFrame;
 import Interface.FilterBooksFrame;
@@ -60,7 +61,7 @@ public class FrameStack {
             return new NewNoteFrame( this.stackFrame.peek().getMyBooks(),this.stackFrame.peek().getBook(),this);
         }
         else if (this.stackFrame.peek().getTypeOfFrame() == 5) {
-            return  new FilterBooksFrame();
+            return  new AdviceFrame();
         }
         else if (this.stackFrame.peek().getTypeOfFrame() == 6) {
             return  new ReportFrame(this.stackFrame.peek().getMyBooks(), this);
