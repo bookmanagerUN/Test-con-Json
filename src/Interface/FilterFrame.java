@@ -422,7 +422,7 @@ public class FilterFrame extends javax.swing.JFrame {
     private void jBNewInformActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNewInformActionPerformed
         this.frameStack.cleanNextStack();
         
-        AdviceFrame AdviceFrame = new AdviceFrame(this.myBooks,this.heap, this.frameStack);
+        AdviceFrame AdviceFrame = new AdviceFrame(this.myBooks, this.frameStack);
         AdviceFrame.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jBNewInformActionPerformed

@@ -61,7 +61,7 @@ public class FrameStack {
             return new NewNoteFrame( this.stackFrame.peek().getMyBooks(),this.stackFrame.peek().getBook(),this);
         }
         else if (this.stackFrame.peek().getTypeOfFrame() == 5) {
-            return  new AdviceFrame();
+            return  new AdviceFrame(this.stackFrame.peek().getMyBooks(),this);
         }
         else if (this.stackFrame.peek().getTypeOfFrame() == 6) {
             return  new ReportFrame(this.stackFrame.peek().getMyBooks(), this);
