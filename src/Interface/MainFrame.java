@@ -51,7 +51,7 @@ public class MainFrame extends javax.swing.JFrame {
         UtilInterface.printImage(this.JLProyectIcon, "src/Interface/MediaFiles/VAzul1.png", this);
         // rellenar tabla
         fillTable();
-        if(this.frameStack.getStackFrame().count == 0){
+        if(this.frameStack.getStackFrame().count == 1){
             this.jBBack.setVisible(false);
         }
         if(this.frameStack.getStackFrameNext().count == 0){
