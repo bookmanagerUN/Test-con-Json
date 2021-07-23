@@ -48,18 +48,7 @@ public class AdviceFrame extends javax.swing.JFrame {
     }
 
     public AdviceFrame() {
-        
        
-        try {
-            ReadJson readJson = new ReadJson();
-            this.myBooks = readJson.arrAuxToMyBooks(readJson.readJson());
-
-        } catch (FileNotFoundException ignored) {
-            System.out.println(ignored.getLocalizedMessage());
-            System.out.println(ignored.getMessage());
-            System.out.println("Interface.MainFrame.<init>() error al hacer lectura de Json");
-        }
-
         initComponents();
         heap = new Heaps();
         heap.buildHeap(myBooks2);
