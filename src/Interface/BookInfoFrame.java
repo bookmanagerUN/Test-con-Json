@@ -726,6 +726,11 @@ public class BookInfoFrame extends javax.swing.JFrame {
         });
 
         jBFilter.setText("Filtrar");
+        jBFilter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBFilterActionPerformed(evt);
+            }
+        });
 
         jBNewInform.setText("Generar  informe");
         jBNewInform.addActionListener(new java.awt.event.ActionListener() {
@@ -1121,6 +1126,13 @@ public class BookInfoFrame extends javax.swing.JFrame {
 
         jTactualPage.setText("");
     }//GEN-LAST:event_jBactualPage2ActionPerformed
+
+    private void jBFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBFilterActionPerformed
+        // TODO add your handling code here:
+        FilterFrame filter = new FilterFrame(this.myBooks, this.frameStack);
+        filter.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jBFilterActionPerformed
 
     /**
      * @param args the command line arguments

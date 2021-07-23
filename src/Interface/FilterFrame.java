@@ -61,8 +61,8 @@ public class FilterFrame extends javax.swing.JFrame {
         }
         
         FrameAux frameAux2 = (FrameAux) this.frameStack.getStackFrame().peek();
-        if(frameAux2.getTypeOfFrame()!= 1){
-            FrameAux frame = new FrameAux(1, this.myBooks);
+        if(frameAux2.getTypeOfFrame()!= 6){
+            FrameAux frame = new FrameAux(6, this.myBooks);
             this.frameStack.getStackFrame().push(frame);
         }
         
@@ -398,7 +398,19 @@ public class FilterFrame extends javax.swing.JFrame {
 
     private void jBBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBackActionPerformed
         // TODO add your handling code here:
-        
+        FrameAux frameas = (FrameAux) frameStack.getStackFrame().peek();
+
+        //System.out.println(frameas.getMyBooks().toString());
+        //System.out.println(frameas.getTypeOfFrame());
+
+        frameStack.pop();
+
+        frameas = (FrameAux) frameStack.getStackFrame().peek();
+
+        //System.out.println(frameas.getMyBooks().toString());
+        JFrame frame = this.frameStack.generateFrame();
+        frame.setVisible(true);
+        this.dispose();
         
     }//GEN-LAST:event_jBBackActionPerformed
 

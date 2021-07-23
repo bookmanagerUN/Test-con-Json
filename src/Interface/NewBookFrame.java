@@ -242,6 +242,11 @@ public class NewBookFrame extends javax.swing.JFrame {
         });
 
         jBFilter.setText("Filtrar");
+        jBFilter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBFilterActionPerformed(evt);
+            }
+        });
 
         jBNewInform.setText("Generar  informe");
 
@@ -378,6 +383,13 @@ public class NewBookFrame extends javax.swing.JFrame {
         frame.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jBForwardActionPerformed
+
+    private void jBFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBFilterActionPerformed
+        // TODO add your handling code here:
+        FilterFrame filter = new FilterFrame(this.myBooks, this.frameStack);
+        filter.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jBFilterActionPerformed
 
     //this metod should be in util or something like that
     /*

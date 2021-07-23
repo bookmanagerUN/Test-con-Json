@@ -236,6 +236,11 @@ public class NewNoteFrame extends javax.swing.JFrame {
         });
 
         jBFilter.setText("Filtrar");
+        jBFilter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBFilterActionPerformed(evt);
+            }
+        });
 
         jBNewInform.setText("Generar  informe");
 
@@ -378,6 +383,13 @@ public class NewNoteFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         
     }//GEN-LAST:event_jTFDateActionPerformed
+
+    private void jBFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBFilterActionPerformed
+        // TODO add your handling code here:
+        FilterFrame filter = new FilterFrame(this.myBooks, this.frameStack);
+        filter.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jBFilterActionPerformed
 
     private void cleanTextBox() {
         UtilInterface.cleanTextBox(this.jTFDate);
