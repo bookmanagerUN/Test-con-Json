@@ -78,20 +78,21 @@ public class AdviceFrame extends javax.swing.JFrame {
             
             jLabel9.setText(book1.getBookInformation().getName());
             jLabel10.setText(String.valueOf(book1.getActualPage()));
+            }
+            
         }
         else{
-             int option = JOptionPane.showConfirmDialog(null, "No tienes mas sugerencias, ¿Quieres verlas de nuevo.?");
-             if (option == 0) {
-                Heaps heap1=new Heaps();
-                heap1.buildHeap(myBooks2);
-                heap=heap1;
-                fillLabels();
+            int option = JOptionPane.showConfirmDialog(null, "No tienes mas sugerencias, ¿Quieres verlas de nuevo.?");
+                if (option == 0) {
+                    Heaps heap1=new Heaps();
+                    heap1.buildHeap(myBooks2);
+                    heap=heap1;
+                    fillLabels();
              } else if (option == 1) {
                  System.out.println("ok");
                 } else {
                  System.out.println("AAAAAAAAAAAA");
              }
-        }
         }
         
         
