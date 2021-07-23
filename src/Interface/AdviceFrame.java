@@ -328,7 +328,7 @@ public class AdviceFrame extends javax.swing.JFrame {
     private void jBMyBooksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBMyBooksActionPerformed
         // TODO add your handling code here:
         
-        Book book = (Book) heap.deleteMax();
+        Book book = (Book) heap.findMax();
         int i = 0;
         while(this.heap.findMax()!= null){
             Book book1 = this.myBooks.getMyBooks().elementPosition(i);
