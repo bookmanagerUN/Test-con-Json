@@ -7,6 +7,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.io.FileNotFoundException;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import util.ReadJson;
 import util.FrameStack;
@@ -109,8 +110,18 @@ public class AdviceFrame extends javax.swing.JFrame {
     
     private void fillLabels(){
         book1 = (Book) heap.deleteMax();
-        jLabel9.setText(book1.getBookInformation().getName());
-        jLabel10.setText(String.valueOf(book1.getActualPage()));
+        if(book1 != null){
+            
+            jLabel9.setText(book1.getBookInformation().getName());
+            jLabel10.setText(String.valueOf(book1.getActualPage()));
+        }
+        else{
+            
+            JOptionPane.showMessageDialog(null, "No hay mas sugerencias.");
+        }
+        
+ 
+        
         
         
     }
