@@ -123,7 +123,6 @@ public class AdviceFrame extends javax.swing.JFrame {
         JPMyBooks = new javax.swing.JPanel();
         jBMyBooks = new javax.swing.JButton();
         jLMyBooks = new javax.swing.JLabel();
-        jTFmyBooks = new javax.swing.JTextField();
         jBForward = new javax.swing.JButton();
         jBBack = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -162,14 +161,6 @@ public class AdviceFrame extends javax.swing.JFrame {
         jLMyBooks.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLMyBooks.setText("Escriba el nombre del libro y luego presione el boton que desee.");
 
-        jTFmyBooks.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jTFmyBooks.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(31, 78, 121), 2, true));
-        jTFmyBooks.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTFmyBooksActionPerformed(evt);
-            }
-        });
-
         jBForward.setBackground(new java.awt.Color(255, 255, 255));
         jBForward.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/MediaFiles/adelante.png"))); // NOI18N
         jBForward.setBorder(null);
@@ -193,15 +184,12 @@ public class AdviceFrame extends javax.swing.JFrame {
         });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Para continuar tus lecturas de la mejor manera");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Te sugerimos continuar con tus libros mas adelantados");
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Continua con este libro:  ");
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -210,7 +198,6 @@ public class AdviceFrame extends javax.swing.JFrame {
         jLabel9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(31, 78, 121)));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Página en la que lo dejaste la última vez :");
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -220,7 +207,6 @@ public class AdviceFrame extends javax.swing.JFrame {
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 51));
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Dale click al boton, y mira la siguiente sugerencia.");
 
         jBMyBooks1.setBackground(new java.awt.Color(255, 255, 255));
@@ -247,30 +233,27 @@ public class AdviceFrame extends javax.swing.JFrame {
                             .addComponent(jLabel3)
                             .addComponent(jLabel2)))
                     .addGroup(JPMyBooksLayout.createSequentialGroup()
-                        .addGap(125, 125, 125)
-                        .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(JPMyBooksLayout.createSequentialGroup()
-                                .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel5))
-                                .addGap(18, 18, 18)
-                                .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)))
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 476, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jBMyBooks1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLMyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 656, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(JPMyBooksLayout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jTFmyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(67, 67, 67)
-                                .addComponent(jBMyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jBForward)
-                                .addGap(8, 8, 8))))
-                    .addGroup(JPMyBooksLayout.createSequentialGroup()
                         .addGap(28, 28, 28)
-                        .addComponent(jBBack, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jBBack, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(64, 64, 64)
+                        .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jBMyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(JPMyBooksLayout.createSequentialGroup()
+                                    .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel8)
+                                        .addComponent(jLabel5))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)))
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 476, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jBMyBooks1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLMyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 656, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JPMyBooksLayout.createSequentialGroup()
+                                    .addGap(138, 138, 138)
+                                    .addComponent(jBForward)
+                                    .addGap(8, 8, 8))))))
                 .addContainerGap(37, Short.MAX_VALUE))
         );
         JPMyBooksLayout.setVerticalGroup(
@@ -294,22 +277,16 @@ public class AdviceFrame extends javax.swing.JFrame {
                 .addComponent(jBMyBooks1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addComponent(jLMyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(JPMyBooksLayout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jBMyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTFmyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(20, 60, Short.MAX_VALUE))
+                        .addComponent(jBBack)
+                        .addGap(36, 36, 36))
                     .addGroup(JPMyBooksLayout.createSequentialGroup()
+                        .addComponent(jBMyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(JPMyBooksLayout.createSequentialGroup()
-                                .addComponent(jBBack)
-                                .addGap(36, 36, 36))
-                            .addGroup(JPMyBooksLayout.createSequentialGroup()
-                                .addComponent(jBForward)
-                                .addGap(30, 30, 30))))))
+                        .addComponent(jBForward)
+                        .addGap(30, 30, 30))))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -350,6 +327,20 @@ public class AdviceFrame extends javax.swing.JFrame {
 
     private void jBMyBooksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBMyBooksActionPerformed
         // TODO add your handling code here:
+        
+        Book book = (Book) heap.deleteMax();
+        int i = 0;
+        while(this.heap.findMax()!= null){
+            Book book1 = this.myBooks.getMyBooks().elementPosition(i);
+            if(book.getBookInformation().getName().compareTo(book.getBookInformation().getName())==0){
+                BookInfoFrame bookInfo = new BookInfoFrame(book, this.myBooks, this.frameStack);
+                bookInfo.setVisible(true);
+                this.dispose();
+                this.dispose();
+            }
+        }
+        /*
+        
         this.frameStack.cleanNextStack();
         if (this.jTFmyBooks.getText().length() > 0) {
             int id = Integer.parseInt(this.jTFmyBooks.getText());
@@ -363,11 +354,8 @@ public class AdviceFrame extends javax.swing.JFrame {
 
             this.dispose();
         }
+        */
     }//GEN-LAST:event_jBMyBooksActionPerformed
-
-    private void jTFmyBooksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFmyBooksActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTFmyBooksActionPerformed
 
     private void jBBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBackActionPerformed
         FrameAux frameas = (FrameAux) frameStack.getStackFrame().peek();
@@ -478,6 +466,5 @@ public class AdviceFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTFmyBooks;
     // End of variables declaration//GEN-END:variables
 }
