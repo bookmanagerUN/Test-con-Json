@@ -5,6 +5,7 @@ import Data.MyBooks;
 import Data.FrameAux;
 import java.io.FileNotFoundException;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import util.ReadJson;
 import util.FrameStack;
 import util.Heaps;
@@ -71,19 +72,28 @@ public class AdviceFrame extends javax.swing.JFrame {
     }
     
     private void fillLabels(){
-        book1 = (Book) heap.deleteMax();
-        if(book1 != null){
+        if(heap.currentSize>0){
+            book1 = (Book) heap.deleteMax();
+            if(book1 != null){
             
             jLabel9.setText(book1.getBookInformation().getName());
             jLabel10.setText(String.valueOf(book1.getActualPage()));
         }
         else{
-            /*
-             option = JOptionPane.showMessageDialog(null, "¿confirma?");
-            if(option ==0){
-                System.out.println("aaaaa");
-            }*/
+             int option = JOptionPane.showConfirmDialog(null, "No tienes mas sugerencias, ¿Quieres verlas de nuevo.?");
+             if (option == 0) {
+                Heaps heap1=new Heaps();
+                heap1.buildHeap(myBooks2);
+                heap=heap1;
+                fillLabels();
+             } else if (option == 1) {
+                 System.out.println("ok");
+                } else {
+                 System.out.println("AAAAAAAAAAAA");
+             }
         }
+        }
+        
         
  
         
@@ -302,10 +312,15 @@ public class AdviceFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBMyBooksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBMyBooksActionPerformed
-         
-        BookInfoFrame bookInfo = new BookInfoFrame(book1, this.myBooks2,this.frameStack);
+         if(book1!=null){
+             BookInfoFrame bookInfo = new BookInfoFrame(book1, this.myBooks2,this.frameStack);
             bookInfo.setVisible(true);
             this.dispose();
+         }
+         else{
+             
+         }
+        
     }//GEN-LAST:event_jBMyBooksActionPerformed
 
     private void jBBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBackActionPerformed
