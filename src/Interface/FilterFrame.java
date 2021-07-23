@@ -32,7 +32,6 @@ import util.MyStack;
 public class FilterFrame extends javax.swing.JFrame {
     private MyBooks myBooks = new MyBooks();
     private FrameStack frameStack;
-    private Heaps<Book> heap;
 
     /**
      * Creates new form NewJFrame1
@@ -65,9 +64,9 @@ public class FilterFrame extends javax.swing.JFrame {
             FrameAux frame = new FrameAux(6, this.myBooks);
             this.frameStack.getStackFrame().push(frame);
         }
+        this.jBGoToBook.setVisible(false);
+        this.jTFID.setVisible(false);
         
-        heap = new Heaps<>();
-        heap.buildHeap(myBooks);
         
         
         
@@ -104,14 +103,15 @@ public class FilterFrame extends javax.swing.JFrame {
         
         this.jBForward.setVisible(false);
         this.jBBack.setVisible(false);
-        heap = new Heaps<>();
-        heap.buildHeap(myBooks);
+        
         
     }
         
     private void fillTable(LinkedList<BookFilterName> listToFill) {
         UtilInterface.cleanJTable(jTMyBooks);
         for (int i = 0; i < listToFill.count; i++) {
+            String id = String.valueOf(listToFill.elementPosition(i).id);
+            System.out.println(id);
             String name = listToFill.elementPosition(i).name;
             String author = listToFill.elementPosition(i).author;
             boolean state = listToFill.elementPosition(i).status;
@@ -125,7 +125,7 @@ public class FilterFrame extends javax.swing.JFrame {
             String page = String.valueOf(listToFill.elementPosition(i).page);
 
 
-            String[] tbData = { name, author, category, strState, page};
+            String[] tbData = {id, name, author, category, strState, page};
             DefaultTableModel tblModel = (DefaultTableModel) jTMyBooks.getModel();
             tblModel.addRow(tbData);
 
@@ -133,6 +133,8 @@ public class FilterFrame extends javax.swing.JFrame {
         }
 
     }
+    
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -154,6 +156,8 @@ public class FilterFrame extends javax.swing.JFrame {
         jBForward = new javax.swing.JButton();
         jBBack = new javax.swing.JButton();
         jCBOption = new javax.swing.JComboBox<>();
+        jBGoToBook = new javax.swing.JButton();
+        jTFID = new javax.swing.JTextField();
         jBNewBook = new javax.swing.JButton();
         jBNewInform = new javax.swing.JButton();
         jBFilter = new javax.swing.JButton();
@@ -175,16 +179,16 @@ public class FilterFrame extends javax.swing.JFrame {
         jTMyBooks.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jTMyBooks.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Libro 1", "Pedro", "cat. 1", "Finalizado", null},
-                {"Libro 2", "Carlos", "cat. 2", "En lectura", null},
-                {"Libro 3", "Esteban", "cat.3", "No empezado", null}
+                {null, "Libro 1", "Pedro", "cat. 1", "Finalizado", null},
+                {null, "Libro 2", "Carlos", "cat. 2", "En lectura", null},
+                {null, "Libro 3", "Esteban", "cat.3", "No empezado", null}
             },
             new String [] {
-                "Nombre", "Autor", "Categoria", "Estado", "Páginas leidas"
+                "ID", "Nombre", "Autor", "Categoria", "Estado", "Páginas leidas"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, true
+                true, false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -250,6 +254,21 @@ public class FilterFrame extends javax.swing.JFrame {
             }
         });
 
+        jBGoToBook.setText("Ir al Libro");
+        jBGoToBook.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBGoToBookActionPerformed(evt);
+            }
+        });
+
+        jTFID.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jTFID.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(31, 78, 121), 2, true));
+        jTFID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTFIDActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout JPMyBooksLayout = new javax.swing.GroupLayout(JPMyBooks);
         JPMyBooks.setLayout(JPMyBooksLayout);
         JPMyBooksLayout.setHorizontalGroup(
@@ -262,18 +281,24 @@ public class FilterFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jBForward)
                         .addGap(31, 31, 31))
-                    .addGroup(JPMyBooksLayout.createSequentialGroup()
-                        .addComponent(jCBOption, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTFtoFilter, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)
-                        .addComponent(jBGoToFilter, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JPMyBooksLayout.createSequentialGroup()
                         .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLMyBooks, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jSPMyBooks))
-                        .addGap(6, 6, 6))))
+                        .addGap(6, 6, 6))
+                    .addGroup(JPMyBooksLayout.createSequentialGroup()
+                        .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(JPMyBooksLayout.createSequentialGroup()
+                                .addComponent(jBGoToBook, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTFID, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(JPMyBooksLayout.createSequentialGroup()
+                                .addComponent(jCBOption, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTFtoFilter, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(28, 28, 28)
+                                .addComponent(jBGoToFilter, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         JPMyBooksLayout.setVerticalGroup(
             JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -288,7 +313,11 @@ public class FilterFrame extends javax.swing.JFrame {
                     .addComponent(jBGoToFilter))
                 .addGap(65, 65, 65)
                 .addComponent(jSPMyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBGoToBook, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTFID, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
                 .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jBForward)
                     .addComponent(jBBack))
@@ -369,7 +398,10 @@ public class FilterFrame extends javax.swing.JFrame {
         System.out.println(this.jTFtoFilter.getText().length());
         if (this.jTFtoFilter.getText().length() > 0) {
             Search search = new Search(this.jTFtoFilter.getText(), this.myBooks,option);
+            this.jTFID.setVisible(true);
+            this.jBGoToBook.setVisible(true);
             fillTable(search.toLinkedList());
+            
         }
         else{
             int dilog = JOptionPane.showConfirmDialog(null, "rellene el espacio vacío");
@@ -443,6 +475,20 @@ public class FilterFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jCBOptionActionPerformed
 
+    private void jBGoToBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGoToBookActionPerformed
+        // TODO add your handling code here:
+        int id = Integer.parseInt(this.jTFID.getText());
+        Book checkBook = this.myBooks.getBookById(id);
+        BookInfoFrame newFrame = new BookInfoFrame(checkBook, this.myBooks, this.frameStack);
+        newFrame.setVisible(true);
+        this.dispose();
+        
+    }//GEN-LAST:event_jBGoToBookActionPerformed
+
+    private void jTFIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTFIDActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -487,6 +533,7 @@ public class FilterFrame extends javax.swing.JFrame {
     private javax.swing.JButton jBBack;
     private javax.swing.JButton jBFilter;
     private javax.swing.JButton jBForward;
+    private javax.swing.JButton jBGoToBook;
     private javax.swing.JButton jBGoToFilter;
     private javax.swing.JButton jBNewBook;
     private javax.swing.JButton jBNewInform;
@@ -494,6 +541,7 @@ public class FilterFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLMyBooks;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jSPMyBooks;
+    private javax.swing.JTextField jTFID;
     private javax.swing.JTextField jTFtoFilter;
     private javax.swing.JTable jTMyBooks;
     // End of variables declaration//GEN-END:variables

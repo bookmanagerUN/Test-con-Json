@@ -16,8 +16,10 @@ public class BookFilterName  implements Comparable<BookFilterName>{
     public String category;
     public int page;
     public boolean status;
+    public int id;
     
     public BookFilterName(Book book){
+        this.id = book.getId();
         this.author = book.getBookInformation().getAuthor();
         this.category = book.getBookInformation().getCategory();
         this.name = book.getBookInformation().getName();
@@ -44,6 +46,17 @@ public class BookFilterName  implements Comparable<BookFilterName>{
                         if(this.page < toCompare.page) return -1;
                         else if (this.page > toCompare.page) return 1;
                     }
+                    else{
+                        if(this.id<toCompare.id){
+                            return -1;
+                        }
+                        else if(this.id == toCompare.id){
+                            return 0;
+                        }
+                        else if (this.id > toCompare.id){
+                            return 1;
+                        }
+                    }
                 }
             }
         }
@@ -51,7 +64,7 @@ public class BookFilterName  implements Comparable<BookFilterName>{
     }
     
     public String toString(){
-        return "{nombre: " + this.name +" autor: "+ this.author + " categoria: "+ this.category + " page: " + this.page + " status: " + this.status +"}";
+        return "{ID: "+this.id+" nombre: " + this.name +" autor: "+ this.author + " categoria: "+ this.category + " page: " + this.page + " status: " + this.status +"}";
     }
     
 }

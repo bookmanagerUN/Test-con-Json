@@ -27,7 +27,7 @@ public class Search {
         System.out.println(this.text +" "+ this.param);
         findCoincidences();
         System.out.println(toLinkedList().toString());
-        //booksFilter.inorder();
+        booksFilter.inorder();
     }
     public LinkedList<BookFilterName> toLinkedList(){
         return this.booksFilter.inorderToLinkedList();

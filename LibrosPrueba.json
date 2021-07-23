@@ -194,18 +194,6 @@
     "opinion": ""
   },
   {
-    "actualPage": 45,
-    "status": false,
-    "bookInformation": [
-      "Caperucita amarilla",
-      "Juan valdez",
-      "adsfas",
-      "12341243"
-    ],
-    "notes": [],
-    "opinion": ""
-  },
-  {
     "actualPage": 0,
     "status": false,
     "bookInformation": [
@@ -224,6 +212,18 @@
       "la Caperucita roja",
       "asdasd",
       "sdfgdsfg",
+      "12341243"
+    ],
+    "notes": [],
+    "opinion": ""
+  },
+  {
+    "actualPage": 0,
+    "status": false,
+    "bookInformation": [
+      "caperucita fuxia",
+      "Humberto",
+      "Fantasia",
       "12341243"
     ],
     "notes": [],

@@ -84,6 +84,7 @@ public class MainFrame extends javax.swing.JFrame {
             System.out.println(ignored.getMessage());
             System.out.println("Interface.MainFrame.<init>() error al hacer lectura de Json");
         }
+        this.myBooks.printAllBooks();
 
         initComponents();
 

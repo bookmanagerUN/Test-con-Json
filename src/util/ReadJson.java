@@ -38,14 +38,14 @@ public class ReadJson {
         LinkedList<Book> listBooks = new LinkedList<>();
         for (int i = 0; i < numberOfBooks; i++) {
             //insert all the books into the linkedlist
-            listBooks.insertEnd(auxToBook(auxBooks[i]));
+            listBooks.insertEnd(auxToBook(auxBooks[i], i));
         }
         //create a new MyBooks object from the last linked list
         MyBooks myBooks = new MyBooks(listBooks);
         return myBooks;
     }
 
-    public Book auxToBook(AuxBook auxBook) {
+    public Book auxToBook(AuxBook auxBook, int id) {
         //save the variable information of a book
         int actualPage = auxBook.getActualPage();
         boolean status = auxBook.getStatus();
@@ -56,7 +56,7 @@ public class ReadJson {
         // Save the BookNotes object
         BookNotes bookNotes = auxToBookNotes(auxBook);
         //create a new Book object by all information of this method
-        Book book = new Book(bookInformation, bookNotes, actualPage, status, opinion);
+        Book book = new Book(bookInformation, bookNotes, actualPage, status, opinion, id);
 
         return book;
 

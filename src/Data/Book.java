@@ -9,6 +9,7 @@ public class Book implements Comparable<Book>{
     private BookInformation bookInformation;
     private BookNotes notes ;
     private String opinion = "";
+    public int id ;
     //TODO opinion
     //TODO colocar el ID en esta clase y sacarla de BookInformation
     //metodo para calcular el ID teniendo en cuenta la posición en la que este de la lista
@@ -50,6 +51,9 @@ public class Book implements Comparable<Book>{
     public String getOpinion (){
         return this.opinion;
     }
+    public int getId(){
+        return this.id;
+    }
     
 
     //constructors
@@ -72,13 +76,14 @@ public class Book implements Comparable<Book>{
         //update txt  
     }
     //created by Json
-    public Book(BookInformation bookInformation, BookNotes bookNotes, int actualPage, boolean status,String opinion) {
+    public Book(BookInformation bookInformation, BookNotes bookNotes, int actualPage, boolean status,String opinion,int id) {
         //System.out.println("Data.Book.<init>()");
         this.bookInformation = bookInformation;
         this.actualPage = actualPage;
         this.notes = bookNotes;
         this.status = status;
         this.opinion = opinion;
+        this.id = id;
           
     }
     // if the book do not have opinion
@@ -115,7 +120,7 @@ public class Book implements Comparable<Book>{
     public void printBook (){
         System.out.println("Information.Book.printBook()");
         
-        String cadena = "actual page:[ " + this.actualPage + " ], "+"status: [" + this.status + "], Book information: "+ this.bookInformation.printBookInformation()+", Book Notes: "+ this.notes.paintBookNotes()+ ", "+"Opinion: [" + this.opinion + "]"; 
+        String cadena ="ID:"+this.id +", actual page:[ " + this.actualPage + " ], "+"status: [" + this.status + "], Book information: "+ this.bookInformation.printBookInformation()+", Book Notes: "+ this.notes.paintBookNotes()+ ", "+"Opinion: [" + this.opinion + "]"; 
         System.out.println(cadena);
     }
     public void /*nameClass*/ toJson(){

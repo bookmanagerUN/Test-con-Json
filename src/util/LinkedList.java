@@ -28,7 +28,12 @@ public class LinkedList<TypeOfData> {
         this.makeEmpty();
         for (TypeOfData data : array) this.insertBegin(data);
     }
-
+    public TypeOfData getTail(){
+        return this.tail.data;
+    }
+    public TypeOfData getHead(){
+        return this.head.data;
+    }
     void makeEmpty() { //vacia la Linkedlist
         count = 0;
         head = null;

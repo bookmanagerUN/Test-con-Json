@@ -39,8 +39,10 @@ public class MyBooks {
     
     //methods
     public void insertBook(Book book){
-        
+        int lastId = this.myBooks.getTail().id;
+        book.id = lastId+1;
         getMyBooks().insertEnd(book);
+        
         //updateAllId();
         //update txt
      
@@ -61,6 +63,25 @@ public class MyBooks {
             this.myBooks.elementPosition(i).printBook();
         }
 
+        
+    }
+    private boolean checkID(Book book, int id){
+        if(book.getId() == id){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    
+    public Book getBookById(int id){
+        for(int i = 0; i< this.myBooks.count;i++){
+            Book currBook = this.myBooks.elementPosition(i);
+            if(checkID(currBook, id)){
+                return currBook;
+            }
+        }
+        return null;
         
     }
     public void /*ClassName[]*/ toJason(){
