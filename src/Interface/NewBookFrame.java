@@ -24,7 +24,7 @@ public class NewBookFrame extends javax.swing.JFrame {
     public NewBookFrame() {
         //this.myBooks = myBooks;
         initComponents();
-        UtilInterface.printImage(JLProyectIcon, "src/Interface/MediaFiles/LogoOriginal.png", this);
+        UtilInterface.printImage(JLProyectIcon, "src/Interface/MediaFiles/VAzul1.png", this);
         cleanTextBox();
     }
 
@@ -47,7 +47,7 @@ public class NewBookFrame extends javax.swing.JFrame {
         if(this.frameStack.getStackFrameNext().count == 0){
             this.jBForward.setVisible(false);
         }
-        UtilInterface.printImage(JLProyectIcon, "src/Interface/MediaFiles/LogoOriginal.png", this);
+        UtilInterface.printImage(JLProyectIcon, "src/Interface/MediaFiles/VAzul1.png", this);
         cleanTextBox();
     }
 

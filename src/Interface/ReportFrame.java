@@ -35,7 +35,7 @@ public class ReportFrame extends javax.swing.JFrame {
         this.jTMyBooks.getTableHeader().setForeground(Color.BLUE);
 
         //poner logo en JLabel
-        UtilInterface.printImage(JLProyectIcon, "src/Interface/MediaFiles/LogoOriginal.png", this);
+        UtilInterface.printImage(JLProyectIcon, "src/Interface/MediaFiles/VAzul1.png", this);
 
     }
 
@@ -50,7 +50,7 @@ public class ReportFrame extends javax.swing.JFrame {
         this.jTMyBooks.getTableHeader().setForeground(Color.BLUE);
 
         //poner logo en JLabel
-        UtilInterface.printImage(JLProyectIcon, "src/Interface/MediaFiles/LogoOriginal.png", this);
+        UtilInterface.printImage(JLProyectIcon, "src/Interface/MediaFiles/VAzul1.png", this);
 
     }
 

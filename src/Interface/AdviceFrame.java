@@ -26,7 +26,7 @@ public class AdviceFrame extends javax.swing.JFrame {
         this.frameStack = frameStack;
         
         initComponents();
-        UtilInterface.printImage(this.JLProyectIcon, "src/Interface/MediaFiles/LogoOriginal.png", this);
+        UtilInterface.printImage(this.JLProyectIcon, "src/Interface/MediaFiles/VAzul1.png", this);
         heap = new Heaps<>();
         heap.buildHeap(myBooks2);
         fillLabels();
@@ -54,7 +54,7 @@ public class AdviceFrame extends javax.swing.JFrame {
         heap = new Heaps();
         heap.buildHeap(myBooks2);
 
-        UtilInterface.printImage(JLProyectIcon, "src/Interface/MediaFiles/LogoOriginal.png", this);
+        UtilInterface.printImage(JLProyectIcon, "src/Interface/MediaFiles/VAzul1.png", this);
 
         this.frameStack = new FrameStack(myBooks2);
         

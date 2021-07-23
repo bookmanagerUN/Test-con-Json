@@ -48,7 +48,7 @@ public class MainFrame extends javax.swing.JFrame {
         this.jTMyBooks.getTableHeader().setForeground(Color.BLUE);
 
         //poner logo en JLabel
-        UtilInterface.printImage(this.JLProyectIcon, "src/Interface/MediaFiles/LogoOriginal.png", this);
+        UtilInterface.printImage(this.JLProyectIcon, "src/Interface/MediaFiles/VAzul1.png", this);
         // rellenar tabla
         fillTable();
         if(this.frameStack.getStackFrame().count == 0){
@@ -94,7 +94,7 @@ public class MainFrame extends javax.swing.JFrame {
         fillTable();
 
         //poner logo en JLabel
-        UtilInterface.printImage(JLProyectIcon, "src/Interface/MediaFiles/LogoOriginal.png", this);
+        UtilInterface.printImage(JLProyectIcon, "src/Interface/MediaFiles/VAzul1.png", this);
         
         this.frameStack = new FrameStack(myBooks);
         //System.out.println("esta es la pila: ");

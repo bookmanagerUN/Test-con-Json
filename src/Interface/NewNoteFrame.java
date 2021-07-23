@@ -39,7 +39,7 @@ public class NewNoteFrame extends javax.swing.JFrame {
         //System.out.println(this.bookId);
 
         initComponents();
-        UtilInterface.printImage(JLProyectIcon, "src/Interface/MediaFiles/LogoOriginal.png", this);
+        UtilInterface.printImage(JLProyectIcon, "src/Interface/MediaFiles/VAzul1.png", this);
     }
 
     public NewNoteFrame(MyBooks myBooks, Book book, FrameStack frameStack) {
@@ -67,7 +67,7 @@ public class NewNoteFrame extends javax.swing.JFrame {
             this.jBForward.setVisible(false);
         }
         
-        UtilInterface.printImage(JLProyectIcon, "src/Interface/MediaFiles/LogoOriginal.png", this);
+        UtilInterface.printImage(JLProyectIcon, "src/Interface/MediaFiles/VAzul1.png", this);
         UtilInterface.setPanelText(this.actualBook.getBookInformation().getName(), this.JPNewNote);
         //this.JPNewNote.
     }
