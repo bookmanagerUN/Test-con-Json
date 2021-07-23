@@ -18,10 +18,11 @@ public class AdviceFrame extends javax.swing.JFrame {
     private FrameStack frameStack;
     private Heaps heap;
     private MyBooks myBooks2;
+    private Book book1;
     
 
     public AdviceFrame(MyBooks mybooks, Heaps heap, FrameStack frameStack) {
-
+        
         this.myBooks2 = mybooks;
         this.myBooks = myBooks;
         this.myBooks.printAllBooks();
@@ -107,13 +108,12 @@ public class AdviceFrame extends javax.swing.JFrame {
     }
     
     private void fillLabels(){
-        Book book2 = (Book) heap.deleteMax();
-        jLabel9.setText(book2.getBookInformation().getName());
-        jLabel10.setText(String.valueOf(book2.getActualPage()));
+        book1 = (Book) heap.deleteMax();
+        jLabel9.setText(book1.getBookInformation().getName());
+        jLabel10.setText(String.valueOf(book1.getActualPage()));
         
         
     }
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -326,8 +326,19 @@ public class AdviceFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBMyBooksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBMyBooksActionPerformed
-        // TODO add your handling code here:
-        
+         
+        BookInfoFrame bookInfo = new BookInfoFrame(book1, this.myBooks,this.frameStack);
+            bookInfo.setVisible(true);
+            this.dispose();
+
+               
+
+
+
+
+
+// TODO add your handling code here:
+        /*
         Book book = (Book) heap.findMax();
         int i = 0;
         while(this.heap.findMax()!= null){
@@ -338,7 +349,7 @@ public class AdviceFrame extends javax.swing.JFrame {
                 this.dispose();
                 this.dispose();
             }
-        }
+        }*/
         /*
         
         this.frameStack.cleanNextStack();
