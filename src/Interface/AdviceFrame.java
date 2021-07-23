@@ -3,12 +3,8 @@ package Interface;
 import Data.Book;
 import Data.MyBooks;
 import Data.FrameAux;
-import java.awt.Color;
-import java.awt.Font;
 import java.io.FileNotFoundException;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 import util.ReadJson;
 import util.FrameStack;
 import util.Heaps;
@@ -22,23 +18,16 @@ public class AdviceFrame extends javax.swing.JFrame {
     private Book book1;
     
 
-    public AdviceFrame(MyBooks mybooks, Heaps heap, FrameStack frameStack) {
+    public AdviceFrame(MyBooks mybooks, FrameStack frameStack) {
         
         this.myBooks2 = mybooks;
         this.myBooks = myBooks;
-        this.myBooks.printAllBooks();
         this.frameStack = frameStack;
-        this.heap = heap;
+        
         initComponents();
-
-        // cambiar headers de la tabla
-        //this.jTMyBooksA.getTableHeader().setFont(new Font("Tahoma", Font.BOLD, 18));
-        //this.jTMyBooksA.getTableHeader().setForeground(Color.BLUE);
-
-        //poner logo en JLabel
         UtilInterface.printImage(this.JLProyectIcon, "src/Interface/MediaFiles/LogoOriginal.png", this);
-        // rellenar tabla
-        //fillTable();
+        heap = new Heaps<>();
+        heap.buildHeap(myBooks2);
         fillLabels();
         if (this.frameStack.getStackFrame().count == 0) {
             this.jBBack.setVisible(false);
@@ -49,17 +38,18 @@ public class AdviceFrame extends javax.swing.JFrame {
 
         FrameAux frameAux2 = (FrameAux) this.frameStack.getStackFrame().peek();
         if (frameAux2.getTypeOfFrame() != 5) {
-            FrameAux frame = new FrameAux(5, this.myBooks);
+            FrameAux frame = new FrameAux(5, this.myBooks2);
             this.frameStack.getStackFrame().push(frame);
         }
+       
+        
         
 
     }
 
     public AdviceFrame() {
-
-        //TODO CHECK leer Json; crear la clase MyBook; cada vez que se inicie el programa verificar Json
-        //TODO si no hay Json crear desde 0 (libro de prueba)
+        
+       
         try {
             ReadJson readJson = new ReadJson();
             this.myBooks = readJson.arrAuxToMyBooks(readJson.readJson());
@@ -71,40 +61,23 @@ public class AdviceFrame extends javax.swing.JFrame {
         }
 
         initComponents();
+        heap = new Heaps();
+        heap.buildHeap(myBooks2);
 
-        // cambiar headers de la tabla
-        //this.jTMyBooksA.getTableHeader().setFont(new Font("Tahoma", Font.BOLD, 18));
-        //this.jTMyBooksA.getTableHeader().setForeground(Color.BLUE);
-        //fillTable();
-
-        //poner logo en JLabel
         UtilInterface.printImage(JLProyectIcon, "src/Interface/MediaFiles/LogoOriginal.png", this);
 
-        this.frameStack = new FrameStack(myBooks);
-        //System.out.println("esta es la pila: ");
-        //FrameAux s =(FrameAux) frameStack.getStackFrame().peek();
-        //System.out.println(s.getTypeOfFrame());
+        this.frameStack = new FrameStack(myBooks2);
+        
 
         this.jBForward.setVisible(false);
         this.jBBack.setVisible(false);
+        
+        
 
     }
 
     private void fillTable() {
-        /*UtilInterface.cleanJTable(jTMyBooksA);
-        for (int i = 1; i <= this.heap.currentSize; i++) {
-            int intid = i;
-            Book book2 = (Book) heap.deleteMax();
-            System.out.println(book2.getActualPage());
-            String id = String.valueOf(intid);
-            String name = book2.getBookInformation().getName();
-            String pages = String.valueOf(book2.getActualPage());
-
-            String[] tbData = {id, name, pages};
-            DefaultTableModel tblModel = (DefaultTableModel) jTMyBooksA.getModel();
-            tblModel.addRow(tbData);
-
-        }*/
+        
 
     }
     
@@ -116,8 +89,11 @@ public class AdviceFrame extends javax.swing.JFrame {
             jLabel10.setText(String.valueOf(book1.getActualPage()));
         }
         else{
-            
-            JOptionPane.showMessageDialog(null, "No hay mas sugerencias.");
+            /*
+             option = JOptionPane.showMessageDialog(null, "¿confirma?");
+            if(option ==0){
+                System.out.println("aaaaa");
+            }*/
         }
         
  
@@ -338,45 +314,9 @@ public class AdviceFrame extends javax.swing.JFrame {
 
     private void jBMyBooksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBMyBooksActionPerformed
          
-        BookInfoFrame bookInfo = new BookInfoFrame(book1, this.myBooks,this.frameStack);
+        BookInfoFrame bookInfo = new BookInfoFrame(book1, this.myBooks2,this.frameStack);
             bookInfo.setVisible(true);
             this.dispose();
-
-               
-
-
-
-
-
-// TODO add your handling code here:
-        /*
-        Book book = (Book) heap.findMax();
-        int i = 0;
-        while(this.heap.findMax()!= null){
-            Book book1 = this.myBooks.getMyBooks().elementPosition(i);
-            if(book.getBookInformation().getName().compareTo(book.getBookInformation().getName())==0){
-                BookInfoFrame bookInfo = new BookInfoFrame(book, this.myBooks, this.frameStack);
-                bookInfo.setVisible(true);
-                this.dispose();
-                this.dispose();
-            }
-        }*/
-        /*
-        
-        this.frameStack.cleanNextStack();
-        if (this.jTFmyBooks.getText().length() > 0) {
-            int id = Integer.parseInt(this.jTFmyBooks.getText());
-            //checkear inputs invalidos - o que MyBooks esté vacío (se puede usar clase Util)
-            Book book = this.myBooks.getMyBooks().elementPosition(id - 1);
-            //System.out.println(id);
-            book.printBook();
-            BookInfoFrame bookInfo = new BookInfoFrame(book, this.myBooks, this.frameStack);
-            bookInfo.setVisible(true);
-            this.dispose();
-
-            this.dispose();
-        }
-        */
     }//GEN-LAST:event_jBMyBooksActionPerformed
 
     private void jBBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBackActionPerformed
@@ -417,54 +357,10 @@ public class AdviceFrame extends javax.swing.JFrame {
         
 
         fillLabels();
-
-        // TODO add your handling code here:
-        /*this.frameStack.cleanNextStack();
-        if (this.jTFmyBooks.getText().length() > 0) {
-            int id = Integer.parseInt(this.jTFmyBooks.getText());
-            //checkear inputs invalidos - o que MyBooks esté vacío (se puede usar clase Util)
-            Book book = this.myBooks.getMyBooks().elementPosition(id - 1);
-            //System.out.println(id);
-            book.printBook();
-            BookInfoFrame bookInfo = new BookInfoFrame(book, this.myBooks, this.frameStack);
-            bookInfo.setVisible(true);
-            this.dispose();
-
-            this.dispose();
-        }*/
     }//GEN-LAST:event_jBMyBooks1ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AdviceFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AdviceFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AdviceFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AdviceFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
+       
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new AdviceFrame().setVisible(true);
