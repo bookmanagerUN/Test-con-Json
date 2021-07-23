@@ -23,8 +23,8 @@ import util.FrameStack;
  */
 public class NewNoteFrame extends javax.swing.JFrame {
 
-    private MyBooks myBooks = new MyBooks();
-    private Book actualBook = new Book(new BookInformation(/*1,*/ "100 años de soledad", "GABO", "realismo", "isbn"), this.myBooks);
+    private MyBooks myBooks;
+    private Book actualBook ;
     private int bookId;
     private FrameStack frameStack;
 
@@ -48,7 +48,7 @@ public class NewNoteFrame extends javax.swing.JFrame {
         this.frameStack = frameStack;
         
         
-        findBookId();
+        //findBookId();
         //System.out.println(this.bookId);
         initComponents();
         
