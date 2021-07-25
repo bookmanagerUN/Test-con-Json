@@ -49,11 +49,13 @@ public class CSVReport {
     
     private void setReport(String fileDestination) throws IOException{
         Function function = new Builder(fileDestination);
-        writer.write(this.book.getBookInformation().getName() + "\n");
-        writer.write(this.book.getBookInformation().getAuthor() + "\n");
-        writer.write(this.book.getBookInformation().getIsbn() + "\n");
-        writer.write(this.book.getBookInformation().getCategory() + "\n");
-        writer.write(this.book.getOpinion() + "\n");
+        writer.write("Book Manager CSV Report");
+        writer.write("Name:"+this.book.getBookInformation().getName() + "\n");
+        writer.write("Author:"+this.book.getBookInformation().getAuthor() + "\n");
+        writer.write("ISBN:"+this.book.getBookInformation().getIsbn() + "\n");
+        writer.write("Category:"+this.book.getBookInformation().getCategory() + "\n");
+        writer.write("Opinion:"+this.book.getOpinion() + "\n");
+        writer.write("\n");
         this.notes.inorder(function);
         writer.flush();
         writer.close();
@@ -71,9 +73,9 @@ public class CSVReport {
         public void function(Comparable... objects){
             try{
                Notes actualNote = (Notes) objects[0];
-                writer.write(actualNote.getPage()+","+
-                                actualNote.getParagraph()+","+
-                                actualNote.getDate()+","+
+                writer.write(actualNote.getPage()+":"+
+                                actualNote.getParagraph()+":"+
+                                actualNote.getDate()+":"+
                                 actualNote.getNote()+"\n");
                 
                 
