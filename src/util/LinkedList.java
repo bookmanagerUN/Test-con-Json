@@ -15,7 +15,7 @@ class Node<TypeOfData> {
 }
 
 //Book[ bookinformation[], Actual page, BookNotes[], Status ],
-public class LinkedList<TypeOfData> {
+public class LinkedList<TypeOfData> implements Cloneable{
 
     Node<TypeOfData> head;
     Node<TypeOfData> tail;
@@ -215,4 +215,13 @@ public class LinkedList<TypeOfData> {
         return toReturn + "]";
     }
 
+    public LinkedList<TypeOfData> clone(){
+        Object object = new LinkedList();
+        try{
+            object=super.clone();
+        }catch(CloneNotSupportedException ex){
+            System.err.println("Not duplicable");
+        }
+        return (LinkedList<TypeOfData>) object;
+    }
 }

@@ -6,6 +6,7 @@
 package util.treeStructures;
 
 import util.BinaryNode;
+import util.Function;
 import util.LinkedList;
 import util.MyQueue;
 
@@ -111,6 +112,10 @@ public class TBTree /*TraversalBinaryTree*/ <DataType extends Comparable<? super
     public void inorder() {
         this.inorder(this.root);
     }
+    
+    public void inorder(Function f){
+        this.inorder(this.root, f);
+    }
 
     /**
      * Método recursivo que imprime el nodo izquierdo, luego imprime la subraíz y posteriormente el hijo derecho.
@@ -126,6 +131,18 @@ public class TBTree /*TraversalBinaryTree*/ <DataType extends Comparable<? super
             this.inorder(node.left);
             System.out.print(node.data + " ");
             this.inorder(node.right);
+        }
+    }
+    
+    private void inorder(BinaryNode<DataType> node, Function f) {
+        if(this.root == null) {
+            System.err.print("No es posible ejecutar este método");
+            return;
+        }
+        if(node != null) {
+            this.inorder(node.left,f);
+            f.function(node.data);
+            this.inorder(node.right,f);
         }
     }
 

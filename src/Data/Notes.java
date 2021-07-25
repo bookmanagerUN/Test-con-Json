@@ -2,7 +2,7 @@ package Data;
 
 import util.LinkedList;
 
-public class Notes {
+public class Notes implements Comparable<Notes>{
 
     String date = null;
     int page = 0;
@@ -76,6 +76,21 @@ public class Notes {
     }
     public String paintNote(){
         return"{ Date: *"+ this.date + "* ,Page: *" + this.page + "* ,Paragraph: *" + this.paragraph + "* ,Note: *" + this.note + "* }"  ;
+    }
+
+    @Override
+    public int compareTo(Notes other) {
+        if(this.page>other.page)
+            return 1;
+        else if(this.page<other.page)
+            return-1;
+        else{
+            if(this.paragraph>=other.paragraph)
+                return 1;
+            else
+                return -1;
+        }
+            
     }
 
 }

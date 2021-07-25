@@ -17,6 +17,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.io.IOException;
 import util.BookManagerReport;
+import util.CSVReport;
 
 /**
  *
@@ -797,14 +798,21 @@ public class BookInfoFrame extends javax.swing.JFrame {
 
     private void jBNewInformActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNewInformActionPerformed
         try{
-            BookManagerReport report = new BookManagerReport(this.actualBook, actualBook.getBookInformation().getName()+".pdf");
-            
-
-        JOptionPane.showMessageDialog(null, "SE HA GENERADO EL INFORME CORRECTAMENTE.");
-
+            BookManagerReport report = new BookManagerReport(this.actualBook, this.actualBook.getBookInformation().getName()+".pdf");
+            JOptionPane.showMessageDialog(null, "SE HA GENERADO EL INFORME PDF CORRECTAMENTE.");
         }catch(IOException e){
             e.printStackTrace();
-            System.out.println("Cierre el PDF antes de continuar.");
+            System.out.println("Close the PDF before continue.");
+            JOptionPane.showMessageDialog(null, "CIERRE EL PDF ANTES DE CONTINUAR.");
+        }
+        
+        try{
+            CSVReport report = new CSVReport(this.actualBook, this.actualBook.getBookInformation().getName());
+            JOptionPane.showMessageDialog(null, "SE HA GENERADO EL INFORME CSV CORRECTAMENTE.");
+        }catch(IOException e){
+            e.printStackTrace();
+            System.out.println("Close the CSV before continue.");
+            JOptionPane.showMessageDialog(null, "CIERRE EL CSV ANTES DE CONTINUAR.");
         }
 
     }//GEN-LAST:event_jBNewInformActionPerformed
