@@ -40,14 +40,16 @@ public class CSVReport {
     }
     
     public void buildTree(){
-        LinkedList<Notes> notes = book.getNotes().getBookNotes();
-        for(int i = 0; i<notes.numberOfElements();i++)
-            this.notes.insert(notes.elementPosition(i));
+        LinkedList<Notes> notes = book.getNotes().getBookNotes().clone();
+        for(int i = 0; i<notes.numberOfElements();i++){
+            this.notes.insert(notes.getHead());
+            notes.deleteBegin();
+        }
     }
     
     private void setReport(String fileDestination) throws IOException{
         Function function = new Builder(fileDestination);
-        writer.write("Book Manager CSV Report");
+        writer.write("Book Manager CSV Report\n");
         writer.write("Name:"+this.book.getBookInformation().getName() + "\n");
         writer.write("Author:"+this.book.getBookInformation().getAuthor() + "\n");
         writer.write("ISBN:"+this.book.getBookInformation().getIsbn() + "\n");
@@ -69,7 +71,7 @@ public class CSVReport {
             this.fileDestination=fileDestination;
         }
         @Override
-        public void function(Comparable... objects){
+        public void function(Object... objects){
             try{
                Notes actualNote = (Notes) objects[0];
                 writer.write(actualNote.getPage()+":"+

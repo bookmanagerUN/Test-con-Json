@@ -10,5 +10,5 @@ package util;
  * @author Diego Quintero
  */
 public interface Function {
-    void function(Comparable... objects);
+    void function(Object... objects);
 }

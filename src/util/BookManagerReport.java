@@ -36,7 +36,7 @@ public class BookManagerReport extends EasyDocument {
         for (int j = 0; j < book.getNotes().getBookNotes().numberOfElements(); j++) {
             Notes actualNote = book.getNotes().getBookNotes().elementPosition(j);
             super.smallSkip();
-            note(actualNote.getNote(), actualNote.getDate(), actualNote.getPage(), actualNote.getParagraph());
+            this.note(actualNote.getNote(), actualNote.getDate(), actualNote.getPage(), actualNote.getParagraph());
         }
 
         this.setWatermark("src/Media/Watermark.pdf");

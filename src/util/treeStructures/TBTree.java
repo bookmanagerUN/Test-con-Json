@@ -141,7 +141,7 @@ public class TBTree /*TraversalBinaryTree*/ <DataType extends Comparable<? super
         }
         if(node != null) {
             this.inorder(node.left,f);
-            f.function(node.data);
+            f.function((Object) node.data);
             this.inorder(node.right,f);
         }
     }
