@@ -40,23 +40,26 @@ public class CSVReport {
     }
     
     public void buildTree(){
-        LinkedList<Notes> notes = book.getNotes().getBookNotes().clone();
+        LinkedList<Notes> notes = book.getNotes().getBookNotes();
         for(int i = 0; i<notes.numberOfElements();i++){
-            this.notes.insert(notes.getHead());
+            Notes note = notes.getHead();
+            this.notes.insert(note);
             notes.deleteBegin();
+            notes.insertEnd(note);
         }
     }
     
     private void setReport(String fileDestination) throws IOException{
         Function function = new Builder(fileDestination);
         writer.write("Book Manager CSV Report\n");
-        writer.write("Name:"+this.book.getBookInformation().getName() + "\n");
-        writer.write("Author:"+this.book.getBookInformation().getAuthor() + "\n");
-        writer.write("ISBN:"+this.book.getBookInformation().getIsbn() + "\n");
-        writer.write("Category:"+this.book.getBookInformation().getCategory() + "\n");
-        writer.write("Opinion:"+this.book.getOpinion() + "\n");
+        writer.write("Name;"+this.book.getBookInformation().getName() + "\n");
+        writer.write("Author;"+this.book.getBookInformation().getAuthor() + "\n");
+        writer.write("ISBN;"+this.book.getBookInformation().getIsbn() + "\n");
+        writer.write("Category;"+this.book.getBookInformation().getCategory() + "\n");
         writer.write("\n");
-        writer.write("Page:Paragraph:Date:Note\n");
+        writer.write("Opinion;"+this.book.getOpinion() + "\n");
+        writer.write("\n");
+        writer.write("Page;Paragraph;Date;Note\n");
         this.notes.inorder(function);
         writer.flush();
         writer.close();
@@ -74,9 +77,9 @@ public class CSVReport {
         public void function(Object... objects){
             try{
                Notes actualNote = (Notes) objects[0];
-                writer.write(actualNote.getPage()+":"+
-                                actualNote.getParagraph()+":"+
-                                actualNote.getDate()+":"+
+                writer.write(actualNote.getPage()+";"+
+                                actualNote.getParagraph()+";"+
+                                actualNote.getDate()+";"+
                                 actualNote.getNote()+"\n");
                 
                 
