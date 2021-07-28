@@ -95,7 +95,7 @@ public class HashTable<KeyType, ValueType> {
         String toReturn = "[";
 
         for (int i = 0; i < this.capacity; i++) {
-            if(hashTable[i] != null) {
+            if(hashTable[i] != null && hashTable[i].status) {
                 if(i != 0)
                     toReturn += ", ";
                 toReturn += hashTable[i].toString();
