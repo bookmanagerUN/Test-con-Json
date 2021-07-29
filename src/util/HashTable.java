@@ -29,7 +29,7 @@ public class HashTable<KeyType, ValueType> {
             this.rehashing(hashCode + 1);
         if(lambda >= 0.5)
             this.rehashing(2 * this.capacity);
-
+        
         try {
             this.insert(new HashData<>(key, value), hashCode);
         } catch (StackOverflowError e){
