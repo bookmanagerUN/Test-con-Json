@@ -27,18 +27,24 @@ public class HashTable<KeyType, ValueType> {
 
         if(hashCode > this.capacity)
             this.rehashing(hashCode + 1);
-        if(lambda > 0.5)
+        if(lambda >= 0.5)
             this.rehashing(2 * this.capacity);
 
-        this.insert(new HashData<>(key, value), hashCode);
+        try {
+            this.insert(new HashData<>(key, value), hashCode);
+        } catch (StackOverflowError e){
+            System.err.println("Cambie key.hashCode(), Demasiadas colisiones.");
+            throw new StackOverflowError();
+        }
+
         this.keys++;
         this.lambda = ((float) this.keys) / ((float) this.capacity);
     }
 
     private void insert(HashData<KeyType, ValueType> hashData, int i) {
-        if(hashTable[i] != null && hashTable[i].status)
-            this.insert(hashData, this.pollFunction(hashData.key, i));
-        else
+        if(hashTable[i] != null && hashTable[i].status) {
+            this.insert(hashData, this.pollFunction(hashData.key, i+1));
+        }else
             hashTable[i] = hashData;
     }
 
@@ -53,7 +59,7 @@ public class HashTable<KeyType, ValueType> {
         if(hashTable[i].key.equals(key))
             hashTable[i].status = false;
         else
-            this.delete(key, pollFunction(key, i));
+            this.delete(key, pollFunction(key, i+1));
     }
 
     public ValueType search(KeyType key) {
@@ -62,10 +68,14 @@ public class HashTable<KeyType, ValueType> {
         int counter = 0;
         while (true) {
             aux = hashTable[i];
-            if(!aux.status || aux == null || counter++ == this.capacity)
+            if(counter++ == this.capacity) {
+                System.err.println("Cambie key.hashCode(), Demasiadas colisiones.");
+                throw new StackOverflowError();
+            }
+            if(aux == null || !aux.status)
                 throw new BufferUnderflowException();
             if(key.equals(aux.key)) break;
-            i = this.pollFunction(key, i);
+            i = this.pollFunction(key, i+1);
         }
         return aux.value;
     }
@@ -87,7 +97,7 @@ public class HashTable<KeyType, ValueType> {
     }
 
     private int pollFunction(KeyType key, int i) {
-        return (key.hashCode() + i * (13 - (key.hashCode() % 13))) % this.capacity;
+        return (key.hashCode() + i^2) % this.capacity;
     }
 
     @Override
@@ -118,7 +128,7 @@ public class HashTable<KeyType, ValueType> {
         @Override
         public String toString() {
             if(status)
-                return key.toString() + ":" + value.toString();
+                return key.toString() + "=" + value.toString();
             else
                 return null;
         }
