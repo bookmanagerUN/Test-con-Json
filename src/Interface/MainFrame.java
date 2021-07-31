@@ -21,6 +21,7 @@ import util.WriteJson;
 import util.FrameStack;
 import util.Heaps;
 import util.MyStack;
+import util.User;
 
 
 /**
@@ -31,6 +32,11 @@ public class MainFrame extends javax.swing.JFrame {
     private MyBooks myBooks = new MyBooks();
     private FrameStack frameStack;
     private Heaps<Book> heap;
+    
+    /**
+     * Usuario actual, permite ivocar su JSON correspondiente.
+     */
+    private User user;
 
     /**
      * Creates new form NewJFrame1
@@ -71,7 +77,20 @@ public class MainFrame extends javax.swing.JFrame {
         
 
     }
-        public MainFrame() {
+    
+    /**
+     * Constructor que recibe el usuario, es el mismo constructor que no recibe
+     * parámetros pero con el usuario para invocar el JSON con el que se inicializarán
+     * los libros de este mismo.
+     * 
+     * @param user usuario que accedió desde {@link LogInFrame} o {@ling SignInFrame}.
+     */
+    public MainFrame(User user){
+        this();
+        this.user=user;
+    }
+    
+    public MainFrame() {
             
         //TODO CHECK leer Json; crear la clase MyBook; cada vez que se inicie el programa verificar Json
         //TODO si no hay Json crear desde 0 (libro de prueba)

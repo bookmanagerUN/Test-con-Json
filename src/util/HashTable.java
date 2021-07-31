@@ -22,62 +22,83 @@ public class HashTable<KeyType, ValueType> {
         this.makeEmpty();
     }
 
-    public void insert(KeyType key, ValueType value) {
+    public void insert(KeyType key, ValueType value){
+        if(contains(key))
+            System.err.println("Está sobreescribiendo el valor de una clave.");
         int hashCode = key.hashCode();
 
         if(hashCode > this.capacity)
             this.rehashing(hashCode + 1);
         if(lambda >= 0.5)
             this.rehashing(2 * this.capacity);
-        
-        try {
-            this.insert(new HashData<>(key, value), hashCode);
-        } catch (StackOverflowError e){
-            System.err.println("Cambie key.hashCode(), Demasiadas colisiones.");
-            throw new StackOverflowError();
+
+        HashData<KeyType, ValueType> aux;
+        int i = key.hashCode();
+
+        while(true) {
+            aux = hashTable[i];
+            if(aux == null || !aux.status){
+                hashTable[i] = new HashData<>(key, value);
+                break;
+            }
+            i = this.pollFunction(key, i+1);
         }
 
         this.keys++;
         this.lambda = ((float) this.keys) / ((float) this.capacity);
     }
 
-    private void insert(HashData<KeyType, ValueType> hashData, int i) {
-        if(hashTable[i] != null && hashTable[i].status) {
-            this.insert(hashData, this.pollFunction(hashData.key, i+1));
-        }else
-            hashTable[i] = hashData;
-    }
-
     public void delete(KeyType key) {
-        this.search(key);
-        this.delete(key, key.hashCode());
-        this.keys--;
-        this.lambda = ((float) this.keys) / ((float) this.capacity);
-    }
-
-    private void delete(KeyType key, int i) {
-        if(hashTable[i].key.equals(key))
-            hashTable[i].status = false;
-        else
-            this.delete(key, pollFunction(key, i+1));
-    }
-
-    public ValueType search(KeyType key) {
+        if(!this.contains(key))
+            return;
         HashData<KeyType, ValueType> aux;
         int i = key.hashCode();
         int counter = 0;
         while (true) {
             aux = hashTable[i];
-            if(counter++ == this.capacity) {
-                System.err.println("Cambie key.hashCode(), Demasiadas colisiones.");
-                throw new StackOverflowError();
+            if(aux.key.equals(key)) {
+                aux.status = false;
+                break;
             }
-            if(aux == null || !aux.status)
-                throw new BufferUnderflowException();
-            if(key.equals(aux.key)) break;
             i = this.pollFunction(key, i+1);
         }
+        this.keys--;
+        this.lambda = ((float) this.keys) / ((float) this.capacity);
+    }
+
+    public ValueType search(KeyType key) {
+        if(!this.contains(key)){
+            System.err.println("No existe esa llave.");
+            throw new BufferUnderflowException();
+        }
+
+        HashData<KeyType, ValueType> aux;
+        int i = key.hashCode();
+
+        while (true) {
+            aux = hashTable[i];
+            if(key.equals(aux.key) && aux.status) break;
+            i = this.pollFunction(key, i+1);
+        }
+
         return aux.value;
+    }
+
+    public boolean contains(KeyType key){
+        HashData<KeyType, ValueType> aux;
+        int i = key.hashCode();
+        if(i > this.capacity)
+            return false;
+        int counter = 0;
+        while (true) {
+            aux = hashTable[i];
+            if(counter++ == this.capacity || aux == null)
+                return false;
+            if(key.equals(aux.key) && aux.status)
+                break;
+            i = this.pollFunction(key, i+1);
+        }
+        return true;
     }
 
     public void makeEmpty() {

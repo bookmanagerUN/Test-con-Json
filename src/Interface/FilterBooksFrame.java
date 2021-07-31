@@ -56,6 +56,11 @@ public class FilterBooksFrame extends javax.swing.JFrame {
         JLProyectIcon.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jButton1.setText("Mis libros");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Nuevo Libro");
 
@@ -140,9 +145,9 @@ public class FilterBooksFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jSPMyBooks))
             .addGroup(JPMyBooksLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(JPMyBooksLayout.createSequentialGroup()
-                        .addContainerGap()
                         .addComponent(jLMyBooks2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -150,9 +155,7 @@ public class FilterBooksFrame extends javax.swing.JFrame {
                         .addComponent(jLMyBooks1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(JPMyBooksLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLMyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 656, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLMyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 656, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addComponent(jBMyBooks1)
                 .addContainerGap())
@@ -265,6 +268,10 @@ public class FilterBooksFrame extends javax.swing.JFrame {
     private void jBMyBooks1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBMyBooks1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jBMyBooks1ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
