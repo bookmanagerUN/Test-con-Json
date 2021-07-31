@@ -304,6 +304,7 @@ public class SignInFrame extends javax.swing.JFrame {
         }
         
         this.users.insert(newUser, newUser);
+        //TODO Actualizar archivo JSON con el nuevo usuario
         JOptionPane.showMessageDialog(null, "El registro se ha hecho satisfactoriamente.");
         MainFrame main = new MainFrame(newUser);
         main.setVisible(true);
