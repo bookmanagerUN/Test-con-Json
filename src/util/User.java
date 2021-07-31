@@ -29,6 +29,10 @@ public class User {
         return this.email;
     }
     
+    public String getPassword(){
+        return this.password;
+    }
+    
     @Override
     public int hashCode(){
         char[] arr = this.password.toCharArray();

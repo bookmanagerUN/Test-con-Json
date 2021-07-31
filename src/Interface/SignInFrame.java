@@ -290,6 +290,7 @@ public class SignInFrame extends javax.swing.JFrame {
         
         if(insertedPassword.length()<6){
             JOptionPane.showMessageDialog(null, "Ingrese una clave mayor a 6 carácteres.");
+            return;
         }
         
         User newUser = new User(insertedUser,insertedEmail,insertedPassword);
@@ -304,7 +305,9 @@ public class SignInFrame extends javax.swing.JFrame {
         }
         
         this.users.insert(newUser, newUser);
+        
         //TODO Actualizar archivo JSON con el nuevo usuario
+        
         JOptionPane.showMessageDialog(null, "El registro se ha hecho satisfactoriamente.");
         MainFrame main = new MainFrame(newUser);
         main.setVisible(true);
