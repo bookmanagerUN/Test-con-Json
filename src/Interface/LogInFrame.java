@@ -5,9 +5,9 @@
  */
 package Interface;
 
+import Data.UserFinal;
 import javax.swing.JOptionPane;
 import util.HashTable;
-import util.User;
 
 /**
  *
@@ -19,7 +19,7 @@ public class LogInFrame extends javax.swing.JFrame {
      * o el nombre suministrado sea el correcto, y además la contraseña sea la 
      * correcta.
      */
-    private HashTable<User,User> users;
+    private HashTable<String,UserFinal> users;
     
     /**
      * Creates new form Opción
@@ -31,23 +31,29 @@ public class LogInFrame extends javax.swing.JFrame {
     }
     
     private void initializeHashTable(){
-        this.users = new HashTable<User,User>();
+        //this.users = new HashTable<String (username),User>();
+        this.users = new HashTable<String,UserFinal>();
         //TODO que savedUsers sea inicializado con un JSON
         /**
          * Arreglo de strings donde se encuentran los usuarios, representa lo que
          * se debe cargar desde el JSON y a su vez lo que se debe guardar. cada
          * string está configurada como "Nombre, Email, Contraseña".
          */
-        String[] savedUsers = new String[]{"Daniel,Daniel@user.com,12345",
-                                           "Jorge,Jorge@user.com,12345",
-                                           "Cristian,Cristian@user.com,12345",
-                                           "Brian,Brian@user.com,12345",
-                                           "Carlos,Carlos@user.com,12345",
-                                           "Santiago,Santiago@user.com,12345"};
+        String[] savedUsers = new String[]{"Daniel,Daniel@user.com,12345,LibrosPrueba.json",
+                                           "Jorge,Jorge@user.com,12345,LibrosPrueba.json",
+                                           "Cristian,Cristian@user.com,12345,LibrosPrueba.json",
+                                           "Brian,Brian@user.com,12345,LibrosPrueba.json",
+                                           "Carlos,Carlos@user.com,12345,LibrosPrueba.json",
+                                           "Santiago,Santiago@user.com,12345,LibrosPrueba.json"};
+        
         for(String user : savedUsers){
             String[] detached = user.split(",");
-            User actualUser = new User(detached[0],detached[1],detached[2]);
-            this.users.insert(actualUser,actualUser);
+            System.out.println(detached[0]);
+            System.out.println(detached[1]);
+            System.out.println(detached[2]);
+            System.out.println(detached[3]);
+            UserFinal actualUser = new UserFinal(detached[0],detached[1],detached[2],detached[3]);
+            this.users.insert(detached[0],actualUser);
         }
     }
     /**
@@ -250,12 +256,20 @@ public class LogInFrame extends javax.swing.JFrame {
     private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
         String insertedUser = this.UserField.getText();
         String insertedPassword = this.PasswordField.getText();
-        User hypotheticalUser = new User(insertedUser,insertedUser,insertedPassword);
+        UserFinal hypotheticalUser = new UserFinal(insertedUser,insertedUser,insertedPassword, "LibrosPrueba.json");
         
-        if(this.users.contains(hypotheticalUser)){
-            MainFrame main = new MainFrame(hypotheticalUser);
-            main.setVisible(true);
-            this.dispose();
+        
+        
+        if(this.users.contains(insertedUser)){
+            String pass = this.users.search(insertedUser).getPassword();
+            if(pass.compareTo(insertedPassword)==0){
+                MainFrame main = new MainFrame(hypotheticalUser);
+                main.setVisible(true);
+                this.dispose();
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Usuario Incorrecto o Clave Incorrecta.");
+            }
         } else
             JOptionPane.showMessageDialog(null, "Usuario Incorrecto o Clave Incorrecta.");
     }//GEN-LAST:event_LoginButtonActionPerformed
@@ -310,4 +324,20 @@ public class LogInFrame extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSlider jSlider1;
     // End of variables declaration//GEN-END:variables
+
+/*
+    username ||||password|||correo|||file
+    username ||||password|||correo|||file
+    username ||||password|||correo|||file
+    username ||||password|||correo|||file
+    username ||||password|||correo|||file
+    username ||||password|||correo|||file
+    username ||||password|||correo|||file
+    
+    
+    
+*/
+
+
 }
+

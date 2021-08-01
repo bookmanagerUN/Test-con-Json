@@ -7,14 +7,14 @@ package Interface;
 
 import javax.swing.JOptionPane;
 import util.HashTable;
-import util.User;
+import Data.UserFinal;
 
 /**
  *
  * @author Diego Quintero
  */
 public class SignInFrame extends javax.swing.JFrame {
-    private HashTable<User,User> users;
+    private HashTable<String,UserFinal> users;
     
     /**
      * Creates new form Opción
@@ -23,7 +23,7 @@ public class SignInFrame extends javax.swing.JFrame {
         initComponents();
     }
 
-    public SignInFrame(HashTable<User,User> users) {
+    public SignInFrame(HashTable<String,UserFinal> users) {
         this.users=users;
         initComponents();
     }
@@ -293,9 +293,9 @@ public class SignInFrame extends javax.swing.JFrame {
             return;
         }
         
-        User newUser = new User(insertedUser,insertedEmail,insertedPassword);
+        UserFinal newUser = new UserFinal(insertedUser,insertedEmail,insertedPassword,"LibrosPrueba.json");
         
-        if(this.users.contains(newUser)){
+        if(this.users.contains(insertedUser)){
             JOptionPane.showMessageDialog(null, "Este usuario ya se encuentra registrado.");
             return;
         }
@@ -304,7 +304,7 @@ public class SignInFrame extends javax.swing.JFrame {
             return;
         }
         
-        this.users.insert(newUser, newUser);
+        this.users.insert(insertedUser, newUser);
         
         //TODO Actualizar archivo JSON con el nuevo usuario
         

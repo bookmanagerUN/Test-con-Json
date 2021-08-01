@@ -21,7 +21,7 @@ import util.WriteJson;
 import util.FrameStack;
 import util.Heaps;
 import util.MyStack;
-import util.User;
+import Data.UserFinal;
 
 
 /**
@@ -36,7 +36,7 @@ public class MainFrame extends javax.swing.JFrame {
     /**
      * Usuario actual, permite ivocar su JSON correspondiente.
      */
-    private User user;
+    private UserFinal user;
 
     /**
      * Creates new form NewJFrame1
@@ -85,7 +85,7 @@ public class MainFrame extends javax.swing.JFrame {
      * 
      * @param user usuario que accedió desde {@link LogInFrame} o {@ling SignInFrame}.
      */
-    public MainFrame(User user){
+    public MainFrame(UserFinal user){
         this();
         this.user=user;
     }
