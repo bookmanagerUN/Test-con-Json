@@ -25,15 +25,15 @@ public class HashTable<KeyType, ValueType> {
     public void insert(KeyType key, ValueType value){
         if(contains(key))
             System.err.println("Está sobreescribiendo el valor de una clave.");
-        int hashCode = key.hashCode();
-
+        int hashCode = key.hashCode()%this.capacity;
+        System.out.println("hascode:"+ hashCode+" capacidad:"+this.capacity);
         if(hashCode > this.capacity)
             this.rehashing(hashCode + 1);
         if(lambda >= 0.5)
             this.rehashing(2 * this.capacity);
 
         HashData<KeyType, ValueType> aux;
-        int i = key.hashCode();
+        int i = key.hashCode()%this.capacity;
 
         while(true) {
             aux = hashTable[i];
@@ -73,7 +73,7 @@ public class HashTable<KeyType, ValueType> {
         }
 
         HashData<KeyType, ValueType> aux;
-        int i = key.hashCode();
+        int i = key.hashCode()%this.capacity;
 
         while (true) {
             aux = hashTable[i];
@@ -86,8 +86,8 @@ public class HashTable<KeyType, ValueType> {
 
     public boolean contains(KeyType key){
         HashData<KeyType, ValueType> aux;
-        int i = key.hashCode();
-        if(i > this.capacity)
+        int i =Math.abs(key.hashCode()%this.capacity) ;
+        if(i > this.capacity )
             return false;
         int counter = 0;
         while (true) {
@@ -102,13 +102,14 @@ public class HashTable<KeyType, ValueType> {
     }
 
     public void makeEmpty() {
-        this.capacity = 20;
+        this.capacity = 1069;
         this.keys = 0;
         this.lambda = 0;
         this.hashTable = new HashData[this.capacity];
     }
 
     private void rehashing(int newCapacity) {
+        
         HashData[] hashTable = new HashData[newCapacity];
         for (int i = 0; i < this.capacity; i++)
             hashTable[i] = this.hashTable[i];
