@@ -8,6 +8,7 @@ package Interface;
 import Data.Book;
 import Data.FrameAux;
 import Data.MyBooks;
+import Data.UserFinal;
 
 import java.awt.*;
 import util.FrameStack;
@@ -21,12 +22,14 @@ public class ReportFrame extends javax.swing.JFrame {
     //TODO todo
 
     private MyBooks myBooks = new MyBooks();
+    private UserFinal user;
 
     // ¿se puede pisar?
     public ReportFrame(MyBooks myBooks, FrameStack frameStack) {
+        this.user = user;
         this.myBooks = myBooks;
         this.frameStack = frameStack;
-        FrameAux frameAux = new FrameAux(6, this.myBooks);
+        FrameAux frameAux = new FrameAux(6, this.myBooks, this.user);
         this.frameStack.getStackFrame().push(frameAux);
         initComponents();
 
@@ -255,7 +258,7 @@ public class ReportFrame extends javax.swing.JFrame {
         Book book = this.myBooks.getMyBooks().elementPosition(id);
         //System.out.println(id);
         book.printBook();
-        BookInfoFrame bookInfo = new BookInfoFrame(book, this.myBooks, this.frameStack);
+        BookInfoFrame bookInfo = new BookInfoFrame(book, this.myBooks, this.frameStack,this.user);
         bookInfo.setVisible(true);
         this.dispose();
 
@@ -268,7 +271,7 @@ public class ReportFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jTFmyBooksActionPerformed
 
     private void jBNewBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNewBookActionPerformed
-        NewBookFrame newBookFrame = new NewBookFrame(this.myBooks,this.frameStack);
+        NewBookFrame newBookFrame = new NewBookFrame(this.myBooks,this.frameStack,this.user);
         newBookFrame.setVisible(true);
         this.dispose();
 

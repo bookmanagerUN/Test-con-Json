@@ -27,6 +27,7 @@ class AuxBook {
         this.bookInformation = bookInformation;
         this.notes = notes;
         this.opinion = opinion;
+        System.out.println(this.toString());
     }
 
     public String getOpinion() {

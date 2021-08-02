@@ -6,6 +6,7 @@
 package util;
 import Data.FrameAux;
 import Data.MyBooks;
+import Data.UserFinal;
 import Interface.AdviceFrame;
 import javax.swing.JFrame;
 import Interface.BookInfoFrame;
@@ -25,11 +26,11 @@ public class FrameStack {
     MyStack<FrameAux> stackFrame = new MyStack<>();
     MyStack<FrameAux> stackFrameNext = new MyStack<>();
     
-    public FrameStack(MyBooks mybooks){
+    public FrameStack(MyBooks mybooks, UserFinal user){
         
         System.out.println(mybooks.toString());
         // Ventana principal
-        FrameAux frame = new FrameAux(1, mybooks);
+        FrameAux frame = new FrameAux(1, mybooks,user);
         System.out.println(frame.getMyBooks().toString());
         
         
@@ -50,22 +51,22 @@ public class FrameStack {
     
     public JFrame generateFrame (){
         if(this.stackFrame.peek().getTypeOfFrame() == 1){
-            return new MainFrame(this.stackFrame.peek().getMyBooks(), this);
+            return new MainFrame(this.stackFrame.peek().getMyBooks(), this,this.stackFrame.peek().getUser());
         }
         else if (this.stackFrame.peek().getTypeOfFrame() == 2) {
-            return new BookInfoFrame(this.stackFrame.peek().getBook(), this.stackFrame.peek().getMyBooks(),this);
+            return new BookInfoFrame(this.stackFrame.peek().getBook(), this.stackFrame.peek().getMyBooks(),this,this.stackFrame.peek().getUser());
         }
         else if (this.stackFrame.peek().getTypeOfFrame() == 3) {
-            return  new NewBookFrame(this.stackFrame.peek().getMyBooks(), this);
+            return  new NewBookFrame(this.stackFrame.peek().getMyBooks(), this,this.stackFrame.peek().getUser());
         }
         else if (this.stackFrame.peek().getTypeOfFrame() == 4) {
-            return new NewNoteFrame( this.stackFrame.peek().getMyBooks(),this.stackFrame.peek().getBook(),this);
+            return new NewNoteFrame( this.stackFrame.peek().getMyBooks(),this.stackFrame.peek().getBook(),this,this.stackFrame.peek().getUser());
         }
         else if (this.stackFrame.peek().getTypeOfFrame() == 5) {
-            return  new AdviceFrame(this.stackFrame.peek().getMyBooks(),this);
+            return  new AdviceFrame(this.stackFrame.peek().getMyBooks(),this,this.stackFrame.peek().getUser());
         }
         else if (this.stackFrame.peek().getTypeOfFrame() == 6) {
-            return  new FilterFrame(this.stackFrame.peek().getMyBooks(), this);
+            return  new FilterFrame(this.stackFrame.peek().getMyBooks(), this,this.stackFrame.peek().getUser());
         }
         
         return null;

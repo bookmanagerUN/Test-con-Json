@@ -17,6 +17,8 @@ import java.util.Arrays;
  * @author Usuario
  */
 public class ReadJson {
+    
+    String file;
     //Trae un arraylist
     /*public List<AuxBook> readJson() throws FileNotFoundException {
         // LEER JSON
@@ -29,6 +31,10 @@ public class ReadJson {
         List<AuxBook> result = WriteJson.gson.fromJson(reader, type);
         return result;
     }*/
+    
+    public ReadJson(String file){
+        this.file = file;
+    }
     public MyBooks arrAuxToMyBooks(AuxBook[] auxBooks) {
         //System.out.println("util.ReadJson.arrAuxToMyBooks()");
         //save how many book they are
@@ -107,7 +113,7 @@ public class ReadJson {
         // LEER JSON
         System.out.println("util.ReadJson.readJson() inicio");
         
-        Reader reader = new FileReader("LibrosPrueba.json");
+        Reader reader = new FileReader(this.file);
 
         /* Type type = new TypeToken<Collection<AuxBook>>() {
         }.getType();*/

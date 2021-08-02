@@ -21,13 +21,18 @@ public class readTxt {
         
         
     }
-    public static void updateTxt(String cadena, boolean x) throws IOException{
+    public static void updateTxt(String insertedUser,String insertedEmail,String insertedPassword, boolean x) throws IOException{
+        String usuario = insertedUser+","+insertedEmail+","+insertedPassword+","+insertedUser+".json";
         FileWriter file = new FileWriter("users.txt",x);
-       
-        file.write(cadena+"\n");
+        file.write(usuario+"\n");
         file.close();
+        readTxt.createJson(insertedUser+".json");
         
     }
+    public static void createJson(String nameFile)throws IOException{
+        WriteJson.createNewJson(nameFile);
+    }
+    
     public static LinkedList<String> ReadTxt() throws FileNotFoundException, IOException{
        
       FileReader f = new FileReader("users.txt");

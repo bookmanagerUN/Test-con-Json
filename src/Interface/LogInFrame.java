@@ -262,7 +262,7 @@ public class LogInFrame extends javax.swing.JFrame {
     private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
         String insertedUser = this.UserField.getText();
         String insertedPassword = this.PasswordField.getText();
-        UserFinal hypotheticalUser = new UserFinal(insertedUser,insertedUser,insertedPassword, "LibrosPrueba.json");
+        UserFinal hypotheticalUser = new UserFinal(insertedUser,insertedUser,insertedPassword, insertedUser+".json");
         
         
         

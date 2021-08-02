@@ -75,6 +75,18 @@ public class Book implements Comparable<Book>{
         
         //update txt  
     }
+    public Book(BookInformation bI) {
+        //System.out.println("Information.Book.<init>()");
+        
+        //book info
+        this.bookInformation = bI;
+        
+        //default values:
+        this.actualPage = 0;
+        this.notes = new BookNotes();
+        this.status = false;
+    }
+    
     //created by Json
     public Book(BookInformation bookInformation, BookNotes bookNotes, int actualPage, boolean status,String opinion,int id) {
         //System.out.println("Data.Book.<init>()");

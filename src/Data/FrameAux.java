@@ -30,18 +30,17 @@ public class FrameAux {
     */
     private MyBooks myBooks;
     private Book book;
+    private UserFinal user;
 
-    public FrameAux(int typeOfFrame, MyBooks myBooks) {
-      
-        System.out.println(myBooks.toString());
+    public FrameAux(int typeOfFrame, MyBooks myBooks,UserFinal user) {
+        this.user = user;
         this.book = null;
         this.myBooks = myBooks;
-     
-        System.out.println(this.myBooks.toString());
         this.typeOfFrame = typeOfFrame;
     }
 
-    public FrameAux (int typeOfFrame,MyBooks myBooks, Book book){
+    public FrameAux (int typeOfFrame,MyBooks myBooks, Book book, UserFinal user){
+        this.user = user;
         this.book = book;
         this.myBooks = myBooks;
         this.typeOfFrame = typeOfFrame;
@@ -57,6 +56,10 @@ public class FrameAux {
 
     public Book getBook() {
         return this.book;
+    }
+    
+    public UserFinal getUser(){
+        return this.user;
     }
     
     /*

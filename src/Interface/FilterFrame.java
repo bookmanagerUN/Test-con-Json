@@ -10,6 +10,7 @@ import Data.BookFilterName;
 import Data.MyBooks;
 import Data.FrameAux;
 import Data.Search;
+import Data.UserFinal;
 import java.awt.Color;
 import java.awt.Font;
 import java.io.FileNotFoundException;
@@ -32,13 +33,14 @@ import util.MyStack;
 public class FilterFrame extends javax.swing.JFrame {
     private MyBooks myBooks = new MyBooks();
     private FrameStack frameStack;
+    private UserFinal user;
 
     /**
      * Creates new form NewJFrame1
      */
     
-    public FilterFrame(MyBooks myBooks, FrameStack frameStack) {
-        
+    public FilterFrame(MyBooks myBooks, FrameStack frameStack, UserFinal user) {
+        this.user = user;
         this.myBooks = myBooks;
         this.myBooks.printAllBooks();
         this.frameStack = frameStack;
@@ -61,7 +63,7 @@ public class FilterFrame extends javax.swing.JFrame {
         
         FrameAux frameAux2 = (FrameAux) this.frameStack.getStackFrame().peek();
         if(frameAux2.getTypeOfFrame()!= 6){
-            FrameAux frame = new FrameAux(6, this.myBooks);
+            FrameAux frame = new FrameAux(6, this.myBooks,this.user);
             this.frameStack.getStackFrame().push(frame);
         }
         this.jBGoToBook.setVisible(false);
@@ -72,40 +74,7 @@ public class FilterFrame extends javax.swing.JFrame {
         
 
     }
-        public FilterFrame() {
-            
-        //TODO CHECK leer Json; crear la clase MyBook; cada vez que se inicie el programa verificar Json
-        //TODO si no hay Json crear desde 0 (libro de prueba)
-        try {
-            ReadJson readJson = new ReadJson();
-            this.myBooks = readJson.arrAuxToMyBooks(readJson.readJson());
-
-        } catch (FileNotFoundException ignored) {
-            System.out.println(ignored.getLocalizedMessage());
-            System.out.println(ignored.getMessage());
-            System.out.println("Interface.MainFrame.<init>() error al hacer lectura de Json");
-        }
-
-        initComponents();
-
-        // cambiar headers de la tabla
-        this.jTMyBooks.getTableHeader().setFont(new Font("Tahoma", Font.BOLD, 18));
-        this.jTMyBooks.getTableHeader().setForeground(Color.BLUE);
-        UtilInterface.cleanJTable(jTMyBooks);
-
-        //poner logo en JLabel
-        UtilInterface.printImage(JLProyectIcon, "src/Interface/MediaFiles/VAzul1.png", this);
         
-        this.frameStack = new FrameStack(myBooks);
-        //System.out.println("esta es la pila: ");
-        //FrameAux s =(FrameAux) frameStack.getStackFrame().peek();
-        //System.out.println(s.getTypeOfFrame());
-        
-        this.jBForward.setVisible(false);
-        this.jBBack.setVisible(false);
-        
-        
-    }
         
     private void fillTable(LinkedList<BookFilterName> listToFill) {
         UtilInterface.cleanJTable(jTMyBooks);
@@ -416,7 +385,7 @@ public class FilterFrame extends javax.swing.JFrame {
     private void jBNewBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNewBookActionPerformed
         this.frameStack.cleanNextStack();
         
-        NewBookFrame newBookFrame = new NewBookFrame(this.myBooks, this.frameStack);
+        NewBookFrame newBookFrame = new NewBookFrame(this.myBooks, this.frameStack, this.user);
         newBookFrame.setVisible(true);
         this.dispose();
 
@@ -466,7 +435,7 @@ public class FilterFrame extends javax.swing.JFrame {
     private void jBNewInformActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNewInformActionPerformed
         this.frameStack.cleanNextStack();
         
-        AdviceFrame AdviceFrame = new AdviceFrame(this.myBooks, this.frameStack);
+        AdviceFrame AdviceFrame = new AdviceFrame(this.myBooks, this.frameStack, this.user);
         AdviceFrame.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jBNewInformActionPerformed
@@ -479,7 +448,7 @@ public class FilterFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         int id = Integer.parseInt(this.jTFID.getText());
         Book checkBook = this.myBooks.getBookById(id);
-        BookInfoFrame newFrame = new BookInfoFrame(checkBook, this.myBooks, this.frameStack);
+        BookInfoFrame newFrame = new BookInfoFrame(checkBook, this.myBooks, this.frameStack,this.user);
         newFrame.setVisible(true);
         this.dispose();
         
@@ -492,40 +461,7 @@ public class FilterFrame extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FilterFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FilterFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FilterFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FilterFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FilterFrame().setVisible(true);
-            }
-        });
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel JLProyectIcon;

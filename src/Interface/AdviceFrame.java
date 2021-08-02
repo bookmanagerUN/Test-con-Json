@@ -3,6 +3,7 @@ package Interface;
 import Data.Book;
 import Data.MyBooks;
 import Data.FrameAux;
+import Data.UserFinal;
 import java.io.FileNotFoundException;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -17,10 +18,11 @@ public class AdviceFrame extends javax.swing.JFrame {
     private Heaps heap;
     private MyBooks myBooks2;
     private Book book1;
+    private UserFinal user;
     
 
-    public AdviceFrame(MyBooks mybooks, FrameStack frameStack) {
-        
+    public AdviceFrame(MyBooks mybooks, FrameStack frameStack, UserFinal user) {
+        this.user = user;
         this.myBooks2 = mybooks;
         this.myBooks = myBooks;
         this.frameStack = frameStack;
@@ -39,7 +41,7 @@ public class AdviceFrame extends javax.swing.JFrame {
 
         FrameAux frameAux2 = (FrameAux) this.frameStack.getStackFrame().peek();
         if (frameAux2.getTypeOfFrame() != 5) {
-            FrameAux frame = new FrameAux(5, this.myBooks2);
+            FrameAux frame = new FrameAux(5, this.myBooks2,this.user);
             this.frameStack.getStackFrame().push(frame);
         }
        
@@ -56,7 +58,7 @@ public class AdviceFrame extends javax.swing.JFrame {
 
         UtilInterface.printImage(JLProyectIcon, "src/Interface/MediaFiles/VAzul1.png", this);
 
-        this.frameStack = new FrameStack(myBooks2);
+        this.frameStack = new FrameStack(myBooks2, null);
         
 
         this.jBForward.setVisible(false);
@@ -314,7 +316,7 @@ public class AdviceFrame extends javax.swing.JFrame {
 
     private void jBMyBooksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBMyBooksActionPerformed
          if(book1!=null){
-             BookInfoFrame bookInfo = new BookInfoFrame(book1, this.myBooks2,this.frameStack);
+             BookInfoFrame bookInfo = new BookInfoFrame(book1, this.myBooks2,this.frameStack,this.user);
             bookInfo.setVisible(true);
             this.dispose();
          }

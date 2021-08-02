@@ -4,6 +4,7 @@ import Data.Book;
 import Data.BookInformation;
 import Data.FrameAux;
 import Data.MyBooks;
+import Data.UserFinal;
 import util.WriteJson;
 
 import javax.swing.*;
@@ -17,6 +18,7 @@ public class NewBookFrame extends javax.swing.JFrame {
 
     private MyBooks myBooks = new MyBooks();
     private FrameStack frameStack;
+    private UserFinal user;
 
     /**
      * Creates new form NewBookFrame
@@ -28,7 +30,8 @@ public class NewBookFrame extends javax.swing.JFrame {
         cleanTextBox();
     }
 
-    public NewBookFrame(MyBooks myBooks, FrameStack frameStack) {
+    public NewBookFrame(MyBooks myBooks, FrameStack frameStack,UserFinal user) {
+        this.user = user;
         this.myBooks = myBooks;
         this.frameStack = frameStack;
 
@@ -38,7 +41,7 @@ public class NewBookFrame extends javax.swing.JFrame {
         
         FrameAux frameAux2 = (FrameAux) this.frameStack.getStackFrame().peek();
         if (frameAux2.getTypeOfFrame() != 3) {
-            FrameAux frameAux = new FrameAux(3, this.myBooks);
+            FrameAux frameAux = new FrameAux(3, this.myBooks,this.user);
             this.frameStack.getStackFrame().push(frameAux);
         }
         if(this.frameStack.getStackFrame().count == 0){
@@ -298,7 +301,7 @@ public class NewBookFrame extends javax.swing.JFrame {
 
     private void jBCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelActionPerformed
 
-        MainFrame mainFrame = new MainFrame();
+        MainFrame mainFrame = new MainFrame(this.myBooks, this.frameStack, this.user);
 
         mainFrame.setVisible(true);
 
@@ -314,6 +317,7 @@ public class NewBookFrame extends javax.swing.JFrame {
         String name = this.jTFName.getText();
         String isbn = "12341243";
         String category = this.jTFCategory.getText();
+        UserFinal user;
 
         int option = JOptionPane.showConfirmDialog(null, "¿confirma?");
         //System.out.println(option);
@@ -327,7 +331,7 @@ public class NewBookFrame extends javax.swing.JFrame {
             // Update Json
             WriteJson writeJson = new WriteJson();
             try {
-                writeJson.createAuxBook(this.myBooks.getMyBooks());
+                writeJson.createAuxBook(this.myBooks.getMyBooks(), this.user.getFile());
 
             } catch (IOException e) {
                 System.err.println("no se pudo guardar");
@@ -345,7 +349,7 @@ public class NewBookFrame extends javax.swing.JFrame {
     private void JBMyBooksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBMyBooksActionPerformed
         // TODO add your handling code here:
         this.frameStack.cleanNextStack();
-        MainFrame mainFrame = new MainFrame(this.myBooks, this.frameStack);
+        MainFrame mainFrame = new MainFrame(this.myBooks, this.frameStack, this.user);
         mainFrame.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_JBMyBooksActionPerformed
@@ -386,7 +390,7 @@ public class NewBookFrame extends javax.swing.JFrame {
 
     private void jBFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBFilterActionPerformed
         // TODO add your handling code here:
-        FilterFrame filter = new FilterFrame(this.myBooks, this.frameStack);
+        FilterFrame filter = new FilterFrame(this.myBooks, this.frameStack,this.user);
         filter.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jBFilterActionPerformed

@@ -297,7 +297,7 @@ public class SignInFrame extends javax.swing.JFrame {
             return;
         }
         
-        UserFinal newUser = new UserFinal(insertedUser,insertedEmail,insertedPassword,"LibrosPrueba.json");
+        UserFinal newUser = new UserFinal(insertedUser,insertedEmail,insertedPassword,insertedUser+".json");
         
         if(this.users.contains(insertedUser)){
             JOptionPane.showMessageDialog(null, "Este usuario ya se encuentra registrado.");
@@ -309,9 +309,8 @@ public class SignInFrame extends javax.swing.JFrame {
         }
         
         this.users.insert(insertedUser, newUser);
-        String usuario = insertedUser+","+insertedEmail+","+insertedPassword+","+insertedUser+".json";
         try {
-            readTxt.updateTxt(usuario,true);
+            readTxt.updateTxt(insertedUser,insertedEmail,insertedPassword,true);
         } catch (IOException ex) {
             Logger.getLogger(SignInFrame.class.getName()).log(Level.SEVERE, null, ex);
         }

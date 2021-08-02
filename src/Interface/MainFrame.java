@@ -32,18 +32,18 @@ public class MainFrame extends javax.swing.JFrame {
     private MyBooks myBooks = new MyBooks();
     private FrameStack frameStack;
     private Heaps<Book> heap;
-    
+    private UserFinal user;
     /**
      * Usuario actual, permite ivocar su JSON correspondiente.
      */
-    private UserFinal user;
+    
 
     /**
      * Creates new form NewJFrame1
      */
     
-    public MainFrame(MyBooks myBooks, FrameStack frameStack) {
-        
+    public MainFrame(MyBooks myBooks, FrameStack frameStack, UserFinal user) {
+        this.user = user;
         this.myBooks = myBooks;
         this.myBooks.printAllBooks();
         this.frameStack = frameStack;
@@ -66,7 +66,7 @@ public class MainFrame extends javax.swing.JFrame {
         
         FrameAux frameAux2 = (FrameAux) this.frameStack.getStackFrame().peek();
         if(frameAux2.getTypeOfFrame()!= 1){
-            FrameAux frame = new FrameAux(1, this.myBooks);
+            FrameAux frame = new FrameAux(1, this.myBooks,this.user);
             this.frameStack.getStackFrame().push(frame);
         }
         
@@ -85,17 +85,15 @@ public class MainFrame extends javax.swing.JFrame {
      * 
      * @param user usuario que accedió desde {@link LogInFrame} o {@ling SignInFrame}.
      */
-    public MainFrame(UserFinal user){
-        this();
-        this.user=user;
-    }
     
-    public MainFrame() {
+    
+    public MainFrame(UserFinal user) {
             
         //TODO CHECK leer Json; crear la clase MyBook; cada vez que se inicie el programa verificar Json
         //TODO si no hay Json crear desde 0 (libro de prueba)
+        this.user=user;
         try {
-            ReadJson readJson = new ReadJson();
+            ReadJson readJson = new ReadJson(this.user.getFile());
             this.myBooks = readJson.arrAuxToMyBooks(readJson.readJson());
 
         } catch (FileNotFoundException ignored) {
@@ -115,7 +113,7 @@ public class MainFrame extends javax.swing.JFrame {
         //poner logo en JLabel
         UtilInterface.printImage(JLProyectIcon, "src/Interface/MediaFiles/VAzul1.png", this);
         
-        this.frameStack = new FrameStack(myBooks);
+        this.frameStack = new FrameStack(myBooks, this.user);
         //System.out.println("esta es la pila: ");
         //FrameAux s =(FrameAux) frameStack.getStackFrame().peek();
         //System.out.println(s.getTypeOfFrame());
@@ -400,7 +398,7 @@ public class MainFrame extends javax.swing.JFrame {
             Book book = this.myBooks.getMyBooks().elementPosition(id - 1);
             //System.out.println(id);
             book.printBook();
-            BookInfoFrame bookInfo = new BookInfoFrame(book, this.myBooks,this.frameStack);
+            BookInfoFrame bookInfo = new BookInfoFrame(book, this.myBooks,this.frameStack,this.user);
             bookInfo.setVisible(true);
             this.dispose();
 
@@ -424,7 +422,7 @@ public class MainFrame extends javax.swing.JFrame {
                 this.myBooks.deleteBook(bookPosition - 1);
                 WriteJson writeJson = new WriteJson();
                 try {
-                    writeJson.createAuxBook(this.myBooks.getMyBooks());
+                    writeJson.createAuxBook(this.myBooks.getMyBooks(),this.user.getFile());
 
                 } catch (IOException e) {
                     System.err.println("no se pudo guardar");
@@ -438,7 +436,7 @@ public class MainFrame extends javax.swing.JFrame {
     private void jBNewBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNewBookActionPerformed
         this.frameStack.cleanNextStack();
         
-        NewBookFrame newBookFrame = new NewBookFrame(this.myBooks, this.frameStack);
+        NewBookFrame newBookFrame = new NewBookFrame(this.myBooks, this.frameStack,this.user);
         newBookFrame.setVisible(true);
         this.dispose();
 
@@ -448,7 +446,7 @@ public class MainFrame extends javax.swing.JFrame {
     private void jBFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBFilterActionPerformed
         // TODO add your handling code here:
         
-        FilterFrame filter = new FilterFrame(this.myBooks, this.frameStack);
+        FilterFrame filter = new FilterFrame(this.myBooks, this.frameStack, this.user);
         filter.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jBFilterActionPerformed
@@ -479,7 +477,7 @@ public class MainFrame extends javax.swing.JFrame {
     private void jBNewInformActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNewInformActionPerformed
         this.frameStack.cleanNextStack();
         
-        AdviceFrame AdviceFrame = new AdviceFrame(this.myBooks, this.frameStack);
+        AdviceFrame AdviceFrame = new AdviceFrame(this.myBooks, this.frameStack, this.user);
         AdviceFrame.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jBNewInformActionPerformed
@@ -487,38 +485,7 @@ public class MainFrame extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MainFrame().setVisible(true);
-            }
-        });
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel JLProyectIcon;
