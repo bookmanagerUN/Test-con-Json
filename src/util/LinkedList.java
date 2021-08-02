@@ -182,7 +182,7 @@ public class LinkedList<TypeOfData> implements Cloneable{
         return read(k).data;
     }
 
-    Integer numberOfElements() { //Retorna el numero de elementos que hay en la Linkedlist
+    public Integer numberOfElements() { //Retorna el numero de elementos que hay en la Linkedlist
         return count;
     }
 
