@@ -6,8 +6,13 @@
 package Interface;
 
 import Data.UserFinal;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import util.HashTable;
+import util.LinkedList;
+import util.readTxt;
 
 /**
  *
@@ -24,13 +29,13 @@ public class LogInFrame extends javax.swing.JFrame {
     /**
      * Creates new form Opción
      */
-    public LogInFrame() {
+    public LogInFrame() throws IOException {
         this.initializeHashTable();
         initComponents();
         
     }
     
-    private void initializeHashTable(){
+    private void initializeHashTable() throws IOException{
         //this.users = new HashTable<String (username),User>();
         this.users = new HashTable<String,UserFinal>();
         //TODO que savedUsers sea inicializado con un JSON
@@ -39,22 +44,23 @@ public class LogInFrame extends javax.swing.JFrame {
          * se debe cargar desde el JSON y a su vez lo que se debe guardar. cada
          * string está configurada como "Nombre, Email, Contraseña".
          */
-        String[] savedUsers = new String[]{"Daniel,Daniel@user.com,12345,LibrosPrueba.json",
-                                           "Jorge,Jorge@user.com,12345,LibrosPrueba.json",
-                                           "Cristian,Cristian@user.com,12345,LibrosPrueba.json",
-                                           "Brian,Brian@user.com,12345,LibrosPrueba.json",
-                                           "Carlos,Carlos@user.com,12345,LibrosPrueba.json",
-                                           "Santiago,Santiago@user.com,12345,LibrosPrueba.json"};
+        LinkedList<String> savedUsers =readTxt.ReadTxt() ;
         
-        for(String user : savedUsers){
-            String[] detached = user.split(",");
-            System.out.println(detached[0]);
-            System.out.println(detached[1]);
-            System.out.println(detached[2]);
-            System.out.println(detached[3]);
+        
+        for(int i=0; i<savedUsers.count ;i++ ){
+            String cadena = savedUsers.elementPosition(i);
+            String[] detached = cadena.split(",");
+            System.out.println("hey");
             UserFinal actualUser = new UserFinal(detached[0],detached[1],detached[2],detached[3]);
+             
             this.users.insert(detached[0],actualUser);
+           
         }
+        
+        
+            
+          
+        
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -279,10 +285,14 @@ public class LogInFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_PasswordFieldActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        LogInFrame login = new LogInFrame();
-        login.setVisible(true);
-        this.dispose();
+        try {
+            // TODO add your handling code here:
+            LogInFrame login = new LogInFrame();
+            login.setVisible(true);
+            this.dispose();
+        } catch (IOException ex) {
+            Logger.getLogger(LogInFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void SignInPageChangeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignInPageChangeButtonActionPerformed
@@ -301,7 +311,11 @@ public class LogInFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LogInFrame().setVisible(true);
+                try {
+                    new LogInFrame().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(LogInFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
