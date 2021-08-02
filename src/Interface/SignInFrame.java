@@ -8,6 +8,10 @@ package Interface;
 import javax.swing.JOptionPane;
 import util.HashTable;
 import Data.UserFinal;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import util.readTxt;
 
 /**
  *
@@ -305,6 +309,13 @@ public class SignInFrame extends javax.swing.JFrame {
         }
         
         this.users.insert(insertedUser, newUser);
+        String usuario = insertedUser+","+insertedEmail+","+insertedPassword+","+insertedUser+".json";
+        try {
+            readTxt.updateTxt(usuario,true);
+        } catch (IOException ex) {
+            Logger.getLogger(SignInFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         
         //TODO Actualizar archivo JSON con el nuevo usuario
         
@@ -320,10 +331,14 @@ public class SignInFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_TermsServiceActionPerformed
 
     private void LogInPageChangeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogInPageChangeButtonActionPerformed
-        // TODO add your handling code here:
-        LogInFrame login = new LogInFrame();
-        login.setVisible(true);
-        this.dispose();
+        try {
+            // TODO add your handling code here:
+            LogInFrame login = new LogInFrame();
+            login.setVisible(true);
+            this.dispose();
+        } catch (IOException ex) {
+            Logger.getLogger(SignInFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_LogInPageChangeButtonActionPerformed
 
     /**
