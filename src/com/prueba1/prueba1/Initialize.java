@@ -12,3 +12,4 @@ public class Initialize {
         logInFrame.setVisible(true);
     }
 }
+    

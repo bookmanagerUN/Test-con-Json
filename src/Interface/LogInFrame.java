@@ -261,12 +261,12 @@ public class LogInFrame extends javax.swing.JFrame {
         String insertedPassword = this.PasswordField.getText();
         
         UserName hypotheticalName = new UserName(insertedUser);
-        UserFinal hypotheticalUser = new UserFinal(insertedUser,insertedUser,insertedPassword, insertedUser+".json");
         
         if(this.users.contains(hypotheticalName)){
             String pass = this.users.search(hypotheticalName).getPassword();
             if(pass.compareTo(insertedPassword)==0){
-                MainFrame main = new MainFrame(hypotheticalUser);
+                UserFinal userF = this.users.search(hypotheticalName);
+                MainFrame main = new MainFrame(userF);
                 main.setVisible(true);
                 this.dispose();
             }
