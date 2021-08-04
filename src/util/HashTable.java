@@ -14,6 +14,7 @@ import java.nio.BufferUnderflowException;
 @SuppressWarnings("unchecked")
 public class HashTable<KeyType, ValueType> {
     private HashData<KeyType, ValueType>[] hashTable;
+    private final int MAX_SIZE = 0x3b9aca00;
     private float lambda;
     private int capacity;
     private int keys;
@@ -25,15 +26,15 @@ public class HashTable<KeyType, ValueType> {
     public void insert(KeyType key, ValueType value){
         if(contains(key))
             System.err.println("Está sobreescribiendo el valor de una clave.");
-        int hashCode = Math.abs(key.hashCode()%this.capacity);
-        System.out.println("hascode:"+ hashCode+" capacidad:"+this.capacity);
+        int hashCode = Math.abs(key.hashCode());
+
         if(hashCode > this.capacity)
             this.rehashing(hashCode + 1);
         if(lambda >= 0.5)
             this.rehashing(2 * this.capacity);
 
         HashData<KeyType, ValueType> aux;
-        int i = Math.abs(key.hashCode()%this.capacity);
+        int i = Math.abs(key.hashCode() % this.capacity);
 
         while(true) {
             aux = hashTable[i];
@@ -52,8 +53,7 @@ public class HashTable<KeyType, ValueType> {
         if(!this.contains(key))
             return;
         HashData<KeyType, ValueType> aux;
-        int i = key.hashCode();
-        int counter = 0;
+        int i = Math.abs(key.hashCode() % this.capacity);
         while (true) {
             aux = hashTable[i];
             if(aux.key.equals(key)) {
@@ -73,7 +73,7 @@ public class HashTable<KeyType, ValueType> {
         }
 
         HashData<KeyType, ValueType> aux;
-        int i = Math.abs(key.hashCode()%this.capacity);
+        int i = Math.abs(key.hashCode() % this.capacity);
 
         while (true) {
             aux = hashTable[i];
@@ -86,8 +86,8 @@ public class HashTable<KeyType, ValueType> {
 
     public boolean contains(KeyType key){
         HashData<KeyType, ValueType> aux;
-        int i =Math.abs(key.hashCode()%this.capacity) ;
-        if(i > this.capacity )
+        int i = Math.abs(key.hashCode() % this.capacity);
+        if(i > this.capacity)
             return false;
         int counter = 0;
         while (true) {
@@ -102,24 +102,32 @@ public class HashTable<KeyType, ValueType> {
     }
 
     public void makeEmpty() {
-        this.capacity = 1069;
+        this.capacity = 20;
         this.keys = 0;
         this.lambda = 0;
         this.hashTable = new HashData[this.capacity];
     }
 
     private void rehashing(int newCapacity) {
-        
-        HashData[] hashTable = new HashData[newCapacity];
-        for (int i = 0; i < this.capacity; i++)
-            hashTable[i] = this.hashTable[i];
+        if(this.hashTable.length==MAX_SIZE)
+            return;
+
+        HashData[] hashTable;
+
+        if(newCapacity>=MAX_SIZE)
+            hashTable = new HashData[MAX_SIZE];
+        else
+            hashTable = new HashData[newCapacity];
+
+        if(this.capacity >= 0)
+            System.arraycopy(this.hashTable, 0, hashTable, 0, this.capacity);
         this.hashTable = hashTable;
-        this.capacity = newCapacity;
+        this.capacity = hashTable.length;
         this.lambda = ((float) this.keys) / ((float) this.capacity);
     }
 
     private int pollFunction(KeyType key, int i) {
-        return (key.hashCode() + i^2) % this.capacity;
+        return Math.abs((key.hashCode()) + i^2) % this.capacity;
     }
 
     @Override

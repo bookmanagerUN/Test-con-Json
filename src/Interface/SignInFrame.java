@@ -8,6 +8,7 @@ package Interface;
 import javax.swing.JOptionPane;
 import util.HashTable;
 import Data.UserFinal;
+import Data.UserName;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,7 +19,7 @@ import util.readTxt;
  * @author Diego Quintero
  */
 public class SignInFrame extends javax.swing.JFrame {
-    private HashTable<String,UserFinal> users;
+    private HashTable<UserName,UserFinal> users;
     
     /**
      * Creates new form Opción
@@ -27,7 +28,7 @@ public class SignInFrame extends javax.swing.JFrame {
         initComponents();
     }
 
-    public SignInFrame(HashTable<String,UserFinal> users) {
+    public SignInFrame(HashTable<UserName,UserFinal> users) {
         this.users=users;
         initComponents();
     }
@@ -291,7 +292,7 @@ public class SignInFrame extends javax.swing.JFrame {
         String insertedUser = this.UserField.getText();
         String insertedEmail = this.EmailField.getText();
         String insertedPassword = this.PasswordField.getText();
-        
+        UserName hypoteticalName = new UserName(insertedUser);
         if(insertedPassword.length()<6){
             JOptionPane.showMessageDialog(null, "Ingrese una clave mayor a 6 carácteres.");
             return;
@@ -299,7 +300,7 @@ public class SignInFrame extends javax.swing.JFrame {
         
         UserFinal newUser = new UserFinal(insertedUser,insertedEmail,insertedPassword,insertedUser+".json");
         
-        if(this.users.contains(insertedUser)){
+        if(this.users.contains(hypoteticalName)){
             JOptionPane.showMessageDialog(null, "Este usuario ya se encuentra registrado.");
             return;
         }
@@ -308,7 +309,7 @@ public class SignInFrame extends javax.swing.JFrame {
             return;
         }
         
-        this.users.insert(insertedUser, newUser);
+        this.users.insert(hypoteticalName, newUser);
         try {
             readTxt.updateTxt(insertedUser,insertedEmail,insertedPassword,true);
         } catch (IOException ex) {

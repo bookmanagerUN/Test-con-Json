@@ -6,6 +6,7 @@
 package Interface;
 
 import Data.UserFinal;
+import Data.UserName;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,7 +25,7 @@ public class LogInFrame extends javax.swing.JFrame {
      * o el nombre suministrado sea el correcto, y además la contraseña sea la 
      * correcta.
      */
-    private HashTable<String,UserFinal> users;
+    private HashTable<UserName,UserFinal> users;
     
     /**
      * Creates new form Opción
@@ -37,7 +38,7 @@ public class LogInFrame extends javax.swing.JFrame {
     
     private void initializeHashTable() throws IOException{
         //this.users = new HashTable<String (username),User>();
-        this.users = new HashTable<String,UserFinal>();
+        this.users = new HashTable<>();
         //TODO que savedUsers sea inicializado con un JSON
         /**
          * Arreglo de strings donde se encuentran los usuarios, representa lo que
@@ -52,15 +53,11 @@ public class LogInFrame extends javax.swing.JFrame {
             String[] detached = cadena.split(",");
             System.out.println("hey");
             UserFinal actualUser = new UserFinal(detached[0],detached[1],detached[2],detached[3]);
-             
-            this.users.insert(detached[0],actualUser);
+            UserName actualName = new UserName(detached[0]);
+            
+            this.users.insert(actualName,actualUser);
            
         }
-        
-        
-            
-          
-        
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -262,12 +259,12 @@ public class LogInFrame extends javax.swing.JFrame {
     private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
         String insertedUser = this.UserField.getText();
         String insertedPassword = this.PasswordField.getText();
+        
+        UserName hypotheticalName = new UserName(insertedUser);
         UserFinal hypotheticalUser = new UserFinal(insertedUser,insertedUser,insertedPassword, insertedUser+".json");
         
-        
-        
-        if(this.users.contains(insertedUser)){
-            String pass = this.users.search(insertedUser).getPassword();
+        if(this.users.contains(hypotheticalName)){
+            String pass = this.users.search(hypotheticalName).getPassword();
             if(pass.compareTo(insertedPassword)==0){
                 MainFrame main = new MainFrame(hypotheticalUser);
                 main.setVisible(true);
@@ -277,7 +274,7 @@ public class LogInFrame extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Usuario Incorrecto o Clave Incorrecta.");
             }
         } else
-            JOptionPane.showMessageDialog(null, "Usuario Incorrecto o Clave Incorrecta.");
+            JOptionPane.showMessageDialog(null, "ver.");
     }//GEN-LAST:event_LoginButtonActionPerformed
 
     private void PasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordFieldActionPerformed
