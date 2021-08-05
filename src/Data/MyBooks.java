@@ -2,6 +2,7 @@
 
 package Data;
 
+import util.Graphs;
 import util.LinkedList;
 
 /**
@@ -10,6 +11,7 @@ import util.LinkedList;
  */
 public class MyBooks {
     private LinkedList<Book> myBooks;
+    private Graphs<String> dependences = new Graphs<>();
 
     //Setters
     
@@ -28,12 +30,16 @@ public class MyBooks {
     //new sesion
     public MyBooks() {
         this.myBooks = new LinkedList<Book>();
+        defaultGraph();
+        System.out.println("aaaaaaaaaaaaaaaaaaaaaaa");
         
     }
     // read txt
     public MyBooks(LinkedList<Book> myBooks){
         System.out.println("Data.MyBooks.<init>()");
         this.myBooks = myBooks;
+        defaultGraph();
+        System.out.println("aaaaaaaaaaaaaaaaaaaaa");
         //updateAllId();
     }
     
@@ -72,6 +78,24 @@ public class MyBooks {
         else{
             return false;
         }
+    }
+    private void defaultGraph(){
+        this.dependences.addVertex("Discretas 1");
+        this.dependences.addVertex("Discretas 2");
+        this.dependences.addVertex("Discretas 3");
+        this.dependences.addVertex("Discretas 4");
+        this.dependences.addVertex("Algoritmos 1");
+        this.dependences.addVertex("Algoritmos 2");
+        this.dependences.addVertex("Algoritmos 3");
+        
+        this.dependences.addEdge("Discretas 2", "Discretas 1");
+        this.dependences.addEdge("Discretas 3", "Discretas 2");
+        this.dependences.addEdge("Discretas 4", "Discretas 3");
+        this.dependences.addEdge("Discretas 1", "Algoritmos 2");
+        this.dependences.addEdge("Algoritmos 2", "Algoritmos 1");
+        
+        
+        System.out.println(dependences.getGraph().toString());
     }
     
     public Book getBookById(int id){
