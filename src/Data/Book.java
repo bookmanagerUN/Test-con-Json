@@ -1,7 +1,5 @@
 package Data;
 
-import util.LinkedList;
-
 public class Book implements Comparable<Book>{
     
     private int actualPage  = 0;

@@ -56,7 +56,7 @@ public class Heaps<T extends Comparable<? super T>> {
     }
     //Metodo para saber si el monticulo está vacio
      public Boolean isEmpty(){
-         if(array.length==0){
+         if(this.currentSize==0){  
              return true;
          }
          return false;
@@ -74,6 +74,7 @@ public class Heaps<T extends Comparable<? super T>> {
      public T deleteMax(){
          if(this.isEmpty()){
              System.out.println("No es posible eliminar porque el monticulo no tiene elementos");
+             return null;
          }
          T min = findMax();
          array[1] = array[currentSize--];
