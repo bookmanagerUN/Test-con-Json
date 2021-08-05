@@ -149,6 +149,26 @@ public class LinkedList<TypeOfData> implements Cloneable{
             count--;
         }
     }
+    public boolean contains(TypeOfData element) {
+        if(count==0){
+            return false;
+        }
+
+        Node<TypeOfData> aux = head;
+
+        int c = count;
+        int index = 0;
+
+        while (c-- > 0) {
+            if (aux.data == element) {
+                return true;
+            }
+            index++;
+            aux = aux.next;
+        }
+        return false;
+
+    }
 
     public LinkedList<Integer> find(TypeOfData element) {
 
