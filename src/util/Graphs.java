@@ -10,7 +10,7 @@ package util;
  * @author lenovo
  */
 public class Graphs<T> {
-    private HaashTaable<T,LinkedList<T>> graph = new HaashTaable();
+    private HashTable<T,LinkedList<T>> graph = new HashTable();
 
     private LinkedList<T> listVertex;
     private LinkedList<T> vertexVisited;
@@ -19,7 +19,7 @@ public class Graphs<T> {
         listVertex = new LinkedList<>();
         vertexVisited = new LinkedList<>();
     }
-    private void addVertex(T key){
+    public void addVertex(T key){
         graph.insert(key,new LinkedList<>());
         listVertex.insertEnd(key);
     }
@@ -28,7 +28,7 @@ public class Graphs<T> {
         graph.delete(key);
     }
 
-    private void addEdge(T key1,T key2){
+    public void addEdge(T key1,T key2){
 
         //Controlar nulos
 
@@ -42,6 +42,12 @@ public class Graphs<T> {
             graph.insert(key1,temp);
         }
     }
+
+    public HashTable<T, LinkedList<T>> getGraph() {
+        return graph;
+    }
+    
+  
 
     private void deleteEdge(T key1,T key2) {
         LinkedList<T> temp = graph.search(key1);

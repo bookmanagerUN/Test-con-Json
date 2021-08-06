@@ -375,10 +375,6 @@ public class NewBookFrame extends javax.swing.JFrame {
         insertBook(name, author, category, isbn);
         
 
-        
-        
-
-
     }//GEN-LAST:event_jBAddBookActionPerformed
 
     private void JBMyBooksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBMyBooksActionPerformed

@@ -97,6 +97,12 @@ public class MyBooks {
         
         System.out.println(dependences.getGraph().toString());
     }
+
+    public Graphs<String> getDependences() {
+        return dependences;
+    }
+
+    
     
     public Book getBookById(int id){
         for(int i = 0; i< this.myBooks.count;i++){
