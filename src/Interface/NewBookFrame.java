@@ -10,6 +10,8 @@ import util.WriteJson;
 import javax.swing.*;
 import java.io.IOException;
 import util.FrameStack;
+import util.Graphs;
+import util.LinkedList;
 
 /**
  * @author Usuario
@@ -307,41 +309,74 @@ public class NewBookFrame extends javax.swing.JFrame {
 
         this.setVisible(false);
     }//GEN-LAST:event_jBCancelActionPerformed
+    private void insertBook(String name,String author,String category,String isbn){
+        Graphs graph1 = myBooks.getDependences();
+        boolean band =graph1.getGraph().contains(name);
+        boolean band2=false;
+        
+        if(band){
+            LinkedList<String> list =  (LinkedList<String>) graph1.getGraph().search(name);
+            if(list.numberOfElements()==0){
+                insertBook1(name, author, category, isbn);
+            }
+            else{
+                for(int i=0;i<list.numberOfElements();i++){
+                   for(int j =0; j<myBooks.getMyBooks().numberOfElements();j++){
+                       if(list.elementPosition(i).compareTo(myBooks.getMyBooks().elementPosition(j).getBookInformation().getName())==0){
+                           insertBook1(name, author, category, isbn);
+                           band2 = true;
+                       }        
+                   }
+                   
+                   
+                }
+                if(band==false){
+                        int option = JOptionPane.showConfirmDialog(null, "No tienes el pre-requisito: ");
+                   }
+            }
+        }
+        else{
+             insertBook1(name, author, category, isbn);
+        }
+    }
+    
+    
+    private void insertBook1(String name,String author,String category,String isbn){
+        int option = JOptionPane.showConfirmDialog(null, "¿confirma?");
+        
+                if (option == 0) {
+                BookInformation newBookInformation = new BookInformation(name, author, category, isbn);
+                Book newBook = new Book(newBookInformation, this.myBooks);
+                this.myBooks.printAllBooks();
 
+                WriteJson writeJson = new WriteJson();
+                try {
+                    writeJson.createAuxBook(this.myBooks.getMyBooks(), this.user.getFile());
+
+                } catch (IOException e) {
+                    System.err.println("no se pudo guardar");
+                 }
+                cleanTextBox();
+                } else if (option == 1) {
+
+                } else {
+                    cleanTextBox();
+                }
+    }
+    
+    
     private void jBAddBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAddBookActionPerformed
-        //  TODO CHECK crear una ventaan flotante (jOptionpane)
 
-        //  leer los campos de escritura
-        //System.out.println("Interface.NewBookFrame.jBAddBookActionPerformed()");
         String author = this.jTFAuthor.getText();
         String name = this.jTFName.getText();
         String isbn = "12341243";
         String category = this.jTFCategory.getText();
         UserFinal user;
+        insertBook(name, author, category, isbn);
+        
 
-        int option = JOptionPane.showConfirmDialog(null, "¿confirma?");
-        //System.out.println(option);
-        if (option == 0) {
-            //int id = this.ComputeId();//ejemplo
-
-            BookInformation newBookInformation = new BookInformation(/*id,*/name, author, category, isbn);
-            Book newBook = new Book(newBookInformation, this.myBooks);
-            this.myBooks.printAllBooks();
-
-            // Update Json
-            WriteJson writeJson = new WriteJson();
-            try {
-                writeJson.createAuxBook(this.myBooks.getMyBooks(), this.user.getFile());
-
-            } catch (IOException e) {
-                System.err.println("no se pudo guardar");
-            }
-            cleanTextBox();
-        } else if (option == 1) {
-
-        } else {
-            cleanTextBox();
-        }
+        
+        
 
 
     }//GEN-LAST:event_jBAddBookActionPerformed
