@@ -28,7 +28,7 @@ public class HashTable<KeyType, ValueType> {
             System.err.println("Está sobreescribiendo el valor de una clave.");
         int hashCode = Math.abs(key.hashCode());
 
-        
+       
         if(lambda >= 0.5)
             this.rehashing(2 * this.capacity);
 

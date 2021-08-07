@@ -13,6 +13,14 @@ public class MyBooks {
     private LinkedList<Book> myBooks;
     private Graphs<String> dependences = new Graphs<>();
 
+    public Graphs<String> getDependences() {
+        return dependences;
+    }
+
+    public void setDependences(Graphs<String> dependences) {
+        this.dependences = dependences;
+    }
+    
     //Setters
     
     // should not be used

@@ -335,10 +335,6 @@ public class NewBookFrame extends javax.swing.JFrame {
                    i++;
                  
                 }
-                   
-                   
-                   
-                
                 if(band2==false){
                         int option = JOptionPane.showConfirmDialog(null, "No tienes el pre-requisito: ");
                    }
