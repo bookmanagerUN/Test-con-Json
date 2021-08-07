@@ -277,5 +277,17 @@
       }
     ],
     "opinion": ""
+  },
+  {
+    "actualPage": 0,
+    "status": false,
+    "bookInformation": [
+      "Algoritmos 1",
+      "sdfgh",
+      "sdfghjk",
+      "12341243"
+    ],
+    "notes": [],
+    "opinion": ""
   }
 ]
