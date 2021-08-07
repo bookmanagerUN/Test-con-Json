@@ -15,6 +15,7 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import util.FrameStack;
 import util.LinkedList;
@@ -57,8 +58,8 @@ public class requirements extends javax.swing.JFrame {
             FrameAux frame = new FrameAux(6, this.myBooks,this.user);
             this.frameStack.getStackFrame().push(frame);
         }
-        this.jBAddPre.setVisible(false);
-        this.JTFpre.setVisible(false);
+        this.jButton1.setVisible(true);
+        this.JTFpre.setVisible(true);
         
         
         
@@ -83,15 +84,15 @@ public class requirements extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         JLProyectIcon = new javax.swing.JLabel();
         JPMyBooks = new javax.swing.JPanel();
-        jBGoToFilter = new javax.swing.JButton();
         jLMyBooks = new javax.swing.JLabel();
         JTFbook = new javax.swing.JTextField();
         jBForward = new javax.swing.JButton();
         jBBack = new javax.swing.JButton();
-        jBAddPre = new javax.swing.JButton();
         JTFpre = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jBNewBook = new javax.swing.JButton();
         jBNewInform = new javax.swing.JButton();
         jBFilter = new javax.swing.JButton();
@@ -105,20 +106,8 @@ public class requirements extends javax.swing.JFrame {
         JLProyectIcon.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         JLProyectIcon.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        JPMyBooks.setBackground(new java.awt.Color(255, 255, 255));
+        JPMyBooks.setBackground(new java.awt.Color(153, 255, 102));
         JPMyBooks.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(31, 78, 121), 2, true), "Filtro", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 24), new java.awt.Color(31, 78, 121))); // NOI18N
-
-        jBGoToFilter.setBackground(new java.awt.Color(255, 255, 255));
-        jBGoToFilter.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jBGoToFilter.setForeground(new java.awt.Color(31, 78, 121));
-        jBGoToFilter.setText("Eliminar prerrequisito");
-        jBGoToFilter.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(31, 78, 121), 2, true));
-        jBGoToFilter.setContentAreaFilled(false);
-        jBGoToFilter.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBGoToFilterActionPerformed(evt);
-            }
-        });
 
         jLMyBooks.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLMyBooks.setText("En esta ventana podrás añadir tus prerrequisitos.");
@@ -153,13 +142,6 @@ public class requirements extends javax.swing.JFrame {
             }
         });
 
-        jBAddPre.setText("Añadir prerrequisito");
-        jBAddPre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBAddPreActionPerformed(evt);
-            }
-        });
-
         JTFpre.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         JTFpre.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(31, 78, 121), 2, true));
         JTFpre.addActionListener(new java.awt.event.ActionListener() {
@@ -171,6 +153,15 @@ public class requirements extends javax.swing.JFrame {
         jLabel1.setText("Este es el libro que vas a añadir");
 
         jLabel2.setText("Este es el prerrequisito");
+
+        jButton1.setText("AÑADIR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Eliminar");
 
         javax.swing.GroupLayout JPMyBooksLayout = new javax.swing.GroupLayout(JPMyBooks);
         JPMyBooks.setLayout(JPMyBooksLayout);
@@ -188,23 +179,24 @@ public class requirements extends javax.swing.JFrame {
                         .addComponent(jLMyBooks, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(6, 6, 6))))
             .addGroup(JPMyBooksLayout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JPMyBooksLayout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(JTFpre, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(JPMyBooksLayout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(JPMyBooksLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(75, 75, 75)
-                        .addComponent(JTFbook, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(JPMyBooksLayout.createSequentialGroup()
-                .addContainerGap(178, Short.MAX_VALUE)
-                .addComponent(jBAddPre, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(100, 100, 100)
-                .addComponent(jBGoToFilter, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(241, 241, 241))
+                        .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(JTFpre, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(JTFbook, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(JPMyBooksLayout.createSequentialGroup()
+                        .addGap(225, 225, 225)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(96, 96, 96)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(147, Short.MAX_VALUE))
         );
         JPMyBooksLayout.setVerticalGroup(
             JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -217,16 +209,16 @@ public class requirements extends javax.swing.JFrame {
                     .addComponent(JTFbook, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(JPMyBooksLayout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jBAddPre, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(70, 70, 70)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(JPMyBooksLayout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(JTFpre, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jBGoToFilter)))
-                .addGap(104, 104, 104)
+                        .addGap(56, 56, 56)
+                        .addComponent(JTFpre, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(83, 83, 83)
+                .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(jButton1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
                 .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jBForward)
                     .addComponent(jBBack))
@@ -265,15 +257,14 @@ public class requirements extends javax.swing.JFrame {
                     .addComponent(JLProyectIcon, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                     .addComponent(jBNewInform, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jBFilter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(JPMyBooks, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(18, 18, 18))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(JPMyBooks, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(JLProyectIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -281,9 +272,11 @@ public class requirements extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jBFilter, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jBNewInform, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 119, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(jBNewInform, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(JPMyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -299,14 +292,6 @@ public class requirements extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jBGoToFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGoToFilterActionPerformed
-        
-    }//GEN-LAST:event_jBGoToFilterActionPerformed
-
-    private void JTFbookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTFbookActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JTFbookActionPerformed
 
     private void jBNewBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNewBookActionPerformed
         this.frameStack.cleanNextStack();
@@ -370,18 +355,20 @@ public class requirements extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_JTFpreActionPerformed
 
-    private void jBAddPreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAddPreActionPerformed
+    private void JTFbookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTFbookActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JTFbookActionPerformed
 
-        String book= JTFbook.getText();
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String book = JTFbook.getText();
         String pre = JTFpre.getText();
-
         myBooks.getDependences().addVertex(book);
         myBooks.getDependences().addVertex(pre);
         myBooks.getDependences().addEdge(book,pre);
-
-        System.out.println("");
-
-    }//GEN-LAST:event_jBAddPreActionPerformed
+        
+        System.out.println(myBooks.getDependences().getGraph().toString());
+        JOptionPane.showMessageDialog(null,"El prerrequisito fue añadido correctamente");
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -393,13 +380,13 @@ public class requirements extends javax.swing.JFrame {
     private javax.swing.JPanel JPMyBooks;
     private javax.swing.JTextField JTFbook;
     private javax.swing.JTextField JTFpre;
-    private javax.swing.JButton jBAddPre;
     private javax.swing.JButton jBBack;
     private javax.swing.JButton jBFilter;
     private javax.swing.JButton jBForward;
-    private javax.swing.JButton jBGoToFilter;
     private javax.swing.JButton jBNewBook;
     private javax.swing.JButton jBNewInform;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLMyBooks;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
