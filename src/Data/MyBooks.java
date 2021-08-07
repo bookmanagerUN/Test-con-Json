@@ -4,6 +4,7 @@ package Data;
 
 import util.Graphs;
 import util.LinkedList;
+import util.readTxt;
 
 /**
  *
@@ -87,23 +88,36 @@ public class MyBooks {
             return false;
         }
     }
-    private void defaultGraph(){
-        this.dependences.addVertex("Discretas 1");
-        this.dependences.addVertex("Discretas 2");
-        this.dependences.addVertex("Discretas 3");
-        this.dependences.addVertex("Discretas 4");
-        this.dependences.addVertex("Algoritmos 1");
-        this.dependences.addVertex("Algoritmos 2");
-        this.dependences.addVertex("Algoritmos 3");
+    
+    public static Graphs<String> defaultGraph(){
         
-        this.dependences.addEdge("Discretas 2", "Discretas 1");
-        this.dependences.addEdge("Discretas 3", "Discretas 2");
-        this.dependences.addEdge("Discretas 4", "Discretas 3");
-        this.dependences.addEdge("Discretas 1", "Algoritmos 2");
-        this.dependences.addEdge("Algoritmos 2", "Algoritmos 1");
+        Graphs<String> aux = new Graphs<>();
+
         
+        aux.addVertex("Discretas 1");
+        aux.addVertex("Discretas 2");
+        aux.addVertex("Discretas 3");
+        aux.addVertex("Discretas 4");
+        aux.addVertex("Algoritmos 1");
+        aux.addVertex("Algoritmos 2");
+        aux.addVertex("Algoritmos 3");
         
-        System.out.println(dependences.getGraph().toString());
+        aux.addEdge("Discretas 2", "Discretas 1");
+        aux.addEdge("Discretas 3", "Discretas 2");
+        aux.addEdge("Discretas 4", "Discretas 3");
+        aux.addEdge("Discretas 1", "Algoritmos 2");
+        aux.addEdge("Algoritmos 2", "Algoritmos 1");   
+        
+        //System.out.println(dependences.getGraph().toString());
+        System.out.println(aux.getGraph().toTxt().elementPosition(0));
+        
+        return aux;
+
+    }
+    
+    public void readGraph(){
+        
+        readTxt.readGraphTxt();
     }
     
     public Book getBookById(int id){

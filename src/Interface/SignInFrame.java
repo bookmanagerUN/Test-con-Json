@@ -315,6 +315,12 @@ public class SignInFrame extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(SignInFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
+        System.out.println("AJSAJSJAJSJAJSJAJSAJS");
+        try {
+            readTxt.createGraphTxt(insertedUser);
+        } catch (IOException ex) {
+            Logger.getLogger(SignInFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         
         //TODO Actualizar archivo JSON con el nuevo usuario

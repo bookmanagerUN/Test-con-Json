@@ -128,6 +128,17 @@ public class HashTable<KeyType, ValueType> {
     private int pollFunction(KeyType key, int i) {
         return Math.abs((key.hashCode()) + i^2) % this.capacity;
     }
+    
+    public LinkedList<String> toTxt() {
+        LinkedList<String> toReturn = new LinkedList();
+
+        for (int i = 0; i < this.capacity; i++) {
+            if(hashTable[i] != null && hashTable[i].status) {
+                toReturn.insertEnd(hashTable[i].toString());
+            }
+        }
+        return toReturn;
+    }
 
     @Override
     public String toString() {
@@ -153,7 +164,7 @@ public class HashTable<KeyType, ValueType> {
             this.value = value;
             this.status = true;
         }
-
+        
         @Override
         public String toString() {
             if(status)

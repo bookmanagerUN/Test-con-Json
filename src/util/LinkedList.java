@@ -214,7 +214,7 @@ public class LinkedList<TypeOfData> implements Cloneable{
     public String toString() { //Imprime la Linkedlist
 
         StringBuilder str = new StringBuilder();
-        str.append("[");
+        //str.append("[");
 
         Node<TypeOfData> aux = head;
 
@@ -224,7 +224,7 @@ public class LinkedList<TypeOfData> implements Cloneable{
         } else {
             while (aux != null) {
                 str.append(aux.data.toString());
-                str.append(", ");
+                str.append(",");
                 aux = aux.next;
             }
         }
@@ -232,7 +232,7 @@ public class LinkedList<TypeOfData> implements Cloneable{
         String toReturn = str.toString();
         toReturn = toReturn.substring(0, str.length() - 2);
 
-        return toReturn + "]";
+        return toReturn;
     }
 
     public LinkedList<TypeOfData> clone(){

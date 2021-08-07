@@ -8,3 +8,4 @@ carlos,qwerty,123456,carlos.json
 newUser,user@user.com,123456,newUser.json
 nuevo,nuevo@hotmail.com,123456,nuevo.json
 Daniela,dani123@user.com,123456,Daniela.json
+jose,lksadjlksa,123456,jose.json

@@ -1,6 +1,7 @@
 
 package util;
 
+import Data.MyBooks;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -17,10 +18,9 @@ public class readTxt {
         for(int i =0; i<content.length;i++ ){
         file.write(content[i]+"\n");
         }
-        file.close();
-        
-        
+        file.close();       
     }
+    
     public static void updateTxt(String insertedUser,String insertedEmail,String insertedPassword, boolean x) throws IOException{
         String usuario = insertedUser+","+insertedEmail+","+insertedPassword+","+insertedUser+".json";
         FileWriter file = new FileWriter("users.txt",x);
@@ -29,6 +29,7 @@ public class readTxt {
         readTxt.createJson(insertedUser+".json");
         
     }
+    
     public static void createJson(String nameFile)throws IOException{
         WriteJson.createNewJson(nameFile);
     }
@@ -49,6 +50,28 @@ public class readTxt {
       return list;
       
     }
+    
+    public static void createGraphTxt(String archivo) throws IOException{
+        String f = archivo + ".txt";
+        Graphs<String> aux = MyBooks.defaultGraph();
+        LinkedList<String> hashTableToLL = aux.getGraph().toTxt();
+        FileWriter file = new FileWriter("requisitos/"+f);
+        for(int i=0; i<hashTableToLL.numberOfElements(); i++){
+            String[] toSave = hashTableToLL.elementPosition(i).split("=");
+            file.write(toSave[0]+"||"+toSave[1]+"\n");           
+        }        
+        file.close();       
+        
+    }
+    
+    public static void updadeGraphTxt(){
+        
+    }
+    
+    public static void readGraphTxt(){
+        
+    }
+    
     public static void main(String[] args) throws IOException {
         String[] savedUsers = new String[]{"Daniel,Daniel@user.com,12345,LibrosPrueba.json",
                                            "Jorge,Jorge@user.com,12345,LibrosPrueba.json",
