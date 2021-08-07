@@ -320,17 +320,26 @@ public class NewBookFrame extends javax.swing.JFrame {
                 insertBook1(name, author, category, isbn);
             }
             else{
-                for(int i=0;i<list.numberOfElements();i++){
-                   for(int j =0; j<myBooks.getMyBooks().numberOfElements();j++){
-                       if(list.elementPosition(i).compareTo(myBooks.getMyBooks().elementPosition(j).getBookInformation().getName())==0){
+                int i=0;
+                while(band2==false && i<list.numberOfElements()){
+                    int j =0;
+                    System.out.println("size: "+myBooks.getMyBooks().count);
+                    while(band2==false && j<myBooks.getMyBooks().count ){
+                        System.out.println("j: "+j);
+                        if(list.elementPosition(i).compareTo(myBooks.getMyBooks().elementPosition(j).getBookInformation().getName())==0){
                            insertBook1(name, author, category, isbn);
                            band2 = true;
-                       }        
-                   }
-                   
-                   
+                       }
+                        j++;
+                    }
+                   i++;
+                 
                 }
-                if(band==false){
+                   
+                   
+                   
+                
+                if(band2==false){
                         int option = JOptionPane.showConfirmDialog(null, "No tienes el pre-requisito: ");
                    }
             }
