@@ -28,7 +28,7 @@ public class CSVReport {
     private OutputStreamWriter osw;
     
     public CSVReport(Book book, String fileDestination) throws IOException{
-        this.file = new File(fileDestination+".csv");
+        this.file = new File("exportables/"+fileDestination+".csv");
         this.fos = new FileOutputStream(this.file);
         this.osw = new OutputStreamWriter(this.fos);
         this.writer = new BufferedWriter(this.osw);
@@ -36,7 +36,7 @@ public class CSVReport {
         this.notes=new AVLTree();
         this.book=book;
         this.buildTree();
-        this.setReport(fileDestination);
+        this.setReport("exportables/"+fileDestination);
     }
     
     public void buildTree(){

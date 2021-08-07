@@ -66,7 +66,7 @@ public class WriteJson {
     }
     public static void createNewJson(String nameFile) throws IOException {
         //CREAR JSON
-        Writer writer = new FileWriter(nameFile);
+        Writer writer = new FileWriter("biblioteca/"+nameFile);
         writer.write(gson.toJson(WriteJson.auxBooksArrTest(WriteJson.bookTest())));
         writer.close();
     }
