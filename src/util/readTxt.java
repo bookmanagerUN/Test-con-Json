@@ -70,7 +70,21 @@ public class readTxt {
         
     }
     
-    public static void updadeGraphTxt(){
+    public static void updadeGraphTxt(String archivo,Graphs graph) throws IOException{
+        
+        String f = archivo + ".txt";
+        Graphs<String> aux = graph;
+        LinkedList<String> hashTableToLL = aux.getGraph().toTxt();
+        //System.out.println(hashTableToLL.toString());
+        FileWriter file = new FileWriter("requisitos/"+f);
+        //System.out.println("pppppppppppppppppppppaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        for(int i=0; i<hashTableToLL.numberOfElements(); i++){
+            //System.out.println(hashTableToLL.elementPosition(i));
+            String[] toSave = hashTableToLL.elementPosition(i).split("=");
+            //System.out.println(Arrays.toString(toSave));
+            file.write(toSave[0]+"-"+toSave[1]+"\n");           
+        }        
+        file.close();      
         
     }
     

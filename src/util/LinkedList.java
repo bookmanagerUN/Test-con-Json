@@ -157,14 +157,14 @@ public class LinkedList<TypeOfData> implements Cloneable{
         Node<TypeOfData> aux = head;
 
         int c = count;
-        int index = 0;
 
         while (c-- > 0) {
-            if (aux.data == element) {
+            
+            if (aux.data.equals(element)) {
                 return true;
             }
-            index++;
             aux = aux.next;
+            c--;
         }
         return false;
 
@@ -180,7 +180,7 @@ public class LinkedList<TypeOfData> implements Cloneable{
         int index = 0;
 
         while (c-- > 0) {
-            if (aux.data == element) {
+            if (aux.data.equals(element)) {
                 ret.insertEnd(index);
             }
             index++;

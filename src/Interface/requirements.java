@@ -13,6 +13,9 @@ import Data.Search;
 import Data.UserFinal;
 import java.awt.Color;
 import java.awt.Font;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -20,6 +23,7 @@ import javax.swing.table.DefaultTableModel;
 import util.FrameStack;
 import util.LinkedList;
 import util.Graphs;
+import util.readTxt;
 
 
 
@@ -66,12 +70,66 @@ public class requirements extends javax.swing.JFrame {
         
 
     }
-        
-        
-   
     
-   
+    public void addToRequirements(String book, String requirement){
+        
+        if(myBooks.getDependences().getGraph().contains(book)){
+            if(myBooks.getDependences().getGraph().contains(requirement)){
+                myBooks.getDependences().addEdge(book,requirement);
+            }
+            else{
+                myBooks.getDependences().addVertex(requirement);
+                myBooks.getDependences().addEdge(book,requirement);
+            }           
+        }
+        else{
+            myBooks.getDependences().addVertex(book);
+            if(myBooks.getDependences().getGraph().contains(requirement)){
+                myBooks.getDependences().addEdge(book,requirement);
+            }
+            else{
+                myBooks.getDependences().addVertex(requirement);
+                myBooks.getDependences().addEdge(book,requirement);
+            }    
+        }
 
+        System.out.println(myBooks.getDependences().getGraph().toString());
+        try {
+            readTxt.updadeGraphTxt(user.getName(),myBooks.getDependences());
+        } catch (IOException ex) {
+            Logger.getLogger(requirements.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        JOptionPane.showMessageDialog(null,"El prerrequisito fue añadido correctamente");
+        
+    } 
+    
+    public void deleteToRequirement(String book, String requirement){
+        
+        if(myBooks.getDependences().getGraph().contains(book)){
+            if(myBooks.getDependences().getGraph().contains(requirement)){
+                myBooks.getDependences().deleteEdge(book,requirement);
+                try {
+                    readTxt.updadeGraphTxt(user.getName(),myBooks.getDependences());
+                } catch (IOException ex) {
+                    Logger.getLogger(requirements.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                JOptionPane.showMessageDialog(null,"El prerrequisito fue eliminado correctamente");
+            }
+            else{
+                JOptionPane.showMessageDialog(null,"El libro "+requirement+ " no se encuentra en sus prerequisitos");
+            }           
+        }
+        else{
+            JOptionPane.showMessageDialog(null,"El libro "+book+ " no se encuentra en sus prerequisitos");    
+        }
+
+        System.out.println(myBooks.getDependences().getGraph().toString());
+        
+        
+        
+        
+    }
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -106,8 +164,8 @@ public class requirements extends javax.swing.JFrame {
         JLProyectIcon.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         JLProyectIcon.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        JPMyBooks.setBackground(new java.awt.Color(153, 255, 102));
-        JPMyBooks.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(31, 78, 121), 2, true), "Filtro", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 24), new java.awt.Color(31, 78, 121))); // NOI18N
+        JPMyBooks.setBackground(new java.awt.Color(255, 255, 255));
+        JPMyBooks.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(31, 78, 121), 2, true), "Prerequisitos", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 24), new java.awt.Color(31, 78, 121))); // NOI18N
 
         jLMyBooks.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLMyBooks.setText("En esta ventana podrás añadir tus prerrequisitos.");
@@ -150,9 +208,9 @@ public class requirements extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Este es el libro que vas a añadir");
+        jLabel1.setText("El siguiente libro:");
 
-        jLabel2.setText("Este es el prerrequisito");
+        jLabel2.setText("Es el prerequisito del siguiente libro:");
 
         jButton1.setText("AÑADIR");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -162,6 +220,11 @@ public class requirements extends javax.swing.JFrame {
         });
 
         jButton2.setText("Eliminar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout JPMyBooksLayout = new javax.swing.GroupLayout(JPMyBooks);
         JPMyBooks.setLayout(JPMyBooksLayout);
@@ -169,51 +232,41 @@ public class requirements extends javax.swing.JFrame {
             JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JPMyBooksLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(JPMyBooksLayout.createSequentialGroup()
-                        .addComponent(jBBack)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jBForward)
-                        .addGap(31, 31, 31))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JPMyBooksLayout.createSequentialGroup()
-                        .addComponent(jLMyBooks, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(6, 6, 6))))
+                .addComponent(jBBack)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jBForward)
+                .addGap(31, 31, 31))
             .addGroup(JPMyBooksLayout.createSequentialGroup()
-                .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(26, 26, 26)
+                .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLMyBooks, javax.swing.GroupLayout.DEFAULT_SIZE, 648, Short.MAX_VALUE)
                     .addGroup(JPMyBooksLayout.createSequentialGroup()
-                        .addGap(26, 26, 26)
+                        .addGap(8, 8, 8)
                         .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(JPMyBooksLayout.createSequentialGroup()
-                                .addGap(18, 18, 18)
+                            .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(75, 75, 75)
-                        .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(JTFpre, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(JTFbook, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(JPMyBooksLayout.createSequentialGroup()
-                        .addGap(225, 225, 225)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(96, 96, 96)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(147, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(JTFpre, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
+                            .addComponent(JTFbook)
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(210, Short.MAX_VALUE))
         );
         JPMyBooksLayout.setVerticalGroup(
             JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JPMyBooksLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addGap(34, 34, 34)
                 .addComponent(jLMyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(100, 100, 100)
+                .addGap(68, 68, 68)
                 .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(JTFbook, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(JPMyBooksLayout.createSequentialGroup()
-                        .addGap(70, 70, 70)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(JPMyBooksLayout.createSequentialGroup()
-                        .addGap(56, 56, 56)
-                        .addComponent(JTFpre, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(JTFbook, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(85, 85, 85)
+                .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JTFpre, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(83, 83, 83)
                 .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
@@ -362,13 +415,17 @@ public class requirements extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String book = JTFbook.getText();
         String pre = JTFpre.getText();
-        myBooks.getDependences().addVertex(book);
-        myBooks.getDependences().addVertex(pre);
-        myBooks.getDependences().addEdge(book,pre);
         
-        System.out.println(myBooks.getDependences().getGraph().toString());
-        JOptionPane.showMessageDialog(null,"El prerrequisito fue añadido correctamente");
+        addToRequirements(book, pre);
+                
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        String book = JTFbook.getText();
+        String pre = JTFpre.getText();
+        
+        deleteToRequirement(book, pre);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

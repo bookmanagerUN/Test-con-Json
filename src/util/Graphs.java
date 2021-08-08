@@ -53,10 +53,14 @@ public class Graphs<T> {
     }
 
     public void deleteEdge(T key1,T key2) {
+        System.out.println("DHFJDSKJFKDSFBDSJFDKJGFDKGFDSGFJG");
         LinkedList<T> temp = graph.search(key1);
-
+        System.out.println(temp.toString());
+        System.out.println(key1+"////"+key2);
         if(temp.contains(key2)){
+            System.out.println("");
             LinkedList<Integer> pos = temp.find(key2);
+            System.out.println(pos.toString());
             temp.deletePosition(pos.headElement());
         }else{
             System.err.println("No es posible eliminar esta conexión porque no existe");
@@ -164,11 +168,13 @@ public class Graphs<T> {
         aux.addEdge("Discretas 4", "Discretas 3");
         aux.addEdge("Discretas 1", "Algoritmos 2");
         aux.addEdge("Algoritmos 2", "Algoritmos 1");   
+        System.out.println(aux.getGraph().toString());
+        for(int i=0; i<aux.getGraph().toTxt().numberOfElements();i++){
+            String[] xd = aux.getGraph().toTxt().elementPosition(i).split("=");
         
-        String[] xd = aux.getGraph().toTxt().elementPosition(0).split("=");
-        
-        System.out.println(xd[0]);
-        System.out.println(xd[1]);
+            System.out.println(xd[0]);
+            System.out.println(xd[1]);
+        }
 
 
     }

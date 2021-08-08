@@ -15,3 +15,4 @@ perro,asdfgasd,123456,perro.json
 gato,asdfasd,123456,gato.json
 pendejos,asdasd,123456,pendejos.json
 prueba,asdasd,123456,prueba.json
+alo,sf,123123,alo.json
