@@ -131,10 +131,12 @@ public class HashTable<KeyType, ValueType> {
     
     public LinkedList<String> toTxt() {
         LinkedList<String> toReturn = new LinkedList();
-
         for (int i = 0; i < this.capacity; i++) {
             if(hashTable[i] != null && hashTable[i].status) {
-                toReturn.insertEnd(hashTable[i].toString());
+                //System.out.println("-------------aaaaaaaaaaa--------------");
+                String cadena = hashTable[i].toString();
+                //System.out.println(cadena);
+                toReturn.insertEnd(cadena);
             }
         }
         return toReturn;

@@ -9,3 +9,9 @@ newUser,user@user.com,123456,newUser.json
 nuevo,nuevo@hotmail.com,123456,nuevo.json
 Daniela,dani123@user.com,123456,Daniela.json
 jose,lksadjlksa,123456,jose.json
+carla,casdfp,123456,carla.json
+laura,asdfasdf,123456,laura.json
+perro,asdfgasd,123456,perro.json
+gato,asdfasd,123456,gato.json
+pendejos,asdasd,123456,pendejos.json
+prueba,asdasd,123456,prueba.json

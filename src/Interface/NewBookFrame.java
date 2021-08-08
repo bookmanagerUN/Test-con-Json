@@ -311,11 +311,14 @@ public class NewBookFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jBCancelActionPerformed
     private void insertBook(String name,String author,String category,String isbn){
         Graphs graph1 = myBooks.getDependences();
+        System.out.println("llllllllllllssssssssssssssssmmmmmmmmmmmmmmm");
+        System.out.println(graph1.getGraph().toString());
         boolean band =graph1.getGraph().contains(name);
         boolean band2=false;
         
         if(band){
             LinkedList<String> list =  (LinkedList<String>) graph1.getGraph().search(name);
+            System.out.println(list.toString() + "     " + list.numberOfElements());
             if(list.numberOfElements()==0){
                 insertBook1(name, author, category, isbn);
             }

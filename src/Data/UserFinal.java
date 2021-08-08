@@ -15,6 +15,7 @@ public class UserFinal {
     private final String password;
     private String file;
     
+    
     public UserFinal(String name, String email, String password, String file){
         this.name = name;
         this.email = email;

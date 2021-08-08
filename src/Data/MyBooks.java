@@ -3,6 +3,7 @@
 package Data;
 
 import util.Graphs;
+import util.HashTable;
 import util.LinkedList;
 import util.readTxt;
 
@@ -17,7 +18,7 @@ public class MyBooks {
     public Graphs<String> getDependences() {
         return dependences;
     }
-
+    
     public void setDependences(Graphs<String> dependences) {
         this.dependences = dependences;
     }
@@ -103,6 +104,7 @@ public class MyBooks {
         aux.addVertex("Algoritmos 3");
         
         aux.addEdge("Discretas 2", "Discretas 1");
+        aux.addEdge("Discretas 2", "Algoritmos 1");
         aux.addEdge("Discretas 3", "Discretas 2");
         aux.addEdge("Discretas 4", "Discretas 3");
         aux.addEdge("Discretas 1", "Algoritmos 2");
@@ -115,10 +117,7 @@ public class MyBooks {
 
     }
     
-    public void readGraph(){
-        
-        readTxt.readGraphTxt();
-    }
+    
     
     public Book getBookById(int id){
         for(int i = 0; i< this.myBooks.count;i++){

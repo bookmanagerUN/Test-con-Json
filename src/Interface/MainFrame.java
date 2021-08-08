@@ -23,6 +23,10 @@ import util.FrameStack;
 import util.Heaps;
 import util.MyStack;
 import Data.UserFinal;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import util.Graphs;
+import util.readTxt;
 
 
 /**
@@ -103,7 +107,15 @@ public class MainFrame extends javax.swing.JFrame {
             System.out.println("Interface.MainFrame.<init>() error al hacer lectura de Json");
         }
         this.myBooks.printAllBooks();
-
+        Graphs grafo = new Graphs();
+        try {
+            grafo.setGraph(readTxt.readGraphTxt("requisitos/"+this.user.getName()+".txt"));
+        } catch (IOException ex) {
+            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        this.myBooks.setDependences(grafo);
+        System.out.println(this.myBooks.getDependences().getGraph().toString());
         initComponents();
 
         // cambiar headers de la tabla
