@@ -188,6 +188,7 @@ public class MainFrame extends javax.swing.JFrame {
         kButton6 = new com.k33ptoo.components.KButton();
         jBForward1 = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
+        kButton7 = new com.k33ptoo.components.KButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -494,6 +495,29 @@ public class MainFrame extends javax.swing.JFrame {
 
         jSeparator2.setForeground(new java.awt.Color(204, 204, 204));
 
+        kButton7.setBorder(null);
+        kButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/MediaFiles/icons8-rules-book-32.png"))); // NOI18N
+        kButton7.setText("Requirements");
+        kButton7.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        kButton7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        kButton7.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        kButton7.setkBackGroundColor(new java.awt.Color(31, 78, 121));
+        kButton7.setkBorderRadius(0);
+        kButton7.setkEndColor(new java.awt.Color(31, 78, 121));
+        kButton7.setkForeGround(new java.awt.Color(204, 204, 204));
+        kButton7.setkHoverColor(new java.awt.Color(204, 204, 204));
+        kButton7.setkHoverEndColor(new java.awt.Color(45, 117, 182));
+        kButton7.setkHoverForeGround(new java.awt.Color(204, 204, 204));
+        kButton7.setkHoverStartColor(new java.awt.Color(45, 117, 182));
+        kButton7.setkPressedColor(new java.awt.Color(31, 78, 121));
+        kButton7.setkSelectedColor(new java.awt.Color(204, 204, 204));
+        kButton7.setkStartColor(new java.awt.Color(31, 78, 121));
+        kButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kButton7ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -519,8 +543,10 @@ public class MainFrame extends javax.swing.JFrame {
                                 .addComponent(jBForward))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(25, 25, 25)
-                                .addComponent(jBForward1)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(jBForward1))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(kButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(JPMyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 807, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -541,6 +567,8 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(kButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(kButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(kButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16))
@@ -664,6 +692,13 @@ public class MainFrame extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jBForward1ActionPerformed
 
+    private void kButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton7ActionPerformed
+
+        Requirements requirements = new Requirements(this.myBooks, this.frameStack, this.user);
+        requirements.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_kButton7ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -690,5 +725,6 @@ public class MainFrame extends javax.swing.JFrame {
     private com.k33ptoo.components.KButton kButton4;
     private com.k33ptoo.components.KButton kButton5;
     private com.k33ptoo.components.KButton kButton6;
+    private com.k33ptoo.components.KButton kButton7;
     // End of variables declaration//GEN-END:variables
 }
