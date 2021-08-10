@@ -101,7 +101,7 @@ public class HashTable<KeyType, ValueType> {
     }
 
     public void makeEmpty() {
-        this.capacity = 20;
+        this.capacity = 20000;
         this.keys = 0;
         this.lambda = 0;
         this.hashTable = new HashData[this.capacity];

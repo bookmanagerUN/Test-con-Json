@@ -17,6 +17,8 @@ import javax.swing.*;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import util.FrameStack;
 
 /**
@@ -41,7 +43,6 @@ public class NewNoteFrame extends javax.swing.JFrame {
         //System.out.println(this.bookId);
 
         initComponents();
-        UtilInterface.printImage(JLProyectIcon, "src/Interface/MediaFiles/VAzul1.png", this);
     }
 
     public NewNoteFrame(MyBooks myBooks, Book book, FrameStack frameStack, UserFinal user) {
@@ -70,7 +71,6 @@ public class NewNoteFrame extends javax.swing.JFrame {
             this.jBForward.setVisible(false);
         }
         
-        UtilInterface.printImage(JLProyectIcon, "src/Interface/MediaFiles/VAzul1.png", this);
         UtilInterface.setPanelText(this.actualBook.getBookInformation().getName(), this.JPNewNote);
         //this.JPNewNote.
     }
@@ -85,82 +85,223 @@ public class NewNoteFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        JLProyectIcon = new javax.swing.JLabel();
         JPNewNote = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jTFPage = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
         jTFParagraph = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
         jTFDate = new javax.swing.JTextField();
-        jBAddNote = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTANote = new javax.swing.JTextArea();
+        jLabel5 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel6 = new javax.swing.JLabel();
+        jSeparator3 = new javax.swing.JSeparator();
+        jLabel7 = new javax.swing.JLabel();
+        jSeparator4 = new javax.swing.JSeparator();
+        kButton4 = new com.k33ptoo.components.KButton();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jBForward1 = new javax.swing.JButton();
         jBBack = new javax.swing.JButton();
         jBForward = new javax.swing.JButton();
-        JBMyBooks = new javax.swing.JButton();
-        jBFilter = new javax.swing.JButton();
-        jBNewInform = new javax.swing.JButton();
+        jSeparator2 = new javax.swing.JSeparator();
+        kButton2 = new com.k33ptoo.components.KButton();
+        kButton3 = new com.k33ptoo.components.KButton();
+        kButton1 = new com.k33ptoo.components.KButton();
+        kButton6 = new com.k33ptoo.components.KButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "BoockManager", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 24))); // NOI18N
+        jPanel1.setBackground(new java.awt.Color(31, 78, 121));
 
-        JLProyectIcon.setBackground(new java.awt.Color(255, 51, 51));
-        JLProyectIcon.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        JLProyectIcon.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        JPNewNote.setBackground(new java.awt.Color(204, 204, 204));
 
-        JPNewNote.setBackground(new java.awt.Color(255, 255, 255));
-        JPNewNote.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "(Nombre del Libro)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 24))); // NOI18N
+        jTFPage.setBackground(new java.awt.Color(204, 204, 204));
+        jTFPage.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jTFPage.setForeground(new java.awt.Color(31, 78, 121));
+        jTFPage.setBorder(null);
+        jTFPage.setCaretColor(new java.awt.Color(31, 78, 121));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setText("Página");
+        jTFParagraph.setBackground(new java.awt.Color(204, 204, 204));
+        jTFParagraph.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jTFParagraph.setForeground(new java.awt.Color(31, 78, 121));
+        jTFParagraph.setBorder(null);
+        jTFParagraph.setCaretColor(new java.awt.Color(31, 78, 121));
 
-        jTFPage.setBackground(new java.awt.Color(255, 255, 255));
-        jTFPage.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTFPage.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(31, 78, 121), 2, true));
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel2.setText("Párrafo");
-
-        jTFParagraph.setBackground(new java.awt.Color(255, 255, 255));
-        jTFParagraph.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTFParagraph.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(31, 78, 121), 2, true));
-
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel4.setText("Fecha *");
-
-        jTFDate.setBackground(new java.awt.Color(255, 255, 255));
-        jTFDate.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTFDate.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(31, 78, 121), 2, true));
+        jTFDate.setBackground(new java.awt.Color(204, 204, 204));
+        jTFDate.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jTFDate.setForeground(new java.awt.Color(31, 78, 121));
+        jTFDate.setBorder(null);
+        jTFDate.setCaretColor(new java.awt.Color(31, 78, 121));
         jTFDate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTFDateActionPerformed(evt);
             }
         });
 
-        jBAddNote.setBackground(new java.awt.Color(255, 255, 255));
-        jBAddNote.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jBAddNote.setForeground(new java.awt.Color(31, 78, 121));
-        jBAddNote.setText("AÑADIR");
-        jBAddNote.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(31, 78, 121), 3, true));
-        jBAddNote.setContentAreaFilled(false);
-        jBAddNote.addActionListener(new java.awt.event.ActionListener() {
+        jTANote.setBackground(new java.awt.Color(204, 204, 204));
+        jTANote.setColumns(20);
+        jTANote.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jTANote.setForeground(new java.awt.Color(31, 78, 121));
+        jTANote.setLineWrap(true);
+        jTANote.setRows(5);
+        jTANote.setBorder(null);
+        jTANote.setCaretColor(new java.awt.Color(31, 78, 121));
+        jScrollPane1.setViewportView(jTANote);
+
+        jLabel5.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(31, 78, 121));
+        jLabel5.setText("Date*");
+
+        jSeparator1.setBackground(new java.awt.Color(204, 204, 204));
+        jSeparator1.setForeground(new java.awt.Color(31, 78, 121));
+
+        jLabel6.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(31, 78, 121));
+        jLabel6.setText("Page");
+
+        jSeparator3.setBackground(new java.awt.Color(204, 204, 204));
+        jSeparator3.setForeground(new java.awt.Color(31, 78, 121));
+
+        jLabel7.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(31, 78, 121));
+        jLabel7.setText("Paragraph");
+
+        jSeparator4.setBackground(new java.awt.Color(204, 204, 204));
+        jSeparator4.setForeground(new java.awt.Color(31, 78, 121));
+
+        kButton4.setBorder(null);
+        kButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/MediaFiles/icons8-agregar-propiedad-32.png"))); // NOI18N
+        kButton4.setText("Add Note");
+        kButton4.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        kButton4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        kButton4.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        kButton4.setkBackGroundColor(new java.awt.Color(31, 78, 121));
+        kButton4.setkBorderRadius(0);
+        kButton4.setkEndColor(new java.awt.Color(31, 78, 121));
+        kButton4.setkForeGround(new java.awt.Color(204, 204, 204));
+        kButton4.setkHoverColor(new java.awt.Color(204, 204, 204));
+        kButton4.setkHoverEndColor(new java.awt.Color(45, 117, 182));
+        kButton4.setkHoverForeGround(new java.awt.Color(204, 204, 204));
+        kButton4.setkHoverStartColor(new java.awt.Color(45, 117, 182));
+        kButton4.setkPressedColor(new java.awt.Color(31, 78, 121));
+        kButton4.setkSelectedColor(new java.awt.Color(204, 204, 204));
+        kButton4.setkStartColor(new java.awt.Color(31, 78, 121));
+        kButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBAddNoteActionPerformed(evt);
+                kButton4ActionPerformed(evt);
             }
         });
 
-        jTANote.setBackground(new java.awt.Color(255, 255, 255));
-        jTANote.setColumns(20);
-        jTANote.setLineWrap(true);
-        jTANote.setRows(5);
-        jTANote.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(31, 78, 121), 2, true), "Nota", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18), new java.awt.Color(31, 78, 121))); // NOI18N
-        jScrollPane1.setViewportView(jTANote);
+        jPanel4.setBackground(new java.awt.Color(45, 117, 182));
+        jPanel4.setForeground(new java.awt.Color(45, 117, 182));
+
+        jLabel8.setBackground(new java.awt.Color(204, 204, 204));
+        jLabel8.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel8.setText("User/Library/Book/newNote");
+
+        jLabel9.setFont(new java.awt.Font("Century Gothic", 0, 36)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel9.setText("NEW NOTE");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(66, 66, 66)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(76, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel9)
+                .addContainerGap(22, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout JPNewNoteLayout = new javax.swing.GroupLayout(JPNewNote);
+        JPNewNote.setLayout(JPNewNoteLayout);
+        JPNewNoteLayout.setHorizontalGroup(
+            JPNewNoteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JPNewNoteLayout.createSequentialGroup()
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(JPNewNoteLayout.createSequentialGroup()
+                .addGap(171, 171, 171)
+                .addComponent(kButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(JPNewNoteLayout.createSequentialGroup()
+                .addGap(58, 58, 58)
+                .addGroup(JPNewNoteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6)
+                    .addGroup(JPNewNoteLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addGroup(JPNewNoteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTFParagraph, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTFPage, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTFDate, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(JPNewNoteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jSeparator4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36))
+        );
+        JPNewNoteLayout.setVerticalGroup(
+            JPNewNoteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JPNewNoteLayout.createSequentialGroup()
+                .addContainerGap(26, Short.MAX_VALUE)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(JPNewNoteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(JPNewNoteLayout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTFDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTFPage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
+                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTFParagraph, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
+                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(45, 45, 45)
+                .addComponent(kButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36))
+        );
+
+        jBForward1.setBackground(new java.awt.Color(255, 255, 255));
+        jBForward1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/MediaFiles/icons8-casa-prefabricada-32.png"))); // NOI18N
+        jBForward1.setBorder(null);
+        jBForward1.setBorderPainted(false);
+        jBForward1.setContentAreaFilled(false);
+        jBForward1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBForward1ActionPerformed(evt);
+            }
+        });
 
         jBBack.setBackground(new java.awt.Color(255, 255, 255));
-        jBBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/MediaFiles/atras.png"))); // NOI18N
+        jBBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/MediaFiles/icons8-volver-96.png"))); // NOI18N
+        jBBack.setBorder(null);
         jBBack.setBorderPainted(false);
         jBBack.setContentAreaFilled(false);
         jBBack.addActionListener(new java.awt.event.ActionListener() {
@@ -170,7 +311,8 @@ public class NewNoteFrame extends javax.swing.JFrame {
         });
 
         jBForward.setBackground(new java.awt.Color(255, 255, 255));
-        jBForward.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/MediaFiles/adelante.png"))); // NOI18N
+        jBForward.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/MediaFiles/icons8-adelante-96.png"))); // NOI18N
+        jBForward.setBorder(null);
         jBForward.setBorderPainted(false);
         jBForward.setContentAreaFilled(false);
         jBForward.addActionListener(new java.awt.event.ActionListener() {
@@ -179,110 +321,154 @@ public class NewNoteFrame extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout JPNewNoteLayout = new javax.swing.GroupLayout(JPNewNote);
-        JPNewNote.setLayout(JPNewNoteLayout);
-        JPNewNoteLayout.setHorizontalGroup(
-            JPNewNoteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(JPNewNoteLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(JPNewNoteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
-                    .addGroup(JPNewNoteLayout.createSequentialGroup()
-                        .addComponent(jBBack, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jBForward, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(JPNewNoteLayout.createSequentialGroup()
-                        .addGroup(JPNewNoteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jBAddNote, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(JPNewNoteLayout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTFDate, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(41, 41, 41)
-                                .addComponent(jLabel1)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTFPage, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(74, 74, 74)
-                                .addComponent(jLabel2)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTFParagraph, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 84, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        JPNewNoteLayout.setVerticalGroup(
-            JPNewNoteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(JPNewNoteLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(JPNewNoteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTFDate, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTFPage, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTFParagraph, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jBAddNote, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addGroup(JPNewNoteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBForward)
-                    .addComponent(jBBack))
-                .addContainerGap())
-        );
+        jSeparator2.setForeground(new java.awt.Color(204, 204, 204));
 
-        JBMyBooks.setText("Mis libros");
-        JBMyBooks.addActionListener(new java.awt.event.ActionListener() {
+        kButton2.setBorder(null);
+        kButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/MediaFiles/icons8-filtrar-32.png"))); // NOI18N
+        kButton2.setText("Filter");
+        kButton2.setAlignmentX(0.5F);
+        kButton2.setBorderPainted(false);
+        kButton2.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        kButton2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        kButton2.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        kButton2.setkBackGroundColor(new java.awt.Color(31, 78, 121));
+        kButton2.setkBorderRadius(0);
+        kButton2.setkEndColor(new java.awt.Color(31, 78, 121));
+        kButton2.setkForeGround(new java.awt.Color(204, 204, 204));
+        kButton2.setkHoverColor(new java.awt.Color(204, 204, 204));
+        kButton2.setkHoverEndColor(new java.awt.Color(45, 117, 182));
+        kButton2.setkHoverForeGround(new java.awt.Color(204, 204, 204));
+        kButton2.setkHoverStartColor(new java.awt.Color(45, 117, 182));
+        kButton2.setkPressedColor(new java.awt.Color(31, 78, 121));
+        kButton2.setkSelectedColor(new java.awt.Color(204, 204, 204));
+        kButton2.setkStartColor(new java.awt.Color(31, 78, 121));
+        kButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JBMyBooksActionPerformed(evt);
+                kButton2ActionPerformed(evt);
             }
         });
 
-        jBFilter.setText("Filtrar");
-        jBFilter.addActionListener(new java.awt.event.ActionListener() {
+        kButton3.setBorder(null);
+        kButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/MediaFiles/icons8-libro-de-cuentos-32.png"))); // NOI18N
+        kButton3.setText("Recomendations");
+        kButton3.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        kButton3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        kButton3.setkBackGroundColor(new java.awt.Color(31, 78, 121));
+        kButton3.setkBorderRadius(0);
+        kButton3.setkEndColor(new java.awt.Color(31, 78, 121));
+        kButton3.setkForeGround(new java.awt.Color(204, 204, 204));
+        kButton3.setkHoverColor(new java.awt.Color(204, 204, 204));
+        kButton3.setkHoverEndColor(new java.awt.Color(45, 117, 182));
+        kButton3.setkHoverForeGround(new java.awt.Color(204, 204, 204));
+        kButton3.setkHoverStartColor(new java.awt.Color(45, 117, 182));
+        kButton3.setkPressedColor(new java.awt.Color(31, 78, 121));
+        kButton3.setkSelectedColor(new java.awt.Color(204, 204, 204));
+        kButton3.setkStartColor(new java.awt.Color(31, 78, 121));
+        kButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBFilterActionPerformed(evt);
+                kButton3ActionPerformed(evt);
             }
         });
 
-        jBNewInform.setText("Generar  informe");
+        kButton1.setBorder(null);
+        kButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/MediaFiles/icons8-añadir-libro-32.png"))); // NOI18N
+        kButton1.setText("Add Book");
+        kButton1.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        kButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        kButton1.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        kButton1.setkBackGroundColor(new java.awt.Color(31, 78, 121));
+        kButton1.setkBorderRadius(0);
+        kButton1.setkEndColor(new java.awt.Color(31, 78, 121));
+        kButton1.setkForeGround(new java.awt.Color(204, 204, 204));
+        kButton1.setkHoverColor(new java.awt.Color(204, 204, 204));
+        kButton1.setkHoverEndColor(new java.awt.Color(45, 117, 182));
+        kButton1.setkHoverForeGround(new java.awt.Color(204, 204, 204));
+        kButton1.setkHoverStartColor(new java.awt.Color(45, 117, 182));
+        kButton1.setkPressedColor(new java.awt.Color(31, 78, 121));
+        kButton1.setkSelectedColor(new java.awt.Color(204, 204, 204));
+        kButton1.setkStartColor(new java.awt.Color(31, 78, 121));
+        kButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kButton1ActionPerformed(evt);
+            }
+        });
+
+        kButton6.setBorder(null);
+        kButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/MediaFiles/icons8-cierre-de-sesión-redondeado-32.png"))); // NOI18N
+        kButton6.setText("Log Out");
+        kButton6.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        kButton6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        kButton6.setkBackGroundColor(new java.awt.Color(31, 78, 121));
+        kButton6.setkBorderRadius(0);
+        kButton6.setkEndColor(new java.awt.Color(31, 78, 121));
+        kButton6.setkForeGround(new java.awt.Color(204, 204, 204));
+        kButton6.setkHoverColor(new java.awt.Color(204, 204, 204));
+        kButton6.setkHoverEndColor(new java.awt.Color(45, 117, 182));
+        kButton6.setkHoverForeGround(new java.awt.Color(204, 204, 204));
+        kButton6.setkHoverStartColor(new java.awt.Color(45, 117, 182));
+        kButton6.setkPressedColor(new java.awt.Color(31, 78, 121));
+        kButton6.setkSelectedColor(new java.awt.Color(204, 204, 204));
+        kButton6.setkStartColor(new java.awt.Color(31, 78, 121));
+        kButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kButton6ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(JBMyBooks, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(JLProyectIcon, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                    .addComponent(jBFilter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jBNewInform, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(20, 20, 20)
-                .addComponent(JPNewNote, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(kButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(kButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(kButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(kButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSeparator2)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(63, 63, 63)
+                                .addComponent(jBBack)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jBForward)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jBForward1)
+                        .addGap(91, 91, 91)))
+                .addComponent(JPNewNote, javax.swing.GroupLayout.PREFERRED_SIZE, 592, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(JPNewNote, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addComponent(jBForward1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(JLProyectIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(JBMyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jBNewInform, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jBFilter, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(JPNewNote, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jBForward)
+                    .addComponent(jBBack))
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(kButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(kButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(kButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -298,7 +484,72 @@ public class NewNoteFrame extends javax.swing.JFrame {
         return format.format(date);
     }
 
-    private void jBAddNoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAddNoteActionPerformed
+    private void jTFDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFDateActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jTFDateActionPerformed
+
+    private void jBForward1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBForward1ActionPerformed
+        this.frameStack.cleanNextStack();
+        MainFrame mainFrame = new MainFrame(this.myBooks, this.frameStack, this.user);
+        mainFrame.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jBForward1ActionPerformed
+
+    private void jBBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBackActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBBackActionPerformed
+
+    private void jBForwardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBForwardActionPerformed
+        FrameAux frameas = (FrameAux) frameStack.getStackFrame().peek();
+
+        System.out.println(frameas.getMyBooks().toString());
+        System.out.println(frameas.getTypeOfFrame());
+
+        frameStack.nextToNormal();
+
+        frameas = (FrameAux) frameStack.getStackFrame().peek();
+
+        System.out.println(frameas.getMyBooks().toString());
+        JFrame frame = this.frameStack.generateFrame();
+        frame.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jBForwardActionPerformed
+
+    private void kButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton2ActionPerformed
+        FilterFrame filter = new FilterFrame(this.myBooks, this.frameStack, this.user);
+        filter.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_kButton2ActionPerformed
+
+    private void kButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton3ActionPerformed
+        this.frameStack.cleanNextStack();
+        AdviceFrame AdviceFrame = new AdviceFrame(this.myBooks, this.frameStack, this.user);
+        AdviceFrame.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_kButton3ActionPerformed
+
+    private void kButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1ActionPerformed
+        this.frameStack.cleanNextStack();
+
+        NewBookFrame newBookFrame = new NewBookFrame(this.myBooks, this.frameStack,this.user);
+        newBookFrame.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_kButton1ActionPerformed
+
+    private void kButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton6ActionPerformed
+        LogInFrame login;
+        try {
+            login = new LogInFrame();
+            login.setVisible(true);
+            this.dispose();
+        } catch (IOException ex) {
+            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_kButton6ActionPerformed
+
+    private void kButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton4ActionPerformed
         // TODO generar check frame
         //  leer los campos de escritura
         //System.out.println("Interface.NewBookFrame.jBAddBookActionPerformed()");
@@ -342,57 +593,7 @@ public class NewNoteFrame extends javax.swing.JFrame {
         Book newBook = new Book(newBookInformation);
         newBook.printBook();
          */
-    }//GEN-LAST:event_jBAddNoteActionPerformed
-
-    private void JBMyBooksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBMyBooksActionPerformed
-        MainFrame mainFrame = new MainFrame(this.myBooks,this.frameStack,this.user);
-        mainFrame.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_JBMyBooksActionPerformed
-
-    private void jBBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBackActionPerformed
-        FrameAux frameas = (FrameAux) frameStack.getStackFrame().peek();
-
-        System.out.println(frameas.getMyBooks().toString());
-        System.out.println(frameas.getTypeOfFrame());
-
-        frameStack.pop();
-
-        frameas = (FrameAux) frameStack.getStackFrame().peek();
-
-        System.out.println(frameas.getMyBooks().toString());
-        JFrame frame = this.frameStack.generateFrame();
-        frame.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jBBackActionPerformed
-
-    private void jBForwardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBForwardActionPerformed
-        FrameAux frameas = (FrameAux) frameStack.getStackFrame().peek();
-
-        System.out.println(frameas.getMyBooks().toString());
-        System.out.println(frameas.getTypeOfFrame());
-
-        frameStack.nextToNormal();
-
-        frameas = (FrameAux) frameStack.getStackFrame().peek();
-
-        System.out.println(frameas.getMyBooks().toString());
-        JFrame frame = this.frameStack.generateFrame();
-        frame.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jBForwardActionPerformed
-
-    private void jTFDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFDateActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_jTFDateActionPerformed
-
-    private void jBFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBFilterActionPerformed
-        // TODO add your handling code here:
-        FilterFrame filter = new FilterFrame(this.myBooks, this.frameStack,this.user);
-        filter.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jBFilterActionPerformed
+    }//GEN-LAST:event_kButton4ActionPerformed
 
     private void cleanTextBox() {
         UtilInterface.cleanTextBox(this.jTFDate);
@@ -446,22 +647,30 @@ public class NewNoteFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton JBMyBooks;
-    private javax.swing.JLabel JLProyectIcon;
     private javax.swing.JPanel JPNewNote;
-    private javax.swing.JButton jBAddNote;
     private javax.swing.JButton jBBack;
-    private javax.swing.JButton jBFilter;
     private javax.swing.JButton jBForward;
-    private javax.swing.JButton jBNewInform;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JButton jBForward1;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
     private javax.swing.JTextArea jTANote;
     private javax.swing.JTextField jTFDate;
     private javax.swing.JTextField jTFPage;
     private javax.swing.JTextField jTFParagraph;
+    private com.k33ptoo.components.KButton kButton1;
+    private com.k33ptoo.components.KButton kButton2;
+    private com.k33ptoo.components.KButton kButton3;
+    private com.k33ptoo.components.KButton kButton4;
+    private com.k33ptoo.components.KButton kButton6;
     // End of variables declaration//GEN-END:variables
 }

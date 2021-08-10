@@ -38,7 +38,7 @@ public class MainFrame extends javax.swing.JFrame {
     private Heaps<Book> heap;
     private UserFinal user;
     /**
-     * Usuario actual, permite ivocar su JSON correspondiente.
+     * Usuario actual, permite invocar su JSON correspondiente.
      */
     
 
@@ -54,7 +54,7 @@ public class MainFrame extends javax.swing.JFrame {
         initComponents();
 
         // cambiar headers de la tabla
-        this.jTMyBooks.getTableHeader().setFont(new Font("Century Gothic", Font.BOLD, 18));
+        this.jTMyBooks.getTableHeader().setFont(new Font("Century Gothic", Font.BOLD, 14));
         this.jTMyBooks.getTableHeader().setForeground(new Color(204,204,204));
         this.jTMyBooks.getTableHeader().setBackground(new Color(31,78,121));
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
@@ -113,7 +113,7 @@ public class MainFrame extends javax.swing.JFrame {
         initComponents();
 
         // cambiar headers de la tabla
-        this.jTMyBooks.getTableHeader().setFont(new Font("Century Gothic", Font.BOLD, 18));
+        this.jTMyBooks.getTableHeader().setFont(new Font("Century Gothic", Font.BOLD, 14));
         this.jTMyBooks.getTableHeader().setForeground(new Color(204,204,204));
         this.jTMyBooks.getTableHeader().setBackground(new Color(31,78,121));
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
@@ -179,12 +179,15 @@ public class MainFrame extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLID = new javax.swing.JLabel();
         kButton1 = new com.k33ptoo.components.KButton();
         kButton2 = new com.k33ptoo.components.KButton();
         kButton3 = new com.k33ptoo.components.KButton();
         jBBack = new javax.swing.JButton();
         jBForward = new javax.swing.JButton();
         kButton6 = new com.k33ptoo.components.KButton();
+        jBForward1 = new javax.swing.JButton();
+        jSeparator2 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -194,7 +197,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         jTMyBooks.setAutoCreateRowSorter(true);
         jTMyBooks.setBackground(new java.awt.Color(204, 204, 204));
-        jTMyBooks.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        jTMyBooks.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         jTMyBooks.setForeground(new java.awt.Color(31, 78, 121));
         jTMyBooks.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -220,7 +223,6 @@ public class MainFrame extends javax.swing.JFrame {
         jTMyBooks.setRowHeight(30);
         jTMyBooks.setSelectionBackground(new java.awt.Color(31, 78, 121));
         jTMyBooks.setSelectionForeground(new java.awt.Color(204, 204, 204));
-        jTMyBooks.setShowGrid(false);
         jTMyBooks.getTableHeader().setReorderingAllowed(false);
         jSPMyBooks.setViewportView(jTMyBooks);
 
@@ -237,6 +239,7 @@ public class MainFrame extends javax.swing.JFrame {
         });
 
         kButton4.setBorder(null);
+        kButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/MediaFiles/icons8-información-32.png"))); // NOI18N
         kButton4.setText("Info");
         kButton4.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         kButton4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -245,9 +248,9 @@ public class MainFrame extends javax.swing.JFrame {
         kButton4.setkEndColor(new java.awt.Color(31, 78, 121));
         kButton4.setkForeGround(new java.awt.Color(204, 204, 204));
         kButton4.setkHoverColor(new java.awt.Color(204, 204, 204));
-        kButton4.setkHoverEndColor(new java.awt.Color(204, 204, 204));
-        kButton4.setkHoverForeGround(new java.awt.Color(31, 78, 121));
-        kButton4.setkHoverStartColor(new java.awt.Color(204, 204, 204));
+        kButton4.setkHoverEndColor(new java.awt.Color(45, 117, 182));
+        kButton4.setkHoverForeGround(new java.awt.Color(204, 204, 204));
+        kButton4.setkHoverStartColor(new java.awt.Color(45, 117, 182));
         kButton4.setkPressedColor(new java.awt.Color(31, 78, 121));
         kButton4.setkSelectedColor(new java.awt.Color(204, 204, 204));
         kButton4.setkStartColor(new java.awt.Color(31, 78, 121));
@@ -261,6 +264,7 @@ public class MainFrame extends javax.swing.JFrame {
         jSeparator1.setForeground(new java.awt.Color(31, 78, 121));
 
         kButton5.setBorder(null);
+        kButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/MediaFiles/icons8-borrar-para-siempre-32.png"))); // NOI18N
         kButton5.setText("Delete");
         kButton5.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         kButton5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -269,9 +273,9 @@ public class MainFrame extends javax.swing.JFrame {
         kButton5.setkEndColor(new java.awt.Color(31, 78, 121));
         kButton5.setkForeGround(new java.awt.Color(204, 204, 204));
         kButton5.setkHoverColor(new java.awt.Color(204, 204, 204));
-        kButton5.setkHoverEndColor(new java.awt.Color(204, 204, 204));
-        kButton5.setkHoverForeGround(new java.awt.Color(31, 78, 121));
-        kButton5.setkHoverStartColor(new java.awt.Color(204, 204, 204));
+        kButton5.setkHoverEndColor(new java.awt.Color(45, 117, 182));
+        kButton5.setkHoverForeGround(new java.awt.Color(204, 204, 204));
+        kButton5.setkHoverStartColor(new java.awt.Color(45, 117, 182));
         kButton5.setkPressedColor(new java.awt.Color(31, 78, 121));
         kButton5.setkSelectedColor(new java.awt.Color(204, 204, 204));
         kButton5.setkStartColor(new java.awt.Color(31, 78, 121));
@@ -287,88 +291,96 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel1.setBackground(new java.awt.Color(204, 204, 204));
         jLabel1.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel1.setText("User/Books");
+        jLabel1.setText("User/Library");
 
         jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel2.setText("USER BOOKS");
+        jLabel2.setText("USER LIBRARY");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(83, 83, 83)
+                .addGap(66, 66, 66)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addGap(14, 14, 14)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
+
+        jLID.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLID.setForeground(new java.awt.Color(31, 78, 121));
+        jLID.setText("ID");
 
         javax.swing.GroupLayout JPMyBooksLayout = new javax.swing.GroupLayout(JPMyBooks);
         JPMyBooks.setLayout(JPMyBooksLayout);
         JPMyBooksLayout.setHorizontalGroup(
             JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JPMyBooksLayout.createSequentialGroup()
-                .addContainerGap(36, Short.MAX_VALUE)
-                .addComponent(jSPMyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 791, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28))
-            .addGroup(JPMyBooksLayout.createSequentialGroup()
-                .addGap(269, 269, 269)
-                .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTFmyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(kButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(kButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JPMyBooksLayout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JPMyBooksLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jSPMyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 791, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(399, 399, 399))
+            .addGroup(JPMyBooksLayout.createSequentialGroup()
+                .addGap(192, 192, 192)
+                .addComponent(jLID)
+                .addGap(18, 18, 18)
+                .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTFmyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
+                .addComponent(kButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(kButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         JPMyBooksLayout.setVerticalGroup(
             JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JPMyBooksLayout.createSequentialGroup()
-                .addContainerGap(44, Short.MAX_VALUE)
+                .addContainerGap(54, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(12, 12, 12)
+                .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(JPMyBooksLayout.createSequentialGroup()
-                        .addComponent(jTFmyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JPMyBooksLayout.createSequentialGroup()
                         .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(kButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(kButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(12, 12, 12)))
-                .addGap(30, 30, 30)
-                .addComponent(jSPMyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27))
+                            .addComponent(jTFmyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLID))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 8, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(JPMyBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(kButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
+                        .addComponent(kButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(9, 9, 9)
+                .addComponent(jSPMyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15))
         );
 
         kButton1.setBorder(null);
+        kButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/MediaFiles/icons8-añadir-libro-32.png"))); // NOI18N
         kButton1.setText("Add Book");
         kButton1.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         kButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        kButton1.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         kButton1.setkBackGroundColor(new java.awt.Color(31, 78, 121));
         kButton1.setkBorderRadius(0);
         kButton1.setkEndColor(new java.awt.Color(31, 78, 121));
         kButton1.setkForeGround(new java.awt.Color(204, 204, 204));
         kButton1.setkHoverColor(new java.awt.Color(204, 204, 204));
-        kButton1.setkHoverEndColor(new java.awt.Color(204, 204, 204));
-        kButton1.setkHoverForeGround(new java.awt.Color(31, 78, 121));
-        kButton1.setkHoverStartColor(new java.awt.Color(204, 204, 204));
+        kButton1.setkHoverEndColor(new java.awt.Color(45, 117, 182));
+        kButton1.setkHoverForeGround(new java.awt.Color(204, 204, 204));
+        kButton1.setkHoverStartColor(new java.awt.Color(45, 117, 182));
         kButton1.setkPressedColor(new java.awt.Color(31, 78, 121));
         kButton1.setkSelectedColor(new java.awt.Color(204, 204, 204));
         kButton1.setkStartColor(new java.awt.Color(31, 78, 121));
@@ -379,17 +391,21 @@ public class MainFrame extends javax.swing.JFrame {
         });
 
         kButton2.setBorder(null);
+        kButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/MediaFiles/icons8-filtrar-32.png"))); // NOI18N
         kButton2.setText("Filter");
+        kButton2.setAlignmentX(0.5F);
+        kButton2.setBorderPainted(false);
         kButton2.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         kButton2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        kButton2.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         kButton2.setkBackGroundColor(new java.awt.Color(31, 78, 121));
         kButton2.setkBorderRadius(0);
         kButton2.setkEndColor(new java.awt.Color(31, 78, 121));
         kButton2.setkForeGround(new java.awt.Color(204, 204, 204));
         kButton2.setkHoverColor(new java.awt.Color(204, 204, 204));
-        kButton2.setkHoverEndColor(new java.awt.Color(204, 204, 204));
-        kButton2.setkHoverForeGround(new java.awt.Color(31, 78, 121));
-        kButton2.setkHoverStartColor(new java.awt.Color(204, 204, 204));
+        kButton2.setkHoverEndColor(new java.awt.Color(45, 117, 182));
+        kButton2.setkHoverForeGround(new java.awt.Color(204, 204, 204));
+        kButton2.setkHoverStartColor(new java.awt.Color(45, 117, 182));
         kButton2.setkPressedColor(new java.awt.Color(31, 78, 121));
         kButton2.setkSelectedColor(new java.awt.Color(204, 204, 204));
         kButton2.setkStartColor(new java.awt.Color(31, 78, 121));
@@ -400,6 +416,7 @@ public class MainFrame extends javax.swing.JFrame {
         });
 
         kButton3.setBorder(null);
+        kButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/MediaFiles/icons8-libro-de-cuentos-32.png"))); // NOI18N
         kButton3.setText("Recomendations");
         kButton3.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         kButton3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -408,9 +425,9 @@ public class MainFrame extends javax.swing.JFrame {
         kButton3.setkEndColor(new java.awt.Color(31, 78, 121));
         kButton3.setkForeGround(new java.awt.Color(204, 204, 204));
         kButton3.setkHoverColor(new java.awt.Color(204, 204, 204));
-        kButton3.setkHoverEndColor(new java.awt.Color(204, 204, 204));
-        kButton3.setkHoverForeGround(new java.awt.Color(31, 78, 121));
-        kButton3.setkHoverStartColor(new java.awt.Color(204, 204, 204));
+        kButton3.setkHoverEndColor(new java.awt.Color(45, 117, 182));
+        kButton3.setkHoverForeGround(new java.awt.Color(204, 204, 204));
+        kButton3.setkHoverStartColor(new java.awt.Color(45, 117, 182));
         kButton3.setkPressedColor(new java.awt.Color(31, 78, 121));
         kButton3.setkSelectedColor(new java.awt.Color(204, 204, 204));
         kButton3.setkStartColor(new java.awt.Color(31, 78, 121));
@@ -421,7 +438,7 @@ public class MainFrame extends javax.swing.JFrame {
         });
 
         jBBack.setBackground(new java.awt.Color(255, 255, 255));
-        jBBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/MediaFiles/atras.png"))); // NOI18N
+        jBBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/MediaFiles/icons8-volver-96.png"))); // NOI18N
         jBBack.setBorder(null);
         jBBack.setBorderPainted(false);
         jBBack.setContentAreaFilled(false);
@@ -432,7 +449,7 @@ public class MainFrame extends javax.swing.JFrame {
         });
 
         jBForward.setBackground(new java.awt.Color(255, 255, 255));
-        jBForward.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/MediaFiles/adelante.png"))); // NOI18N
+        jBForward.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/MediaFiles/icons8-adelante-96.png"))); // NOI18N
         jBForward.setBorder(null);
         jBForward.setBorderPainted(false);
         jBForward.setContentAreaFilled(false);
@@ -443,6 +460,7 @@ public class MainFrame extends javax.swing.JFrame {
         });
 
         kButton6.setBorder(null);
+        kButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/MediaFiles/icons8-cierre-de-sesión-redondeado-32.png"))); // NOI18N
         kButton6.setText("Log Out");
         kButton6.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         kButton6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -451,9 +469,9 @@ public class MainFrame extends javax.swing.JFrame {
         kButton6.setkEndColor(new java.awt.Color(31, 78, 121));
         kButton6.setkForeGround(new java.awt.Color(204, 204, 204));
         kButton6.setkHoverColor(new java.awt.Color(204, 204, 204));
-        kButton6.setkHoverEndColor(new java.awt.Color(204, 204, 204));
-        kButton6.setkHoverForeGround(new java.awt.Color(31, 78, 121));
-        kButton6.setkHoverStartColor(new java.awt.Color(204, 204, 204));
+        kButton6.setkHoverEndColor(new java.awt.Color(45, 117, 182));
+        kButton6.setkHoverForeGround(new java.awt.Color(204, 204, 204));
+        kButton6.setkHoverStartColor(new java.awt.Color(45, 117, 182));
         kButton6.setkPressedColor(new java.awt.Color(31, 78, 121));
         kButton6.setkSelectedColor(new java.awt.Color(204, 204, 204));
         kButton6.setkStartColor(new java.awt.Color(31, 78, 121));
@@ -463,6 +481,19 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        jBForward1.setBackground(new java.awt.Color(255, 255, 255));
+        jBForward1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/MediaFiles/icons8-casa-prefabricada-32.png"))); // NOI18N
+        jBForward1.setBorder(null);
+        jBForward1.setBorderPainted(false);
+        jBForward1.setContentAreaFilled(false);
+        jBForward1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBForward1ActionPerformed(evt);
+            }
+        });
+
+        jSeparator2.setForeground(new java.awt.Color(204, 204, 204));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -470,39 +501,48 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(jBBack)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jBForward)
-                        .addGap(14, 14, 14))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(kButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(kButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(kButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(kButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(kButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(kButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(kButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(kButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jSeparator2)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(69, 69, 69)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jBBack)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jBForward))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(25, 25, 25)
+                                .addComponent(jBForward1)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addComponent(JPMyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(152, 152, 152))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(JPMyBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 807, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(9, 9, 9)
+                .addComponent(jBForward1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jBBack)
-                    .addComponent(jBForward))
-                .addGap(51, 51, 51)
-                .addComponent(kButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBForward)
+                    .addComponent(jBBack))
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(kButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(kButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(kButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(kButton6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(kButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16))
             .addComponent(JPMyBooks, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -511,7 +551,7 @@ public class MainFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1056, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -617,6 +657,13 @@ public class MainFrame extends javax.swing.JFrame {
         
     }//GEN-LAST:event_kButton6ActionPerformed
 
+    private void jBForward1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBForward1ActionPerformed
+        this.frameStack.cleanNextStack();
+        MainFrame mainFrame = new MainFrame(this.myBooks, this.frameStack, this.user);
+        mainFrame.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jBForward1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -626,12 +673,15 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel JPMyBooks;
     private javax.swing.JButton jBBack;
     private javax.swing.JButton jBForward;
+    private javax.swing.JButton jBForward1;
+    private javax.swing.JLabel jLID;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jSPMyBooks;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextField jTFmyBooks;
     private javax.swing.JTable jTMyBooks;
     private com.k33ptoo.components.KButton kButton1;

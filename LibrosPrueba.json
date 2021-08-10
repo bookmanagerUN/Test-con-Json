@@ -28,7 +28,7 @@
         }
       }
     ],
-    "opinion": ""
+    "opinion": "New Opinión"
   },
   {
     "actualPage": 32,
@@ -62,13 +62,13 @@
         "date": "19/07/2021",
         "page": 139,
         "paragraph": 5,
-        "note": "sdf",
+        "note": "This is the new interface.",
         "notes": {
           "count": 0
         }
       }
     ],
-    "opinion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan lorem eu quam ornare, eget egestas tortor pretium. Maecenas ut ante a lorem dictum tincidunt. Phasellus commodo fringilla maximus. Vivamus nec ipsum mattis, accumsan massa non, eleifend mauris. Sed bibendum, mauris sit amet placerat dictum, orci elit commodo lectus, hendrerit varius lectus dui et mauris. Donec ut nunc est. Curabitur interdum justo a ex pellentesque laoreet. Sed blandit sagittis nunc sit amet consequat. Etiam convallis velit non eleifend rhoncus. In tempor iaculis leo, sed molestie est mollis et. Ut et nisl condimentum, luctus velit in, ultrices erat. Maecenas id tortor nec nisl auctor sodales sed in nunc. Integer ultricies mi vitae ante vestibulum vestibulum. Vivamus scelerisque orci nec justo gravida, a ullamcorper mi malesuada. Ut auctor, velit vitae cursus accumsan, turpis mi interdum metus, pellentesque fringilla est quam eu libero. Suspendisse tempor urna velit, mattis convallis massa dapibus sed.Integer convallis laoreet libero in ornare. Maecenas lectus lorem, fringilla at lectus at, imperdiet tristique ipsum. Nulla imperdiet iaculis libero nec tristique. Proin congue sapien sit amet justo luctus placerat. Aliquam vel metus vitae est scelerisque eleifend ac sed velit. Etiam enim massa, consectetur sed euismod eget, sollicitudin vitae lacus. Suspendisse quis massa id sem accumsan condimentum. Cras ac ipsum tellus. Sed convallis fringilla nisl vel blandit. Pellentesque rhoncus luctus ipsum, vel placerat nibh tempus in. Etiam pulvinar lobortis risus id feugiat. Proin quis porttitor sem, vel tempus ipsum. Fusce rutrum, purus congue auctor pretium, leo leo aliquam ante, vel tristique arcu dui at est."
+    "opinion": "Lorem ipsum dolor sit amet, \nconsectetur adipiscing elit. \nSuspendisse accumsan lorem eu \nquam ornare, eget egestas tortor \npretium. Maecenas ut ante a lorem \ndictum tincidunt. Phasellus commodo \nfringilla maximus. Vivamus nec ipsum \nmattis, accumsan massa non, eleifend \nmauris. Sed bibendum, mauris sit\namet placerat dictum, orci elit \ncommodo lectus, hendrerit varius \nlectus dui et mauris. Donec ut nunc est.\n Curabitur interdum justo a ex\n pellentesque laoreet. Sed blandit\n sagittis nunc sit amet consequat. \nEtiam convallis velit non eleifend \nrhoncus. In tempor iaculis leo, sed \nmolestie est mollis et. Ut et nisl \ncondimentum, luctus velit in, ultrices\n erat. Maecenas id tortor nec nisl \nauctor sodales sed in nunc. Integer \nultricies mi vitae ante vestibulum \nvestibulum. Vivamus scelerisque\n orci nec justo gravida, a \n mi malesuada. Ut auctor, velit vitae\n cursus accumsan, turpis mi interdum\nmetus, pellentesque fringilla est qu\nam eu libero. Suspendisse tempor\n urna velit, mattis convallis massa dapibus\nsed.Integer convallis laoreet libero \nin ornare. Maecenas lectus lorem, f\nringilla at lectus at, imperdiet tristiq\nue ipsum. Nulla imperdiet iaculis li\nbero nec tristique. Proin congue \nsapien sit amet justo luctus plac\nerat. Aliquam vel metus vitae est \nscelerisque eleifend ac sed velit."
   },
   {
     "actualPage": 0,
