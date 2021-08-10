@@ -16,6 +16,3 @@ gato,asdfasd,123456,gato.json
 pendejos,asdasd,123456,pendejos.json
 prueba,asdasd,123456,prueba.json
 alo,sf,123123,alo.json
-troya,asdadñ,123123,troya.json
-josefina,asdasda,123123,josefina.json
-carros,asdfasdfasdf,123123,carros.json

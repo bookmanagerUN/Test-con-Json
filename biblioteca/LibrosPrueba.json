@@ -1,0 +1,293 @@
+[
+  {
+    "actualPage": 12,
+    "status": false,
+    "bookInformation": [
+      "Caperucita roja",
+      "anonimo",
+      "fabula",
+      "222200"
+    ],
+    "notes": [
+      {
+        "date": "21/06/2021",
+        "page": 9050,
+        "paragraph": 3,
+        "note": "la idea de la verdad es una idea abstracta mmmm ",
+        "notes": {
+          "count": 0
+        }
+      },
+      {
+        "date": "19/07/2021",
+        "page": 12,
+        "paragraph": 34,
+        "note": "ghnfghngsgsdffgdsfg",
+        "notes": {
+          "count": 0
+        }
+      }
+    ],
+    "opinion": ""
+  },
+  {
+    "actualPage": 32,
+    "status": true,
+    "bookInformation": [
+      "Principito",
+      "anonimo",
+      "Historia",
+      "22110"
+    ],
+    "notes": [
+      {
+        "date": "24/07/2021",
+        "page": 139,
+        "paragraph": 5,
+        "note": "Nota de prueba 1",
+        "notes": {
+          "count": 0
+        }
+      },
+      {
+        "date": "00/07/2021",
+        "page": 15,
+        "paragraph": 0,
+        "note": "holllllaaa",
+        "notes": {
+          "count": 0
+        }
+      },
+      {
+        "date": "19/07/2021",
+        "page": 139,
+        "paragraph": 5,
+        "note": "sdf",
+        "notes": {
+          "count": 0
+        }
+      }
+    ],
+    "opinion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan lorem eu quam ornare, eget egestas tortor pretium. Maecenas ut ante a lorem dictum tincidunt. Phasellus commodo fringilla maximus. Vivamus nec ipsum mattis, accumsan massa non, eleifend mauris. Sed bibendum, mauris sit amet placerat dictum, orci elit commodo lectus, hendrerit varius lectus dui et mauris. Donec ut nunc est. Curabitur interdum justo a ex pellentesque laoreet. Sed blandit sagittis nunc sit amet consequat. Etiam convallis velit non eleifend rhoncus. In tempor iaculis leo, sed molestie est mollis et. Ut et nisl condimentum, luctus velit in, ultrices erat. Maecenas id tortor nec nisl auctor sodales sed in nunc. Integer ultricies mi vitae ante vestibulum vestibulum. Vivamus scelerisque orci nec justo gravida, a ullamcorper mi malesuada. Ut auctor, velit vitae cursus accumsan, turpis mi interdum metus, pellentesque fringilla est quam eu libero. Suspendisse tempor urna velit, mattis convallis massa dapibus sed.Integer convallis laoreet libero in ornare. Maecenas lectus lorem, fringilla at lectus at, imperdiet tristique ipsum. Nulla imperdiet iaculis libero nec tristique. Proin congue sapien sit amet justo luctus placerat. Aliquam vel metus vitae est scelerisque eleifend ac sed velit. Etiam enim massa, consectetur sed euismod eget, sollicitudin vitae lacus. Suspendisse quis massa id sem accumsan condimentum. Cras ac ipsum tellus. Sed convallis fringilla nisl vel blandit. Pellentesque rhoncus luctus ipsum, vel placerat nibh tempus in. Etiam pulvinar lobortis risus id feugiat. Proin quis porttitor sem, vel tempus ipsum. Fusce rutrum, purus congue auctor pretium, leo leo aliquam ante, vel tristique arcu dui at est."
+  },
+  {
+    "actualPage": 0,
+    "status": false,
+    "bookInformation": [
+      "El naufrago",
+      "Gabo",
+      "Relato",
+      "12341243"
+    ],
+    "notes": [
+      {
+        "date": "24/07/2021",
+        "page": 139,
+        "paragraph": 5,
+        "note": "asdfasdfasdfasdfasdfasdfasdfasdadfadsfaskldf{gldghñld{ptohdrm,ko{afdfja´wefijasdvnj pajeáeijf awef+ao+aipjdfoa oh9q45 q  ´j aíej aíakefe{klkan  erety",
+        "notes": {
+          "count": 0
+        }
+      },
+      {
+        "date": "19/07/2021",
+        "page": 56,
+        "paragraph": 4,
+        "note": "nota5",
+        "notes": {
+          "count": 0
+        }
+      },
+      {
+        "date": "19/07/2021",
+        "page": 67,
+        "paragraph": 90,
+        "note": "nota 45",
+        "notes": {
+          "count": 0
+        }
+      }
+    ],
+    "opinion": ""
+  },
+  {
+    "actualPage": 43,
+    "status": false,
+    "bookInformation": [
+      "robin",
+      "anonimo",
+      "fabula",
+      "12341243"
+    ],
+    "notes": [
+      {
+        "date": "24/027/2021",
+        "page": 4,
+        "paragraph": 51,
+        "note": "hola mundo",
+        "notes": {
+          "count": 0
+        }
+      },
+      {
+        "date": "24/07/2021",
+        "page": 139,
+        "paragraph": 5,
+        "note": "jkljafjkdafdfdfdfddddddddddddd",
+        "notes": {
+          "count": 0
+        }
+      },
+      {
+        "date": "19/07/2021",
+        "page": 139,
+        "paragraph": 23232323,
+        "note": "3423sdf",
+        "notes": {
+          "count": 0
+        }
+      },
+      {
+        "date": "19/07/2021",
+        "page": 34,
+        "paragraph": 2,
+        "note": "awefasdfavgfhmfghmfghfgmn",
+        "notes": {
+          "count": 0
+        }
+      }
+    ],
+    "opinion": "hfhhfhfh"
+  },
+  {
+    "actualPage": 0,
+    "status": false,
+    "bookInformation": [
+      "Los tres mosqueteros",
+      "Wild",
+      "Avenuras",
+      "12341243"
+    ],
+    "notes": [],
+    "opinion": ""
+  },
+  {
+    "actualPage": 56,
+    "status": true,
+    "bookInformation": [
+      "El escarabajo de oro",
+      "Carlos Mejia",
+      "fantastico",
+      "12341243"
+    ],
+    "notes": [
+      {
+        "date": "19/07/2021",
+        "page": 56,
+        "paragraph": 4,
+        "note": "El autor hace referiencia a la cantidad de escarabajos que hay en la sopa",
+        "notes": {
+          "count": 0
+        }
+      },
+      {
+        "date": "23/07/2021",
+        "page": 5,
+        "paragraph": 7,
+        "note": "54",
+        "notes": {
+          "count": 0
+        }
+      }
+    ],
+    "opinion": ""
+  },
+  {
+    "actualPage": 0,
+    "status": false,
+    "bookInformation": [
+      "Caperucita morada",
+      "Carlitos",
+      "qwer",
+      "12341243"
+    ],
+    "notes": [],
+    "opinion": ""
+  },
+  {
+    "actualPage": 0,
+    "status": false,
+    "bookInformation": [
+      "la Caperucita roja",
+      "asdasd",
+      "sdfgdsfg",
+      "12341243"
+    ],
+    "notes": [],
+    "opinion": ""
+  },
+  {
+    "actualPage": 0,
+    "status": false,
+    "bookInformation": [
+      "caperucita fuxia",
+      "Humberto",
+      "Fantasia",
+      "12341243"
+    ],
+    "notes": [],
+    "opinion": ""
+  },
+  {
+    "actualPage": 0,
+    "status": false,
+    "bookInformation": [
+      "Prueba",
+      "",
+      "Prueba",
+      "12341243"
+    ],
+    "notes": [
+      {
+        "date": "24/07/2021",
+        "page": 1,
+        "paragraph": 10,
+        "note": "Esta es una nota de prueba Esta es una nota de prueba Esta es una nota de prueba Esta es una nota de prueba Esta es una nota de prueba Esta es una nota de prueba",
+        "notes": {
+          "count": 0
+        }
+      },
+      {
+        "date": "10/2/2101",
+        "page": 2,
+        "paragraph": 20,
+        "note": "Esta es una nota de pruebaEsta es una nota de pruebaEsta es una nota de pruebaEsta es una nota de pruebaEsta es una nota de pruebaEsta es una nota de prueba",
+        "notes": {
+          "count": 0
+        }
+      },
+      {
+        "date": "30/30/3024",
+        "page": 30,
+        "paragraph": 20,
+        "note": "Esta es una nota de prueba",
+        "notes": {
+          "count": 0
+        }
+      }
+    ],
+    "opinion": ""
+  },
+  {
+    "actualPage": 0,
+    "status": false,
+    "bookInformation": [
+      "Algoritmos 1",
+      "sdfgh",
+      "sdfghjk",
+      "12341243"
+    ],
+    "notes": [],
+    "opinion": ""
+  }
+]

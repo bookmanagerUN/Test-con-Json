@@ -19,12 +19,29 @@ public class Graphs<T> {
         listVertex = new LinkedList<>();
         vertexVisited = new LinkedList<>();
     }
+
+    public LinkedList<T> getListVertex() {
+        return listVertex;
+    }
+
+    public LinkedList<T> getVertexVisited() {
+        return vertexVisited;
+    }
+
+    public HashTable<T, LinkedList<T>> getGraph() {
+        return graph;
+    }
+
+    public void setGraph(HashTable<T, LinkedList<T>> graph) {
+        this.graph = graph;
+    }
+    
     public void addVertex(T key){
         graph.insert(key,new LinkedList<>());
         listVertex.insertEnd(key);
     }
 
-    private void deleteVertex(T key){
+    public void deleteVertex(T key){
         graph.delete(key);
     }
 
@@ -43,17 +60,15 @@ public class Graphs<T> {
         }
     }
 
-    public HashTable<T, LinkedList<T>> getGraph() {
-        return graph;
-    }
-    
-  
-
-    private void deleteEdge(T key1,T key2) {
+    public void deleteEdge(T key1,T key2) {
+        System.out.println("DHFJDSKJFKDSFBDSJFDKJGFDKGFDSGFJG");
         LinkedList<T> temp = graph.search(key1);
-
+        System.out.println(temp.toString());
+        System.out.println(key1+"////"+key2);
         if(temp.contains(key2)){
+            System.out.println("");
             LinkedList<Integer> pos = temp.find(key2);
+            System.out.println(pos.toString());
             temp.deletePosition(pos.headElement());
         }else{
             System.err.println("No es posible eliminar esta conexión porque no existe");
@@ -131,7 +146,7 @@ public class Graphs<T> {
         grafo.addEdge("Look up recipe","cook dinner");
         */
 
-        grafo.addVertex("Discretas 1");
+        /*grafo.addVertex("Discretas 1");
         grafo.addVertex("Discretas 2");
         grafo.addVertex("Discretas 3");
         grafo.addVertex("algoritmos");
@@ -142,7 +157,33 @@ public class Graphs<T> {
 
 
 
-        grafo.topologicalSort();
+        grafo.topologicalSort();*/
+        
+        Graphs<String> aux = new Graphs<>();
+
+        
+        aux.addVertex("Discretas 1");
+        aux.addVertex("Discretas 2");
+        aux.addVertex("Discretas 3");
+        aux.addVertex("Discretas 4");
+        aux.addVertex("Algoritmos 1");
+        aux.addVertex("Algoritmos 2");
+        aux.addVertex("Algoritmos 3");
+        
+        aux.addEdge("Discretas 2", "Discretas 1");
+        aux.addEdge("Discretas 2", "Discretas 4");
+        aux.addEdge("Discretas 3", "Discretas 2");
+        aux.addEdge("Discretas 4", "Discretas 3");
+        aux.addEdge("Discretas 1", "Algoritmos 2");
+        aux.addEdge("Algoritmos 2", "Algoritmos 1");   
+        System.out.println(aux.getGraph().toString());
+        for(int i=0; i<aux.getGraph().toTxt().numberOfElements();i++){
+            String[] xd = aux.getGraph().toTxt().elementPosition(i).split("=");
+        
+            System.out.println(xd[0]);
+            System.out.println(xd[1]);
+        }
+
 
     }
 

@@ -26,7 +26,7 @@ public class LinkedList<TypeOfData> implements Cloneable{
     }
     public LinkedList(TypeOfData[] array) {
         this.makeEmpty();
-        for (TypeOfData data : array) this.insertBegin(data);
+        for (TypeOfData data : array) this.insertEnd(data);
     }
     public TypeOfData getTail(){
         return this.tail.data;
@@ -157,14 +157,14 @@ public class LinkedList<TypeOfData> implements Cloneable{
         Node<TypeOfData> aux = head;
 
         int c = count;
-        int index = 0;
 
         while (c-- > 0) {
-            if (aux.data == element) {
+            
+            if (aux.data.equals(element)) {
                 return true;
             }
-            index++;
             aux = aux.next;
+            c--;
         }
         return false;
 
@@ -180,7 +180,7 @@ public class LinkedList<TypeOfData> implements Cloneable{
         int index = 0;
 
         while (c-- > 0) {
-            if (aux.data == element) {
+            if (aux.data.equals(element)) {
                 ret.insertEnd(index);
             }
             index++;
@@ -214,7 +214,7 @@ public class LinkedList<TypeOfData> implements Cloneable{
     public String toString() { //Imprime la Linkedlist
 
         StringBuilder str = new StringBuilder();
-        str.append("[");
+        //str.append("[");
 
         Node<TypeOfData> aux = head;
 
@@ -232,7 +232,7 @@ public class LinkedList<TypeOfData> implements Cloneable{
         String toReturn = str.toString();
         toReturn = toReturn.substring(0, str.length() - 2);
 
-        return toReturn + "]";
+        return toReturn;
     }
 
     public LinkedList<TypeOfData> clone(){

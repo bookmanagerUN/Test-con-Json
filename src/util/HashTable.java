@@ -28,7 +28,7 @@ public class HashTable<KeyType, ValueType> {
             System.err.println("Está sobreescribiendo el valor de una clave.");
         int hashCode = Math.abs(key.hashCode());
 
-        
+       
         if(lambda >= 0.5)
             this.rehashing(2 * this.capacity);
 
@@ -82,7 +82,7 @@ public class HashTable<KeyType, ValueType> {
 
         return aux.value;
     }
-
+    
     public boolean contains(KeyType key){
         HashData<KeyType, ValueType> aux;
         int i = Math.abs(key.hashCode() % this.capacity);
@@ -128,6 +128,19 @@ public class HashTable<KeyType, ValueType> {
     private int pollFunction(KeyType key, int i) {
         return Math.abs((key.hashCode()) + i^2) % this.capacity;
     }
+    
+    public LinkedList<String> toTxt() {
+        LinkedList<String> toReturn = new LinkedList();
+        for (int i = 0; i < this.capacity; i++) {
+            if(hashTable[i] != null && hashTable[i].status) {
+                //System.out.println("-------------aaaaaaaaaaa--------------");
+                String cadena = hashTable[i].toString();
+                //System.out.println(cadena);
+                toReturn.insertEnd(cadena);
+            }
+        }
+        return toReturn;
+    }
 
     @Override
     public String toString() {
@@ -153,7 +166,7 @@ public class HashTable<KeyType, ValueType> {
             this.value = value;
             this.status = true;
         }
-
+        
         @Override
         public String toString() {
             if(status)

@@ -24,7 +24,7 @@ public class BookManagerReport extends EasyDocument {
     public BookManagerReport(Book book, String fileDestination) throws IOException {
         super();
         this.book=book;
-        setReport(fileDestination);
+        setReport("exportables/"+fileDestination);
     }
 
     private void setReport(String fileDestination) throws IOException {

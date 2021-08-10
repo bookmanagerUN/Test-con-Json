@@ -60,13 +60,13 @@ public class WriteJson {
     public void createJson(AuxBook[] auxBooks, String file) throws IOException {
         //CREAR JSON
 
-        Writer writer = new FileWriter(file);
+        Writer writer = new FileWriter("biblioteca/"+file);
         writer.write(gson.toJson(arrBook));
         writer.close();
     }
     public static void createNewJson(String nameFile) throws IOException {
         //CREAR JSON
-        Writer writer = new FileWriter(nameFile);
+        Writer writer = new FileWriter("biblioteca/"+nameFile);
         writer.write(gson.toJson(WriteJson.auxBooksArrTest(WriteJson.bookTest())));
         writer.close();
     }

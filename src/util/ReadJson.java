@@ -113,7 +113,7 @@ public class ReadJson {
         // LEER JSON
         System.out.println("util.ReadJson.readJson() inicio");
         
-        Reader reader = new FileReader(this.file);
+        Reader reader = new FileReader("biblioteca/"+this.file);
 
         /* Type type = new TypeToken<Collection<AuxBook>>() {
         }.getType();*/

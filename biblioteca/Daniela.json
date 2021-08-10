@@ -1,0 +1,70 @@
+[
+  {
+    "actualPage": 0,
+    "status": false,
+    "bookInformation": [
+      "Instructivo",
+      "Servicio técnico Bookmanager",
+      "instrucciones",
+      "123ab54",
+      "Instructivo",
+      "Servicio técnico Bookmanager",
+      "instrucciones",
+      "123ab54",
+      "Instructivo",
+      "Servicio técnico Bookmanager",
+      "instrucciones",
+      "123ab54"
+    ],
+    "notes": [],
+    "opinion": "este libro contiene las instrucciones para el manejo de la app"
+  },
+  {
+    "actualPage": 0,
+    "status": false,
+    "bookInformation": [
+      "El mundo",
+      "anonimo",
+      "viajes",
+      "12341243",
+      "El mundo",
+      "anonimo",
+      "viajes",
+      "12341243",
+      "El mundo",
+      "anonimo",
+      "viajes",
+      "12341243"
+    ],
+    "notes": [],
+    "opinion": ""
+  },
+  {
+    "actualPage": 0,
+    "status": false,
+    "bookInformation": [
+      "Cálculo 1",
+      "Stewart",
+      "Estudio",
+      "12341243",
+      "Cálculo 1",
+      "Stewart",
+      "Estudio",
+      "12341243"
+    ],
+    "notes": [],
+    "opinion": ""
+  },
+  {
+    "actualPage": 0,
+    "status": false,
+    "bookInformation": [
+      "Cervesas",
+      "Alemania",
+      "bebidas",
+      "12341243"
+    ],
+    "notes": [],
+    "opinion": ""
+  }
+]
