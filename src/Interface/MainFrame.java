@@ -693,7 +693,6 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jBForward1ActionPerformed
 
     private void kButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton7ActionPerformed
-
         Requirements requirements = new Requirements(this.myBooks, this.frameStack, this.user);
         requirements.setVisible(true);
         this.dispose();
