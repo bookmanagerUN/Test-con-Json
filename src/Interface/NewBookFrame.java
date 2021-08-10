@@ -119,15 +119,21 @@ public class NewBookFrame extends javax.swing.JFrame {
 
         jTFName.setBackground(new java.awt.Color(31, 78, 121));
         jTFName.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jTFName.setForeground(new java.awt.Color(204, 204, 204));
         jTFName.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(31, 78, 121), 2, true));
+        jTFName.setCaretColor(new java.awt.Color(204, 204, 204));
 
         jTFAuthor.setBackground(new java.awt.Color(31, 78, 121));
         jTFAuthor.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jTFAuthor.setForeground(new java.awt.Color(204, 204, 204));
         jTFAuthor.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(31, 78, 121), 2, true));
+        jTFAuthor.setCaretColor(new java.awt.Color(204, 204, 204));
 
         jTFCategory.setBackground(new java.awt.Color(31, 78, 121));
         jTFCategory.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jTFCategory.setForeground(new java.awt.Color(204, 204, 204));
         jTFCategory.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(31, 78, 121), 2, true));
+        jTFCategory.setCaretColor(new java.awt.Color(204, 204, 204));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
