@@ -16,6 +16,7 @@ import Interface.MainFrame;
 import Interface.NewBookFrame;
 import Interface.NewNoteFrame;
 import Interface.ReportFrame;
+import Interface.Requirements;
 import javax.swing.JFrame;
 
 /**
@@ -67,6 +68,9 @@ public class FrameStack {
         }
         else if (this.stackFrame.peek().getTypeOfFrame() == 6) {
             return  new FilterFrame(this.stackFrame.peek().getMyBooks(), this,this.stackFrame.peek().getUser());
+        }
+        else if (this.stackFrame.peek().getTypeOfFrame() == 7) {
+            return  new Requirements(this.stackFrame.peek().getMyBooks(), this,this.stackFrame.peek().getUser());
         }
         
         return null;

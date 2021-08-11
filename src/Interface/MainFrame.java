@@ -66,7 +66,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         // rellenar tabla
         fillTable();
-        if(this.frameStack.getStackFrame().count == 1){
+        if(this.frameStack.getStackFrame().count == 0){
             this.jBBack.setVisible(false);
         }
         if(this.frameStack.getStackFrameNext().count == 0){
@@ -709,6 +709,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jBForward1ActionPerformed
 
     private void kButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton7ActionPerformed
+        this.frameStack.cleanNextStack();
         Requirements requirements = new Requirements(this.myBooks, this.frameStack, this.user);
         requirements.setVisible(true);
         this.dispose();

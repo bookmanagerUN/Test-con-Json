@@ -546,25 +546,21 @@ public class AdviceFrame extends javax.swing.JFrame {
 
     private void jBForward1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBForward1ActionPerformed
         this.frameStack.cleanNextStack();
-        MainFrame mainFrame = new MainFrame(this.myBooks, this.frameStack, this.user);
+        MainFrame mainFrame = new MainFrame(this.myBooks2, this.frameStack, this.user);
         mainFrame.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jBForward1ActionPerformed
 
     private void kButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton2ActionPerformed
-        FilterFrame filter = new FilterFrame(this.myBooks, this.frameStack, this.user);
+        FilterFrame filter = new FilterFrame(this.myBooks2, this.frameStack, this.user);
         filter.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_kButton2ActionPerformed
 
-    private void kButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton3ActionPerformed
-
-    }//GEN-LAST:event_kButton3ActionPerformed
-
     private void kButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1ActionPerformed
         this.frameStack.cleanNextStack();
 
-        NewBookFrame newBookFrame = new NewBookFrame(this.myBooks, this.frameStack, this.user);
+        NewBookFrame newBookFrame = new NewBookFrame(this.myBooks2, this.frameStack, this.user);
         newBookFrame.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_kButton1ActionPerformed
@@ -594,6 +590,10 @@ public class AdviceFrame extends javax.swing.JFrame {
     private void kButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton5ActionPerformed
         fillLabels();
     }//GEN-LAST:event_kButton5ActionPerformed
+
+    private void kButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton3ActionPerformed
+
+    }//GEN-LAST:event_kButton3ActionPerformed
 
     public static void main(String args[]) {
        

@@ -27,6 +27,7 @@ public class FrameAux {
     typeOfFrame = 4 : NewNoteFrame
     typeOfFrame = 5 : AdviceFrame
     typeOfFrame = 6 : FilterFrame
+    typeofFrame = 7 : Requirements
     */
     private MyBooks myBooks;
     private Book book;
