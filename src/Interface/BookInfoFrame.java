@@ -288,7 +288,7 @@ public class BookInfoFrame extends javax.swing.JFrame {
 
         jBSaveNote.setBackground(new java.awt.Color(204, 204, 204));
         jBSaveNote.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        jBSaveNote.setForeground(new java.awt.Color(255, 255, 255));
+        jBSaveNote.setForeground(new java.awt.Color(31, 78, 121));
         jBSaveNote.setText("Save");
         jBSaveNote.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(31, 78, 121), 2, true));
         jBSaveNote.setBorderPainted(false);
@@ -297,6 +297,15 @@ public class BookInfoFrame extends javax.swing.JFrame {
                 jBSaveNoteActionPerformed(evt);
             }
         });
+
+        jTFNoteDate.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTFNoteDate.setBorder(null);
+
+        jTFNotePage.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTFNotePage.setBorder(null);
+
+        jTFNoteParagraph.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTFNoteParagraph.setBorder(null);
 
         jLabel1.setBackground(new java.awt.Color(31, 78, 121));
         jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
@@ -315,7 +324,7 @@ public class BookInfoFrame extends javax.swing.JFrame {
 
         jBcancelNote.setBackground(new java.awt.Color(204, 204, 204));
         jBcancelNote.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        jBcancelNote.setForeground(new java.awt.Color(255, 255, 255));
+        jBcancelNote.setForeground(new java.awt.Color(31, 78, 121));
         jBcancelNote.setText("Cancel");
         jBcancelNote.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(31, 78, 121), 2, true));
         jBcancelNote.setBorderPainted(false);
@@ -327,7 +336,7 @@ public class BookInfoFrame extends javax.swing.JFrame {
 
         jBdeleteNote.setBackground(new java.awt.Color(204, 204, 204));
         jBdeleteNote.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        jBdeleteNote.setForeground(new java.awt.Color(255, 255, 255));
+        jBdeleteNote.setForeground(new java.awt.Color(31, 78, 121));
         jBdeleteNote.setText("Delete");
         jBdeleteNote.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(31, 78, 121), 2, true));
         jBdeleteNote.setBorderPainted(false);
@@ -382,11 +391,11 @@ public class BookInfoFrame extends javax.swing.JFrame {
                 .addGroup(jPNoteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPNoteLayout.createSequentialGroup()
                         .addComponent(jBSaveNote)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jBcancelNote)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jBdeleteNote))
-                    .addComponent(jScrollPane2))
+                        .addComponent(jBdeleteNote, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
@@ -482,9 +491,9 @@ public class BookInfoFrame extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(204, 204, 204));
         jLabel4.setText("Name:");
 
-        jBactualPage2.setBackground(new java.awt.Color(31, 78, 121));
+        jBactualPage2.setBackground(new java.awt.Color(204, 204, 204));
         jBactualPage2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jBactualPage2.setForeground(new java.awt.Color(204, 204, 204));
+        jBactualPage2.setForeground(new java.awt.Color(31, 78, 121));
         jBactualPage2.setText("Update Reading Page");
         jBactualPage2.setBorder(null);
         jBactualPage2.setBorderPainted(false);
@@ -505,6 +514,7 @@ public class BookInfoFrame extends javax.swing.JFrame {
         });
 
         jLLastPage.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jLLastPage.setForeground(new java.awt.Color(255, 255, 255));
         jLLastPage.setText("Current Reading Page: (pagina)");
 
         jCheckStatus.setBackground(new java.awt.Color(31, 78, 121));
@@ -517,6 +527,7 @@ public class BookInfoFrame extends javax.swing.JFrame {
         });
 
         jLEstate.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        jLEstate.setForeground(new java.awt.Color(255, 255, 255));
         jLEstate.setText("Finished");
 
         jSeparator6.setForeground(new java.awt.Color(255, 255, 255));
@@ -544,7 +555,7 @@ public class BookInfoFrame extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(102, 102, 102)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTactualPage, javax.swing.GroupLayout.PREFERRED_SIZE, 60, Short.MAX_VALUE)
+                                    .addComponent(jTactualPage, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
                                     .addComponent(jSeparator6))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jBactualPage2, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -704,7 +715,7 @@ public class BookInfoFrame extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(kButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -713,7 +724,7 @@ public class BookInfoFrame extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(kButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
                             .addComponent(kButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))
-                .addContainerGap())
+                .addGap(24, 24, 24))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -725,7 +736,7 @@ public class BookInfoFrame extends javax.swing.JFrame {
                             .addComponent(kButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(kButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(kButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -752,11 +763,11 @@ public class BookInfoFrame extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(66, 66, 66)
+                .addGap(21, 21, 21)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 804, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(82, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1179,24 +1190,34 @@ public class BookInfoFrame extends javax.swing.JFrame {
 
     private void jBactualPage2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBactualPage2ActionPerformed
 
-        int actualPage = Integer.parseInt(jTactualPage.getText());
+        if(jTactualPage.getText().length() == 0){
+            
+            JOptionPane.showMessageDialog(null, "Ingrese una pagina");
+            
+        }
+        else{
+            
+            int actualPage = Integer.parseInt(jTactualPage.getText());
 
-        this.actualBook.setActualPage(actualPage);
+            this.actualBook.setActualPage(actualPage);
 
-        this.lastPage = actualPage;
+            this.lastPage = actualPage;
 
-        this.completeLabels();
+            this.completeLabels();
 
-        // Update Json
-        WriteJson writeJson = new WriteJson();
-        try {
-            writeJson.createAuxBook(this.myBooks.getMyBooks(),this.user.getFile());
+            // Update Json
+            WriteJson writeJson = new WriteJson();
+            try {
+                writeJson.createAuxBook(this.myBooks.getMyBooks(),this.user.getFile());
 
-        } catch (IOException e) {
-            System.err.println("no se pudo guardar");
+            } catch (IOException e) {
+                System.err.println("no se pudo guardar");
+            }
+
+            jTactualPage.setText("");
+            
         }
 
-        jTactualPage.setText("");
     }//GEN-LAST:event_jBactualPage2ActionPerformed
 
     private void kButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton6ActionPerformed
@@ -1212,7 +1233,7 @@ public class BookInfoFrame extends javax.swing.JFrame {
 
     private void kButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton3ActionPerformed
         try{
-            BookManagerReport report = new BookManagerReport(this.actualBook, this.actualBook.getBookInformation().getName()+".pdf");
+            BookManagerReport report = new BookManagerReport(this.actualBook, this.actualBook.getBookInformation().getName()+"-"+this.user.getName()+".pdf");
             JOptionPane.showMessageDialog(null, "SE HA GENERADO EL INFORME PDF CORRECTAMENTE.");
         }catch(IOException e){
             e.printStackTrace();
@@ -1221,7 +1242,7 @@ public class BookInfoFrame extends javax.swing.JFrame {
         }
         
         try{
-            CSVReport report = new CSVReport(this.actualBook, this.actualBook.getBookInformation().getName());
+            CSVReport report = new CSVReport(this.actualBook, "exportables/"+this.actualBook.getBookInformation().getName()+"-"+this.user.getName());
             JOptionPane.showMessageDialog(null, "SE HA GENERADO EL INFORME CSV CORRECTAMENTE.");
         }catch(IOException e){
             e.printStackTrace();

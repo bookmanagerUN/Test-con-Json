@@ -158,7 +158,7 @@ public class LinkedList<TypeOfData> implements Cloneable{
 
         int c = count;
 
-        while (c-- >= 0) {
+        while (c >   0) {
             
             if (aux.data.equals(element)) {
                 return true;

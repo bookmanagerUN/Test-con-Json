@@ -5,14 +5,6 @@
  */
 package Data;
 
-import Interface.BookInfoFrame;
-import Interface.FilterBooksFrame;
-import Interface.MainFrame;
-import Interface.NewBookFrame;
-import Interface.NewNoteFrame;
-import Interface.ReportFrame;
-import javax.swing.JFrame;
-
 /**
  *
  * @author Usuario

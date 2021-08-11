@@ -210,11 +210,11 @@ public class NewNoteFrame extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(66, 66, 66)
+                .addGap(56, 56, 56)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addContainerGap(86, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -234,28 +234,29 @@ public class NewNoteFrame extends javax.swing.JFrame {
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(JPNewNoteLayout.createSequentialGroup()
-                .addGap(171, 171, 171)
-                .addComponent(kButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(JPNewNoteLayout.createSequentialGroup()
-                .addGap(58, 58, 58)
                 .addGroup(JPNewNoteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6)
                     .addGroup(JPNewNoteLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
+                        .addGap(171, 171, 171)
+                        .addComponent(kButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(JPNewNoteLayout.createSequentialGroup()
+                        .addGap(58, 58, 58)
                         .addGroup(JPNewNoteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTFParagraph, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTFPage, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTFDate, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(JPNewNoteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jSeparator4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36))
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
+                            .addGroup(JPNewNoteLayout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addGroup(JPNewNoteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTFParagraph, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTFPage, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTFDate, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(JPNewNoteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jSeparator4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(39, 39, 39)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         JPNewNoteLayout.setVerticalGroup(
             JPNewNoteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -498,6 +499,20 @@ public class NewNoteFrame extends javax.swing.JFrame {
 
     private void jBBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBackActionPerformed
         // TODO add your handling code here:
+        // TODO add your handling code here:
+        FrameAux frameas = (FrameAux) frameStack.getStackFrame().peek();
+
+        //System.out.println(frameas.getMyBooks().toString());
+        //System.out.println(frameas.getTypeOfFrame());
+
+        frameStack.pop();
+
+        frameas = (FrameAux) frameStack.getStackFrame().peek();
+
+        //System.out.println(frameas.getMyBooks().toString());
+        JFrame frame = this.frameStack.generateFrame();
+        frame.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jBBackActionPerformed
 
     private void jBForwardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBForwardActionPerformed
@@ -553,34 +568,48 @@ public class NewNoteFrame extends javax.swing.JFrame {
         // TODO generar check frame
         //  leer los campos de escritura
         //System.out.println("Interface.NewBookFrame.jBAddBookActionPerformed()");
-        String text = this.jTANote.getText();
-        int page = Integer.parseInt(this.jTFPage.getText());
-        int paragraph = Integer.parseInt(this.jTFParagraph.getText());
-        String date = this.jTFDate.getText();
+        
+        if(jTFPage.getText().length() == 0){
+            
+            JOptionPane.showMessageDialog(null, "Ingrese una pagina");
+            
+        }
+        if(jTFParagraph.getText().length() == 0){
+            
+            JOptionPane.showMessageDialog(null, "Ingrese un parrafo");
+            
+        }
+        else{
+            String text = this.jTANote.getText();
+            int page = Integer.parseInt(this.jTFPage.getText());
+            int paragraph = Integer.parseInt(this.jTFParagraph.getText());
 
-        int option = JOptionPane.showConfirmDialog(null, "¿confirma?");
-        //System.out.println(option);
-        if (option == 0) {
-            Notes note = new Notes(date, page, paragraph, text);
-            this.actualBook.getNotes().addNote(note);
-            //this.actualBook.getNotes().
-            this.actualBook.printBook();
-            this.myBooks.printAllBooks();
+            String date = this.jTFDate.getText();
 
-            // Update Json
-            WriteJson writeJson = new WriteJson();
-            try {
-                writeJson.createAuxBook(this.myBooks.getMyBooks(),this.user.getFile());
+            int option = JOptionPane.showConfirmDialog(null, "¿confirma?");
+            //System.out.println(option);
+            if (option == 0) {
+                Notes note = new Notes(date, page, paragraph, text);
+                this.actualBook.getNotes().addNote(note);
+                //this.actualBook.getNotes().
+                this.actualBook.printBook();
+                this.myBooks.printAllBooks();
 
-            } catch (IOException e) {
-                System.err.println("no se pudo guardar");
+                // Update Json
+                WriteJson writeJson = new WriteJson();
+                try {
+                    writeJson.createAuxBook(this.myBooks.getMyBooks(),this.user.getFile());
+
+                } catch (IOException e) {
+                    System.err.println("no se pudo guardar");
+                }
+
+                cleanTextBox();
+            } else if (option == 1) {
+
+            } else {
+                cleanTextBox();
             }
-
-            cleanTextBox();
-        } else if (option == 1) {
-
-        } else {
-            cleanTextBox();
         }
         /*String author = this.jTFDate.getText();
         String name = this.jTFPage.getText();

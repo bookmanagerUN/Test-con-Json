@@ -197,7 +197,7 @@ public class NewBookFrame extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(66, 66, 66)
+                .addGap(50, 50, 50)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -433,6 +433,7 @@ public class NewBookFrame extends javax.swing.JFrame {
         System.out.println(graph1.getGraph().toString());
         boolean band =graph1.getGraph().contains(name);
         boolean band2=false;
+        boolean band3=false;
         
         if(band){
             LinkedList<String> list =  (LinkedList<String>) graph1.getGraph().search(name);
@@ -442,18 +443,21 @@ public class NewBookFrame extends javax.swing.JFrame {
             }
             else{
                 int i=0;
-                while(band2==false && i<list.numberOfElements()){
+                while(band2==false && i<list.numberOfElements() && band3==false){
                     int j =0;
                     System.out.println("size: "+myBooks.getMyBooks().count);
-                    while(band2==false && j<myBooks.getMyBooks().count ){
+                    while(band2==false && j<myBooks.getMyBooks().count && band3==false){
                         System.out.println("j: "+j);
                         if(list.elementPosition(i).compareTo(myBooks.getMyBooks().elementPosition(j).getBookInformation().getName())==0){
                            insertBook1(name, author, category, isbn);
                            band2 = true;
-                       }
+                        }
+                        if(j==myBooks.getMyBooks().count-1 && band2==false){
+                            band3 = true;
+                        }
                         j++;
                     }
-                   i++;
+                    i++;
                  
                 }
                 if(band2==false){

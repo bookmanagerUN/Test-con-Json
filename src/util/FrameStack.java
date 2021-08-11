@@ -10,13 +10,11 @@ import Data.UserFinal;
 import Interface.AdviceFrame;
 import javax.swing.JFrame;
 import Interface.BookInfoFrame;
-import Interface.FilterBooksFrame;
 import Interface.FilterFrame;
 import Interface.MainFrame;
 import Interface.NewBookFrame;
 import Interface.NewNoteFrame;
-import Interface.ReportFrame;
-import Interface.Requirements;
+import Interface.Prerequisites;
 import javax.swing.JFrame;
 
 /**
@@ -70,7 +68,7 @@ public class FrameStack {
             return  new FilterFrame(this.stackFrame.peek().getMyBooks(), this,this.stackFrame.peek().getUser());
         }
         else if (this.stackFrame.peek().getTypeOfFrame() == 7) {
-            return  new Requirements(this.stackFrame.peek().getMyBooks(), this,this.stackFrame.peek().getUser());
+            return  new Prerequisites(this.stackFrame.peek().getMyBooks(), this,this.stackFrame.peek().getUser());
         }
         
         return null;

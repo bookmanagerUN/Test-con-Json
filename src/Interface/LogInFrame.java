@@ -51,7 +51,6 @@ public class LogInFrame extends javax.swing.JFrame {
         for(int i=0; i<savedUsers.count ;i++ ){
             String cadena = savedUsers.elementPosition(i);
             String[] detached = cadena.split(",");
-            System.out.println("hey");
             UserFinal actualUser = new UserFinal(detached[0],detached[1],detached[2],detached[3]);
             UserName actualName = new UserName(detached[0]);
             
@@ -108,7 +107,7 @@ public class LogInFrame extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel3.setText("User or Email");
+        jLabel3.setText("User");
 
         jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
 
@@ -222,7 +221,6 @@ public class LogInFrame extends javax.swing.JFrame {
         jLabel1.setText("jLabel1");
 
         jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Changing the way in which it is read and understood");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -274,7 +272,7 @@ public class LogInFrame extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Usuario Incorrecto o Clave Incorrecta.");
             }
         } else
-            JOptionPane.showMessageDialog(null, "ver.");
+            JOptionPane.showMessageDialog(null, "Usuario no encontrado, revise espacios/mayúsculas/signos.");
     }//GEN-LAST:event_LoginButtonActionPerformed
 
     private void PasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordFieldActionPerformed
