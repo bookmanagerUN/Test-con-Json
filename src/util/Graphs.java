@@ -15,6 +15,10 @@ public class Graphs<T> {
     private LinkedList<T> listVertex;
     private LinkedList<T> vertexVisited;
 
+    public void setListVertex(LinkedList<T> listVertex) {
+        this.listVertex = listVertex;
+    }
+
     public Graphs(){
         listVertex = new LinkedList<>();
         vertexVisited = new LinkedList<>();

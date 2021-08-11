@@ -55,9 +55,9 @@ public class readTxt {
         String f = archivo + ".txt";
         Graphs<String> aux = MyBooks.defaultGraph();
         LinkedList<String> hashTableToLL = aux.getGraph().toTxt();
-        //System.out.println(hashTableToLL.toString());
+        System.out.println(hashTableToLL.toString());
         FileWriter file = new FileWriter("requisitos/"+f);
-        //System.out.println("pppppppppppppppppppppaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        System.out.println("pppppppppppppppppppppaaaaaaaaaaaaaaaaaaaaaaaaaa");
         for(int i=0; i<hashTableToLL.numberOfElements(); i++){
             //System.out.println(hashTableToLL.elementPosition(i));
             String[] toSave = hashTableToLL.elementPosition(i).split("=");
@@ -92,6 +92,7 @@ public class readTxt {
         BufferedReader b = new BufferedReader(f);
         HashTable auxTable = new HashTable<String, LinkedList<String>>();
         
+        
         String cadena;
         System.out.println("aaaaaaaaaaaaaaasssssssssssssssddddddddddddddddd");
         while(( cadena= b.readLine())!=null) {
@@ -107,7 +108,7 @@ public class readTxt {
                 valueList = new LinkedList<>();
             }
             else{
-                String[] valueArr = line[1].split(",");
+                String[] valueArr = line[1].split(", ");
                 valueList = new LinkedList<>(valueArr);
                 //System.out.println(valueList.toString());
             }
@@ -119,6 +120,25 @@ public class readTxt {
         System.out.println(auxTable.toString());
         return auxTable;
         
+    }
+    public static LinkedList<String> listOfRequirements(String nameFile) throws FileNotFoundException, IOException{
+        FileReader f = new FileReader(nameFile);
+
+        BufferedReader b = new BufferedReader(f);
+        LinkedList<String> listofVertex = new LinkedList<>();
+        
+        
+        String cadena;
+        System.out.println("aaaaaaaaaaaaaaasssssssssssssssddddddddddddddddd");
+        while(( cadena = b.readLine())!=null) {
+            //System.out.println(cadena);
+            String[] line = cadena.split("\\-");
+            //System.out.println(Arrays.toString(line));
+            String key = line[0];
+            listofVertex.insertEnd(key);
+        }
+        b.close();
+        return listofVertex;
     }
     public static void main(String[] args) throws IOException {
         String[] savedUsers = new String[]{"Daniel,Daniel@user.com,12345,LibrosPrueba.json",

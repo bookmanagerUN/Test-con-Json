@@ -135,7 +135,7 @@ public class HashTable<KeyType, ValueType> {
             if(hashTable[i] != null && hashTable[i].status) {
                 //System.out.println("-------------aaaaaaaaaaa--------------");
                 String cadena = hashTable[i].toString();
-                //System.out.println(cadena);
+                System.out.println(cadena);
                 toReturn.insertEnd(cadena);
             }
         }

@@ -19,3 +19,9 @@ alo,sf,123123,alo.json
 troya,asdadñ,123123,troya.json
 josefina,asdasda,123123,josefina.json
 carros,asdfasdfasdf,123123,carros.json
+martucha,asdasdas,123123,martucha.json
+martucha,asdasdas,123123,martucha.json
+mesa,asdasd,123123,mesa.json
+pelota,asdas,123123,pelota.json
+elHuevo,asdasd,123123,elHuevo.json
+papel,asdasd,123123,papel.json

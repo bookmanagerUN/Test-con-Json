@@ -1,0 +1,7 @@
+Algoritmos 1- 
+Algoritmos 2-Algoritmos 1
+Algoritmos 3- 
+Discretas 4-Discretas 3
+Discretas 3-Discretas 2
+Discretas 2-Discretas 1, Algoritmos 1
+Discretas 1-Algoritmos 2
